@@ -6,7 +6,7 @@ import { footballEraConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Football Era Privacy Policy",
   description:
-    "How Football Era handles information on your iPhone—local career data, optional Apple platform services, and how to contact Howeth Studio.",
+    "How Football Era handles local career data, anonymous gameplay analytics, optional public leaderboards, and support requests.",
   alternates: {
     canonical: "/football-era/privacy/",
   },
@@ -22,7 +22,7 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: April 16, 2026. This policy describes how Football Era
+              Effective date: August 21, 2026. This policy describes how Football Era
               (“the app”), published by Howeth Studio, treats information on your
               device when you play.
             </p>
@@ -34,19 +34,22 @@ export default function FootballEraPrivacyPage() {
               <p>
                 Career progress, slot saves, preferences, and other gameplay state
                 needed to run Football Era are stored locally on your device. Howeth
-                Studio does not operate a sign-in or cloud save service for core
-                gameplay as part of this policy unless a future version explicitly
-                tells you otherwise in the app and updates this page.
+                Studio does not require an account and does not upload your complete
+                save file. The app remains playable when online services are
+                unavailable.
               </p>
             </article>
             <article className="section-card">
               <h2>When information is processed off-device</h2>
               <p>
-                Like other iPhone apps, Football Era relies on Apple platform services
-                for distribution, updates, and device-level features (for example
-                system keyboards or accessibility). Those flows are governed by
-                Apple’s policies. If you purchase or restore in-app content, Apple
-                handles payment and receipt validation.
+                When anonymous gameplay analytics are enabled, the app sends a random
+                installation identifier, app version and platform, session start/end
+                times, and aggregate career information such as position, team,
+                season, games, yards, touchdowns, championships, overall rating,
+                followers, net worth, and legacy score. This helps us measure
+                retention, balance progression, and improve features. We do not send
+                your complete save, email address, contacts, advertising identifier,
+                or precise location.
               </p>
             </article>
           </section>
@@ -55,10 +58,12 @@ export default function FootballEraPrivacyPage() {
             <article className="section-card">
               <h2>Analytics and diagnostics</h2>
               <p>
-                The app is not built around ad tracking or behavioral advertising. If
-                Apple provides optional crash or diagnostic sharing on your device,
-                whether any data is sent depends on your iOS privacy settings and
-                choices in the Privacy and Security section of Settings.
+                The app does not use this information for advertising, cross-app
+                tracking, or sale to data brokers. The random installation identifier
+                is used only to deduplicate events, calculate anonymous retention, and
+                protect your own synced career records. We use service providers such
+                as Railway to host the API and database; they may process limited
+                network and request metadata to operate and secure the service.
               </p>
             </article>
             <article className="section-card">
@@ -73,6 +78,7 @@ export default function FootballEraPrivacyPage() {
                   We do not use your saved careers to train third-party generative
                   models.
                 </li>
+                <li>We do not upload StoreKit payment details or your Apple Account.</li>
               </ul>
             </article>
           </section>
@@ -89,7 +95,10 @@ export default function FootballEraPrivacyPage() {
             <article className="section-card">
               <h2>Changes to this policy</h2>
               <p>
-                We may update this policy when the app or legal requirements change.
+                We retain online data while it is needed to provide leaderboards,
+                measure product performance, secure the service, and meet legal
+                obligations. We may keep statistics that have been aggregated so they
+                no longer identify an installation. We may update this policy when the app or legal requirements change.
                 The effective date at the top will change when we publish a revision.
                 Continued use of the app after an update means you accept the revised
                 policy.
@@ -108,6 +117,17 @@ export default function FootballEraPrivacyPage() {
                 <li>
                   You can control optional Apple analytics and sharing in iOS
                   Settings.
+                </li>
+                <li>
+                  Anonymous gameplay analytics can be turned off in Football Era
+                  Settings. Turning it off also requests deletion of that installation’s
+                  online events and career snapshots.
+                </li>
+                <li>
+                  Public leaderboard sharing is separate and off by default. When you
+                  turn it on, your in-game player name, position, team, and aggregate
+                  score become visible to other players. Turning it off removes the
+                  name and career from public results.
                 </li>
               </ul>
             </article>

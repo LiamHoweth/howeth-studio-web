@@ -1,6 +1,6 @@
 # howethstudio.com
 
-Marketing site for Howeth Studio apps, built with Next.js and exported as static HTML for hosting on Render.
+Marketing site for Howeth Studio apps, built with Next.js and exported as static HTML for hosting on Railway.
 
 ## Product marketing chrome
 
@@ -21,11 +21,11 @@ npm run dev
 npm run build
 ```
 
-Static files are written to `out/`. Render should publish that directory (see `render.yaml`).
+Static files are written to `out/`. Railway builds and serves that directory using `railway.toml`.
 
 ## Environment variables (optional)
 
-Set these in the Render dashboard (or `.env.local` for local builds):
+Set these in Railway (or `.env.local` for local builds):
 
 - `NEXT_PUBLIC_SITE_URL` — canonical site origin, for example `https://howethstudio.com`
 - `NEXT_PUBLIC_HOWETH_STUDIO_CONTACT_EMAIL` — email shown on Howeth Studio pages (footer, `/contact/`); defaults to `howethstudio@gmail.com` if unset
@@ -49,11 +49,12 @@ If you still see a **404** for a valid page:
 
 [Mescubook](https://mescubook.com/) uses separate HTML files (`work.html`, `about.html`, …). This site mirrors that **information architecture** with real routes **`/work/`**, **`/about/`**, and **`/contact/`** while keeping the long-scroll **index** and all CareNote / Football Era marketing pages.
 
-## Render
+## Railway
 
-1. Create a new **Static Site** and connect this repository.
-2. Use build command `npm install && npm run build` and publish directory `out`, or connect the repo and let Render read `render.yaml`.
-3. Attach the custom domain `howethstudio.com` in the Render dashboard and complete DNS verification.
+1. Create a Railway project from `github.com/LiamHoweth/howethstudio.com-frontend`.
+2. Railway reads `railway.toml`, installs with `npm ci`, builds the static export, and serves `out/` on Railway's assigned `PORT`.
+3. Generate a Railway domain, verify the deployment, then attach `howethstudio.com` and complete the DNS instructions Railway provides.
+4. Add the optional `NEXT_PUBLIC_*` variables before building. Point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` to the API service's `/api/contact` route.
 
 ## API repository
 
@@ -61,4 +62,4 @@ Optional contact-form and health API: [github.com/LiamHoweth/howethstudio.com-ba
 
 ## DNS for howethstudio.com
 
-At your DNS provider, add the records Render shows when you attach the domain (commonly a **CNAME** from `www` to the Render hostname, and either an **ALIAS/ANAME** apex record or Render’s documented apex setup depending on your provider). Prefer a single canonical hostname (apex or `www`) and redirect the other in Render so search engines see one primary URL.
+At your DNS provider, add the records Railway shows when you attach the domain. Prefer one canonical hostname (apex or `www`) and redirect the other so search engines see one primary URL. Keep the current host active until the Railway URL has been verified, then change DNS to avoid downtime.
