@@ -51,14 +51,14 @@ If you still see a **404** for a valid page:
 
 ## Railway
 
-1. Create a Railway project from `github.com/LiamHoweth/howethstudio.com-frontend`.
+1. Create a Railway project from `github.com/LiamHoweth/howeth-studio-web`.
 2. Railway reads `railway.toml`, installs with `npm ci`, builds the static export, and serves `out/` on Railway's assigned `PORT`.
 3. Generate a Railway domain, verify the deployment, then attach `howethstudio.com` and complete the DNS instructions Railway provides.
 4. Add the optional `NEXT_PUBLIC_*` variables before building. Point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` to the API service's `/api/contact` route.
 
 ## API repository
 
-Optional contact-form and health API: [github.com/LiamHoweth/howethstudio.com-backend](https://github.com/LiamHoweth/howethstudio.com-backend). When deployed, point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` at `https://<your-api-host>/api/contact`.
+Optional contact-form and health API: [github.com/LiamHoweth/howeth-studio-api](https://github.com/LiamHoweth/howeth-studio-api). When deployed, point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` at `https://<your-api-host>/api/contact`.
 
 ## DNS for howethstudio.com
 

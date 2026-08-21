@@ -28,5 +28,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# API lives in its own repository (github.com/LiamHoweth/howethstudio.com-backend)
+# API lives in its own repository (github.com/LiamHoweth/howeth-studio-api)
 /backend/
