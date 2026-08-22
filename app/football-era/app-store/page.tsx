@@ -5,7 +5,7 @@ import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 export const metadata: Metadata = {
   title: "Football Era — App Store Details",
   description:
-    "App Store submission details for Football Era 1.2, including anonymous analytics, online leaderboards, privacy declarations, and career improvements.",
+    "Store submission details for Football Era accounts, cloud career saves, authenticated leaderboards, and privacy declarations.",
   alternates: {
     canonical: "/football-era/app-store/",
   },
@@ -43,12 +43,12 @@ export default function FootballEraAppStorePage() {
       <main className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
-            <span className="eyebrow">App Store · Version 1.2</span>
+            <span className="eyebrow">App Store · Account-enabled release</span>
             <h1>The next Football Era release.</h1>
             <p className="hero-copy">
-              Submission-ready product and privacy language for the API-enabled
-              update: anonymous product analytics, opt-in online leaderboards,
-              stronger integrity checks, and the complete football career experience.
+              Submission-ready product and privacy language for optional Apple and
+              Google accounts, cloud career saves, authenticated leaderboards, and
+              guest-first offline play.
             </p>
             <div className="hero-actions">
               <Link className="button button-primary" href="/football-era/privacy/">
@@ -97,7 +97,7 @@ Seasons, contracts, trades, awards, purchases, milestones, and records become pa
 PREMIUM BY DESIGN
 Football Era has no ads, no subscriptions, and no consumable currency. Optional VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses are permanent App Store purchases and can be restored.
 
-Football Era is local-first and remains fully playable without an account or network connection.`}
+Football Era is local-first and remains fully playable without an account or network connection. Optional Apple or Google sign-in adds cloud career saves and verified online leaderboards.`}
             </CopyBlock>
 
             <CopyBlock label="Keywords" limit="100 characters (comma-separated, no spaces after commas per Apple guidance)">
@@ -107,19 +107,21 @@ Football Era is local-first and remains fully playable without an account or net
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>What’s New in 1.2</h2>
-              <pre className="fe-asc-block">{`• Optional online leaderboards for legacy, yards, touchdowns, championships, overall, followers, and net worth.
-• Anonymous, privacy-controlled gameplay analytics to help improve retention and career balance.
-• Server-side leaderboard integrity checks and verified legacy scoring.
-• Expanded career presentation, stadium moments, offseason flow, and interface polish.`}</pre>
+              <h2>What’s New</h2>
+              <pre className="fe-asc-block">{`• Optional Sign in with Apple and Google accounts—guest play remains fully available.
+• Cloud synchronization for durable career slots, with offline-first conflict recovery.
+• Authenticated leaderboards for legacy, yards, touchdowns, championships, overall, followers, and net worth.
+• In-app account status, sync retry, sign-out, and permanent account deletion.`}</pre>
             </article>
             <article className="section-card">
               <h2>Review notes (template)</h2>
               <p>
-                No login is required. Create or select a career, then open More →
-                Football Era Shop to review the permanent gamepasses. Purchases can
-                be restored from Shop or Settings, and the full career remains
-                playable offline.
+                No login is required. On the first New Career or Continue Career action
+                after launch, choose Continue as Guest to use the complete offline game.
+                Apple and Google sign-in enable cloud saves and online leaderboards.
+                Account status, sign-out, sync retry, and deletion are in More →
+                Settings. Permanent gamepasses are restored separately through the
+                storefront account.
               </p>
             </article>
           </section>
@@ -129,34 +131,68 @@ Football Era is local-first and remains fully playable without an account or net
             <h2>Declare collection before submitting the next version</h2>
             <div className="feature-grid">
               <article className="feature-card">
-                <h3>Identifiers · Device ID</h3>
+                <h3>Contact Info · Email Address</h3>
                 <p>
-                  Used for analytics and app functionality. Not linked to the
-                  user&apos;s identity and not used for tracking. This is a random
-                  Football Era installation identifier, not Apple&apos;s advertising ID.
+                  Used for app functionality when a sign-in provider supplies a
+                  verified email. Linked to the optional Football Era account and not
+                  used for tracking.
                 </p>
               </article>
               <article className="feature-card">
-                <h3>Usage Data · Product Interaction</h3>
+                <h3>Identifiers · User ID</h3>
                 <p>
-                  Used for analytics. Covers sessions, feature areas, weekly outcomes,
-                  progression actions, seasons, and retirement milestones. Not linked
-                  to identity and not used for tracking.
+                  Used for authentication, cloud saves, leaderboards, security, and
+                  account deletion. Linked to the optional account and not used for
+                  tracking. The separate random installation identifier is used for
+                  unlinked analytics.
                 </p>
               </article>
               <article className="feature-card">
                 <h3>User Content · Gameplay Content</h3>
                 <p>
-                  Used for analytics and app functionality. Covers aggregate career
-                  snapshots and the optional public in-game player name. Not linked to
-                  identity and not used for tracking.
+                  Used for cloud career saves, authenticated public leaderboards, and
+                  app functionality. Account cloud saves and published careers are
+                  linked to the user ID; anonymous analytics remain separate. Not used
+                  for tracking.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>Usage Data · Product Interaction</h3>
+                <p>
+                  Used for optional analytics, covering sessions, feature areas,
+                  progression, seasons, and retirement milestones. Associated only
+                  with a random installation ID, not the optional account, and not used
+                  for tracking.
                 </p>
               </article>
             </div>
             <p className="lede">
-              Select “Data Used to Track You: No” and “Data Linked to You: No” for all
-              three categories. The privacy policy URL remains
-              https://howethstudio.com/football-era/privacy/.
+              Select “Data Used to Track You: No” for every category. Mark Email
+              Address, User ID, and account Gameplay Content as linked to the user;
+              mark anonymous Product Interaction and its random installation ID as not
+              linked. Use https://howethstudio.com/football-era/privacy/ for privacy
+              and https://howethstudio.com/football-era/account-deletion/ for deletion.
+            </p>
+          </section>
+
+          <section className="section section-card">
+            <span className="eyebrow">Google Play Data Safety · Android release</span>
+            <h2>Declare account and gameplay collection</h2>
+            <p>
+              Declare email address and user ID as optional personal information used
+              for account management and app functionality. Declare cloud career saves
+              and published leaderboard data as app activity or other user-generated
+              content used for app functionality. Declare the separate random
+              installation ID and product interaction as optional analytics. Data is
+              encrypted in transit, is not sold, and is not used for advertising or
+              cross-app tracking. Service-provider processing does not change the
+              purpose. Confirm the current Play Console taxonomy against the exact
+              release build before submission.
+            </p>
+            <p className="lede">
+              Answer that users can request deletion and provide
+              https://howethstudio.com/football-era/account-deletion/ as the external
+              account-deletion resource.
             </p>
           </section>
         </div>

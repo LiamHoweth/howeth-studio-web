@@ -21,7 +21,8 @@ npm run dev
 npm run build
 ```
 
-Static files are written to `out/`. Railway builds and serves that directory using `railway.toml`.
+Static files are written to `out/`. Railway builds and serves that directory using
+the canonical `.railway/railway.ts` infrastructure definition.
 
 ## Environment variables (optional)
 
@@ -51,14 +52,22 @@ If you still see a **404** for a valid page:
 
 ## Railway
 
-1. Create a Railway project from `github.com/LiamHoweth/howeth-studio-web`.
-2. Railway reads `railway.toml`, installs with `npm ci`, builds the static export, and serves `out/` on Railway's assigned `PORT`.
-3. Generate a Railway domain, verify the deployment, then attach `howethstudio.com` and complete the DNS instructions Railway provides.
-4. Add the optional `NEXT_PUBLIC_*` variables before building. Point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` to the API service's `/api/contact` route.
+1. Treat `.railway/railway.ts` in this repository as the production source of truth.
+2. Pull the current production environment and review a Railway plan before applying
+   changes. A safe plan must preserve `football-era-postgres`, its volume,
+   `Postgres-PITR`, and all existing domains.
+3. The topology explicitly sources `LiamHoweth/howeth-studio-web` and
+   `LiamHoweth/howeth-studio-api`, runs API migrations before deployment, and passes
+   the existing PostgreSQL `DATABASE_URL` to the API through a resource reference.
+4. Preserve all server-only API secrets in Railway. Never expose them through a
+   `NEXT_PUBLIC_*` variable.
+5. Verify both `howethstudio.com` and `api.howethstudio.com` after deployment.
 
 ## API repository
 
-Optional contact-form and health API: [github.com/LiamHoweth/howeth-studio-api](https://github.com/LiamHoweth/howeth-studio-api). When deployed, point `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` at `https://<your-api-host>/api/contact`.
+Accounts, cloud saves, leaderboards, the contact form, and health API live in
+[github.com/LiamHoweth/howeth-studio-api](https://github.com/LiamHoweth/howeth-studio-api).
+The public API origin is `https://api.howethstudio.com`.
 
 ## DNS for howethstudio.com
 

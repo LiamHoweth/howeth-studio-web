@@ -8,7 +8,8 @@ This repository is the public Howeth Studio marketing site. It contains the stud
 
 - Next.js App Router with TypeScript and React.
 - `output: "export"` creates a static site in `out/`.
-- Railway builds and serves the export using `railway.toml`.
+- Railway builds and serves the export using the canonical `.railway/railway.ts`
+  topology, which also declares the API and preserved production data resources.
 - The API is a separate repository at `LiamHoweth/howeth-studio-api`. The ignored local `backend/` directory is a neighboring checkout, not part of this repository.
 
 ## Required validation

@@ -72,10 +72,10 @@ export default function FootballEraSupportPage() {
               <details className="faq-card">
                 <summary>Will my progress sync to another phone?</summary>
                 <div className="faq-answer">
-                  Progress is stored on the device you play on. If you replace your
-                  phone, use your normal iPhone backup or transfer process; the app
-                  does not currently offer a separate Football Era account for cloud
-                  saves unless a future update says otherwise inside the app.
+                  Guest progress stays on the device you play on. If you optionally
+                  sign in with Apple or Google, eligible career slots sync through your
+                  Football Era account. Preferences and purchases remain local or are
+                  restored separately through your storefront account.
                 </div>
               </details>
               <details className="faq-card">
@@ -135,6 +135,9 @@ export default function FootballEraSupportPage() {
               </Link>
               <Link className="button button-secondary" href="/football-era/app-store/">
                 App Store marketing copy
+              </Link>
+              <Link className="button button-ghost" href="/football-era/account-deletion/">
+                Delete an account
               </Link>
               <Link className="button button-ghost" href="/football-era/">
                 Football Era home

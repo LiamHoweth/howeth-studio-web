@@ -263,6 +263,7 @@ export default function FootballEraPage() {
             </div>
             <p className="fe-footnote-links">
               <Link href="/football-era/privacy/">Privacy</Link><span aria-hidden="true"> · </span>
+              <Link href="/football-era/account-deletion/">Account deletion</Link><span aria-hidden="true"> · </span>
               <Link href="/football-era/app-store/">App Store details</Link><span aria-hidden="true"> · </span>
               <Link href="/">Howeth Studio</Link>
             </p>
