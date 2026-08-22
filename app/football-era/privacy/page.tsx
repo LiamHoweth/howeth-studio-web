@@ -22,7 +22,7 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: August 21, 2026. This policy describes how Football Era
+              Effective date: August 22, 2026. This policy describes how Football Era
               (“the app”), published by Howeth Studio, treats information on your
               device when you play.
             </p>
@@ -44,12 +44,14 @@ export default function FootballEraPrivacyPage() {
               <p>
                 When anonymous gameplay analytics are enabled, the app sends a random
                 installation identifier, app version and platform, session start/end
-                times, and aggregate career information such as position, team,
-                season, games, yards, touchdowns, championships, overall rating,
-                followers, net worth, and legacy score. This helps us measure
-                retention, balance progression, and improve features. We do not send
-                your complete save, email address, contacts, advertising identifier,
-                or precise location.
+                times, feature areas opened, weekly outcomes, aggregate progression,
+                Lifestyle purchase category and rarity, skill upgrades, contract
+                milestones, season results, and retirement outcomes. Career snapshots
+                can include position, team, season, games, yards, touchdowns,
+                championships, overall rating, followers, net worth, and legacy score.
+                This helps us measure retention, find progression or balance problems,
+                and improve features. We do not send your complete save, email address,
+                contacts, advertising identifier, payment details, or precise location.
               </p>
             </article>
           </section>
@@ -61,9 +63,11 @@ export default function FootballEraPrivacyPage() {
                 The app does not use this information for advertising, cross-app
                 tracking, or sale to data brokers. The random installation identifier
                 is used only to deduplicate events, calculate anonymous retention, and
-                protect your own synced career records. We use service providers such
-                as Railway to host the API and database; they may process limited
-                network and request metadata to operate and secure the service.
+                protect your own synced career records. Leaderboard totals are checked
+                against gameplay limits, and rejected submission reasons may be kept
+                temporarily to detect abuse. We use Railway to host the API, database,
+                encrypted backup data, and operational logs; Railway may process limited
+                network and request metadata to operate and secure those services.
               </p>
             </article>
             <article className="section-card">
@@ -95,10 +99,13 @@ export default function FootballEraPrivacyPage() {
             <article className="section-card">
               <h2>Changes to this policy</h2>
               <p>
-                We retain online data while it is needed to provide leaderboards,
-                measure product performance, secure the service, and meet legal
-                obligations. We may keep statistics that have been aggregated so they
-                no longer identify an installation. We may update this policy when the app or legal requirements change.
+                Raw gameplay events are retained for up to 13 months. Rejected
+                leaderboard audit records are retained for up to 90 days. An anonymous
+                installation and its career snapshots are deleted after 24 months of
+                inactivity or sooner when deletion is requested from Settings. Backup
+                copies age out according to the backup retention schedule. We may keep
+                statistics that have been aggregated so they no longer identify an
+                installation. We may update this policy when the app or legal requirements change.
                 The effective date at the top will change when we publish a revision.
                 Continued use of the app after an update means you accept the revised
                 policy.

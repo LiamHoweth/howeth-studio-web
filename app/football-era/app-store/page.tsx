@@ -5,7 +5,7 @@ import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 export const metadata: Metadata = {
   title: "Football Era — App Store Details",
   description:
-    "Current App Store details for Football Era 1.1, including its football career simulation, weekly moments, lifestyle market, records, and permanent gamepasses.",
+    "App Store submission details for Football Era 1.2, including anonymous analytics, online leaderboards, privacy declarations, and career improvements.",
   alternates: {
     canonical: "/football-era/app-store/",
   },
@@ -43,12 +43,12 @@ export default function FootballEraAppStorePage() {
       <main className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
-            <span className="eyebrow">App Store · Version 1.1</span>
-            <h1>The current Football Era release.</h1>
+            <span className="eyebrow">App Store · Version 1.2</span>
+            <h1>The next Football Era release.</h1>
             <p className="hero-copy">
-              Release-aligned product language for the live iPhone game: weekly
-              career decisions, league history, an expanded Lifestyle economy,
-              stadium arrivals, and permanent upgrades with no subscriptions.
+              Submission-ready product and privacy language for the API-enabled
+              update: anonymous product analytics, opt-in online leaderboards,
+              stronger integrity checks, and the complete football career experience.
             </p>
             <div className="hero-actions">
               <Link className="button button-primary" href="/football-era/privacy/">
@@ -107,11 +107,11 @@ Football Era is local-first and remains fully playable without an account or net
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>What’s New in 1.1</h2>
-              <pre className="fe-asc-block">{`• A redesigned Lifestyle experience with 100+ items in every category and fresh weekly listings.
-• Team-specific stadium arrivals and improved Game Moment presentation.
-• Permanent VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses with restore support.
-• Expanded career records, history, progression, and interface polish.`}</pre>
+              <h2>What’s New in 1.2</h2>
+              <pre className="fe-asc-block">{`• Optional online leaderboards for legacy, yards, touchdowns, championships, overall, followers, and net worth.
+• Anonymous, privacy-controlled gameplay analytics to help improve retention and career balance.
+• Server-side leaderboard integrity checks and verified legacy scoring.
+• Expanded career presentation, stadium moments, offseason flow, and interface polish.`}</pre>
             </article>
             <article className="section-card">
               <h2>Review notes (template)</h2>
@@ -122,6 +122,42 @@ Football Era is local-first and remains fully playable without an account or net
                 playable offline.
               </p>
             </article>
+          </section>
+
+          <section className="section section-card">
+            <span className="eyebrow">App Privacy answers · API-enabled build</span>
+            <h2>Declare collection before submitting the next version</h2>
+            <div className="feature-grid">
+              <article className="feature-card">
+                <h3>Identifiers · Device ID</h3>
+                <p>
+                  Used for analytics and app functionality. Not linked to the
+                  user&apos;s identity and not used for tracking. This is a random
+                  Football Era installation identifier, not Apple&apos;s advertising ID.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>Usage Data · Product Interaction</h3>
+                <p>
+                  Used for analytics. Covers sessions, feature areas, weekly outcomes,
+                  progression actions, seasons, and retirement milestones. Not linked
+                  to identity and not used for tracking.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>User Content · Gameplay Content</h3>
+                <p>
+                  Used for analytics and app functionality. Covers aggregate career
+                  snapshots and the optional public in-game player name. Not linked to
+                  identity and not used for tracking.
+                </p>
+              </article>
+            </div>
+            <p className="lede">
+              Select “Data Used to Track You: No” and “Data Linked to You: No” for all
+              three categories. The privacy policy URL remains
+              https://howethstudio.com/football-era/privacy/.
+            </p>
           </section>
         </div>
       </main>
