@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { StudioAboutSection } from "@/components/studio/StudioMarketing";
+import {
+  StudioAboutSection,
+  StudioPageIntro,
+  StudioSiteFooter,
+} from "@/components/studio/StudioMarketing";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 
 export const metadata: Metadata = {
@@ -13,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const year = new Date().getFullYear();
+
   return (
     <div className="studio-landing">
       <a className="studio-skip" href="#main">
@@ -25,7 +31,14 @@ export default function AboutPage() {
           <span aria-hidden="true"> · </span>
           <span>About</span>
         </nav>
+        <StudioPageIntro
+          index="003"
+          eyebrow="Studio profile"
+          title="Small by design. Serious about the details."
+          description="Howeth Studio pairs product thinking with hands-on engineering, keeping the path from a good idea to reliable software direct and accountable."
+        />
         <StudioAboutSection />
+        <StudioSiteFooter year={year} />
       </main>
     </div>
   );

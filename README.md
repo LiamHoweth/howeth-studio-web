@@ -35,7 +35,7 @@ Set these in Railway (or `.env.local` for local builds):
 - `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` — optional JSON endpoint for the contact form; if empty, the form falls back to `mailto:`
 - `NEXT_PUBLIC_FOOTBALL_ERA_APP_STORE_URL` — App Store URL for Football Era when available
 - `NEXT_PUBLIC_FOOTBALL_ERA_TESTFLIGHT_URL` — optional TestFlight URL for Football Era
-- `NEXT_PUBLIC_FOOTBALL_ERA_SUPPORT_EMAIL` — support inbox for Football Era privacy/support pages (falls back to the CareNote support email variables, then `carenotecna@gmail.com`, if unset)
+- `NEXT_PUBLIC_FOOTBALL_ERA_SUPPORT_EMAIL` — support inbox for Football Era privacy/support pages (defaults to `hello@footballera.game` if unset)
 
 ## Static hosting and 404s
 

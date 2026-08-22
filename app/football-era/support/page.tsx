@@ -22,8 +22,9 @@ export default function FootballEraSupportPage() {
             <span className="eyebrow">Support</span>
             <h1>Support for Football Era.</h1>
             <p className="hero-copy">
-              Help with installs, careers, and seasons—plus what to include so we
-              can answer quickly.
+              Help with installs, weekly games, careers, Lifestyle inventory,
+              permanent gamepasses, and save slots—plus what to include so we can
+              answer quickly.
             </p>
           </section>
 
@@ -63,9 +64,9 @@ export default function FootballEraSupportPage() {
               <details className="faq-card" open>
                 <summary>What are career slots?</summary>
                 <div className="faq-answer">
-                  Football Era is built around multiple save slots so you can run
-                  more than one career arc. Each slot keeps its own progress, team
-                  context, and season state.
+                  Every player starts with two local career slots. The permanent
+                  Extra Career Slots gamepass expands that total to five. Each slot
+                  keeps its own player, league, career story, and Lifestyle collection.
                 </div>
               </details>
               <details className="faq-card">
@@ -89,9 +90,26 @@ export default function FootballEraSupportPage() {
               <details className="faq-card">
                 <summary>How do seasons and game weeks work?</summary>
                 <div className="faq-answer">
-                  Seasons move in clear week-to-week beats inside the career flow.
-                  Use the in-app season and schedule surfaces to advance and review
-                  opponents, primetime hooks, and momentum between games.
+                  Use the center action in the bottom bar. It adapts to the current
+                  state—advancing a regular-season week, finishing a pending game,
+                  or opening the offseason checklist before the next year begins.
+                </div>
+              </details>
+              <details className="faq-card">
+                <summary>Why did my Lifestyle listings change?</summary>
+                <div className="faq-answer">
+                  Realty, Motors, Jewelry, and Performance each show four to seven
+                  rarity-weighted listings for the current game week. Inventory
+                  refreshes when the week advances, while purchased items remain in
+                  your collection and career history.
+                </div>
+              </details>
+              <details className="faq-card">
+                <summary>How do I restore a gamepass?</summary>
+                <div className="faq-answer">
+                  Open More → Football Era Shop and choose Restore Purchases, or use
+                  the restore option in Settings. Permanent purchases are restored
+                  through the App Store account that originally bought them.
                 </div>
               </details>
               <details className="faq-card">

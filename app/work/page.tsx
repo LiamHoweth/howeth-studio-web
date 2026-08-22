@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { StudioWorkSection } from "@/components/studio/StudioMarketing";
+import {
+  StudioPageIntro,
+  StudioSiteFooter,
+  StudioWorkSection,
+} from "@/components/studio/StudioMarketing";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 
 export const metadata: Metadata = {
@@ -13,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
+  const year = new Date().getFullYear();
+
   return (
     <div className="studio-landing">
       <a className="studio-skip" href="#main">
@@ -25,7 +31,14 @@ export default function WorkPage() {
           <span aria-hidden="true"> · </span>
           <span>Work</span>
         </nav>
+        <StudioPageIntro
+          index="002"
+          eyebrow="Selected work"
+          title="Shipped software, built to last."
+          description="Focused products shaped from first principles: useful on day one, considered at every edge, and structured to keep improving after launch."
+        />
         <StudioWorkSection />
+        <StudioSiteFooter year={year} />
       </main>
     </div>
   );
