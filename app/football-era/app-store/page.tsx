@@ -97,7 +97,7 @@ Seasons, contracts, trades, awards, purchases, milestones, and records become pa
 PREMIUM BY DESIGN
 Football Era has no ads, no subscriptions, and no consumable currency. Optional VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses are permanent App Store purchases and can be restored.
 
-Football Era is local-first and remains fully playable without an account or network connection. Optional Apple or Google sign-in adds cloud career saves and verified online leaderboards.`}
+Football Era is local-first and remains fully playable without an account or network connection. Optional Apple or Google sign-in adds cloud career saves and validated online leaderboards using server-generated public aliases.`}
             </CopyBlock>
 
             <CopyBlock label="Keywords" limit="100 characters (comma-separated, no spaces after commas per Apple guidance)">
@@ -110,8 +110,9 @@ Football Era is local-first and remains fully playable without an account or net
               <h2>What’s New</h2>
               <pre className="fe-asc-block">{`• Optional Sign in with Apple and Google accounts—guest play remains fully available.
 • Cloud synchronization for durable career slots, with offline-first conflict recovery.
-• Authenticated leaderboards for legacy, yards, touchdowns, championships, overall, followers, and net worth.
-• In-app account status, sync retry, sign-out, and permanent account deletion.`}</pre>
+• Authenticated leaderboards with private in-game names and server-generated public aliases.
+• Repairs for careers that could become stuck after playoff elimination or before the offseason.
+• Explicit analytics controls, original offline audio, account sync, sign-out, and permanent deletion.`}</pre>
             </article>
             <article className="section-card">
               <h2>Review notes (template)</h2>
@@ -120,8 +121,10 @@ Football Era is local-first and remains fully playable without an account or net
                 after launch, choose Continue as Guest to use the complete offline game.
                 Apple and Google sign-in enable cloud saves and online leaderboards.
                 Account status, sign-out, sync retry, and deletion are in More →
-                Settings. Permanent gamepasses are restored separately through the
-                storefront account.
+                Settings. The first-launch analytics prompt can be declined without
+                limiting gameplay. Public leaderboards use server-generated aliases;
+                private career names are not displayed. Permanent gamepasses are
+                restored separately through the storefront account.
               </p>
             </article>
           </section>
@@ -151,9 +154,10 @@ Football Era is local-first and remains fully playable without an account or net
                 <h3>User Content · Gameplay Content</h3>
                 <p>
                   Used for cloud career saves, authenticated public leaderboards, and
-                  app functionality. Account cloud saves and published careers are
-                  linked to the user ID; anonymous analytics remain separate. Not used
-                  for tracking.
+                  app functionality. Private cloud saves can contain the in-game name;
+                  public boards display a server-generated alias. Account cloud saves
+                  and published careers are linked to the user ID; anonymous analytics
+                  remain separate. Not used for tracking.
                 </p>
               </article>
               <article className="feature-card">
@@ -162,7 +166,7 @@ Football Era is local-first and remains fully playable without an account or net
                   Used for optional analytics, covering sessions, feature areas,
                   progression, seasons, and retirement milestones. Associated only
                   with a random installation ID, not the optional account, and not used
-                  for tracking.
+                  for tracking. Collection begins only after an explicit in-app choice.
                 </p>
               </article>
             </div>
@@ -181,8 +185,8 @@ Football Era is local-first and remains fully playable without an account or net
             <p>
               Declare email address and user ID as optional personal information used
               for account management and app functionality. Declare cloud career saves
-              and published leaderboard data as app activity or other user-generated
-              content used for app functionality. Declare the separate random
+              and published server-generated leaderboard aliases as app activity used
+              for app functionality. Declare the separate random
               installation ID and product interaction as optional analytics. Data is
               encrypted in transit, is not sold, and is not used for advertising or
               cross-app tracking. Service-provider processing does not change the

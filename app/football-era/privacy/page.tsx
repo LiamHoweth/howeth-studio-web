@@ -69,11 +69,13 @@ export default function FootballEraPrivacyPage() {
               <h2>Authenticated leaderboards</h2>
               <p>
                 Occupied careers are published automatically while signed in. Other
-                signed-in players can see the career&apos;s in-game player name,
-                position, team, and verified aggregate scores such as legacy, yards,
+                signed-in players can see a server-generated public alias, position,
+                team, and validated aggregate scores such as legacy, yards,
                 touchdowns, championships, overall rating, followers, and net worth.
-                Server-side checks validate submitted totals. Rejected submission
-                reasons may be retained temporarily to detect abuse.
+                The career&apos;s in-game player name is included in its private cloud
+                save but is never shown on the public leaderboard. Server-side checks
+                validate submitted totals. Rejected submission reasons may be retained
+                temporarily to detect abuse.
               </p>
             </article>
           </section>
@@ -89,7 +91,8 @@ export default function FootballEraPrivacyPage() {
                 retirement results, and aggregate career statistics. We use this to
                 measure reliability, retention, and game balance. It is not used for
                 advertising or cross-app tracking, and it is not combined with your
-                Apple or Google account identity.
+                Apple or Google account identity. Football Era asks for your choice
+                before registering an analytics installation or sending an event.
               </p>
             </article>
             <article className="section-card">
@@ -123,7 +126,8 @@ export default function FootballEraPrivacyPage() {
               <h2>Your choices</h2>
               <ul className="check-list">
                 <li>Play the full offline game without creating an account.</li>
-                <li>Turn anonymous gameplay analytics off in app Settings.</li>
+                <li>Allow or decline anonymous gameplay analytics before collection begins.</li>
+                <li>Withdraw analytics consent in Settings and request deletion of that installation&apos;s analytics data.</li>
                 <li>Sign out while keeping downloaded careers playable as a guest.</li>
                 <li>
                   Delete your account in Settings to remove its sessions, linked
