@@ -2,16 +2,18 @@
   "name": "howethstudio-com",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "serve out -l $PORT --no-clipboard",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "next": "15.5.15",
+    "next": "^16.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "serve": "^14.2.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -19,7 +21,8 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.18.0",
-    "eslint-config-next": "15.5.15",
+    "eslint-config-next": "^16.3.2",
+    "railway": "^3.10.0",
     "typescript": "^5.7.2"
   }
 }

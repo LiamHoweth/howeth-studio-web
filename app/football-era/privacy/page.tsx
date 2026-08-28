@@ -6,10 +6,8 @@ import { footballEraConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Football Era Privacy Policy",
   description:
-    "How Football Era handles information on your iPhone—local career data, optional Apple platform services, and how to contact Howeth Studio.",
-  alternates: {
-    canonical: "/football-era/privacy/",
-  },
+    "How Football Era handles optional accounts, cloud career saves, authenticated leaderboards, and anonymous gameplay analytics.",
+  alternates: { canonical: "/football-era/privacy/" },
 };
 
 export default function FootballEraPrivacyPage() {
@@ -22,56 +20,122 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: April 16, 2026. This policy describes how Football Era
-              (“the app”), published by Howeth Studio, treats information on your
-              device when you play.
+              Effective date: August 22, 2026. This policy explains how Football Era
+              (“the app”), published by Howeth Studio, handles information when you
+              play as a guest or choose to create an account.
             </p>
           </section>
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>What stays on your iPhone</h2>
+              <h2>Guest play and local data</h2>
               <p>
-                Career progress, slot saves, preferences, and other gameplay state
-                needed to run Football Era are stored locally on your device. Howeth
-                Studio does not operate a sign-in or cloud save service for core
-                gameplay as part of this policy unless a future version explicitly
-                tells you otherwise in the app and updates this page.
+                No account is required. Guests can create careers, play the complete
+                offline game, and use local league records. Career saves, preferences,
+                reminders, interface state, and verified App Store or Play purchases
+                remain on the device unless this policy says otherwise. Guests cannot
+                view or publish to the online leaderboard or use Football Era cloud
+                saves.
               </p>
             </article>
             <article className="section-card">
-              <h2>When information is processed off-device</h2>
+              <h2>Optional Apple and Google accounts</h2>
               <p>
-                Like other iPhone apps, Football Era relies on Apple platform services
-                for distribution, updates, and device-level features (for example
-                system keyboards or accessibility). Those flows are governed by
-                Apple’s policies. If you purchase or restore in-app content, Apple
-                handles payment and receipt validation.
+                If you sign in, we receive a provider-specific account identifier and,
+                when the provider supplies it, a verified email address. We do not
+                receive your provider password or store a provider profile. Apple and
+                Google sign-ins create separate Football Era accounts even when they
+                use the same email address. Authentication sessions are stored as
+                one-way hashes, and Apple refresh credentials are encrypted so we can
+                revoke them when an account is deleted.
               </p>
             </article>
           </section>
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>Analytics and diagnostics</h2>
+              <h2>Cloud career saves</h2>
               <p>
-                The app is not built around ad tracking or behavioral advertising. If
-                Apple provides optional crash or diagnostic sharing on your device,
-                whether any data is sent depends on your iOS privacy settings and
-                choices in the Privacy and Security section of Settings.
+                Signing in uploads eligible durable career slots, including empty-slot
+                deletion markers, and keeps up to five slots associated with that
+                account. Slot data can include the player, league, season, career
+                history, inventory, and other progress needed to restore that career.
+                Purchases and entitlements, preferences, reminders, and transient
+                interface state are not part of cloud saves. When copies conflict, the
+                copy with the latest update time wins; the cloud copy wins a tie.
               </p>
             </article>
             <article className="section-card">
-              <h2>What we do not do by design</h2>
+              <h2>Authenticated leaderboards</h2>
+              <p>
+                Occupied careers are published automatically while signed in. Other
+                signed-in players can see a server-generated public alias, position,
+                team, and validated aggregate scores such as legacy, yards,
+                touchdowns, championships, overall rating, followers, and net worth.
+                The career&apos;s in-game player name is included in its private cloud
+                save but is never shown on the public leaderboard. Server-side checks
+                validate submitted totals. Rejected submission reasons may be retained
+                temporarily to detect abuse.
+              </p>
+            </article>
+          </section>
+
+          <section className="section two-column">
+            <article className="section-card">
+              <h2>Anonymous analytics and diagnostics</h2>
+              <p>
+                Separately from any account, optional analytics use a random
+                installation identifier and may include app version and platform,
+                sessions, features opened, weekly outcomes, aggregate progression,
+                purchase category and rarity, skill upgrades, contracts, season and
+                retirement results, and aggregate career statistics. We use this to
+                measure reliability, retention, and game balance. It is not used for
+                advertising or cross-app tracking, and it is not combined with your
+                Apple or Google account identity. Football Era asks for your choice
+                before registering an analytics installation or sending an event.
+              </p>
+            </article>
+            <article className="section-card">
+              <h2>Service providers and security</h2>
+              <p>
+                Apple or Google processes your sign-in according to the provider you
+                choose. Railway hosts our API, PostgreSQL database, encrypted backups,
+                and operational logs and may process limited network and request
+                metadata to operate and secure those services. Apple processes App
+                Store purchases; Howeth Studio does not receive payment-card details.
+                We do not sell personal information or use saved careers to train
+                third-party generative models.
+              </p>
+            </article>
+          </section>
+
+          <section className="section two-column">
+            <article className="section-card">
+              <h2>Retention and deletion</h2>
+              <p>
+                Account data and cloud careers remain until you delete the account.
+                Sessions expire after 90 days of inactivity and roll forward while
+                used. Raw anonymous gameplay events are retained for up to 13 months,
+                rejected leaderboard audits for up to 90 days, and inactive anonymous
+                installations and snapshots for up to 24 months. Backups expire on
+                their normal schedule, and statistics may be kept only after they have
+                been aggregated so they no longer identify an account or installation.
+              </p>
+            </article>
+            <article className="section-card">
+              <h2>Your choices</h2>
               <ul className="check-list">
-                <li>We do not sell your personal information.</li>
+                <li>Play the full offline game without creating an account.</li>
+                <li>Allow or decline anonymous gameplay analytics before collection begins.</li>
+                <li>Withdraw analytics consent in Settings and request deletion of that installation&apos;s analytics data.</li>
+                <li>Sign out while keeping downloaded careers playable as a guest.</li>
                 <li>
-                  We do not require you to create a Football Era account for the
-                  experiences described here.
+                  Delete your account in Settings to remove its sessions, linked
+                  identity, cloud saves, and leaderboard entries. Local careers remain
+                  on that device as guest careers.
                 </li>
                 <li>
-                  We do not use your saved careers to train third-party generative
-                  models.
+                  Use our external deletion instructions if you no longer have the app.
                 </li>
               </ul>
             </article>
@@ -81,40 +145,17 @@ export default function FootballEraPrivacyPage() {
             <article className="section-card">
               <h2>Children and families</h2>
               <p>
-                Football Era is a game for a general audience. Parents and guardians
-                should use Apple’s Screen Time and Family Sharing controls if they want
-                to manage downloads, purchases, or play time for minors.
+                Football Era is a general-audience game. Parents and guardians can use
+                Apple Screen Time, Family Sharing, or Google Play family controls to
+                manage downloads, purchases, or play time for minors.
               </p>
             </article>
             <article className="section-card">
-              <h2>Changes to this policy</h2>
+              <h2>Changes and contact</h2>
               <p>
-                We may update this policy when the app or legal requirements change.
-                The effective date at the top will change when we publish a revision.
-                Continued use of the app after an update means you accept the revised
-                policy.
-              </p>
-            </article>
-          </section>
-
-          <section className="section two-column">
-            <article className="section-card">
-              <h2>Your choices</h2>
-              <ul className="check-list">
-                <li>
-                  Deleting the app from your iPhone removes local app data from that
-                  device, subject to how iOS handles backups.
-                </li>
-                <li>
-                  You can control optional Apple analytics and sharing in iOS
-                  Settings.
-                </li>
-              </ul>
-            </article>
-            <article className="section-card">
-              <h2>Contact</h2>
-              <p>
-                Questions about this policy can be sent to{" "}
+                We may update this policy when the app, our services, or legal
+                requirements change. We will revise the effective date above. Questions
+                can be sent to{" "}
                 <a href={`mailto:${footballEraConfig.supportEmail}`}>
                   {footballEraConfig.supportEmail}
                 </a>
@@ -126,10 +167,13 @@ export default function FootballEraPrivacyPage() {
           <section className="section section-card">
             <h2>Related links</h2>
             <div className="hero-actions">
-              <Link className="button button-primary" href="/football-era/support/">
+              <Link className="button button-primary" href="/football-era/account-deletion/">
+                Delete an account
+              </Link>
+              <Link className="button button-secondary" href="/football-era/support/">
                 Support
               </Link>
-              <Link className="button button-secondary" href="/football-era/">
+              <Link className="button button-ghost" href="/football-era/">
                 Football Era home
               </Link>
             </div>

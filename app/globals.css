@@ -622,3 +622,127 @@ body:has(.studio-landing)::after {
   gap: 16px 24px;
   align-items: center;
 }
+
+/* —— Shared editorial subpages —— */
+
+.studio-page-intro {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 50px 0 64px;
+  display: grid;
+  gap: 28px 48px;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.1);
+}
+
+.studio-page-intro__rail {
+  display: flex;
+  gap: 20px;
+  color: rgba(12, 12, 12, 0.4);
+}
+
+.studio-page-intro__eyebrow {
+  margin: 0 0 16px;
+  color: rgba(12, 12, 12, 0.42);
+}
+
+.studio-page-intro__title {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: clamp(2.7rem, 7vw, 5.35rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.studio-page-intro__copy {
+  max-width: 57ch;
+  margin: 28px 0 0;
+  color: rgba(12, 12, 12, 0.7);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.studio-page-intro + .studio-work,
+.studio-page-intro + .studio-about,
+.studio-page-intro + .studio-contact-page {
+  border-top: 0;
+  padding-top: 64px;
+}
+
+.studio-brand:focus-visible,
+.studio-nav a:focus-visible,
+.studio-cta:focus-visible,
+.studio-subcrumb a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (min-width: 800px) {
+  .studio-page-intro {
+    grid-template-columns: 130px minmax(0, 1fr);
+  }
+
+  .studio-page-intro__rail {
+    flex-direction: column;
+    padding-top: 7px;
+  }
+}
+
+@media (max-width: 760px) {
+  .studio-header-inner {
+    width: min(100% - 28px, 1120px);
+    padding: 12px 0 10px;
+    gap: 10px;
+  }
+
+  .studio-brand-tagline {
+    display: none;
+  }
+
+  .studio-nav {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .studio-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .studio-nav a {
+    flex: 0 0 auto;
+    padding: 8px 9px;
+  }
+
+  .studio-nav-divider {
+    flex: 0 0 auto;
+  }
+
+  .studio-hero,
+  .studio-work,
+  .studio-about,
+  .studio-footer,
+  .studio-subcrumb,
+  .studio-contact-page,
+  .studio-not-found,
+  .studio-page-intro {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .studio-hero {
+    padding-top: 36px;
+  }
+
+  .studio-piece {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-page-intro {
+    padding: 36px 0 48px;
+  }
+}

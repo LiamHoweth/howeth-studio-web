@@ -3,9 +3,9 @@ import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 
 export const metadata: Metadata = {
-  title: "Football Era — App Store Connect copy",
+  title: "Football Era — App Store Details",
   description:
-    "Promotional text, subtitle, description, and keyword ideas for Football Era in App Store Connect, maintained by Howeth Studio.",
+    "Store submission details for Football Era accounts, cloud career saves, authenticated leaderboards, and privacy declarations.",
   alternates: {
     canonical: "/football-era/app-store/",
   },
@@ -43,12 +43,12 @@ export default function FootballEraAppStorePage() {
       <main className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
-            <span className="eyebrow">App Store Connect</span>
-            <h1>Marketing copy for Football Era.</h1>
+            <span className="eyebrow">App Store · Account-enabled release</span>
+            <h1>The next Football Era release.</h1>
             <p className="hero-copy">
-              Ready-to-paste fields for App Store Connect, aligned with the public
-              Football Era marketing page. Edit names, stats, and feature bullets to
-              match your shipping build and store guidelines.
+              Submission-ready product and privacy language for optional Apple and
+              Google accounts, cloud career saves, authenticated leaderboards, and
+              guest-first offline play.
             </p>
             <div className="hero-actions">
               <Link className="button button-primary" href="/football-era/privacy/">
@@ -69,55 +69,135 @@ export default function FootballEraAppStorePage() {
             </CopyBlock>
 
             <CopyBlock label="Subtitle" limit="30 characters">
-{`Career football sim for iPhone`}
+{`Build Your Football Legacy`}
             </CopyBlock>
 
             <CopyBlock label="Promotional text" limit="170 characters">
-{`Build multiple careers in slots, chase OVR growth, and feel every season week—primetime hooks, rival games, and legacy moments in a broadcast-style UI.`}
+{`Create your player, own spotlight decisions, chase records, spend your contracts, and build a football career worthy of the Hall of Fame.`}
             </CopyBlock>
 
             <CopyBlock label="Description" limit="4,000 characters">
-{`Football Era is a career-first football game built for iPhone nights—dark chrome, high-contrast cards, and a rhythm that mirrors real season weeks.
+{`Create a quarterback, running back, or wide receiver and build a complete professional football career—one week, one decision, and one season at a time.
 
-CAREER SLOTS
-Run up to three separate careers. Each slot keeps its own storyline, team context, and progress so you can experiment with new arcs without overwriting a favorite save.
+OWN THE BIG MOMENTS
+Spotlight games put the situation in your hands. Read the score, clock, down, and distance, then choose the play that can change the game. Team-specific stadium arrivals set the stage before kickoff across the full 32-club league.
 
-SEASON BEATS
-Move through the calendar with clear week-to-week structure. Track opponents, primetime moments, and momentum between games so every season feels legible at a glance.
+BUILD YOUR PLAYER
+Develop position-specific attributes, spend skill points, earn coach trust, fight for a depth-chart role, and turn production into contracts. Choose offseason training and commit to new season goals as your career evolves.
 
-PLAYER IDENTITY
-See your player, team marks, and overall rating callouts presented like a broadcast lower third—dense information without clutter, tuned for quick check-ins on the phone.
+FOLLOW THE WHOLE LEAGUE
+Track news, standings, playoff brackets, rosters, awards, records, and position leaderboards. Season and all-time boards show exactly where your QB, RB, or WR stands.
 
-LEGACY AND MILESTONES
-Championship moments and career highlights use gold accents and celebration framing so big wins feel earned, not buried in menus.
+LIVE BEYOND FOOTBALL
+Spend career earnings across Realty, Motors, Jewelry, and Performance. Every category contains more than 100 possible items, but only 4–7 rarity-weighted listings appear each week. Build a collection, chase legendary finds, or invest in services that improve development, recovery, opinion, followers, and earnings.
 
-WHY HOWETH STUDIO
-We build focused iPhone apps with opinionated UI. Football Era is designed for fans who want a personal career arc—not a spreadsheet simulator.
+WRITE A COMPLETE CAREER STORY
+Seasons, contracts, trades, awards, purchases, milestones, and records become part of your saved career history. When you choose to retire, review the trophy case, greatest moments, legacy score, and Hall of Fame result.
 
-Questions or feedback? Use the support link on this site’s Football Era support page.`}
+PREMIUM BY DESIGN
+Football Era has no ads, no subscriptions, and no consumable currency. Optional VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses are permanent App Store purchases and can be restored.
+
+Football Era is local-first and remains fully playable without an account or network connection. Optional Apple or Google sign-in adds cloud career saves and validated online leaderboards using server-generated public aliases.`}
             </CopyBlock>
 
             <CopyBlock label="Keywords" limit="100 characters (comma-separated, no spaces after commas per Apple guidance)">
-{`football,career,sim,season,sports,legacy,iphone,offline,slots,rpg`}
+{`football,career,sim,season,sports,legacy,quarterback,offline,manager,rpg`}
             </CopyBlock>
           </section>
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>What’s New (template)</h2>
-              <pre className="fe-asc-block">{`• Season pacing and UI polish.
-• Stability fixes and performance improvements.
-• Thank you for playing Football Era—send feedback from the support page.`}</pre>
+              <h2>What’s New</h2>
+              <pre className="fe-asc-block">{`• Optional Sign in with Apple and Google accounts—guest play remains fully available.
+• Cloud synchronization for durable career slots, with offline-first conflict recovery.
+• Authenticated leaderboards with private in-game names and server-generated public aliases.
+• Repairs for careers that could become stuck after playoff elimination or before the offseason.
+• Explicit analytics controls, original offline audio, account sync, sign-out, and permanent deletion.`}</pre>
             </article>
             <article className="section-card">
               <h2>Review notes (template)</h2>
               <p>
-                In App Store Connect → App Review Information, summarize test
-                accounts (if any), regions, and how reviewers should reach a
-                representative career state in one paragraph. Mention that gameplay
-                is offline-first on device if that matches your build.
+                No login is required. On the first New Career or Continue Career action
+                after launch, choose Continue as Guest to use the complete offline game.
+                Apple and Google sign-in enable cloud saves and online leaderboards.
+                Account status, sign-out, sync retry, and deletion are in More →
+                Settings. The first-launch analytics prompt can be declined without
+                limiting gameplay. Public leaderboards use server-generated aliases;
+                private career names are not displayed. Permanent gamepasses are
+                restored separately through the storefront account.
               </p>
             </article>
+          </section>
+
+          <section className="section section-card">
+            <span className="eyebrow">App Privacy answers · API-enabled build</span>
+            <h2>Declare collection before submitting the next version</h2>
+            <div className="feature-grid">
+              <article className="feature-card">
+                <h3>Contact Info · Email Address</h3>
+                <p>
+                  Used for app functionality when a sign-in provider supplies a
+                  verified email. Linked to the optional Football Era account and not
+                  used for tracking.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>Identifiers · User ID</h3>
+                <p>
+                  Used for authentication, cloud saves, leaderboards, security, and
+                  account deletion. Linked to the optional account and not used for
+                  tracking. The separate random installation identifier is used for
+                  unlinked analytics.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>User Content · Gameplay Content</h3>
+                <p>
+                  Used for cloud career saves, authenticated public leaderboards, and
+                  app functionality. Private cloud saves can contain the in-game name;
+                  public boards display a server-generated alias. Account cloud saves
+                  and published careers are linked to the user ID; anonymous analytics
+                  remain separate. Not used for tracking.
+                </p>
+              </article>
+              <article className="feature-card">
+                <h3>Usage Data · Product Interaction</h3>
+                <p>
+                  Used for optional analytics, covering sessions, feature areas,
+                  progression, seasons, and retirement milestones. Associated only
+                  with a random installation ID, not the optional account, and not used
+                  for tracking. Collection begins only after an explicit in-app choice.
+                </p>
+              </article>
+            </div>
+            <p className="lede">
+              Select “Data Used to Track You: No” for every category. Mark Email
+              Address, User ID, and account Gameplay Content as linked to the user;
+              mark anonymous Product Interaction and its random installation ID as not
+              linked. Use https://howethstudio.com/football-era/privacy/ for privacy
+              and https://howethstudio.com/football-era/account-deletion/ for deletion.
+            </p>
+          </section>
+
+          <section className="section section-card">
+            <span className="eyebrow">Google Play Data Safety · Android release</span>
+            <h2>Declare account and gameplay collection</h2>
+            <p>
+              Declare email address and user ID as optional personal information used
+              for account management and app functionality. Declare cloud career saves
+              and published server-generated leaderboard aliases as app activity used
+              for app functionality. Declare the separate random
+              installation ID and product interaction as optional analytics. Data is
+              encrypted in transit, is not sold, and is not used for advertising or
+              cross-app tracking. Service-provider processing does not change the
+              purpose. Confirm the current Play Console taxonomy against the exact
+              release build before submission.
+            </p>
+            <p className="lede">
+              Answer that users can request deletion and provide
+              https://howethstudio.com/football-era/account-deletion/ as the external
+              account-deletion resource.
+            </p>
           </section>
         </div>
       </main>

@@ -1,5 +1,0 @@
-staticSites:
-  - name: howethstudio-web
-    rootDir: .
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./out

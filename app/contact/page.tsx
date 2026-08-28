@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import {
+  StudioPageIntro,
+  StudioSiteFooter,
+} from "@/components/studio/StudioMarketing";
 import { howethStudioConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -28,10 +32,17 @@ export default function ContactPage() {
           <span>Contact</span>
         </nav>
 
+        <StudioPageIntro
+          index="004"
+          eyebrow="Start a conversation"
+          title="Have a useful problem to solve?"
+          description="Share the product, the audience, and where the work is stuck. You will hear directly from the person who would design and build it."
+        />
+
         <section className="studio-contact-page" aria-labelledby="contact-heading">
-          <h1 id="contact-heading" className="studio-contact-page__title">
+          <h2 id="contact-heading" className="studio-contact-page__title">
             Contact
-          </h1>
+          </h2>
           <p className="studio-mono studio-contact-page__label">Direct</p>
           <p className="studio-contact-page__line">
             <a className="studio-cta" href={`mailto:${howethStudioConfig.contactEmail}`}>
@@ -50,15 +61,7 @@ export default function ContactPage() {
           </p>
         </section>
 
-        <footer className="studio-footer studio-footer--simple">
-          <div className="studio-footer__row studio-mono">
-            <span>Howeth Studio</span>
-            <span className="studio-footer__dot" aria-hidden="true">
-              ·
-            </span>
-            <span>© {year}</span>
-          </div>
-        </footer>
+        <StudioSiteFooter year={year} />
       </main>
     </div>
   );

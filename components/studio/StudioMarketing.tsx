@@ -1,6 +1,36 @@
 import Link from "next/link";
 import { howethStudioConfig } from "@/lib/siteConfig";
 
+type StudioPageIntroProps = {
+  index: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export function StudioPageIntro({
+  index,
+  eyebrow,
+  title,
+  description,
+}: StudioPageIntroProps) {
+  return (
+    <section className="studio-page-intro" aria-labelledby="studio-page-title">
+      <div className="studio-page-intro__rail studio-mono" aria-hidden="true">
+        <span>{index}</span>
+        <span># {eyebrow}</span>
+      </div>
+      <div className="studio-page-intro__body">
+        <p className="studio-mono studio-page-intro__eyebrow">{eyebrow}</p>
+        <h1 id="studio-page-title" className="studio-page-intro__title">
+          {title}
+        </h1>
+        <p className="studio-page-intro__copy">{description}</p>
+      </div>
+    </section>
+  );
+}
+
 export function StudioWorkSection() {
   return (
     <section className="studio-work" aria-labelledby="work-heading">
