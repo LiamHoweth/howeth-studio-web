@@ -6,7 +6,7 @@ import { footballEraConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Football Era Privacy Policy",
   description:
-    "How Football Era handles optional accounts, cloud career saves, authenticated leaderboards, and anonymous gameplay analytics.",
+    "How Football Era handles optional accounts, cloud career saves, authenticated leaderboards, purchases, and anonymous gameplay analytics.",
   alternates: { canonical: "/football-era/privacy/" },
 };
 
@@ -20,7 +20,7 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: August 22, 2026. This policy explains how Football Era
+              Effective date: September 21, 2026. This policy explains how Football Era
               (“the app”), published by Howeth Studio, handles information when you
               play as a guest or choose to create an account.
             </p>
@@ -32,8 +32,8 @@ export default function FootballEraPrivacyPage() {
               <p>
                 No account is required. Guests can create careers, play the complete
                 offline game, and use local league records. Career saves, preferences,
-                reminders, interface state, and verified App Store or Play purchases
-                remain on the device unless this policy says otherwise. Guests cannot
+                reminders, and interface state remain on the device unless this policy
+                says otherwise. Purchase verification is described below. Guests cannot
                 view or publish to the online leaderboard or use Football Era cloud
                 saves.
               </p>
@@ -69,13 +69,46 @@ export default function FootballEraPrivacyPage() {
               <h2>Authenticated leaderboards</h2>
               <p>
                 Occupied careers are published automatically while signed in. Other
-                signed-in players can see a server-generated public alias, position,
+                signed-in players can see your optional account-wide public username,
+                or a stable generated alias when no username is active, plus position,
                 team, and validated aggregate scores such as legacy, yards,
                 touchdowns, championships, overall rating, followers, and net worth.
                 The career&apos;s in-game player name is included in its private cloud
                 save but is never shown on the public leaderboard. Server-side checks
                 validate submitted totals. Rejected submission reasons may be retained
                 temporarily to detect abuse.
+              </p>
+              <p>
+                Public usernames are filtered and can be reported by signed-in players.
+                A report includes the reporting and reported account identifiers, a
+                fixed reason, and moderation status. Reported profiles are hidden on
+                the reporting player&apos;s device immediately. A moderator may dismiss a
+                report or suspend a public username; suspension restores generated
+                aliases without deleting the account or career.
+              </p>
+            </article>
+          </section>
+
+          <section className="section two-column">
+            <article className="section-card">
+              <h2>Player feedback</h2>
+              <p>
+                The optional in-app feedback form sends a category, message, source
+                screen, platform, app version, and a random submission ID. It does not
+                attach a Football Era account ID, analytics identifier, installation
+                ID, or career name. Feedback is anonymous unless you choose to provide
+                a reply email address. We use submissions only to understand requests,
+                investigate problems, and reply when invited.
+              </p>
+            </article>
+            <article className="section-card">
+              <h2>Community safety</h2>
+              <p>
+                Automated rules block reserved and commonly inappropriate username
+                variants, including common character substitutions. Because filters
+                cannot identify every harmful name, signed-in players can report and
+                hide public profiles. Reports are reviewed by Howeth Studio, with a
+                target response time of 24 hours.
               </p>
             </article>
           </section>
@@ -102,9 +135,13 @@ export default function FootballEraPrivacyPage() {
                 choose. Railway hosts our API, PostgreSQL database, encrypted backups,
                 and operational logs and may process limited network and request
                 metadata to operate and secure those services. Apple processes App
-                Store purchases; Howeth Studio does not receive payment-card details.
-                We do not sell personal information or use saved careers to train
-                third-party generative models.
+                Store purchases. RevenueCat receives an anonymous purchase identifier,
+                product and purchase history, transaction metadata, and limited app and
+                device details to validate purchases, prevent fraud, and restore
+                gamepasses. Football Era does not send RevenueCat your career saves or
+                Football Era account identity, and Howeth Studio does not receive your
+                payment-card details. We do not sell personal information or use saved
+                careers to train third-party generative models.
               </p>
             </article>
           </section>
@@ -117,7 +154,9 @@ export default function FootballEraPrivacyPage() {
                 Sessions expire after 90 days of inactivity and roll forward while
                 used. Raw anonymous gameplay events are retained for up to 13 months,
                 rejected leaderboard audits for up to 90 days, and inactive anonymous
-                installations and snapshots for up to 24 months. Backups expire on
+                installations and snapshots for up to 24 months. Feedback submissions
+                and username moderation reports are retained for up to 12 months.
+                Backups expire on
                 their normal schedule, and statistics may be kept only after they have
                 been aggregated so they no longer identify an account or installation.
               </p>
@@ -129,6 +168,8 @@ export default function FootballEraPrivacyPage() {
                 <li>Allow or decline anonymous gameplay analytics before collection begins.</li>
                 <li>Withdraw analytics consent in Settings and request deletion of that installation&apos;s analytics data.</li>
                 <li>Sign out while keeping downloaded careers playable as a guest.</li>
+                <li>Submit anonymous feedback, optionally add a reply email, or keep a failed submission only as an unsent draft on your device.</li>
+                <li>Choose or change a public username, report and locally hide another public profile, or contact support about moderation.</li>
                 <li>
                   Delete your account in Settings to remove its sessions, linked
                   identity, cloud saves, and leaderboard entries. Local careers remain

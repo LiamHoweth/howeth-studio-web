@@ -42,6 +42,11 @@ export default function FootballEraSupportPage() {
                   Response target: within a few business days for normal questions.
                 </li>
                 <li>
+                  In the app, open Settings → Support → Share feedback. The same form
+                  is available at the bottom of the Football Era Shop.
+                </li>
+                <li>Username reports are reviewed with a target response time of 24 hours.</li>
+                <li>
                   This inbox is for the Football Era app only—not for general NFL or
                   league support.
                 </li>
@@ -76,6 +81,17 @@ export default function FootballEraSupportPage() {
                   sign in with Apple or Google, eligible career slots sync through your
                   Football Era account. Preferences and purchases remain local or are
                   restored separately through your storefront account.
+                </div>
+              </details>
+              <details className="faq-card">
+                <summary>How do public leaderboard usernames work?</summary>
+                <div className="faq-answer">
+                  Signed-in players can claim one unique public username in Settings
+                  or from the leaderboard. Your first claim is immediate; later changes
+                  are available every 30 days. Report and hide removes another public
+                  profile from leaderboards on your device while sending a fixed-reason
+                  report for review. Generated aliases remain available when a username
+                  is unset or suspended.
                 </div>
               </details>
               <details className="faq-card">
