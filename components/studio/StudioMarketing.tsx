@@ -127,6 +127,28 @@ export function StudioWorkSection() {
             </div>
           </div>
         </li>
+
+        <li className="studio-piece studio-piece--noctara">
+          <span className="studio-mono studio-piece__index">04</span>
+          <div className="studio-piece__body">
+            <p className="studio-mono studio-piece__kind">Product · Wellness</p>
+            <h3 className="studio-piece__name">Noctara</h3>
+            <p className="studio-piece__copy">
+              An iPhone sleep and recovery app that turns supported Apple Health data
+              into clear context for today, patterns over time, and a plan for tonight.
+            </p>
+            <ul className="studio-piece__bullets studio-mono">
+              <li>Sleep and recovery context</li>
+              <li>Estimated energy forecast</li>
+              <li>Optional account sync</li>
+            </ul>
+            <div className="studio-piece__actions">
+              <Link className="studio-cta studio-cta--on-dark" href="/noctara/">
+                Explore Noctara
+              </Link>
+            </div>
+          </div>
+        </li>
       </ol>
     </section>
   );

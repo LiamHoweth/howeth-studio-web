@@ -11,6 +11,7 @@ const studioRoutes = [
   "/about",
   "/work",
   "/contact",
+  "/noctara",
   "/carenote-cna",
   "/carenote-cna/features",
   "/carenote-cna/how-it-works",

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Howeth Studio",
   },
   description:
-    "Howeth Studio — independent software development and mobile-first products including CareNote CNA, Football Era, and Elevenward.",
+    "Howeth Studio — independent software development and mobile products including CareNote CNA, Football Era, Elevenward, and Noctara.",
   icons: {
     icon: [{ url: "/studio/favicon.svg", type: "image/svg+xml" }],
   },

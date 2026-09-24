@@ -10,7 +10,7 @@ import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Products from Howeth Studio — CareNote CNA, Football Era, and Elevenward, a football career and life RPG for iOS and Android.",
+    "Products from Howeth Studio — CareNote CNA, Football Era, Elevenward, and Noctara Sleep & Recovery.",
   alternates: {
     canonical: "/work/",
   },

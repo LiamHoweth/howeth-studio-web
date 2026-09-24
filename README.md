@@ -8,6 +8,7 @@ Marketing site for Howeth Studio apps, built with Next.js and exported as static
 - **Football Era** routes wrap content in `.fe-page-root`; `styles/football-era-marketing.css` scopes the **dark stadium** colorway to `body:has(.fe-page-root)` so the first paint matches production (no client-only `html` class).
 - **CareNote CNA** routes wrap in `.carenote-product`; `styles/carenote-product-chrome.css` applies the **same header/nav rhythm** as the studio home with a **cream field** and **coral** hover accents on links.
 - **Elevenward** lives entirely under `howethstudio.com/elevenward/`, with localized marketing, support, privacy, deletion, and press routes sharing one product navigation system.
+- **Noctara** lives at `/noctara/`, with its dark Horizon palette scoped in `styles/noctara-marketing.css`. Its current page links to the verified Noctara privacy and support endpoints and does not show a download link before the App Store listing is public.
 
 ## Local development
 
