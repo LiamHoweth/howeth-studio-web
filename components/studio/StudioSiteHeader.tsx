@@ -15,6 +15,7 @@ export function StudioSiteHeader() {
           <Link href="/carenote-cna/">CareNote CNA</Link>
           <Link href="/football-era/">Football Era</Link>
           <Link href={howethStudioConfig.elevenwardSiteUrl}>Elevenward</Link>
+          <Link href="/noctara/">Noctara</Link>
         </nav>
       </div>
     </header>

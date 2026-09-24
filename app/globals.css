@@ -326,6 +326,13 @@ body:has(.studio-landing)::after {
   color: #f4f7e9;
 }
 
+.studio-piece--noctara {
+  grid-column: 1 / -1;
+  background: linear-gradient(145deg, #10122f 0%, #1d1a42 65%, #080816 100%);
+  border-color: rgba(169, 130, 245, 0.3);
+  color: #f3effd;
+}
+
 .studio-piece__index {
   align-self: start;
   padding-top: 4px;
@@ -340,6 +347,10 @@ body:has(.studio-landing)::after {
   color: rgba(214, 255, 83, 0.5);
 }
 
+.studio-piece--noctara .studio-piece__index {
+  color: rgba(212, 201, 250, 0.48);
+}
+
 .studio-piece__kind {
   margin: 0 0 8px;
   color: rgba(12, 12, 12, 0.45);
@@ -352,6 +363,10 @@ body:has(.studio-landing)::after {
 
 .studio-piece--elevenward .studio-piece__kind {
   color: rgba(214, 255, 83, 0.72);
+}
+
+.studio-piece--noctara .studio-piece__kind {
+  color: #c9b9ef;
 }
 
 .studio-piece__name {
@@ -370,6 +385,10 @@ body:has(.studio-landing)::after {
   color: #d6ff53;
 }
 
+.studio-piece--noctara .studio-piece__name {
+  color: #f3effd;
+}
+
 .studio-piece__copy {
   margin: 0 0 18px;
   font-size: 0.98rem;
@@ -384,6 +403,10 @@ body:has(.studio-landing)::after {
 
 .studio-piece--elevenward .studio-piece__copy {
   color: rgba(244, 247, 233, 0.86);
+}
+
+.studio-piece--noctara .studio-piece__copy {
+  color: rgba(243, 239, 253, 0.84);
 }
 
 .studio-piece__bullets {
@@ -402,6 +425,10 @@ body:has(.studio-landing)::after {
 
 .studio-piece--elevenward .studio-piece__bullets {
   color: rgba(214, 255, 83, 0.78);
+}
+
+.studio-piece--noctara .studio-piece__bullets {
+  color: #c9b9ef;
 }
 
 .studio-piece__bullets li {
