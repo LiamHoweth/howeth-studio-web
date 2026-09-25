@@ -194,6 +194,9 @@ export function StudioSiteFooter({ year }: StudioSiteFooterProps) {
           ·
         </span>
         <span>© {year}</span>
+        <Link className="studio-footer__secret" href="/for-ameliante/" aria-label="A little secret">
+          ♡
+        </Link>
       </div>
       <p className="studio-footer__contact">
         <span className="studio-mono studio-footer__label">Contact</span>
