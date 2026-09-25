@@ -163,7 +163,7 @@ export function AmelianteExperience() {
                 className="am-memory--day"
                 src="/ameliante/day-out.webp"
                 alt="Ameliante and Liam smiling together outdoors under a clear blue sky"
-                caption="A day in the sunshine."
+                caption="Our first hiking trip."
                 sizes="(max-width: 700px) 92vw, 42vw"
               />
               <Memory
