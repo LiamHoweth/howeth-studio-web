@@ -198,12 +198,16 @@ export function AmelianteExperience() {
           <section className="am-note" aria-labelledby="am-note-title">
             <h2 id="am-note-title">Dear Ameliante,</h2>
             <p>
-              I can&apos;t fit everything I feel into a page. But I can keep a few of
-              our moments here and tell you what matters most: every kind of day
-              feels better with you in it.
+              The time we&apos;ve spent together means more to me than I always know
+              how to say. I think of our first hike, that sky full of lightning,
+              and all the ordinary hours that became my favorite memories because
+              I spent them with you.
             </p>
             <p>
-              I love you, Ameliante. More than this little page can hold.
+              I love the person you are: how deeply you care, how honestly you
+              speak from your heart, and the warmth you bring into my life. I
+              appreciate you for being you, Ameliante. I love you, and I&apos;m
+              grateful for the time we get to share.
             </p>
             <p className="am-note__signature">Love, Liam ♡</p>
           </section>
@@ -226,7 +230,7 @@ export function AmelianteExperience() {
           </details>
 
           <footer className="am-ending">
-            <span>Yours, always.</span>
+            <span>I&apos;m glad it&apos;s you.</span>
             <Link href="/" aria-label="Back to Howeth Studio">↗</Link>
           </footer>
         </div>
