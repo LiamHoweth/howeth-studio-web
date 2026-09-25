@@ -3,24 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ChaseScene } from "./ChaseScene";
 
 const heartLine = "i love you  ·  i love you  ·  i love you  ·  i love you  ·  i love you  ·  ";
 
-function WordHeart({ beat }: { beat: number }) {
+function WordHeart({ clipId }: { clipId: string }) {
   return (
     <svg
-      key={beat}
       className="am-word-heart"
       viewBox="0 0 480 410"
       role="img"
-      aria-label="A heart made of the words I love you"
+      aria-label="A beating heart made of the words I love you"
     >
       <defs>
-        <clipPath id="am-heart-shape">
+        <clipPath id={clipId}>
           <path d="M240 385C208 356 18 220 18 120 18 44 77 16 133 16c50 0 85 27 107 58 22-31 57-58 107-58 56 0 115 28 115 104 0 100-190 236-222 265Z" />
         </clipPath>
       </defs>
-      <g clipPath="url(#am-heart-shape)" className="am-word-heart__words">
+      <g clipPath={`url(#${clipId})`} className="am-word-heart__words">
         {Array.from({ length: 25 }, (_, row) => (
           <text key={row} x={row % 2 ? -62 : -96} y={26 + row * 16}>
             {heartLine.repeat(3)}
@@ -31,6 +31,9 @@ function WordHeart({ beat }: { beat: number }) {
         className="am-word-heart__outline"
         d="M240 385C208 356 18 220 18 120 18 44 77 16 133 16c50 0 85 27 107 58 22-31 57-58 107-58 56 0 115 28 115 104 0 100-190 236-222 265Z"
       />
+      <g className="am-word-heart__sparkles" aria-hidden="true">
+        <path d="M14 66v13m-7-6h14M447 45v13m-7-6h14M448 304v11m-6-5h12" />
+      </g>
     </svg>
   );
 }
@@ -45,7 +48,7 @@ function Memory({
   className: string;
   src: string;
   alt: string;
-  caption: string;
+  caption?: string;
   sizes: string;
 }) {
   return (
@@ -53,14 +56,14 @@ function Memory({
       <div className="am-memory__frame">
         <Image src={src} alt={alt} fill sizes={sizes} />
       </div>
-      <figcaption>{caption}</figcaption>
+      {caption && <figcaption>{caption}</figcaption>}
     </figure>
   );
 }
 
 export function AmelianteExperience() {
   const [opened, setOpened] = useState(false);
-  const [beat, setBeat] = useState(0);
+  const [heartPaused, setHeartPaused] = useState(false);
 
   useEffect(() => {
     if (!opened) return;
@@ -100,7 +103,6 @@ export function AmelianteExperience() {
           </button>
         </div>
 
-        <p className="am-cover__bottom">Made with love, one word at a time.</p>
       </section>
 
       {opened && (
@@ -128,20 +130,24 @@ export function AmelianteExperience() {
               <button
                 className="am-heart-button"
                 type="button"
-                onClick={() => setBeat((value) => value + 1)}
-                aria-label="Make the word heart beat"
+                onClick={() => setHeartPaused((value) => !value)}
+                aria-label={heartPaused ? "Play heart animation" : "Pause heart animation"}
+                aria-pressed={heartPaused}
               >
-                <WordHeart beat={beat} />
+                <WordHeart clipId="am-heart-shape" />
+                <span className="am-heart-control" aria-hidden="true">
+                  {heartPaused ? "Play animation" : "Pause animation"}
+                </span>
               </button>
-              <span>Tap the heart ♡</span>
+              <div className="am-heart-static">
+                <WordHeart clipId="am-heart-shape-static" />
+              </div>
             </div>
           </section>
 
           <section className="am-moments" aria-labelledby="am-moments-title">
             <div className="am-section-heading">
-              <p className="am-eyebrow">A few pieces of us</p>
               <h2 id="am-moments-title">The moments I keep close.</h2>
-              <p>Some loud, some quiet. All ours.</p>
             </div>
 
             <div className="am-gallery">
@@ -149,20 +155,18 @@ export function AmelianteExperience() {
                 className="am-memory--storm"
                 src="/ameliante/lightning.webp"
                 alt="Ameliante and Liam kissing in a field of yellow flowers as lightning flashes in the distance"
-                caption="Even the sky showed up for this one."
                 sizes="(max-width: 700px) 92vw, 50vw"
               />
               <Memory
                 className="am-memory--close"
                 src="/ameliante/close.webp"
                 alt="Ameliante resting against Liam for a close selfie"
-                caption="The quiet kind of perfect."
                 sizes="(max-width: 700px) 92vw, 42vw"
               />
               <Memory
                 className="am-memory--day"
                 src="/ameliante/day-out.webp"
-                alt="Ameliante and Liam smiling together outdoors under a clear blue sky"
+                alt="Ameliante and Liam smiling together on their first hiking trip under a clear blue sky"
                 caption="Our first hiking trip."
                 sizes="(max-width: 700px) 92vw, 42vw"
               />
@@ -170,7 +174,6 @@ export function AmelianteExperience() {
                 className="am-memory--sunlight"
                 src="/ameliante/sunlight.webp"
                 alt="Ameliante smiling in warm sunlight"
-                caption="That smile. Always that smile."
                 sizes="(max-width: 700px) 92vw, 48vw"
               />
               <figure className="am-memory am-memory--video">
@@ -186,13 +189,13 @@ export function AmelianteExperience() {
                     Your browser does not support this video.
                   </video>
                 </div>
-                <figcaption>One tiny moment, saved here.</figcaption>
               </figure>
             </div>
           </section>
 
+          <ChaseScene />
+
           <section className="am-note" aria-labelledby="am-note-title">
-            <p className="am-eyebrow">Just one more thing</p>
             <h2 id="am-note-title">Dear Ameliante,</h2>
             <p>
               I can&apos;t fit everything I feel into a page. But I can keep a few of
