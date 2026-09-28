@@ -358,7 +358,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
     privacy: [
       ["Guest careers", "Career snapshots and the recovery journal stay on your device. A guest sends no career save to Howeth Studio."],
       ["Optional accounts", "Apple or Google sign-in can synchronize versioned career snapshots, generated leaderboard aliases, entitlements, and analytics consent."],
-      ["Public leaderboards", "Signed-in careers publish a score and position after cloud sync, unless you previously opted out. Your career name stays private. You may claim one moderated public username or use a generated alias; other players can report a username and hide it on their device."],
+      ["Public leaderboards", "New signed-in accounts publish a career score and position after cloud sync unless sharing is turned off. Existing accounts start private until you enable sharing. This account setting carries across devices; turning it off removes your entries. Your career name stays private. You may claim one moderated public username or use a generated alias; other players can report a username and hide it on their device."],
       ["Purchases", "Apple, Google, and RevenueCat process purchases. Elevenward stores entitlement state, not payment-card details."],
       ["Analytics", "First-party product analytics and scrubbed error categories are disabled until consent. Advertising and cross-app tracking are not used."],
       ["Retention and deletion", "Account deletion removes identities, sessions, saves, leaderboards, entitlement cache, and consent records. Store transaction records remain with the storefront where required."],
@@ -387,7 +387,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
     privacy: [
       ["Carreras de invitado", "Las partidas y el diario de recuperación permanecen en tu dispositivo. Un invitado no envía carreras a Howeth Studio."],
       ["Cuentas opcionales", "El acceso con Apple o Google puede sincronizar partidas versionadas, alias generados, derechos de compra y consentimiento analítico."],
-      ["Clasificaciones públicas", "Las carreras con sesión iniciada publican una puntuación y posición tras sincronizarse, salvo si rechazaste compartirlas antes. El nombre de tu carrera sigue siendo privado. Puedes elegir un nombre público moderado o usar un alias generado; otros jugadores pueden denunciar y ocultar un nombre en su dispositivo."],
+      ["Clasificaciones públicas", "Las cuentas nuevas con sesión iniciada publican la puntuación y posición de una carrera tras sincronizarse, salvo si desactivas el uso compartido. Las cuentas existentes permanecen privadas hasta que lo actives. Esta opción de la cuenta se aplica en todos tus dispositivos; al desactivarla se retiran tus entradas. El nombre de tu carrera sigue siendo privado. Puedes elegir un nombre público moderado o usar un alias generado; otros jugadores pueden denunciar y ocultar un nombre en su dispositivo."],
       ["Compras", "Apple, Google y RevenueCat procesan las compras. Elevenward guarda el derecho de uso, no datos de tarjetas."],
       ["Analítica", "La analítica propia y las categorías de error anónimas están desactivadas hasta que des tu consentimiento. No usamos publicidad ni rastreo entre aplicaciones."],
       ["Conservación y eliminación", "Eliminar la cuenta borra identidades, sesiones, partidas, clasificaciones, derechos almacenados y consentimientos. La tienda conserva los registros exigidos."],
@@ -416,7 +416,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
     privacy: [
       ["Carreiras de convidado", "Os saves e o diário de recuperação ficam no aparelho. Um convidado não envia a carreira à Howeth Studio."],
       ["Contas opcionais", "Entrar com Apple ou Google pode sincronizar saves versionados, apelidos gerados, direitos de compra e consentimento de análise."],
-      ["Rankings públicos", "Carreiras conectadas publicam pontuação e posição após a sincronização, exceto se você já recusou o compartilhamento. O nome da carreira permanece privado. Você pode escolher um nome público moderado ou usar um apelido gerado; outros jogadores podem denunciar e ocultar um nome no aparelho."],
+      ["Rankings públicos", "Novas contas conectadas publicam a pontuação e a posição da carreira após a sincronização, a menos que o compartilhamento seja desativado. Contas existentes permanecem privadas até que você o ative. Essa opção da conta vale em todos os seus aparelhos; ao desativá-la, suas entradas são removidas. O nome da carreira permanece privado. Você pode escolher um nome público moderado ou usar um apelido gerado; outros jogadores podem denunciar e ocultar um nome no aparelho."],
       ["Compras", "Apple, Google e RevenueCat processam as compras. Elevenward guarda o direito de acesso, não dados de cartão."],
       ["Análises", "Análises próprias e categorias de erro sem dados pessoais ficam desativadas até o consentimento. Não há publicidade nem rastreamento entre apps."],
       ["Retenção e exclusão", "Excluir a conta remove identidades, sessões, saves, rankings, direitos em cache e consentimentos. A loja mantém registros quando exigido."],
@@ -445,7 +445,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
     privacy: [
       ["Carrières invitées", "Les sauvegardes et le journal de récupération restent sur l’appareil. Un invité n’envoie aucune carrière à Howeth Studio."],
       ["Comptes facultatifs", "La connexion Apple ou Google peut synchroniser des sauvegardes versionnées, alias générés, droits d’achat et consentement analytique."],
-      ["Classements publics", "Les carrières connectées publient un score et un poste après synchronisation, sauf si vous avez déjà refusé le partage. Le nom de votre carrière reste privé. Vous pouvez choisir un pseudonyme public modéré ou utiliser un alias généré ; les autres joueurs peuvent signaler et masquer un nom sur leur appareil."],
+      ["Classements publics", "Les nouveaux comptes connectés publient le score et le poste d’une carrière après synchronisation, sauf si le partage est désactivé. Les comptes existants restent privés jusqu’à ce que vous l’activiez. Ce réglage du compte s’applique sur tous vos appareils ; le désactiver retire vos entrées. Le nom de votre carrière reste privé. Vous pouvez choisir un pseudonyme public modéré ou utiliser un alias généré ; les autres joueurs peuvent signaler et masquer un nom sur leur appareil."],
       ["Achats", "Apple, Google et RevenueCat traitent les achats. Elevenward conserve le droit d’accès, jamais les données de carte."],
       ["Analyse", "L’analyse interne et les catégories d’erreur anonymisées restent désactivées sans consentement. Aucune publicité ni suivi entre applications."],
       ["Conservation et suppression", "La suppression efface identités, sessions, sauvegardes, classements, droits en cache et consentements. La boutique conserve les traces exigées."],
