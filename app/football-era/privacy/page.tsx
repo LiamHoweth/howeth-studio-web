@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { StudioSiteFooter } from "@/components/studio/StudioMarketing";
 import { footballEraConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -13,8 +14,9 @@ export const metadata: Metadata = {
 export default function FootballEraPrivacyPage() {
   return (
     <>
+      <a className="studio-skip" href="#main">Skip to main content</a>
       <StudioSiteHeader />
-      <main className="page-main">
+      <main id="main" className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
             <span className="eyebrow">Privacy Policy</span>
@@ -221,6 +223,7 @@ export default function FootballEraPrivacyPage() {
           </section>
         </div>
       </main>
+      <StudioSiteFooter year={new Date().getFullYear()} />
     </>
   );
 }

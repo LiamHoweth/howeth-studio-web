@@ -6,73 +6,43 @@ import { usePathname } from "next/navigation";
 import { careNoteConfig } from "@/lib/siteConfig";
 
 const navPages = [
-  { href: "/carenote-cna/", label: "Home" },
+  { href: "/carenote-cna/", label: "Overview" },
   { href: "/carenote-cna/features/", label: "Features" },
-  { href: "/carenote-cna/how-it-works/", label: "How It Works" },
+  { href: "/carenote-cna/how-it-works/", label: "How it works" },
   { href: "/carenote-cna/support/", label: "Support" },
 ] as const;
 
-function stripTrailingSlash(path: string) {
-  return path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
-}
-
 function isActive(pathname: string, href: string) {
-  const p = stripTrailingSlash(pathname);
-  const h = stripTrailingSlash(href);
-  if (h === "/carenote-cna") {
-    return p === "/carenote-cna";
-  }
-  return p === h || p.startsWith(`${h}/`);
+  const current = pathname.replace(/\/$/, "");
+  const target = href.replace(/\/$/, "");
+  return current === target || (target !== "/carenote-cna" && current.startsWith(`${target}/`));
 }
 
 export function CareNoteSiteHeader() {
   const pathname = usePathname() || "";
-  const appStoreUrl = careNoteConfig.appStoreUrl;
-  const downloadHref = appStoreUrl || "/carenote-cna/download/";
-  const ctaClass =
-    "button button-primary header-cta" + (appStoreUrl ? "" : " is-disabled");
 
   return (
-    <header className="site-header">
-      <div className="site-shell header-inner">
-        <div className="carenote-header-brandrow">
-          <Link href="/" className="carenote-backlink">
-            ← Howeth Studio
-          </Link>
-          <Link
-            className="brand-lockup"
-            href="/carenote-cna/"
-            aria-label={`${careNoteConfig.siteName} home`}
-          >
-            <Image
-              src="/carenote-cna/assets/brand.png"
-              alt={`${careNoteConfig.siteName} brand mark`}
-              className="brand-mark"
-              width={52}
-              height={52}
-              priority
-            />
-            <span className="brand-copy">
-              <strong>{careNoteConfig.siteName}</strong>
-              <span>Faster shift notes for CNAs on iPhone</span>
-            </span>
-          </Link>
-        </div>
-        <nav className="site-nav" aria-label="Primary">
+    <div className="cn-product-nav">
+      <div className="cn-product-nav__inner">
+        <Link className="cn-product-nav__brand" href="/carenote-cna/" aria-label="CareNote CNA overview">
+          <Image src="/carenote-cna/assets/brand.png" alt="" width={28} height={28} />
+          <span>CareNote CNA</span>
+        </Link>
+        <nav className="cn-product-nav__links" aria-label="CareNote CNA">
           {navPages.map((page) => (
             <Link
               key={page.href}
               href={page.href}
-              className={isActive(pathname, page.href) ? "is-active" : ""}
+              aria-current={isActive(pathname, page.href) ? "page" : undefined}
             >
               {page.label}
             </Link>
           ))}
         </nav>
-        <a className={ctaClass} href={downloadHref}>
-          Download App
+        <a className="cn-product-nav__download" href={careNoteConfig.appStoreUrl || "/carenote-cna/download/"}>
+          Download <span aria-hidden="true">↗</span>
         </a>
       </div>
-    </header>
+    </div>
   );
 }

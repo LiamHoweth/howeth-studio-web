@@ -10,7 +10,7 @@ import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Products from Howeth Studio — CareNote CNA, Football Era, Elevenward, and Noctara Sleep & Recovery.",
+    "Products from Howeth Studio — Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   alternates: {
     canonical: "/work/",
   },
@@ -33,9 +33,9 @@ export default function WorkPage() {
         </nav>
         <StudioPageIntro
           index="002"
-          eyebrow="Selected work"
-          title="Shipped software, built to last."
-          description="Focused products shaped from first principles: useful on day one, considered at every edge, and structured to keep improving after launch."
+          eyebrow="Apps & games"
+          title="A little curiosity. A lot to explore."
+          description="Thoughtful apps and games from Howeth Studio. Browse the full collection, from everyday companions to worlds still taking shape."
         />
         <StudioWorkSection />
         <StudioSiteFooter year={year} />

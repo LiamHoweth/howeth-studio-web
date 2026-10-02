@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { StudioSiteFooter } from "@/components/studio/StudioMarketing";
 import { footballEraConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -20,8 +21,9 @@ export default function FootballEraAccountDeletionPage() {
 
   return (
     <>
+      <a className="studio-skip" href="#main">Skip to main content</a>
       <StudioSiteHeader />
-      <main className="page-main">
+      <main id="main" className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
             <span className="eyebrow">Account deletion</span>
@@ -80,6 +82,7 @@ export default function FootballEraAccountDeletionPage() {
           </section>
         </div>
       </main>
+      <StudioSiteFooter year={new Date().getFullYear()} />
     </>
   );
 }

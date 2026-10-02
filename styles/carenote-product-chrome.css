@@ -1,12 +1,9 @@
-/**
- * CareNote CNA product marketing — same editorial chrome rhythm as Howeth Studio home
- * (dark sticky bar, mono nav, cream field). Colorway: coral / sky accents on interactions.
- */
+@import "./product-legacy.css";
 
+/* CareNote shares the studio canvas and keeps its support routes in the same system. */
 body:has(.carenote-product) {
   margin: 0;
-  color: var(--ink);
-  background: #f4f1ea;
+  background: #f5f3ee;
 }
 
 body:has(.carenote-product)::before,
@@ -14,598 +11,202 @@ body:has(.carenote-product)::after {
   display: none;
 }
 
-.carenote-product .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(16px);
-  background: rgba(17, 16, 14, 0.92);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+.carenote-product {
+  --cn-paper: var(--studio-paper, #f5f3ee);
+  --cn-panel: #faf9f5;
+  --cn-ink: var(--studio-ink, #17211f);
+  --cn-muted: #5c6861;
+  --cn-rule: #ddded5;
+  --cn-accent: #e9bbaa;
+  --ink: var(--cn-ink);
+  --ink-soft: var(--cn-muted);
+  --line: var(--cn-rule);
+  --line-strong: #c2c5b9;
+  --blue: var(--cn-ink);
+  --blue-deep: var(--cn-ink);
+  min-height: 100vh;
+  color: var(--cn-ink);
+  background: var(--cn-paper);
+  color-scheme: light;
 }
 
-.carenote-product .header-inner {
-  min-height: 58px;
-  gap: 16px 20px;
+.carenote-product :focus-visible {
+  outline: 2px solid var(--cn-ink);
+  outline-offset: 4px;
 }
 
-.carenote-product .carenote-header-brandrow {
+.cn-product-nav {
+  border-bottom: 1px solid var(--cn-rule);
+  background: var(--cn-paper);
+}
+
+.cn-product-nav__inner {
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  min-width: 0;
-}
-
-.carenote-product .carenote-backlink {
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(236, 232, 223, 0.5);
-  text-decoration: none;
-  flex: 0 0 auto;
-  transition: color 160ms ease;
-}
-
-.carenote-product .carenote-backlink:hover {
-  color: #f7f4ee;
-}
-
-.carenote-product .brand-copy strong {
-  color: #f0ebe3;
-  font-size: 0.95rem;
-}
-
-.carenote-product .brand-copy span {
-  color: rgba(236, 232, 223, 0.55);
-  font-size: 0.78rem;
-}
-
-.carenote-product .brand-mark {
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-}
-
-.carenote-product .site-nav {
-  justify-content: flex-end;
-}
-
-.carenote-product .site-nav a {
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border-radius: 2px;
-  color: rgba(236, 232, 223, 0.55);
-  background: transparent;
-  padding: 10px 12px;
-}
-
-.carenote-product .site-nav a:hover,
-.carenote-product .site-nav a.is-active {
-  color: #f7f4ee;
-  background: rgba(242, 90, 98, 0.2);
-}
-
-.carenote-product .button-primary.header-cta {
-  min-height: 42px;
-  padding: 0 18px;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 999px;
-}
-
-.carenote-product .site-footer {
-  margin-top: 48px;
-  padding-bottom: 28px;
-  border-top: 1px solid rgba(12, 12, 12, 0.08);
-}
-
-.carenote-product .footer-meta {
-  color: rgba(17, 40, 61, 0.55);
-}
-
-@media (max-width: 1060px) {
-  .carenote-product .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .carenote-product .site-nav {
-    justify-content: flex-start;
-  }
-}
-
-/* Editorial product system — derived from the Howeth Studio index. */
-
-.carenote-product {
-  --cn-paper: #f4f1ea;
-  --cn-panel: #faf8f3;
-  --cn-ink: #0c0c0c;
-  --cn-muted: rgba(12, 12, 12, 0.62);
-  --cn-faint: rgba(12, 12, 12, 0.42);
-  --cn-rule: rgba(12, 12, 12, 0.12);
-  --cn-coral: #d94750;
-  min-height: 100vh;
-  background: var(--cn-paper);
-  color: var(--cn-ink);
-}
-
-.carenote-product .site-shell {
-  width: min(1120px, calc(100% - 40px));
-}
-
-.carenote-product .site-header {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-.carenote-product .header-inner {
-  display: grid;
-  grid-template-columns: minmax(290px, 1fr) auto auto;
-  min-height: 66px;
-  padding: 0;
-}
-
-.carenote-product .carenote-header-brandrow {
-  gap: 14px;
-}
-
-.carenote-product .brand-lockup {
-  gap: 10px;
-}
-
-.carenote-product .brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  box-shadow: none;
-}
-
-.carenote-product .brand-copy {
-  gap: 3px;
-}
-
-.carenote-product .brand-copy strong {
-  font-size: 0.92rem;
-  letter-spacing: -0.03em;
-}
-
-.carenote-product .brand-copy span {
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.carenote-product .site-nav {
-  flex-wrap: nowrap;
-  gap: 2px;
-}
-
-.carenote-product .site-nav a {
-  white-space: nowrap;
-}
-
-.carenote-product .site-nav a.is-active {
-  box-shadow: inset 0 -1px 0 var(--cn-coral);
-}
-
-.carenote-product .button-primary.header-cta {
-  min-height: 38px;
-  padding: 0 14px;
-  border-radius: 0;
-  background: #f3efe7;
-  border-color: #f3efe7;
-  box-shadow: none;
-  color: #11100e;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-}
-
-.carenote-product .page-main {
-  padding: 0 0 88px;
-}
-
-.carenote-product .hero-panel {
-  padding: 58px 0 64px;
-  overflow: visible;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--cn-rule);
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.carenote-product .hero-grid {
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: 72px;
-}
-
-.carenote-product .eyebrow {
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--cn-faint);
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-}
-
-.carenote-product .eyebrow::before {
-  width: 18px;
-  height: 1px;
-  border-radius: 0;
-  background: var(--cn-coral);
-}
-
-.carenote-product h1 {
-  max-width: 12ch;
-  margin: 20px 0 24px;
-  font-size: clamp(2.8rem, 6vw, 5.35rem);
-  line-height: 0.95;
-  letter-spacing: -0.055em;
-  text-transform: uppercase;
-}
-
-.carenote-product .hero-copy,
-.carenote-product .section-card p,
-.carenote-product .feature-card p,
-.carenote-product .metric-card p,
-.carenote-product .workflow-step p,
-.carenote-product .download-card p,
-.carenote-product .contact-card p,
-.carenote-product .faq-answer,
-.carenote-product .footer-copy,
-.carenote-product .lede,
-.carenote-product .check-list li {
-  color: var(--cn-muted);
-}
-
-.carenote-product .hero-copy {
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: 1.7;
-}
-
-.carenote-product .hero-actions,
-.carenote-product .download-actions {
-  gap: 10px;
-}
-
-.carenote-product .button {
-  min-height: 44px;
-  padding: 0 16px;
-  border-radius: 0;
-  box-shadow: none;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.67rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.carenote-product .button:hover {
-  transform: translateY(-2px);
-}
-
-.carenote-product .button-primary {
-  background: var(--cn-ink);
-  border-color: var(--cn-ink);
-  color: #faf8f3;
-}
-
-.carenote-product .button-secondary,
-.carenote-product .button-ghost {
-  background: transparent;
-  border-color: rgba(12, 12, 12, 0.28);
-  color: var(--cn-ink);
-}
-
-.carenote-product .section {
-  margin-top: 22px;
-}
-
-.carenote-product .hero-panel,
-.carenote-product .section-card,
-.carenote-product .section-aside,
-.carenote-product .phone-card,
-.carenote-product .feature-card,
-.carenote-product .metric-card,
-.carenote-product .workflow-step,
-.carenote-product .download-card,
-.carenote-product .faq-card,
-.carenote-product .contact-card,
-.carenote-product .quote-card {
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.carenote-product .section-card,
-.carenote-product .section-aside,
-.carenote-product .feature-card,
-.carenote-product .metric-card,
-.carenote-product .workflow-step,
-.carenote-product .download-card,
-.carenote-product .contact-card,
-.carenote-product .faq-card {
-  background: var(--cn-panel);
-  border: 1px solid var(--cn-rule);
-}
-
-.carenote-product .section-card,
-.carenote-product .download-card,
-.carenote-product .contact-card,
-.carenote-product .quote-card {
-  padding: 30px;
-}
-
-.carenote-product .section-card h2,
-.carenote-product .download-card h2,
-.carenote-product .contact-card h2,
-.carenote-product .quote-card h2 {
-  letter-spacing: -0.04em;
-}
-
-.carenote-product .status-row,
-.carenote-product .feature-grid,
-.carenote-product .metric-grid,
-.carenote-product .workflow-grid,
-.carenote-product .download-grid,
-.carenote-product .contact-grid,
-.carenote-product .story-grid,
-.carenote-product .two-column {
-  gap: 1px;
-  background: var(--cn-rule);
-  border: 1px solid var(--cn-rule);
-}
-
-.carenote-product .status-chip,
-.carenote-product .pill,
-.carenote-product .feature-card,
-.carenote-product .metric-card,
-.carenote-product .workflow-step,
-.carenote-product .section-card,
-.carenote-product .download-card,
-.carenote-product .contact-card,
-.carenote-product .quote-card {
-  border: 0;
-}
-
-.carenote-product .section.section-card {
-  border: 1px solid var(--cn-rule);
-}
-
-.carenote-product .status-chip,
-.carenote-product .pill {
-  border-radius: 0;
-  background: var(--cn-panel);
-}
-
-.carenote-product .feature-icon,
-.carenote-product .workflow-step span {
-  width: 42px;
-  height: 42px;
-  border-radius: 0;
-  background: var(--cn-ink);
-  color: #faf8f3;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.72rem;
-}
-
-.carenote-product .metric-card strong {
-  color: var(--cn-coral);
-}
-
-.carenote-product .quote-card {
-  background: var(--cn-ink);
-  color: #faf8f3;
-}
-
-.carenote-product .quote-card p {
-  color: rgba(250, 248, 243, 0.76);
-}
-
-.carenote-product .quote-card strong {
-  color: #f2a0a5;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.carenote-product .phone-stack {
-  position: relative;
-  min-height: auto;
-  display: grid;
-  gap: 1px;
-  border: 1px solid var(--cn-rule);
-  background: var(--cn-rule);
-}
-
-.carenote-product .phone-card,
-.carenote-product .phone-card.is-primary,
-.carenote-product .phone-card.is-secondary,
-.carenote-product .phone-card.is-tertiary {
-  position: relative;
-  inset: auto;
-  width: 100%;
-  padding: 20px;
-  transform: none;
-  animation: none;
-  background: var(--cn-panel);
-  border: 0;
-}
-
-.carenote-product .phone-card::before {
-  display: none;
-}
-
-.carenote-product .screen-label,
-.carenote-product .screen-chip {
-  border-radius: 0;
-  background: rgba(217, 71, 80, 0.09);
-  color: #a72d35;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.carenote-product .screen-block {
-  border-radius: 0;
-}
-
-.carenote-product .faq-list {
-  gap: 1px;
-  border: 1px solid var(--cn-rule);
-  background: var(--cn-rule);
-}
-
-.carenote-product .faq-card summary {
-  font-size: 1rem;
-}
-
-.carenote-product .faq-card summary::after {
-  content: "+";
-  float: right;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-}
-
-.carenote-product .faq-card[open] summary::after {
-  content: "−";
-}
-
-.carenote-product .faq-card[open] summary {
-  background: rgba(217, 71, 80, 0.06);
-}
-
-.carenote-product label {
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.carenote-product input,
-.carenote-product textarea {
-  border-radius: 0;
-  background: #fffdf8;
-}
-
-.carenote-product .site-footer {
-  width: min(1120px, calc(100% - 40px));
+  justify-content: space-between;
+  gap: 16px 28px;
+  width: min(1280px, calc(100% - 64px));
+  min-height: 72px;
   margin: 0 auto;
-  padding: 40px 0 36px;
 }
 
-.carenote-product .footer-grid {
-  grid-template-columns: 1.1fr 0.9fr 0.9fr;
-  gap: 36px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+.cn-product-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: -0.02em;
 }
 
-.carenote-product .footer-grid h2,
-.carenote-product .footer-grid h3 {
-  font-size: 0.72rem;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+.cn-product-nav__brand img {
+  border-radius: 7px;
 }
 
-.carenote-product .footer-links a,
-.carenote-product .site-footer a {
+.cn-product-nav__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.cn-product-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 99px;
+  color: var(--cn-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.cn-product-nav__links a:hover,
+.cn-product-nav__links a[aria-current="page"] {
+  color: var(--cn-ink);
+  background: #e8e8df;
+}
+
+.cn-product-nav__download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--cn-ink);
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.cn-product-nav__download:hover {
+  color: var(--cn-paper);
+  background: var(--cn-ink);
+}
+
+.cn-product-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  width: min(1280px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 36px 0;
+  border-top: 1px solid var(--cn-rule);
+}
+
+.cn-product-footer__brand {
+  display: grid;
+  gap: 8px;
+}
+
+.cn-product-footer__brand a {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.cn-product-footer__brand span {
+  color: var(--cn-muted);
+  font-size: 0.75rem;
+}
+
+.cn-product-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin-left: auto;
+}
+
+.cn-product-footer nav a,
+.cn-product-footer__support {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--cn-muted);
+  font-size: 0.76rem;
+}
+
+.cn-product-footer nav a:hover,
+.cn-product-footer__support:hover {
+  color: var(--cn-ink);
   text-decoration: underline;
-  text-decoration-color: rgba(12, 12, 12, 0.25);
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
 }
 
-.carenote-product .footer-meta {
-  padding: 30px 0 0;
-  font-family: var(--font-studio-mono), ui-monospace, monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 980px) {
-  .carenote-product .header-inner {
-    grid-template-columns: 1fr auto;
-    padding: 12px 0;
+@media (max-width: 900px) {
+  .cn-product-nav__inner {
+    flex-wrap: wrap;
+    padding: 14px 0;
+    gap: 8px 16px;
   }
 
-  .carenote-product .site-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
+  .cn-product-nav__links {
+    order: 3;
     width: 100%;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: none;
+    margin-left: 0;
+    gap: 4px;
   }
 
-  .carenote-product .site-nav::-webkit-scrollbar {
-    display: none;
+  .cn-product-nav__links a {
+    padding: 0 12px;
   }
 
-  .carenote-product .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .cn-product-footer nav {
+    margin-left: 0;
   }
 }
 
-@media (max-width: 760px) {
-  .carenote-product .site-shell,
-  .carenote-product .site-footer {
-    width: min(100% - 28px, 1120px);
+@media (max-width: 600px) {
+  .cn-product-nav__inner,
+  .cn-product-footer {
+    width: calc(100% - 40px);
   }
 
-  .carenote-product .carenote-backlink,
-  .carenote-product .brand-copy span {
-    display: none;
+  .cn-product-nav__links {
+    justify-content: space-between;
+    gap: 0;
   }
 
-  .carenote-product .header-inner {
-    grid-template-columns: 1fr auto;
+  .cn-product-nav__links a {
+    padding: 0 8px;
+    font-size: 0.72rem;
   }
 
-  .carenote-product .button-primary.header-cta {
-    font-size: 0.6rem;
+  .cn-product-footer {
+    padding: 28px 0;
+    gap: 16px;
   }
+}
 
-  .carenote-product .hero-panel {
-    padding: 42px 0 48px;
-  }
-
-  .carenote-product .hero-panel,
-  .carenote-product .section-card,
-  .carenote-product .download-card,
-  .carenote-product .contact-card,
-  .carenote-product .quote-card {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .carenote-product .hero-panel {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .carenote-product .status-row,
-  .carenote-product .feature-grid,
-  .carenote-product .metric-grid,
-  .carenote-product .workflow-grid,
-  .carenote-product .download-grid,
-  .carenote-product .contact-grid,
-  .carenote-product .story-grid,
-  .carenote-product .two-column,
-  .carenote-product .field-grid,
-  .carenote-product .footer-grid {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .cn-product-nav a,
+  .cn-product-footer a {
+    transition: none;
   }
 }

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function CareNotePrivacyPage() {
   return (
-    <main className="page-main">
+    <main id="main" className="page-main">
       <div className="site-shell">
         <section className="hero-panel">
           <span className="eyebrow">Privacy Policy</span>

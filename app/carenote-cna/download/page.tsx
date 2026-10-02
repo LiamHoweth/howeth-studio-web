@@ -18,7 +18,7 @@ export default function CareNoteDownloadPage() {
     "button button-primary" + (careNoteConfig.appStoreUrl ? "" : " is-disabled");
 
   return (
-    <main className="page-main">
+    <main id="main" className="page-main">
       <div className="site-shell">
         <section className="hero-panel">
           <span className="eyebrow">Download</span>

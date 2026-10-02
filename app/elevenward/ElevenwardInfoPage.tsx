@@ -32,7 +32,7 @@ export function ElevenwardInfoPage({ locale, kind }: { locale: ElevenwardLocale;
   return (
     <div className="ew-root" lang={elevenwardLanguageTag(locale)}>
       <a className="ew-skip" href="#ew-main">{ui.skip}</a>
-      <ElevenwardNav locale={locale} />
+      <ElevenwardNav locale={locale} active={kind === "support" ? "support" : undefined} />
       <main className="ew-info" id="ew-main">
         <div className="ew-info__breadcrumbs">
           <Link href={elevenwardRoute(locale)}>Elevenward</Link>

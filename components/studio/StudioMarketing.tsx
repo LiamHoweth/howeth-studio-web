@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { howethStudioConfig } from "@/lib/siteConfig";
+import { ProductCollection } from "./ProductCollection";
 
 type StudioPageIntroProps = {
   index: string;
@@ -8,25 +9,14 @@ type StudioPageIntroProps = {
   description: string;
 };
 
-export function StudioPageIntro({
-  index,
-  eyebrow,
-  title,
-  description,
-}: StudioPageIntroProps) {
+export function StudioPageIntro({ index, eyebrow, title, description }: StudioPageIntroProps) {
   return (
     <section className="studio-page-intro" aria-labelledby="studio-page-title">
-      <div className="studio-page-intro__rail studio-mono" aria-hidden="true">
-        <span>{index}</span>
-        <span># {eyebrow}</span>
+      <div className="studio-page-intro__rail studio-mono">
+        <span>{index}</span><span>{eyebrow}</span>
       </div>
-      <div className="studio-page-intro__body">
-        <p className="studio-mono studio-page-intro__eyebrow">{eyebrow}</p>
-        <h1 id="studio-page-title" className="studio-page-intro__title">
-          {title}
-        </h1>
-        <p className="studio-page-intro__copy">{description}</p>
-      </div>
+      <h1 id="studio-page-title">{title}</h1>
+      <p>{description}</p>
     </section>
   );
 }
@@ -35,121 +25,13 @@ export function StudioWorkSection() {
   return (
     <section className="studio-work" aria-labelledby="work-heading">
       <div className="studio-work__head">
-        <h2 id="work-heading" className="studio-work__title">
-          Work
-        </h2>
-        <p className="studio-mono studio-work__subtitle">
-          Shipped products &amp; ongoing surfaces
-        </p>
+        <div>
+          <p className="studio-mono studio-section-label">01 / The collection</p>
+          <h2 id="work-heading">Find your next favorite.</h2>
+        </div>
+        <p>Seven products. Plenty of possibilities.<br />Explore what’s live and what’s taking shape.</p>
       </div>
-
-      <ol className="studio-work__list">
-        <li className="studio-piece studio-piece--carenote">
-          <span className="studio-mono studio-piece__index">01</span>
-          <div className="studio-piece__body">
-            <p className="studio-mono studio-piece__kind">Product · Caregiving</p>
-            <h3 className="studio-piece__name">CareNote CNA</h3>
-            <p className="studio-piece__copy">
-              iPhone app for CNAs: structured shift charting, optional voice capture, and a
-              review step before notes are saved — built for speed on the floor and clarity
-              for supervisors.
-            </p>
-            <ul className="studio-piece__bullets studio-mono">
-              <li>Native SwiftUI client</li>
-              <li>Offline-first workflows</li>
-              <li>Privacy-conscious capture</li>
-            </ul>
-            <div className="studio-piece__actions">
-              <Link className="studio-cta" href="/carenote-cna/">
-                View product site
-              </Link>
-              <Link className="studio-cta studio-cta--quiet" href="/carenote-cna/download/">
-                Download
-              </Link>
-            </div>
-          </div>
-        </li>
-
-        <li className="studio-piece studio-piece--football">
-          <span className="studio-mono studio-piece__index">02</span>
-          <div className="studio-piece__body">
-            <p className="studio-mono studio-piece__kind">Product · Simulation</p>
-            <h3 className="studio-piece__name">Football Era</h3>
-            <p className="studio-piece__copy">
-              Career football simulation on iPhone — seasons, slots, and long-term
-              progression with a broadcast-inspired presentation layer over solid game
-              systems.
-            </p>
-            <ul className="studio-piece__bullets studio-mono">
-              <li>Gameplay + narrative beats</li>
-              <li>Performance-minded UI</li>
-              <li>Iterative live ops</li>
-            </ul>
-            <div className="studio-piece__actions">
-              <Link className="studio-cta studio-cta--on-dark" href="/football-era/">
-                View product site
-              </Link>
-              <Link className="studio-cta studio-cta--ghost" href="/football-era/">
-                Features
-              </Link>
-            </div>
-          </div>
-        </li>
-
-        <li className="studio-piece studio-piece--elevenward">
-          <span className="studio-mono studio-piece__index">03</span>
-          <div className="studio-piece__body">
-            <p className="studio-mono studio-piece__kind">Product · Games</p>
-            <h3 className="studio-piece__name">Elevenward</h3>
-            <p className="studio-piece__copy">
-              A portrait-first football career and life RPG for iOS and Android —
-              following one player from academy hopeful to retirement across an original,
-              living football world.
-            </p>
-            <ul className="studio-piece__bullets studio-mono">
-              <li>iOS + Android</li>
-              <li>Offline-first careers</li>
-              <li>No ads or pay-to-win</li>
-            </ul>
-            <div className="studio-piece__actions">
-              <Link
-                className="studio-cta studio-cta--on-dark"
-                href={howethStudioConfig.elevenwardSiteUrl}
-              >
-                Visit Elevenward
-              </Link>
-              <a
-                className="studio-cta studio-cta--ghost"
-                href={`mailto:${howethStudioConfig.contactEmail}?subject=Elevenward%20early%20access`}
-              >
-                Join early access
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li className="studio-piece studio-piece--noctara">
-          <span className="studio-mono studio-piece__index">04</span>
-          <div className="studio-piece__body">
-            <p className="studio-mono studio-piece__kind">Product · Wellness</p>
-            <h3 className="studio-piece__name">Noctara</h3>
-            <p className="studio-piece__copy">
-              An iPhone sleep and recovery app that turns supported Apple Health data
-              into clear context for today, patterns over time, and a plan for tonight.
-            </p>
-            <ul className="studio-piece__bullets studio-mono">
-              <li>Sleep and recovery context</li>
-              <li>Estimated energy forecast</li>
-              <li>Optional account sync</li>
-            </ul>
-            <div className="studio-piece__actions">
-              <Link className="studio-cta studio-cta--on-dark" href="/noctara/">
-                Explore Noctara
-              </Link>
-            </div>
-          </div>
-        </li>
-      </ol>
+      <ProductCollection />
     </section>
   );
 }
@@ -158,55 +40,35 @@ export function StudioAboutSection() {
   return (
     <section className="studio-about" aria-labelledby="about-heading">
       <div className="studio-about__grid">
-        <h2 id="about-heading" className="studio-about__title">
-          About
-        </h2>
-        <div className="studio-about__copy">
-          <p>
-            The studio is intentionally small: one accountable thread from problem framing
-            through implementation, QA, and release. That shows up as opinionated product
-            choices, tight scope, and software you can evolve — not a slide deck of
-            promises.
-          </p>
-          <p>
-            Mobile is a specialty, not the whole story. Expect serious attention to data
-            flow, sync, accessibility, and the seams where clients meet APIs and
-            third-party platforms.
-          </p>
+        <div>
+          <p className="studio-mono studio-section-label">02 / Behind the work</p>
+          <h2 id="about-heading">Small on purpose.<br /><em>Curious by nature.</em></h2>
         </div>
+        <div className="studio-about__copy">
+          <p>Howeth Studio is an independent software studio with a soft spot for thoughtful mobile apps and games you can get lost in.</p>
+          <p>From a better night’s sleep to a career-defining season, each product starts with a simple idea: make something worth coming back to.</p>
+          <Link className="studio-text-link" href="/contact/">Let’s talk <span aria-hidden="true">↗</span></Link>
+        </div>
+      </div>
+      <div className="studio-values studio-mono">
+        <span>Thoughtful by default</span><span>Built for the long run</span><span>Always a little curious</span>
       </div>
     </section>
   );
 }
 
-type StudioSiteFooterProps = { year: number };
-
-export function StudioSiteFooter({ year }: StudioSiteFooterProps) {
+export function StudioSiteFooter({ year }: { year: number }) {
   return (
     <footer id="contact" className="studio-footer">
-      <div className="studio-footer__row studio-mono">
-        <span>Howeth Studio</span>
-        <span className="studio-footer__dot" aria-hidden="true">
-          ·
-        </span>
-        <span>Independent software practice</span>
-        <span className="studio-footer__dot" aria-hidden="true">
-          ·
-        </span>
-        <span>© {year}</span>
-        <Link className="studio-footer__secret" href="/for-ameliante/" aria-label="A little secret">
-          ♡
-        </Link>
+      <div className="studio-footer__invitation">
+        <p className="studio-mono">Have something in mind?</p>
+        <Link href="/contact/">Good things start<br />with a <em>conversation.</em><span aria-hidden="true">↗</span></Link>
       </div>
-      <p className="studio-footer__contact">
-        <span className="studio-mono studio-footer__label">Contact</span>
-        <a className="studio-cta" href={`mailto:${howethStudioConfig.contactEmail}`}>
-          {howethStudioConfig.contactEmail}
-        </a>
-        <Link className="studio-cta studio-cta--quiet" href="/carenote-cna/contact/">
-          CareNote support form
-        </Link>
-      </p>
+      <div className="studio-footer__bottom">
+        <Link className="studio-footer__wordmark" href="/">Howeth<span>Studio</span></Link>
+        <a href={`mailto:${howethStudioConfig.contactEmail}`}>{howethStudioConfig.contactEmail}</a>
+        <div className="studio-mono"><span>Independent apps &amp; games</span><span>© {year} Howeth Studio <Link className="studio-footer__secret" href="/for-ameliante/" aria-label="A little secret">♡</Link></span></div>
+      </div>
     </footer>
   );
 }

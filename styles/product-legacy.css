@@ -1,0 +1,319 @@
+/* Shared visual language for existing product support, policy, and detail routes. */
+body:has(.carenote-product)::before,
+body:has(.carenote-product)::after,
+body:has(.fe-page-root)::before,
+body:has(.fe-page-root)::after {
+  display: none;
+}
+
+:is(.carenote-product, .fe-page-root) {
+  --legacy-paper: #f5f3ee;
+  --legacy-panel: #faf9f5;
+  --legacy-ink: #17211f;
+  --legacy-muted: #5c6861;
+  --legacy-rule: #d9ddd5;
+  --legacy-accent: #e5eadf;
+}
+
+/* Legacy detail, privacy, and support content retains its existing semantics. */
+:is(.carenote-product, .fe-page-root) .page-main {
+  padding: 0 0 72px;
+}
+
+:is(.carenote-product, .fe-page-root) .site-shell {
+  width: min(1320px, calc(100% - 80px));
+}
+
+:is(.carenote-product, .fe-page-root) .hero-panel {
+  padding: 72px 0 64px;
+  border: 0;
+  border-bottom: 1px solid var(--legacy-rule);
+  border-radius: 0;
+  color: var(--legacy-ink);
+  background: transparent;
+  box-shadow: none;
+}
+
+:is(.carenote-product, .fe-page-root) .hero-panel h1 {
+  max-width: 19ch;
+  margin: 20px 0 24px;
+  font-size: clamp(2.7rem, 5.6vw, 5.4rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.065em;
+}
+
+:is(.carenote-product, .fe-page-root) .eyebrow {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--legacy-muted);
+  background: none;
+  font-family: var(--font-studio-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(.carenote-product, .fe-page-root) .eyebrow::before {
+  display: none;
+}
+
+:is(.carenote-product, .fe-page-root) .hero-copy {
+  max-width: 65ch;
+  margin-bottom: 0;
+  color: var(--legacy-muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.75;
+}
+
+:is(.carenote-product, .fe-page-root) .section {
+  margin-top: 36px;
+}
+
+:is(.carenote-product, .fe-page-root) :is(.section-card, .feature-card, .workflow-step, .metric-card, .download-card, .contact-card, .quote-card, .section-aside) {
+  padding: 30px;
+  border: 1px solid var(--legacy-rule);
+  border-radius: 20px;
+  color: var(--legacy-ink);
+  background: var(--legacy-panel);
+  box-shadow: none;
+}
+
+:is(.carenote-product, .fe-page-root) :is(.section-card, .download-card, .contact-card) h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+:is(.carenote-product, .fe-page-root) :is(.feature-grid, .metric-grid, .workflow-grid, .two-column, .story-grid, .field-grid) {
+  display: grid;
+  gap: 18px;
+}
+
+:is(.carenote-product, .fe-page-root) .feature-grid,
+:is(.carenote-product, .fe-page-root) .workflow-grid {
+  margin-top: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+:is(.carenote-product, .fe-page-root) :is(.feature-card, .metric-card, .workflow-step) h3 {
+  margin: 20px 0 12px;
+  font-size: 1.15rem;
+  letter-spacing: -0.035em;
+}
+
+:is(.carenote-product, .fe-page-root) :is(.feature-icon, .workflow-step > span) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--legacy-ink);
+  background: var(--legacy-accent);
+  font-family: var(--font-studio-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+:is(.carenote-product, .fe-page-root) .metric-card strong {
+  color: var(--legacy-ink);
+  font-size: 2rem;
+}
+
+:is(.carenote-product, .fe-page-root) :is(.section-card, .feature-card, .workflow-step, .metric-card, .download-card, .contact-card) p,
+:is(.carenote-product, .fe-page-root) .check-list,
+:is(.carenote-product, .fe-page-root) .lede {
+  color: var(--legacy-muted);
+  line-height: 1.75;
+}
+
+:is(.carenote-product, .fe-page-root) .check-list li::marker {
+  color: var(--legacy-ink);
+}
+
+:is(.carenote-product, .fe-page-root) .quote-card {
+  background: #e7e9df;
+}
+
+:is(.carenote-product, .fe-page-root) .quote-card p {
+  margin-bottom: 0;
+  color: var(--legacy-ink);
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+
+:is(.carenote-product, .fe-page-root) .quote-card strong {
+  color: var(--legacy-muted);
+  font-family: var(--font-studio-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(.carenote-product, .fe-page-root) .button {
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--legacy-ink);
+  border-radius: 99px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+:is(.carenote-product, .fe-page-root) .button-primary {
+  color: var(--legacy-paper);
+  background: var(--legacy-ink);
+}
+
+:is(.carenote-product, .fe-page-root) :is(.button-secondary, .button-ghost) {
+  color: var(--legacy-ink);
+  background: transparent;
+}
+
+:is(.carenote-product, .fe-page-root) .button:hover {
+  transform: none;
+  box-shadow: none;
+  color: var(--legacy-ink);
+  background: var(--legacy-accent);
+}
+
+:is(.carenote-product, .fe-page-root) .faq-list {
+  gap: 12px;
+  margin-top: 28px;
+}
+
+:is(.carenote-product, .fe-page-root) .faq-card {
+  border: 1px solid var(--legacy-rule);
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: none;
+}
+
+:is(.carenote-product, .fe-page-root) .faq-card summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+:is(.carenote-product, .fe-page-root) .faq-card summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-family: var(--font-studio-mono), ui-monospace, monospace;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+:is(.carenote-product, .fe-page-root) .faq-card[open] summary {
+  background: #e7e9df;
+}
+
+:is(.carenote-product, .fe-page-root) .faq-card[open] summary::after {
+  content: "−";
+}
+
+:is(.carenote-product, .fe-page-root) .faq-answer {
+  padding-top: 18px;
+  color: var(--legacy-muted);
+}
+
+:is(.carenote-product, .fe-page-root) .contact-form {
+  gap: 22px;
+}
+
+:is(.carenote-product, .fe-page-root) .contact-form label {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+:is(.carenote-product, .fe-page-root) .contact-form :is(input, textarea) {
+  padding: 15px 16px;
+  border: 1px solid var(--legacy-rule);
+  border-radius: 10px;
+  color: var(--legacy-ink);
+  background: #fffefa;
+  font-size: 1rem;
+}
+
+:is(.carenote-product, .fe-page-root) .contact-form :is(input, textarea):focus {
+  outline: 2px solid var(--legacy-ink);
+  outline-offset: 2px;
+  border-color: var(--legacy-ink);
+}
+
+:is(.carenote-product, .fe-page-root) .section-card a:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  :is(.carenote-product, .fe-page-root) .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  :is(.carenote-product, .fe-page-root) .site-shell {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 600px) {
+  :is(.carenote-product, .fe-page-root) .hero-panel {
+    padding: 44px 0;
+  }
+
+  :is(.carenote-product, .fe-page-root) .hero-panel h1 {
+    font-size: clamp(2.3rem, 10vw, 3.5rem);
+  }
+
+  :is(.carenote-product, .fe-page-root) .section {
+    margin-top: 22px;
+  }
+
+  :is(.carenote-product, .fe-page-root) :is(.section-card, .feature-card, .workflow-step, .metric-card, .download-card, .contact-card, .quote-card, .section-aside) {
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  :is(.carenote-product, .fe-page-root) :is(.feature-grid, .metric-grid, .workflow-grid, .two-column, .story-grid, .field-grid) {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  :is(.carenote-product, .fe-page-root) .hero-actions,
+  :is(.carenote-product, .fe-page-root) .download-actions {
+    align-items: stretch;
+  }
+
+  :is(.carenote-product, .fe-page-root) .button {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  :is(.carenote-product, .fe-page-root) .site-shell {
+    width: calc(100% - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.carenote-product, .fe-page-root) a {
+    transition: none;
+  }
+}
