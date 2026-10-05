@@ -25,7 +25,11 @@ const studioRoutes = [
   "/football-era/privacy",
   "/football-era/account-deletion",
   "/basketball-era",
+  "/basketball-era/support",
+  "/basketball-era/privacy",
   "/baseball-era",
+  "/baseball-era/support",
+  "/baseball-era/privacy",
   "/sprout-to-stars",
 ] as const;
 

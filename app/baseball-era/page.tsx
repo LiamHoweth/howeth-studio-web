@@ -4,8 +4,14 @@ import { ProductPage } from "@/components/studio/ProductPage";
 export const metadata: Metadata = {
   title: "Baseball Era",
   description:
-    "An offline baseball career game in development. Build a hitter or pitcher, rise through fictional leagues, and make your mark across a complete career.",
+    "Build a hitter or pitcher, earn your call-up, and chase the record books. An offline baseball career from the fictional minors to the majors.",
   alternates: { canonical: "/baseball-era/" },
+  openGraph: {
+    title: "Baseball Era — Earn your call-up. Write your legacy.",
+    description: "Create a ballplayer and build an offline baseball career from the fictional minors to the majors.",
+    url: "/baseball-era/",
+    images: [{ url: "/portfolio/baseball-icon.webp", width: 512, height: 512, alt: "Baseball Era app icon" }],
+  },
 };
 
 export default function BaseballEraPage() {
@@ -13,38 +19,45 @@ export default function BaseballEraPage() {
     <ProductPage
       slug="baseball-era"
       eyebrow="Baseball career simulation"
-      headline="From your first at-bat to your last great season."
-      description="Create a hitter or pitcher and work your way from rookie ball toward the majors. Baseball Era turns the long baseball season into a personal career of development, decisions, and moments at the plate."
+      headline="Earn your call-up. Write your legacy."
+      description="Step into the box. Take the mound. Create a ballplayer and turn rookie promise into a career in the majors, one pitch, one decision, and one season at a time."
       features={[
         {
           title: "Play your position",
           description:
-            "Choose from eleven player roles and build around a hitter or pitcher archetype. Develop your tools through training, skill points, and the experience you earn in games.",
+            "Create a hitter, starting pitcher, or reliever across eleven player roles. Pick your portrait and archetype, develop your tools, and build the ballplayer you want to become.",
         },
         {
           title: "Make the next pitch count",
           description:
-            "Choose your approach as seeded games unfold through hits, walks, strikeouts, steals, and extra innings. Pitching fatigue, health, and your attributes influence what happens.",
+            "Choose your approach as games unfold through hits, walks, strikeouts, steals, and extra innings. Your training, attributes, fatigue, and health help shape the next moment.",
         },
         {
           title: "Earn your way up",
           description:
-            "Follow fictional rookie, Triple-A, and major leagues through schedules, standings, and playoff series. Chase promotions, review contracts, and track your season goals and career records.",
+            "Rise from the Rookie Circuit through Triple-A to the Majors. Follow full schedules and playoff series, negotiate contracts, request a trade, and chase milestones across your career.",
+        },
+        {
+          title: "The game travels with you",
+          description:
+            "Keep two independent careers for free and play offline whenever you have a moment. No account, ads, or subscription is needed for the journey from the minors to the record books.",
         },
       ]}
       detail={{
-        title: "A career that keeps its history.",
+        title: "More than a season. A baseball life.",
         paragraphs: [
-          "Watch your player develop across seasons, compare completed years, and build a career story from your results. Offseason choices, earned-money Life shops, and retirement give the journey a life beyond a single game.",
-          "Baseball Era is an offline game in development, with fictional clubs and its own baseball simulation. It is not yet available as a public App Store release.",
+          "Watch your player grow across seasons, set goals, collect milestones, and compare the years that shaped your career. Offseason choices, a Life collection, and retirement give your baseball story a life beyond the next box score.",
+          "The complete offline career needs no purchase. Optional permanent gamepasses offer reward boosts and extra career slots. Life shops spend fictional cash earned in your career; App Store purchases are offered separately in the Baseball Era Shop.",
+          "Baseball Era is being prepared for its public release. Clubs, players, and league content are fictional, and game results are simulated. Public release details will appear here when they are available.",
         ],
       }}
       links={[
         { label: "Explore the experience", href: "#features" },
-        { label: "Explore Football Era", href: "/football-era/" },
+        { label: "Get support", href: "/baseball-era/support/" },
+        { label: "Privacy policy", href: "/baseball-era/privacy/" },
         { label: "Explore Basketball Era", href: "/basketball-era/" },
       ]}
-      note="In development for iPhone and iPad."
+      note="Coming to iPhone and iPad. Careers stay on your device. Optional App Store purchases and restoration require an internet connection."
     />
   );
 }

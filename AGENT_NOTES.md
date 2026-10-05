@@ -1,5 +1,23 @@
 # Current project notes
 
+- October 4, 2026: Basketball Era and Baseball Era each have public marketing,
+  `/support/`, and `/privacy/` routes. Product pages retain pre-release availability
+  until the Apple listings are public. Do not invent App Store download links.
+  Both games use device-local careers without accounts, cloud saves, ads, or gameplay
+  telemetry. Their optional permanent RevenueCat passes collect anonymous purchase
+  identifiers/history and verification data for functionality and purchase analytics.
+  Policies include voluntary support correspondence and local backup/deletion limits.
+- These app resources reuse `ProductInfoPage`, studio chrome, and scoped product
+  styles. Keep policy wording synchronized with final app SDK/service behavior.
+- October 4 validation: clean npm ci, lint, production build, and diff checks pass;
+  static export has 49 HTML pages, 44 sitemap URLs, and no broken internal links/assets.
+  Six Era routes pass 24 browser route/viewport cases, six 200% text checks,
+  two keyboard FAQ and two privacy navigation checks. Production-only npm audit has
+  zero vulnerabilities. Full audit reports the unpatched development-only braces
+  CVE-2026-93687 through Next ESLint/fast-glob/micromatch (five propagated high findings).
+  Do not apply npm's proposed Next lint downgrade; trusted repository lint patterns
+  are the only inputs and the package is absent from the static serving runtime.
+
 - The public portfolio has seven products. `lib/products.ts` is the shared source
   for home/Work/product artwork; all five Codex Games projects are included.
 - Shared visual system: warm paper, ink, cobalt; `StudioSiteHeader` / `StudioSiteFooter`

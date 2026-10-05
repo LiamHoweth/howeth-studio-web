@@ -4,8 +4,14 @@ import { ProductPage } from "@/components/studio/ProductPage";
 export const metadata: Metadata = {
   title: "Basketball Era",
   description:
-    "An offline basketball career game in development. Create your player, grow your skills, and follow a fictional league through seasons and playoffs.",
+    "Create your player, earn your minutes, and build a basketball legacy. An offline career through a fictional 30-team league, full seasons, and playoff runs.",
   alternates: { canonical: "/basketball-era/" },
+  openGraph: {
+    title: "Basketball Era — Your minutes. Your moment. Your legacy.",
+    description: "Create your player, earn your minutes, and build an offline career in a fictional basketball world.",
+    url: "/basketball-era/",
+    images: [{ url: "/portfolio/basketball-icon.webp", width: 512, height: 512, alt: "Basketball Era app icon" }],
+  },
 };
 
 export default function BasketballEraPage() {
@@ -13,38 +19,45 @@ export default function BasketballEraPage() {
     <ProductPage
       slug="basketball-era"
       eyebrow="Basketball career simulation"
-      headline="Find your game. Build your legacy."
-      description="Create a rookie, earn your place in the rotation, and shape a career through the choices you make on and off the court. Basketball Era brings a fictional basketball world to iPhone and iPad."
+      headline="Your minutes. Your moment. Your legacy."
+      description="Start with a rookie and a dream. Earn the rotation, find your game, and chase a title through a career shaped by your choices. A whole fictional basketball world, ready for your story."
       features={[
         {
           title: "A player of your own",
           description:
-            "Choose a position, an archetype, and a portrait. Develop your attributes, follow your coach's trust, and see how your build changes your opportunities on the court.",
+            "Build around five positions and twenty archetypes. Choose your look, develop your attributes, and earn your coach's trust as your role on the court grows.",
         },
         {
           title: "Every season has a story",
           description:
-            "Follow a 30-team league through an 82-game regular season, standings, play-in games, and playoff series. Game results build your statistics, records, and career history.",
+            "Take on a fictional 30-team league across 82-game seasons, play-in games, and playoff series. Make key-game choices, follow the standings, and turn your results into a career worth remembering.",
         },
         {
           title: "Life beyond the scoreboard",
           description:
-            "Review contract offers, make training choices, and spend earned game cash on your Life collection. Keep playing across seasons and look back on your career at retirement.",
+            "Train with purpose, weigh contract offers, and decide when it is time for a new team. Spend earned game cash on your Life collection, then look back on the seasons that made your name.",
+        },
+        {
+          title: "A career on your schedule",
+          description:
+            "Play offline, pick up where you left off, and keep separate careers in two free slots. No account, ads, or subscription stands between you and the next game.",
         },
       ]}
       detail={{
-        title: "The next chapter of Era.",
+        title: "The season ends. Your story keeps going.",
         paragraphs: [
-          "Basketball Era is built around a complete local career loop: prepare for a game, make a basketball choice, review the result, and decide what comes next. Your progress stays available between sessions.",
-          "The game is in development. The current version includes fictional teams and players, player development, league progression, and career records. Public release details will appear here when they are available.",
+          "Prepare for the next matchup, choose your approach, and see what your player makes of the moment. Progress through full seasons, offseason decisions, records, and retirement. Every career has its own player, league history, and Life collection.",
+          "The full offline career needs no purchase. Optional permanent gamepasses add reward boosts and extra career slots. Life shops use fictional cash earned in the game; App Store purchases live in the separate Basketball Era Shop.",
+          "Basketball Era is being prepared for its public release. All teams and league content are fictional. Release details will appear here when they are available.",
         ],
       }}
       links={[
         { label: "Explore the experience", href: "#features" },
-        { label: "Explore Football Era", href: "/football-era/" },
+        { label: "Get support", href: "/basketball-era/support/" },
+        { label: "Privacy policy", href: "/basketball-era/privacy/" },
         { label: "Explore Baseball Era", href: "/baseball-era/" },
       ]}
-      note="In development for iPhone and iPad."
+      note="Coming to iPhone and iPad. Careers stay on your device. Optional App Store purchases and restoration require an internet connection."
     />
   );
 }
