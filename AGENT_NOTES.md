@@ -13,10 +13,15 @@
   static export has 49 HTML pages, 44 sitemap URLs, and no broken internal links/assets.
   Six Era routes pass 24 browser route/viewport cases, six 200% text checks,
   two keyboard FAQ and two privacy navigation checks. Production-only npm audit has
-  zero vulnerabilities. Full audit reports the unpatched development-only braces
-  CVE-2026-93687 through Next ESLint/fast-glob/micromatch (five propagated high findings).
-  Do not apply npm's proposed Next lint downgrade; trusted repository lint patterns
-  are the only inputs and the package is absent from the static serving runtime.
+  zero vulnerabilities. The original braces recursion exploit was reproduced and
+  is now locally mitigated by exact-source guards in the parser and three walkers.
+  Clean install verifies 28 exploit/compatibility checks; the mandatory build gate
+  adds 23 negative/compatibility gate checks and captures fresh, unaltered npm audit
+  JSON with its actual exit status. The raw full audit still reports development-only
+  braces CVE-2026-93687 through Next ESLint/fast-glob/micromatch (five propagated high
+  findings). CI retains that evidence and rejects new/unmitigated findings. See
+  `docs/security-mitigations-20261004.md`; no package version/integrity changes or
+  unsupported Next downgrade were made. The static serving runtime is unaffected.
 
 - The public portfolio has seven products. `lib/products.ts` is the shared source
   for home/Work/product artwork; all five Codex Games projects are included.

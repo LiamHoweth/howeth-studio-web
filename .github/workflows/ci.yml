@@ -20,4 +20,15 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-      - run: npm audit --audit-level=high
+      # The build command requires exact mitigation bytes/behavior and records the full,
+      # unmodified npm audit report and its original exit status.
+      - name: Verify runtime dependencies
+        run: npm audit --omit=dev --audit-level=high
+      - name: Preserve raw dependency audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-evidence
+          path: .build/security/npm-audit-*
+          if-no-files-found: error
+          include-hidden-files: true

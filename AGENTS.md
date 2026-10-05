@@ -19,9 +19,19 @@ Run before committing:
 ```bash
 npm ci
 npm run lint
+npm run validate:security
 npm run build
 npm audit --audit-level=high
+npm audit --omit=dev --audit-level=high
 ```
+
+The build command requires the live security gate even when npm lifecycle hooks
+are skipped. The gate verifies the exact local braces mitigation, exploit and
+compatibility checks, then retains unaltered npm audit JSON and its exit status.
+The raw full audit still lists the upstream unpatched advisory; only its exact
+reviewed finding with verified installed mitigation can pass the gate. New or
+changed findings fail. See `docs/security-mitigations-20261004.md`. Do not silence
+the raw audit, spoof dependency versions, or apply the proposed Next downgrade.
 
 ## Important boundaries
 

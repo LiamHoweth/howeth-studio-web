@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run validate:security && next build",
     "start": "serve out -l $PORT --no-clipboard",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "node scripts/security-patches.cjs --apply && node scripts/security-regressions.cjs",
+    "validate:security": "node scripts/security-gate-tests.cjs && node scripts/security-audit.cjs"
   },
   "dependencies": {
     "next": "^16.3.2",
