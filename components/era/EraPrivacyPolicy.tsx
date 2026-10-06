@@ -9,7 +9,7 @@ export function EraPrivacyPolicy({ slug }: { slug: "basketball-era" | "baseball-
       slug={slug}
       label="Privacy"
       title={`${name} privacy policy`}
-      description={`Effective October 4, 2026. This policy explains how Howeth Studio handles information when you play ${name}, use optional permanent purchases, or contact support.`}
+      description={`Effective October 5, 2026. This policy explains how Howeth Studio handles information when you play ${name}, use optional permanent purchases, or contact support.`}
     >
       <section>
         <h2>Your career stays on your device</h2>
@@ -19,7 +19,7 @@ export function EraPrivacyPolicy({ slug }: { slug: "basketball-era" | "baseball-
       <section>
         <h2>Optional purchases</h2>
         <p>The separate {name} Shop offers optional permanent gamepasses through Apple In-App Purchase. Apple processes payment; Howeth Studio does not receive your payment-card information. Prices are shown in the app for your storefront before you confirm a purchase.</p>
-        <p>RevenueCat verifies purchase history and access, and helps restore permanent purchases. When the purchase service is configured, it receives an anonymous app customer identifier, purchase and transaction records, and technical information needed for verification, such as device type and operating system. Automatic device-identifier collection is disabled. We do not send your player name, career saves, or game results to RevenueCat.</p>
+        <p>RevenueCat verifies purchase history and access, and helps restore permanent purchases. When the purchase service is configured, it receives an anonymous app customer identifier, purchase and transaction records, and technical information, such as device type, operating system, and current iOS permission status for app tracking. Purchase and subscriber requests also send an app-vendor device identifier (IDFV) to RevenueCat when available. We do not send your player name, career saves, or game results to RevenueCat.</p>
         <p>Purchase information is used for app functionality, verification, and restoration, and for the RevenueCat purchase dashboard and revenue analytics. It is not used for advertising or cross-app tracking. Apple and RevenueCat may retain transaction information under their own policies and applicable requirements. Read <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a> and <a href="https://www.revenuecat.com/privacy">RevenueCat’s privacy policy</a> for their information practices.</p>
         <p>Life shops spend fictional money earned in your career. They do not charge real money. Restore Purchases restores gamepasses, not your local career saves.</p>
       </section>
