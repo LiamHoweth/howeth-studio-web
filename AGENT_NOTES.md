@@ -1,5 +1,25 @@
 # Current project notes
 
+- October 5, 2026: Elevenward’s public App Store listing was verified at
+  `https://apps.apple.com/us/app/elevenward/id6809308325`; Android remains in
+  development. Its website and studio catalogue now reflect that availability.
+  The 520-club / 52-league / 48-country / 48-national-team world and exact
+  1.5× / 2× / 3× pass benefits are explicitly labeled as upcoming version 1.1
+  until that app update is approved and publicly released.
+- Elevenward press downloads use the app’s graphite `11` icon. Keep the PNG
+  byte-identical to the authoritative app icon; legacy SVG URLs embed that
+  same image for compatibility. The site’s portfolio icon already used `11`.
+- Localized Elevenward documents get their server-rendered `html lang` tags
+  from `scripts/elevenward-document-language.cjs` after static export. The
+  shared `DocumentLanguage` component also handles language changes during
+  client navigation. English studio chrome has an explicit English wrapper.
+  If localized routes change, update the export script’s document-count guard.
+- Privacy copy distinguishes new-account public-board defaults from existing
+  private accounts, separate bilateral friend-comparison consent, account-linked
+  analytics and purchases, reviewed feedback, voluntary cards, local review
+  prompt history, and verified content checks that do not upload careers.
+  It makes no unverified operational retention or provider-manifest attestations.
+
 - October 4, 2026: Basketball Era and Baseball Era each have public marketing,
   `/support/`, and `/privacy/` routes. Product pages retain pre-release availability
   until the Apple listings are public. Do not invent App Store download links.

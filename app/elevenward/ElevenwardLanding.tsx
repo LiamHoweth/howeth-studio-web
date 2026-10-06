@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ProductArtwork } from "@/components/studio/ProductArtwork";
 import { getProduct } from "@/lib/products";
+import { elevenwardConfig } from "@/lib/siteConfig";
 import { ElevenwardFooter, ElevenwardNav, LanguageNav } from "./ElevenwardChrome";
 import {
   elevenwardCopy,
@@ -29,9 +30,10 @@ export function ElevenwardLanding({ locale }: { locale: ElevenwardLocale }) {
             <h1 id="ew-title">{copy.title}</h1>
             <p className="ew-hero__intro">{copy.intro}</p>
             <div className="ew-actions">
-              <a href="#career">{copy.primaryAction}<span aria-hidden="true">↓</span></a>
-              <a className="ew-action--quiet" href="mailto:howethstudio@gmail.com?subject=Elevenward%20launch">{copy.secondaryAction}</a>
+              <a href={elevenwardConfig.appStoreUrl}>{copy.appStoreAction}<span aria-hidden="true">↗</span></a>
+              <Link className="ew-action--quiet" href={locale === "en" ? "/elevenward/support/" : `/elevenward/${locale}/support/`}>{copy.secondaryAction}</Link>
             </div>
+            <p className="ew-update-notice">{copy.updateNotice}</p>
             <LanguageNav active={locale} />
           </div>
           <div className="ew-hero__art" lang="en">
@@ -94,6 +96,21 @@ export function ElevenwardLanding({ locale }: { locale: ElevenwardLocale }) {
             <Link href={privacyRoute}>{ui.privacyAction}<span aria-hidden="true">→</span></Link>
           </div>
           <ul>{ui.fairPoints.map((point) => <li key={point}><span aria-hidden="true">✓</span>{point}</li>)}</ul>
+        </section>
+
+        <section className="ew-career ew-purchases" aria-labelledby="ew-purchase-title">
+          <div className="ew-section-heading">
+            <h2 id="ew-purchase-title">{copy.purchaseTitle}</h2>
+          </div>
+          <div className="ew-pillars">
+            {copy.purchases.map(([title, body], index) => (
+              <article key={title}>
+                <span>0{index + 1}</span>
+                <div><h3>{title}</h3><p>{body}</p></div>
+              </article>
+            ))}
+          </div>
+          <p className="ew-purchase-note">{copy.purchaseNote}</p>
         </section>
       </main>
       <ElevenwardFooter locale={locale} />

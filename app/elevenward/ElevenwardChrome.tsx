@@ -25,7 +25,7 @@ export function ElevenwardNav({
 
   return (
     <>
-      <StudioSiteHeader />
+      <div lang="en"><StudioSiteHeader /></div>
       <header className="ew-header">
         <div className="ew-header__inner">
           <Link className="ew-wordmark" href={home} aria-label={`Elevenward — ${ui.overview}`}>

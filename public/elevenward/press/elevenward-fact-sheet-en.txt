@@ -5,22 +5,23 @@ Website: https://howethstudio.com/elevenward/
 Press contact: howethstudio@gmail.com
 
 Genre: Global football career and life RPG
-Platforms: iOS and Android
+Platforms: Available on iPhone and iPad; Android in development
+App Store: https://apps.apple.com/us/app/elevenward/id6809308325
 Players: Single-player
 Audience: Ages 13+
 Launch languages: English, Spanish, Brazilian Portuguese, and French
 
 Elevenward follows one original player from prospect to retirement. Each matchweek asks the player to choose a training focus, manage risk in a decisive football moment, and live with transparent consequences across form, fitness, trust, money, relationships, contracts, transfers, trophies, and legacy.
 
-The full career is playable offline. Optional accounts add cloud synchronization, purchase recovery, and prize-free leaderboards. The game contains no advertising, loot boxes, randomized purchases, energy timers, or pay-to-win mechanics. Optional purchases are permanent career-slot and presentation-cosmetic upgrades.
+The complete regular career is free and playable offline without an account. Optional account features require internet. There are no ads, subscriptions, loot boxes, premium currency, or energy timers. Optional permanent passes add development and positive-income boosts, extra career slots, and cosmetics. Version 1.1 pass benefits: VIP gives 1.5× weekly development and positive income, five career slots, and premium cosmetics. The focused development and income passes give 2× and stack with VIP to 3×. All-Access includes all three benefits. Current prices and Restore purchases are available in More → Shop.
 
-Key launch scope:
-- 20-season career lifecycle
-- 120 original clubs across 12 leagues in six football nations
-- Promotion and relegation, domestic cups, international club competition, and a four-year national-team tournament
+Upcoming version 1.1 scope (being prepared for App Review; not yet available):
+- 520 fictional clubs across 52 leagues in 48 countries, plus 48 national teams
+- Promotion and relegation, domestic cups, and international competition
 - Four position families and 12 archetypes
-- 160 localized match situations, 200 career events, and 120 lifestyle items
-- Deterministic simulation with explainable previews and post-match receipts
+- Choice-driven weekly training and safe, balanced, or bold spotlight decisions; matches are simulated
+- Career ambitions, recurring mentor stories, match and decision journals, and Hall of Fame archives
+- Complete offline regular careers; optional permanent passes and online account features
 
 Brand line: The work before the noise.
 
@@ -30,4 +31,4 @@ About Howeth Studio:
 Howeth Studio is an independent studio creating thoughtful, privacy-conscious digital products and original games.
 
 Editorial usage:
-These assets may be used for accurate editorial coverage of Elevenward. Preserve their proportions, colors, and clear space. Do not alter the marks or imply endorsement. Contact Howeth Studio for another format or use. Pre-release artwork may be updated before launch.
+These assets may be used for accurate editorial coverage of Elevenward. Preserve their proportions, colors, and clear space. Do not alter the marks or imply endorsement. Contact Howeth Studio for another format or use. Upcoming-update artwork may change before release.

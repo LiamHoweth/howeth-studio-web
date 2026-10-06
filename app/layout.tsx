@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
+import { DocumentLanguage } from "@/components/studio/DocumentLanguage";
 import "@/styles/carenote-marketing.css";
 import "./globals.css";
 import "@/styles/studio-chrome.css";
@@ -54,9 +55,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${manrope.variable} ${sora.variable} ${studioMono.variable}`}
     >
-      <body>{children}</body>
+      <body><DocumentLanguage />{children}</body>
     </html>
   );
 }

@@ -21,8 +21,10 @@ Noctara and the existing CareNote CNA app.
 - `public/portfolio/` contains optimized authored app icons and demo screenshots;
   no private app data or source repositories are copied into the site.
 
-Football Era, CareNote CNA, and Noctara have verified public App Store listings as of
-October 1, 2026. The other four games are marked In development. Recheck availability
+Football Era, Elevenward, CareNote CNA, and Noctara have verified public App Store
+listings as of October 5, 2026. The other three games are marked In development.
+Elevenward’s expanded world is labeled as the upcoming version 1.1 update; its
+Android version remains in development. Recheck availability
 before changing these labels. Noctara links to its existing privacy and support
 endpoints; its current release is free and includes optional local bedtime sessions.
 
@@ -67,6 +69,7 @@ Set these in Railway (or `.env.local` for local builds):
 - `NEXT_PUBLIC_FOOTBALL_ERA_APP_STORE_URL` — App Store URL for Football Era when available
 - `NEXT_PUBLIC_FOOTBALL_ERA_TESTFLIGHT_URL` — optional TestFlight URL for Football Era
 - `NEXT_PUBLIC_FOOTBALL_ERA_SUPPORT_EMAIL` — support inbox for Football Era privacy/support pages (defaults to `hello@footballera.game` if unset)
+- `NEXT_PUBLIC_ELEVENWARD_APP_STORE_URL` — optional override for Elevenward's verified public App Store listing
 
 ## Static hosting and 404s
 

@@ -5,14 +5,23 @@ Site : https://howethstudio.com/elevenward/fr/
 Contact presse : howethstudio@gmail.com
 
 Genre : RPG mondial de carrière et de vie dans le football
-Plateformes : iOS et Android
+Plateformes : disponible sur iPhone et iPad ; Android en développement
+App Store : https://apps.apple.com/us/app/elevenward/id6809308325
 Joueurs : Solo
 Public : 13 ans et plus
 Langues de lancement : anglais, espagnol, portugais du Brésil et français
 
 Elevenward suit un joueur original de ses débuts à sa retraite. Chaque semaine associe un choix d’entraînement, une décision risquée sur le terrain et des conséquences transparentes sur la forme, la condition, la confiance, l’argent, les relations, les contrats, les transferts, les trophées et l’héritage.
 
-La carrière complète fonctionne hors ligne. Les comptes facultatifs ajoutent la synchronisation, la restauration des achats et des classements sans récompenses. Aucune publicité, loot box, dépense aléatoire, jauge d’énergie ou mécanique pay-to-win.
+La carrière normale complète est gratuite et fonctionne hors ligne sans compte. Les fonctions de compte facultatives nécessitent internet. Aucune publicité, abonnement, loot box, monnaie premium ou limite d’énergie. Les pass permanents facultatifs ajoutent des bonus de progression et de revenus positifs, des emplacements et des cosmétiques. Avantages des pass dans la version 1.1 : VIP offre 1,5× progression hebdomadaire et revenus positifs, cinq emplacements et des cosmétiques premium. Les pass ciblés offrent 2× et se combinent avec VIP jusqu’à 3×. Accès Total inclut les trois avantages. Les prix actuels et Restaurer les achats figurent dans Plus → Boutique.
+
+Prochaine version 1.1 (en préparation pour l’examen d’Apple ; encore indisponible) :
+- 520 clubs fictifs dans 52 championnats de 48 pays, ainsi que 48 équipes nationales
+- Montées, relégations, coupes nationales et compétitions internationales
+- Quatre familles de postes et 12 archétypes
+- Entraînement hebdomadaire et décisions prudentes, équilibrées ou audacieuses ; matchs simulés
+- Ambitions, histoires récurrentes du mentor, journaux de matchs et de décisions et archives du Panthéon
+- Carrières normales complètes hors ligne ; pass permanents et fonctions de compte en ligne facultatifs
 
 Signature : Le travail avant le bruit.
 
@@ -20,4 +29,4 @@ Signature : Le travail avant le bruit.
 Howeth Studio est un studio indépendant qui crée des produits numériques réfléchis, respectueux de la vie privée, et des jeux originaux.
 
 Utilisation éditoriale :
-Ces ressources peuvent être utilisées pour présenter Elevenward fidèlement. Préservez leurs proportions, leurs couleurs et l’espace libre. Ne modifiez pas les marques et ne suggérez aucun soutien. Contactez Howeth Studio pour tout autre format ou usage. Les visuels de pré-lancement peuvent évoluer.
+Ces ressources peuvent être utilisées pour présenter Elevenward fidèlement. Préservez leurs proportions, leurs couleurs et l’espace libre. Ne modifiez pas les marques et ne suggérez aucun soutien. Contactez Howeth Studio pour tout autre format ou usage. Les visuels de la prochaine mise à jour peuvent évoluer avant sa sortie.

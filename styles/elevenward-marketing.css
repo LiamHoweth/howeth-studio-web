@@ -77,6 +77,9 @@ body:has(.ew-root)::after { display: none; }
 .ew-hero__intro,
 .ew-info__lead { max-width: 55ch; margin: 0; color: var(--ew-muted); font-size: 1.0625rem; line-height: 1.8; }
 .ew-actions { margin: 30px 0 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.ew-update-notice { max-width: 58ch; color: var(--ew-muted); font-size: 0.875rem; line-height: 1.6; }
+.ew-purchases { padding-top: 0; }
+.ew-purchase-note { max-width: 80ch; margin-top: 28px; color: var(--ew-muted); line-height: 1.8; }
 .ew-actions a,
 .ew-button { min-height: 50px; padding: 13px 22px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; border: 1px solid var(--ew-cobalt); border-radius: 999px; color: #fff !important; background: var(--ew-cobalt); font-size: 0.8125rem; font-weight: 700; line-height: 1.4; transition: background 160ms ease, border-color 160ms ease; }
 .ew-actions a:hover,

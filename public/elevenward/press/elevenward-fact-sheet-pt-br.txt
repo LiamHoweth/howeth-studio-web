@@ -5,14 +5,23 @@ Site: https://howethstudio.com/elevenward/pt-br/
 Contato de imprensa: howethstudio@gmail.com
 
 Gênero: RPG global de carreira e vida no futebol
-Plataformas: iOS e Android
+Plataformas: disponível no iPhone e iPad; Android em desenvolvimento
+App Store: https://apps.apple.com/us/app/elevenward/id6809308325
 Jogadores: Um jogador
 Público: 13+
 Idiomas de lançamento: inglês, espanhol, português do Brasil e francês
 
 Elevenward acompanha um jogador original do início da carreira à aposentadoria. Cada rodada une foco de treino, uma decisão de risco em campo e consequências transparentes sobre fase, preparo, confiança, dinheiro, relações, contratos, transferências, títulos e legado.
 
-A carreira completa funciona offline. Contas opcionais oferecem sincronização, recuperação de compras e rankings sem prêmios. Não há anúncios, loot boxes, compras aleatórias, energia ou vantagens pagas.
+A carreira normal completa é gratuita e funciona offline, sem conta. Recursos de conta opcionais precisam de internet. Não há anúncios, assinaturas, loot boxes, moeda premium ou limite de energia. Passes permanentes opcionais oferecem bônus de desenvolvimento e renda positiva, espaços de carreira e cosméticos. Benefícios dos passes na versão 1.1: VIP oferece 1,5× desenvolvimento semanal e renda positiva, cinco espaços e cosméticos premium. Passes específicos oferecem 2× e combinam com VIP até 3×. Acesso Total inclui os três benefícios. Preços atuais e Restaurar compras ficam em Mais → Loja.
+
+Próxima versão 1.1 (em preparação para análise da Apple; ainda não disponível):
+- 520 clubes fictícios em 52 ligas de 48 países, além de 48 seleções
+- Acesso, rebaixamento, copas nacionais e competições internacionais
+- Quatro famílias de posições e 12 arquétipos
+- Treino semanal e decisões seguras, equilibradas ou ousadas; as partidas são simuladas
+- Ambições, histórias recorrentes do mentor, diários de partidas e decisões e arquivos do Hall da Fama
+- Carreiras normais completas offline; passes permanentes e recursos de conta online opcionais
 
 Frase da marca: O trabalho antes do barulho.
 
@@ -20,4 +29,4 @@ Sobre a Howeth Studio:
 A Howeth Studio é um estúdio independente que cria produtos digitais cuidadosos, com respeito à privacidade, e jogos originais.
 
 Uso editorial:
-Estes materiais podem ser usados em cobertura editorial fiel do Elevenward. Preserve proporções, cores e área de respiro. Não altere as marcas nem sugira endosso. Fale com a Howeth Studio para outros formatos ou usos. A arte de pré-lançamento pode mudar.
+Estes materiais podem ser usados em cobertura editorial fiel do Elevenward. Preserve proporções, cores e área de respiro. Não altere as marcas nem sugira endosso. Fale com a Howeth Studio para outros formatos ou usos. A arte da próxima atualização pode mudar antes do lançamento.
