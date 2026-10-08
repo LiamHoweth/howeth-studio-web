@@ -1,7 +1,13 @@
 .beopity-sculpture { position: relative; min-width: 0; margin: 0; isolation: isolate; }
-.beopity-sculpture__stage { position: relative; width: 100%; height: clamp(360px, 40vw, 560px); }
-.beopity-sculpture__stage canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
-.beopity-sculpture__poster { position: absolute; width: 88%; height: 88%; left: 6%; top: 6%; object-fit: contain; transition: opacity .3s; }
+.beopity-sculpture__stage { position: relative; width: 100%; height: clamp(360px, 40vw, 560px); perspective: 1000px; }
+.beopity-sculpture__stage canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.beopity-sculpture__poster { position: absolute; width: 88%; height: 88%; left: 6%; top: 6%; overflow: visible; pointer-events: none; filter: drop-shadow(8px 14px 18px #00000024); transform: translate3d(var(--sculpture-x, 0px), var(--sculpture-y, 0px), 0) rotateX(var(--sculpture-rx, -4.6deg)) rotateY(var(--sculpture-ry, -12.6deg)) rotateZ(var(--sculpture-rz, -4.3deg)); transition: transform .18s ease-out, opacity .2s; }
 .beopity-sculpture[data-state='ready'] .beopity-sculpture__poster { opacity: 0; }
+.beopity-sculpture[data-state='ready'] canvas { opacity: 1; }
 .beopity-sculpture__orbit { position: absolute; top: 25%; left: 11%; width: 78%; height: 52%; border: 1px solid #bbefcb18; border-radius: 50%; transform: rotate(-24deg); z-index: -1; box-shadow: 0 0 110px #bbefcb09; }
 @media (max-width: 760px) { .beopity-sculpture__stage { height: 360px; } }
+@media (max-width: 600px) {
+  .studio-hero { row-gap: 0; }
+  .beopity-sculpture__stage { height: 280px; }
+}
+@media (prefers-reduced-motion: reduce) { .beopity-sculpture__poster { transform: rotateX(-4.6deg) rotateY(-12.6deg) rotateZ(-4.3deg); transition: none; } .beopity-sculpture__stage canvas { transition: none; } }

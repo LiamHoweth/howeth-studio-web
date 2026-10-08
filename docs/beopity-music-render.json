@@ -1,0 +1,898 @@
+{
+  "description": "Ten original Beopity instrumental scores, synthesized locally without external samples.",
+  "generationSeed": 20261007,
+  "sampleRate": 44100,
+  "totalBytes": 16680411,
+  "tracks": [
+    {
+      "id": "mosslight",
+      "title": "Mosslight",
+      "artist": "Beopity",
+      "src": "/beopity/music/mosslight.mp3",
+      "duration": 101.903,
+      "accent": "#b3d6ba",
+      "key": "D major",
+      "bpm": 62,
+      "meter": "4/4",
+      "bars": 24,
+      "instruments": [
+        "rhodes",
+        "glass",
+        "warm"
+      ],
+      "groove": "brush",
+      "progression": [
+        "Dmaj9",
+        "Bm9",
+        "Gmaj9",
+        "A6/9",
+        "Dmaj9/F#",
+        "Em9",
+        "Gmaj9",
+        "A6"
+      ],
+      "melodicMotifs": [
+        [
+          73,
+          69,
+          66,
+          64
+        ],
+        [
+          73,
+          71,
+          69,
+          66
+        ],
+        [
+          69,
+          66,
+          62,
+          66
+        ],
+        [
+          71,
+          69,
+          66,
+          64
+        ],
+        [
+          66,
+          69,
+          73,
+          76
+        ],
+        [
+          74,
+          71,
+          67,
+          66
+        ],
+        [
+          69,
+          74,
+          71,
+          66
+        ],
+        [
+          73,
+          71,
+          69,
+          66
+        ]
+      ],
+      "renderedNotes": 207,
+      "bytes": 1631508,
+      "sha256": "9f49ad3f1c5a5c0e445c7c49fa10af608362c4b5f40ac1ca12184fd773e4b01c",
+      "decodedSha256": "e3f6e2133d15514bfbc95dd08c50d9f5d4eb8c0a1c759df83d22f652a2854a94",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.09,
+      "rmsDbfs": -22.06,
+      "firstSecondRmsDbfs": -37.08,
+      "lastSecondRmsDbfs": -78.83
+    },
+    {
+      "id": "rain-on-linen",
+      "title": "Rain on Linen",
+      "artist": "Beopity",
+      "src": "/beopity/music/rain-on-linen.mp3",
+      "duration": 109.31,
+      "accent": "#b6c9dd",
+      "key": "C major",
+      "bpm": 58,
+      "meter": "4/4",
+      "bars": 24,
+      "instruments": [
+        "felt",
+        "felt",
+        "air"
+      ],
+      "groove": "rain",
+      "progression": [
+        "Cmaj9",
+        "Am9",
+        "Dm9",
+        "G13",
+        "Fmaj9",
+        "Em7",
+        "Dm9",
+        "G6"
+      ],
+      "melodicMotifs": [
+        [
+          71,
+          67,
+          64,
+          62
+        ],
+        [
+          72,
+          71,
+          67,
+          64
+        ],
+        [
+          69,
+          65,
+          64,
+          62
+        ],
+        [
+          71,
+          69,
+          67,
+          64
+        ],
+        [
+          72,
+          69,
+          67,
+          64
+        ],
+        [
+          71,
+          67,
+          62,
+          64
+        ],
+        [
+          69,
+          72,
+          76,
+          74
+        ],
+        [
+          71,
+          69,
+          67,
+          62
+        ]
+      ],
+      "renderedNotes": 191,
+      "bytes": 1750213,
+      "sha256": "3491c945f84d2a053c9bc15930880e456e4455c8d9bd6014106c44fabcb569ea",
+      "decodedSha256": "d4842b64500d62f570c99b8056315fe7331326a4ab49cf163439432393cd3333",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.98,
+      "rmsDbfs": -22.04,
+      "firstSecondRmsDbfs": -37.65,
+      "lastSecondRmsDbfs": -73.99
+    },
+    {
+      "id": "amber-window",
+      "title": "Amber Window",
+      "artist": "Beopity",
+      "src": "/beopity/music/amber-window.mp3",
+      "duration": 105.0,
+      "accent": "#e7c39a",
+      "key": "F major",
+      "bpm": 70,
+      "meter": "4/4",
+      "bars": 28,
+      "instruments": [
+        "nylon",
+        "marimba",
+        "warm"
+      ],
+      "groove": "bossa",
+      "progression": [
+        "Fmaj9",
+        "Dm9",
+        "Gm9",
+        "C6/9",
+        "Bbmaj9",
+        "Am7",
+        "Gm9",
+        "C6"
+      ],
+      "melodicMotifs": [
+        [
+          69,
+          67,
+          65,
+          64
+        ],
+        [
+          69,
+          72,
+          76,
+          72
+        ],
+        [
+          70,
+          69,
+          67,
+          65
+        ],
+        [
+          67,
+          64,
+          62,
+          60
+        ],
+        [
+          65,
+          69,
+          72,
+          74
+        ],
+        [
+          72,
+          70,
+          69,
+          67
+        ],
+        [
+          70,
+          74,
+          72,
+          69
+        ],
+        [
+          67,
+          64,
+          62,
+          64
+        ]
+      ],
+      "renderedNotes": 280,
+      "bytes": 1681248,
+      "sha256": "85f348457b37255f53f677ef435cf6c3805cfce28dae14f641d2ee0f1999481e",
+      "decodedSha256": "b4ee80c26c3a4f7db683e7032af5b7d72ff8b44938582cf45d6ff795b0942b27",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -7.66,
+      "rmsDbfs": -22.09,
+      "firstSecondRmsDbfs": -40.58,
+      "lastSecondRmsDbfs": -77.64
+    },
+    {
+      "id": "slow-orbit",
+      "title": "Slow Orbit",
+      "artist": "Beopity",
+      "src": "/beopity/music/slow-orbit.mp3",
+      "duration": 115.727,
+      "accent": "#c4bcdf",
+      "key": "E major",
+      "bpm": 55,
+      "meter": "4/4",
+      "bars": 24,
+      "instruments": [
+        "soft-synth",
+        "bell",
+        "space"
+      ],
+      "groove": "none",
+      "progression": [
+        "Emaj9",
+        "C#m9",
+        "Amaj9",
+        "B6",
+        "G#m7",
+        "Amaj9",
+        "F#m9",
+        "B6/9"
+      ],
+      "melodicMotifs": [
+        [
+          75,
+          71,
+          68,
+          66
+        ],
+        [
+          75,
+          73,
+          71,
+          68
+        ],
+        [
+          76,
+          75,
+          71,
+          68
+        ],
+        [
+          73,
+          71,
+          66,
+          63
+        ],
+        [
+          71,
+          68,
+          66,
+          63
+        ],
+        [
+          68,
+          71,
+          76,
+          75
+        ],
+        [
+          73,
+          68,
+          64,
+          61
+        ],
+        [
+          75,
+          73,
+          71,
+          66
+        ]
+      ],
+      "renderedNotes": 191,
+      "bytes": 1853028,
+      "sha256": "648376b59376a234b194a0df2d48ed8fee996395adde2363478409c5c0a5fa22",
+      "decodedSha256": "50d49fb8fbc541f78725a29fd732df91eada3da4110ea0d970d9a37d9e9985ef",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.59,
+      "rmsDbfs": -22.02,
+      "firstSecondRmsDbfs": -36.99,
+      "lastSecondRmsDbfs": -74.91
+    },
+    {
+      "id": "lavender-haze",
+      "title": "Lavender Haze",
+      "artist": "Beopity",
+      "src": "/beopity/music/lavender-haze.mp3",
+      "duration": 97.615,
+      "accent": "#cfc0de",
+      "key": "A major",
+      "bpm": 65,
+      "meter": "4/4",
+      "bars": 24,
+      "instruments": [
+        "rhodes",
+        "flute",
+        "air"
+      ],
+      "groove": "halftime",
+      "progression": [
+        "Amaj9",
+        "F#m9",
+        "Dmaj9",
+        "E6/9",
+        "C#m7",
+        "Dmaj9",
+        "Bm9",
+        "E6"
+      ],
+      "melodicMotifs": [
+        [
+          76,
+          73,
+          71,
+          68
+        ],
+        [
+          73,
+          69,
+          68,
+          66
+        ],
+        [
+          74,
+          73,
+          69,
+          66
+        ],
+        [
+          76,
+          71,
+          68,
+          66
+        ],
+        [
+          73,
+          71,
+          68,
+          64
+        ],
+        [
+          74,
+          78,
+          76,
+          73
+        ],
+        [
+          73,
+          71,
+          69,
+          66
+        ],
+        [
+          71,
+          68,
+          66,
+          64
+        ]
+      ],
+      "renderedNotes": 207,
+      "bytes": 1562967,
+      "sha256": "0de678e3d199cf15728b4b983cd8e43205a0a3192d2603408a195482c3e14d69",
+      "decodedSha256": "51b3a693ba05d5b40f7c83ac60b7e6d032d9cae447699af28e45a409b4d248a1",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -7.0,
+      "rmsDbfs": -22.07,
+      "firstSecondRmsDbfs": -37.94,
+      "lastSecondRmsDbfs": -75.24
+    },
+    {
+      "id": "paper-lanterns",
+      "title": "Paper Lanterns",
+      "artist": "Beopity",
+      "src": "/beopity/music/paper-lanterns.mp3",
+      "duration": 101.333,
+      "accent": "#e3baac",
+      "key": "Eb major",
+      "bpm": 72,
+      "meter": "4/4",
+      "bars": 28,
+      "instruments": [
+        "marimba",
+        "nylon",
+        "warm"
+      ],
+      "groove": "lantern",
+      "progression": [
+        "Ebmaj9",
+        "Cm9",
+        "Abmaj9",
+        "Bb6/9",
+        "Fm9",
+        "Gm7",
+        "Abmaj9",
+        "Bb6"
+      ],
+      "melodicMotifs": [
+        [
+          74,
+          70,
+          67,
+          65
+        ],
+        [
+          75,
+          74,
+          70,
+          67
+        ],
+        [
+          72,
+          70,
+          68,
+          67
+        ],
+        [
+          74,
+          72,
+          70,
+          65
+        ],
+        [
+          72,
+          68,
+          67,
+          65
+        ],
+        [
+          74,
+          70,
+          65,
+          62
+        ],
+        [
+          75,
+          72,
+          70,
+          67
+        ],
+        [
+          74,
+          72,
+          70,
+          67
+        ]
+      ],
+      "renderedNotes": 280,
+      "bytes": 1622736,
+      "sha256": "384c5022eb4d034e6db63b8429dc707f48740e20ddd6b6989a0e8d29f70a47c1",
+      "decodedSha256": "c52d4aecf0629f8a2a78ef219bb0f3793c5624d79fbdbe1449d7686d566a625c",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.3,
+      "rmsDbfs": -22.09,
+      "firstSecondRmsDbfs": -38.91,
+      "lastSecondRmsDbfs": -72.72
+    },
+    {
+      "id": "soft-current",
+      "title": "Soft Current",
+      "artist": "Beopity",
+      "src": "/beopity/music/soft-current.mp3",
+      "duration": 97.421,
+      "accent": "#a9cdd0",
+      "key": "G major",
+      "bpm": 76,
+      "meter": "4/4",
+      "bars": 28,
+      "instruments": [
+        "nylon",
+        "glass",
+        "air"
+      ],
+      "groove": "current",
+      "progression": [
+        "Gmaj9",
+        "Em9",
+        "Cmaj9",
+        "D6/9",
+        "Am9",
+        "Bm7",
+        "Cmaj9",
+        "D6"
+      ],
+      "melodicMotifs": [
+        [
+          74,
+          71,
+          69,
+          66
+        ],
+        [
+          74,
+          71,
+          67,
+          66
+        ],
+        [
+          76,
+          74,
+          71,
+          67
+        ],
+        [
+          74,
+          69,
+          66,
+          64
+        ],
+        [
+          72,
+          71,
+          67,
+          64
+        ],
+        [
+          74,
+          71,
+          66,
+          62
+        ],
+        [
+          71,
+          74,
+          76,
+          74
+        ],
+        [
+          69,
+          66,
+          64,
+          62
+        ]
+      ],
+      "renderedNotes": 280,
+      "bytes": 1560040,
+      "sha256": "b4b85e5f93de474a790ccb5cf6c52dd31621e53ad6a86e0272c1fe13a8499b17",
+      "decodedSha256": "1948a05574eb0fb094d8f60ada9d5339a127eaa3f52827a05e773449c901e87d",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -7.6,
+      "rmsDbfs": -22.01,
+      "firstSecondRmsDbfs": -40.96,
+      "lastSecondRmsDbfs": -73.52
+    },
+    {
+      "id": "midnight-garden",
+      "title": "Midnight Garden",
+      "artist": "Beopity",
+      "src": "/beopity/music/midnight-garden.mp3",
+      "duration": 106.0,
+      "accent": "#a8b9ce",
+      "key": "B minor",
+      "bpm": 60,
+      "meter": "4/4",
+      "bars": 24,
+      "instruments": [
+        "soft-synth",
+        "rhodes",
+        "space"
+      ],
+      "groove": "halftime",
+      "progression": [
+        "Bm9",
+        "Gmaj9",
+        "Dmaj9",
+        "A6/9",
+        "Em9",
+        "Bm7/F#",
+        "Gmaj9",
+        "A6"
+      ],
+      "melodicMotifs": [
+        [
+          66,
+          62,
+          61,
+          59
+        ],
+        [
+          66,
+          62,
+          59,
+          57
+        ],
+        [
+          69,
+          66,
+          64,
+          61
+        ],
+        [
+          71,
+          69,
+          66,
+          64
+        ],
+        [
+          67,
+          66,
+          62,
+          59
+        ],
+        [
+          66,
+          69,
+          66,
+          62
+        ],
+        [
+          69,
+          66,
+          62,
+          59
+        ],
+        [
+          64,
+          61,
+          59,
+          57
+        ]
+      ],
+      "renderedNotes": 207,
+      "bytes": 1697134,
+      "sha256": "8fb54ee3a406122336b4afa938640af0f44a886849cbfb044b3b2e62537140ea",
+      "decodedSha256": "2ab0cd33f9b4a37c3f8960f901fa21b678cec4870e65064044d67fdce87b802f",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.03,
+      "rmsDbfs": -22.04,
+      "firstSecondRmsDbfs": -37.65,
+      "lastSecondRmsDbfs": -74.22
+    },
+    {
+      "id": "peach-horizon",
+      "title": "Peach Horizon",
+      "artist": "Beopity",
+      "src": "/beopity/music/peach-horizon.mp3",
+      "duration": 99.811,
+      "accent": "#e9c2b6",
+      "key": "Db major",
+      "bpm": 74,
+      "meter": "4/4",
+      "bars": 28,
+      "instruments": [
+        "rhodes",
+        "flute",
+        "warm"
+      ],
+      "groove": "bossa",
+      "progression": [
+        "Dbmaj9",
+        "Bbm9",
+        "Gbmaj9",
+        "Ab6/9",
+        "Ebm9",
+        "Fm7",
+        "Gbmaj9",
+        "Ab6"
+      ],
+      "melodicMotifs": [
+        [
+          72,
+          68,
+          65,
+          63
+        ],
+        [
+          73,
+          72,
+          68,
+          65
+        ],
+        [
+          70,
+          68,
+          66,
+          65
+        ],
+        [
+          72,
+          70,
+          68,
+          63
+        ],
+        [
+          73,
+          70,
+          66,
+          65
+        ],
+        [
+          72,
+          68,
+          63,
+          60
+        ],
+        [
+          73,
+          77,
+          75,
+          72
+        ],
+        [
+          70,
+          68,
+          65,
+          63
+        ]
+      ],
+      "renderedNotes": 248,
+      "bytes": 1598076,
+      "sha256": "3d05688f2cd30474ec106411b2a142f562dd64ab73cde8100e1eb14b9b06a33b",
+      "decodedSha256": "059f5fbb5cec1382a6d3ed96070a3cd0dd26c852654464cec59db649d501a87e",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -6.7,
+      "rmsDbfs": -22.09,
+      "firstSecondRmsDbfs": -38.41,
+      "lastSecondRmsDbfs": -75.49
+    },
+    {
+      "id": "stillwater",
+      "title": "Stillwater",
+      "artist": "Beopity",
+      "src": "/beopity/music/stillwater.mp3",
+      "duration": 107.627,
+      "accent": "#b9d3c5",
+      "key": "F major",
+      "bpm": 59,
+      "meter": "3/4",
+      "bars": 32,
+      "instruments": [
+        "felt",
+        "bell",
+        "air"
+      ],
+      "groove": "none",
+      "progression": [
+        "Fmaj9",
+        "Dm9",
+        "Bbmaj9",
+        "C6",
+        "Gm9",
+        "Am7",
+        "Bbmaj9",
+        "C6/9"
+      ],
+      "melodicMotifs": [
+        [
+          69,
+          67,
+          65,
+          64
+        ],
+        [
+          72,
+          69,
+          65,
+          64
+        ],
+        [
+          70,
+          69,
+          65,
+          62
+        ],
+        [
+          67,
+          64,
+          62,
+          60
+        ],
+        [
+          70,
+          69,
+          67,
+          65
+        ],
+        [
+          72,
+          69,
+          67,
+          64
+        ],
+        [
+          74,
+          72,
+          69,
+          65
+        ],
+        [
+          67,
+          64,
+          62,
+          64
+        ]
+      ],
+      "renderedNotes": 265,
+      "bytes": 1723461,
+      "sha256": "a1c777d61c211e4ae9039f68bf2bf4d5f61eeb0ec7737bd6ba2be42fb25277b3",
+      "decodedSha256": "e4fc96db6a6e2e6c49db803afc64c19915fb691e102ede581139be9cf3504fcb",
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitrate": 128000,
+      "peakDbfs": -7.44,
+      "rmsDbfs": -22.02,
+      "firstSecondRmsDbfs": -40.39,
+      "lastSecondRmsDbfs": -81.4
+    }
+  ]
+}
