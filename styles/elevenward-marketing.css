@@ -1,4 +1,4 @@
-/* Shared Howeth Studio paper, typography, and controls. Product color lives in artwork. */
+/* Shared Beopity paper, typography, and controls. Product color lives in artwork. */
 body:has(.ew-root) { margin: 0; background: #f5f3ee; }
 body:has(.ew-admin) { margin: 0; background: #07100c; }
 body:has(.ew-root)::before,

@@ -6,16 +6,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run validate:security && next build && node scripts/elevenward-document-language.cjs",
-    "start": "serve out -l $PORT --no-clipboard",
+    "start": "node scripts/serve-site.mjs",
     "lint": "eslint .",
     "postinstall": "node scripts/security-patches.cjs --apply && node scripts/security-regressions.cjs",
-    "validate:security": "node scripts/security-gate-tests.cjs && node scripts/security-audit.cjs"
+    "validate:security": "node scripts/security-gate-tests.cjs && node scripts/security-audit.cjs",
+    "test:hosting": "node --test scripts/serve-site.test.mjs"
   },
   "dependencies": {
+    "compression": "^1.8.2",
     "next": "^16.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "serve": "^14.2.5"
+    "serve": "^14.2.5",
+    "serve-handler": "^6.1.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

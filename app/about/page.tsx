@@ -10,7 +10,7 @@ import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "How Howeth Studio builds software: small-team accountability, product-led engineering, and mobile-first delivery with serious attention to data and APIs.",
+    "How Beopity builds software: small-team accountability, product-led engineering, and mobile-first delivery with serious attention to data and APIs.",
   alternates: {
     canonical: "/about/",
   },
@@ -35,7 +35,7 @@ export default function AboutPage() {
           index="003"
           eyebrow="Studio profile"
           title="Small by design. Serious about the details."
-          description="Howeth Studio pairs product thinking with hands-on engineering, keeping the path from a good idea to reliable software direct and accountable."
+          description="Beopity pairs product thinking with hands-on engineering, keeping the path from a good idea to reliable software direct and accountable."
         />
         <StudioAboutSection />
         <StudioSiteFooter year={year} />

@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/siteConfig";
 
 export const dynamic = "force-static";
 
-const siteOrigin = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://howethstudio.com"
-).replace(/\/$/, "");
+const siteOrigin = siteUrl.replace(/\/$/, "");
 
 const studioRoutes = [
   "",

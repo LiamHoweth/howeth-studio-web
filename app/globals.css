@@ -35,6 +35,12 @@ img { max-width: 100%; }
 .studio-button > span { font-size: 1.25rem; }
 .studio-hero__foot { display: flex; gap: 28px; padding-top: 48px; color: #616c64; }
 .studio-hero__scene { position: relative; aspect-ratio: 1.08; border-radius: 20px; background: #dbe2f5; overflow: hidden; isolation: isolate; }
+.studio-hero__scene.studio-hero__scene--beopity { aspect-ratio: auto; background: #090d0e; }
+.beopity-hero-art { display: block; width: 100%; height: auto; }
+.beopity-hero-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; padding: 8px 18px 14px; background: #090d0e; }
+.beopity-hero-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: #eeece5; font-size: .72rem; font-weight: 600; }
+.beopity-hero-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.beopity-hero-links a:focus-visible { outline-color: #83d9c6; }
 .studio-hero__scene-label { position: absolute; inset: 24px auto auto 28px; color: #415075; }
 .studio-hero__orbit { position: absolute; top: 14%; left: 16%; width: 84%; aspect-ratio: 1; border: 1px solid #a3b3d8; border-radius: 50%; }
 .studio-hero__orbit::before { content: ''; position: absolute; inset: 11%; border: 1px solid #a3b3d8; border-radius: 50%; }

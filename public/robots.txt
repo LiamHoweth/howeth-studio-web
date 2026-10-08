@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /elevenward/admin/
 
-Sitemap: https://howethstudio.com/sitemap.xml
+Sitemap: https://beopity.com/sitemap.xml

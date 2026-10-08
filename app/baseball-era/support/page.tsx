@@ -3,7 +3,7 @@ import { EraSupportPage } from "@/components/era/EraSupportPage";
 
 export const metadata: Metadata = {
   title: "Baseball Era Support",
-  description: "Get help with Baseball Era, local career saves, permanent gamepasses, and Restore Purchases. Contact Howeth Studio.",
+  description: "Get help with Baseball Era, local career saves, permanent gamepasses, and Restore Purchases. Contact Beopity.",
   alternates: { canonical: "/baseball-era/support/" },
 };
 

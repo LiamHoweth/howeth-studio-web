@@ -23,7 +23,7 @@ export default function FootballEraPrivacyPage() {
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
               Effective date: September 21, 2026. This policy explains how Football Era
-              (“the app”), published by Howeth Studio, handles information when you
+              (“the app”), published by Beopity, handles information when you
               play as a guest or choose to create an account.
             </p>
           </section>
@@ -109,7 +109,7 @@ export default function FootballEraPrivacyPage() {
                 Automated rules block reserved and commonly inappropriate username
                 variants, including common character substitutions. Because filters
                 cannot identify every harmful name, signed-in players can report and
-                hide public profiles. Reports are reviewed by Howeth Studio, with a
+                hide public profiles. Reports are reviewed by Beopity, with a
                 target response time of 24 hours.
               </p>
             </article>
@@ -141,7 +141,7 @@ export default function FootballEraPrivacyPage() {
                 product and purchase history, transaction metadata, and limited app and
                 device details to validate purchases, prevent fraud, and restore
                 gamepasses. Football Era does not send RevenueCat your career saves or
-                Football Era account identity, and Howeth Studio does not receive your
+                Football Era account identity, and Beopity does not receive your
                 payment-card details. We do not sell personal information or use saved
                 careers to train third-party generative models.
               </p>

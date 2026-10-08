@@ -7,7 +7,7 @@ import { footballEraConfig } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Football Era Support",
   description:
-    "Get help with Football Era on iPhone—career slots, seasons, saves, troubleshooting, and how to reach Howeth Studio support.",
+    "Get help with Football Era on iPhone—career slots, seasons, saves, troubleshooting, and how to reach Beopity support.",
   alternates: {
     canonical: "/football-era/support/",
   },

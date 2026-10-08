@@ -1,6 +1,6 @@
-# howethstudio.com
+# beopity.com
 
-Marketing site for Howeth Studio apps, built with Next.js and exported as static HTML for hosting on Railway.
+Marketing site for Beopity apps, built with Next.js and exported as static HTML for hosting on Railway.
 
 ## Portfolio and shared design
 
@@ -31,7 +31,7 @@ endpoints; its current release is free and includes optional local bedtime sessi
 The design draws on image-first portfolios and restrained navigation seen at
 [Pentagram](https://www.awwwards.com/sites/pentagram), oversized typography at
 [Born & Bred](https://www.awwwards.com/sites/born-bred), and product presentation at
-[Superlist](https://www.superlist.com/). Assets and app identities belong to Howeth Studio.
+[Superlist](https://www.superlist.com/). Assets and app identities belong to Beopity.
 
 ## Local development
 
@@ -60,8 +60,8 @@ the canonical `.railway/railway.ts` infrastructure definition.
 
 Set these in Railway (or `.env.local` for local builds):
 
-- `NEXT_PUBLIC_SITE_URL` — canonical site origin, for example `https://howethstudio.com`
-- `NEXT_PUBLIC_HOWETH_STUDIO_CONTACT_EMAIL` — email shown on Howeth Studio pages (footer, `/contact/`); defaults to `howethstudio@gmail.com` if unset
+- `NEXT_PUBLIC_SITE_URL` — canonical site origin, for example `https://beopity.com`
+- `NEXT_PUBLIC_BEOPITY_CONTACT_EMAIL` — email shown on Beopity pages (footer, `/contact/`); defaults to `howethstudio@gmail.com` if unset
 - `NEXT_PUBLIC_CARENOTE_APP_STORE_URL` — App Store URL for CareNote CNA
 - `NEXT_PUBLIC_CARENOTE_TESTFLIGHT_URL` — optional TestFlight URL
 - `NEXT_PUBLIC_CARENOTE_SUPPORT_EMAIL` — support inbox shown on CareNote pages
@@ -77,7 +77,7 @@ This project uses **`output: "export"`** with **`trailingSlash: true`**. That me
 
 If you still see a **404** for a valid page:
 
-1. **Confirm the URL ends with a trailing slash** (for example `https://howethstudio.com/carenote-cna/download/`). A host that does not rewrite `/path` → `/path/` may 404 when only `path/index.html` exists.
+1. **Confirm the URL ends with a trailing slash** (for example `https://beopity.com/carenote-cna/download/`). A host that does not rewrite `/path` → `/path/` may 404 when only `path/index.html` exists.
 2. **Redeploy after clearing a bad cache**: delete `.next` locally, run `npm run build`, and redeploy the fresh `out/` output.
 3. **Unknown paths** should return the styled **`404.html`** from the export. If your host does not map missing URLs to `404.html`, add a **rewrite rule** in the Render dashboard (see [Static Site Redirects and Rewrites](https://render.com/docs/redirects-rewrites)) so unmatched requests serve `404.html` with a 404 status.
 
@@ -107,3 +107,14 @@ The public API origin is `https://api.howethstudio.com`.
 ## DNS for howethstudio.com
 
 At your DNS provider, add the records Railway shows when you attach the domain. Prefer one canonical hostname (apex or `www`) and redirect the other so search engines see one primary URL. Keep the current host active until the Railway URL has been verified, then change DNS to avoid downtime.
+
+## Beopity domain migration
+
+See `docs/beopity-domain-migration.md` for the exact Namecheap records and staged
+cutover. Beopity is the public brand; repository/service/database identifiers remain
+stable. The existing contact inbox and app API host remain compatible with released
+apps. `NEXT_PUBLIC_HOWETH_STUDIO_CONTACT_EMAIL` remains a legacy configuration fallback.
+`npm start` uses `scripts/serve-site.mjs` and the existing static-serving engine.
+`SITE_REDIRECTS_ENABLED=true` activates path/query-preserving permanent redirects
+only after the primary HTTPS domain is verified. Run `npm run test:hosting` to
+validate cutover and static routing.

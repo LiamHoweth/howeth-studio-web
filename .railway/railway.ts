@@ -27,7 +27,11 @@ export default defineRailway(() => {
     healthcheck: "/",
     healthcheckTimeout: 120,
     replicas: { "sfo": 1 },
-    domains: ["howethstudio.com"],
+    domains: ["howethstudio.com", "beopity.com"],
+    env: {
+      NEXT_PUBLIC_SITE_URL: preserve(),
+      SITE_REDIRECTS_ENABLED: preserve(),
+    },
     networking: { privateNetworkEndpoint: "calm-encouragement" },
   });
   const footballEraApi = service("football-era-api", {
@@ -38,7 +42,7 @@ export default defineRailway(() => {
     healthcheck: "/health",
     healthcheckTimeout: 120,
     replicas: { "sfo": 1 },
-    domains: ["api.howethstudio.com"],
+    domains: ["api.howethstudio.com", "api.beopity.com"],
     networking: { privateNetworkEndpoint: "fantastic-analysis" },
     env: {
       ADMIN_API_KEY: preserve(),

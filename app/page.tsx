@@ -5,7 +5,7 @@ import { StudioAboutSection, StudioSiteFooter, StudioWorkSection } from "@/compo
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 
 export const metadata: Metadata = {
-  title: "Howeth Studio — Apps & Games",
+  title: { absolute: "Beopity — Apps & Games" },
   description: "A small independent studio building thoughtful apps and worlds worth playing. Explore Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   alternates: { canonical: "/" },
 };
@@ -23,13 +23,13 @@ export default function HomePage() {
           <Link className="studio-button" href="#work">Explore the collection <span aria-hidden="true">↘</span></Link>
           <div className="studio-hero__foot studio-mono"><span>Built with care.</span><span>Made to be used.</span></div>
         </div>
-        <div className="studio-hero__scene" aria-label="Apps and games by Howeth Studio">
-          <div className="studio-hero__orbit" aria-hidden="true" />
-          <span className="studio-hero__scene-label studio-mono">A few of our worlds</span>
-          <Link className="hero-app hero-app--noctara" href="/noctara/" aria-label="Explore Noctara"><Image src="/portfolio/noctara-icon.webp" alt="" width={512} height={512} priority /><span>Noctara <i aria-hidden="true">↗</i></span></Link>
-          <Link className="hero-app hero-app--football" href="/football-era/" aria-label="Explore Football Era"><Image src="/portfolio/football-icon.webp" alt="" width={512} height={512} priority /><span>Football Era <i aria-hidden="true">↗</i></span></Link>
-          <Link className="hero-app hero-app--sprout" href="/sprout-to-stars/" aria-label="Explore Sprout to Stars"><Image src="/portfolio/sprout-icon.webp" alt="" width={512} height={512} priority /><span>Sprout to Stars <i aria-hidden="true">↗</i></span></Link>
-          <div className="studio-hero__scene-foot studio-mono"><span>Apps / Games / A little curiosity</span><span aria-hidden="true">✳</span></div>
+        <div className="studio-hero__scene studio-hero__scene--beopity">
+          <Image className="beopity-hero-art" src="/beopity/brand.webp" alt="Beopity: an ivory b emblem and wordmark on charcoal with a subtle teal glow" width={1254} height={1254} priority />
+          <div className="beopity-hero-links" aria-label="Explore our apps and games">
+            <Link href="/football-era/">Football Era <span aria-hidden="true">↗</span></Link>
+            <Link href="/elevenward/">Elevenward <span aria-hidden="true">↗</span></Link>
+            <Link href="/noctara/">Noctara <span aria-hidden="true">↗</span></Link>
+          </div>
         </div>
       </section>
       <div className="studio-manifesto"><p>Useful in your day.<br /><span>Immersive in your downtime.</span></p><span className="studio-mono">Different ideas.<br />The same attention to detail.</span></div>
