@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 import { StudioSiteFooter } from "@/components/studio/StudioMarketing";
+import { siteUrl } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Football Era — App Store Details",
@@ -183,8 +184,8 @@ Football Era is local-first and remains fully playable without an account or net
               Declare Other User Content for feedback messages and optional reply
               details as app functionality; mark anonymous Product Interaction and
               its random installation ID as not
-              linked. Use https://howethstudio.com/football-era/privacy/ for privacy
-              and https://howethstudio.com/football-era/account-deletion/ for deletion.
+              linked. Use {new URL("/football-era/privacy/", siteUrl).href} for privacy
+              and {new URL("/football-era/account-deletion/", siteUrl).href} for deletion.
             </p>
           </section>
 
@@ -204,7 +205,7 @@ Football Era is local-first and remains fully playable without an account or net
             </p>
             <p className="lede">
               Answer that users can request deletion and provide
-              https://howethstudio.com/football-era/account-deletion/ as the external
+              {new URL("/football-era/account-deletion/", siteUrl).href} as the external
               account-deletion resource.
             </p>
           </section>

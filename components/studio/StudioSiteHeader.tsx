@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { HowethStudioBrand } from "@/components/studio/HowethStudioBrand";
+import { BeopityBrand } from "@/components/studio/BeopityBrand";
 
 const navigation = [
   { href: "/work/", label: "Work" },
@@ -32,7 +32,7 @@ export function StudioSiteHeader() {
       }}
     >
       <div className="studio-header-inner">
-        <HowethStudioBrand />
+        <BeopityBrand />
         <button
           className="studio-menu-toggle"
           ref={menuToggle}

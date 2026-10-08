@@ -32,18 +32,22 @@
   min-width: 0;
 }
 
-.studio-header[data-studio-chrome] .studio-brand-h {
+.studio-header[data-studio-chrome] .studio-brand-mark {
   flex: 0 0 auto;
-  color: #3157e8;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #090d0e;
 }
 
-.studio-header[data-studio-chrome] .studio-brand-h svg {
+.studio-header[data-studio-chrome] .studio-brand-mark img {
   display: block;
-  box-shadow: none;
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
-
-.studio-header[data-studio-chrome] .studio-brand-h__letter { fill: #f5f3ee; }
 
 .studio-header[data-studio-chrome] .studio-brand-lockup {
   display: flex;

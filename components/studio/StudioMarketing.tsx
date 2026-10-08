@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { howethStudioConfig } from "@/lib/siteConfig";
+import { beopityConfig } from "@/lib/siteConfig";
 import { ProductCollection } from "./ProductCollection";
 
 type StudioPageIntroProps = {
@@ -45,7 +45,7 @@ export function StudioAboutSection() {
           <h2 id="about-heading">Small on purpose.<br /><em>Curious by nature.</em></h2>
         </div>
         <div className="studio-about__copy">
-          <p>Howeth Studio is an independent software studio with a soft spot for thoughtful mobile apps and games you can get lost in.</p>
+          <p>Beopity is an independent software studio with a soft spot for thoughtful mobile apps and games you can get lost in.</p>
           <p>From a better night’s sleep to a career-defining season, each product starts with a simple idea: make something worth coming back to.</p>
           <Link className="studio-text-link" href="/contact/">Let’s talk <span aria-hidden="true">↗</span></Link>
         </div>
@@ -65,9 +65,9 @@ export function StudioSiteFooter({ year }: { year: number }) {
         <Link href="/contact/">Good things start<br />with a <em>conversation.</em><span aria-hidden="true">↗</span></Link>
       </div>
       <div className="studio-footer__bottom">
-        <Link className="studio-footer__wordmark" href="/">Howeth<span>Studio</span></Link>
-        <a href={`mailto:${howethStudioConfig.contactEmail}`}>{howethStudioConfig.contactEmail}</a>
-        <div className="studio-mono"><span>Independent apps &amp; games</span><span>© {year} Howeth Studio <Link className="studio-footer__secret" href="/for-ameliante/" aria-label="A little secret">♡</Link></span></div>
+        <Link className="studio-footer__wordmark" href="/">beopity</Link>
+        <a href={`mailto:${beopityConfig.contactEmail}`}>{beopityConfig.contactEmail}</a>
+        <div className="studio-mono"><span>Independent apps &amp; games</span><span>© {year} Beopity <Link className="studio-footer__secret" href="/for-ameliante/" aria-label="A little secret">♡</Link></span></div>
       </div>
     </footer>
   );

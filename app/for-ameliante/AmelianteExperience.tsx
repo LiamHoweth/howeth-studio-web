@@ -231,7 +231,7 @@ export function AmelianteExperience() {
 
           <footer className="am-ending">
             <span>I&apos;m glad it&apos;s you.</span>
-            <Link href="/" aria-label="Back to Howeth Studio">↗</Link>
+            <Link href="/" aria-label="Back to Beopity">↗</Link>
           </footer>
         </div>
       )}

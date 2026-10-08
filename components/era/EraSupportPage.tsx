@@ -1,17 +1,17 @@
 import Link from "next/link";
 import { ProductInfoPage } from "@/components/studio/ProductInfoPage";
 import { getProduct } from "@/lib/products";
-import { howethStudioConfig } from "@/lib/siteConfig";
+import { beopityConfig } from "@/lib/siteConfig";
 
 export function EraSupportPage({ slug }: { slug: "basketball-era" | "baseball-era" }) {
   const { name } = getProduct(slug);
   return (
-    <ProductInfoPage slug={slug} label="Support" title="Keep your career moving." description={`Help with ${name}, saved careers, and optional purchases. Contact Howeth Studio when you need a hand.`}>
+    <ProductInfoPage slug={slug} label="Support" title="Keep your career moving." description={`Help with ${name}, saved careers, and optional purchases. Contact Beopity when you need a hand.`}>
       <section className="product-info__contact">
-        <h2>Talk to Howeth Studio</h2>
-        <p>Email <a href={`mailto:${howethStudioConfig.contactEmail}?subject=${encodeURIComponent(`${name} support`)}`}>{howethStudioConfig.contactEmail}</a> with your app version, device model, iOS or iPadOS version, and a short description of what happened. Let us know whether it affects one career or all of them.</p>
+        <h2>Talk to Beopity</h2>
+        <p>Email <a href={`mailto:${beopityConfig.contactEmail}?subject=${encodeURIComponent(`${name} support`)}`}>{beopityConfig.contactEmail}</a> with your app version, device model, iOS or iPadOS version, and a short description of what happened. Let us know whether it affects one career or all of them.</p>
         <p>A screenshot or steps to reproduce the issue help. Do not send passwords or payment-card details. If your progress is affected, keep the app installed while we investigate.</p>
-        <a className="product-action product-action--primary" href={`mailto:${howethStudioConfig.contactEmail}?subject=${encodeURIComponent(`${name} support`)}`}>Email support <span aria-hidden="true">↗</span></a>
+        <a className="product-action product-action--primary" href={`mailto:${beopityConfig.contactEmail}?subject=${encodeURIComponent(`${name} support`)}`}>Email support <span aria-hidden="true">↗</span></a>
       </section>
       <section>
         <h2>Common questions</h2>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteUrl } from "@/lib/siteConfig";
 import { IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
 import { DocumentLanguage } from "@/components/studio/DocumentLanguage";
 import "@/styles/carenote-marketing.css";
@@ -26,24 +27,25 @@ const studioMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const metadataBase = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://howethstudio.com"
-);
+const metadataBase = new URL(siteUrl);
 
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: "Howeth Studio",
-    template: "%s | Howeth Studio",
+    default: "Beopity",
+    template: "%s | Beopity",
   },
   description:
-    "Howeth Studio — independent software development and mobile products including Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
+    "Beopity — independent software development and mobile products including Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   icons: {
-    icon: [{ url: "/studio/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/beopity/favicon.png", type: "image/png" }],
+    apple: "/beopity/apple-touch-icon.png",
   },
+  twitter: { card: "summary_large_image", images: ["/beopity/social.png"] },
   openGraph: {
     type: "website",
-    siteName: "Howeth Studio",
+    siteName: "Beopity",
+    images: [{ url: "/beopity/social.png", width: 1200, height: 630, alt: "Beopity — independent apps and games" }],
   },
 };
 

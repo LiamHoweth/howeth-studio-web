@@ -75,7 +75,7 @@ export const elevenwardCopy: Record<ElevenwardLocale, Copy> = {
     deletionTitle: "Delete your Elevenward account",
     deletionBody: "Use More → Account → Delete account in the app. This removes your server account and cloud data while retaining local careers. Local careers can be removed separately from Career Slots.",
     pressTitle: "Elevenward press kit",
-    pressBody: "Elevenward is an original portrait-first football career and life RPG from Howeth Studio. Play complete offline careers with optional account features and permanent development, income, save-slot, and cosmetic upgrades.",
+    pressBody: "Elevenward is an original portrait-first football career and life RPG from Beopity. Play complete offline careers with optional account features and permanent development, income, save-slot, and cosmetic upgrades.",
   },
   es: {
     language: "Español",
@@ -113,7 +113,7 @@ export const elevenwardCopy: Record<ElevenwardLocale, Copy> = {
     deletionTitle: "Eliminar tu cuenta de Elevenward",
     deletionBody: "Usa Más → Cuenta → Eliminar cuenta en la app. Se borrarán la cuenta del servidor y los datos en la nube, conservando las carreras locales. Puedes borrarlas por separado en Espacios de carrera.",
     pressTitle: "Kit de prensa de Elevenward",
-    pressBody: "Elevenward es un RPG original de carrera y vida futbolística de Howeth Studio, diseñado para jugar sin conexión con funciones opcionales en la nube.",
+    pressBody: "Elevenward es un RPG original de carrera y vida futbolística de Beopity, diseñado para jugar sin conexión con funciones opcionales en la nube.",
   },
   "pt-br": {
     language: "Português do Brasil",
@@ -151,7 +151,7 @@ export const elevenwardCopy: Record<ElevenwardLocale, Copy> = {
     deletionTitle: "Excluir sua conta Elevenward",
     deletionBody: "Use Mais → Conta → Excluir conta no app. A conta do servidor e os dados na nuvem são removidos, preservando as carreiras locais. Você pode apagá-las separadamente em Espaços de carreira.",
     pressTitle: "Kit de imprensa do Elevenward",
-    pressBody: "Elevenward é um RPG original de carreira e vida no futebol da Howeth Studio, feito para carreiras offline completas com recursos opcionais na nuvem.",
+    pressBody: "Elevenward é um RPG original de carreira e vida no futebol da Beopity, feito para carreiras offline completas com recursos opcionais na nuvem.",
   },
   fr: {
     language: "Français",
@@ -189,7 +189,7 @@ export const elevenwardCopy: Record<ElevenwardLocale, Copy> = {
     deletionTitle: "Supprimer votre compte Elevenward",
     deletionBody: "Utilisez Plus → Compte → Supprimer le compte dans l’app. Le compte serveur et les données cloud sont supprimés, tandis que les carrières locales sont conservées. Supprimez-les séparément dans Emplacements de carrière.",
     pressTitle: "Kit presse Elevenward",
-    pressBody: "Elevenward est un RPG original de carrière et de vie dans le football signé Howeth Studio, conçu pour des carrières complètes hors ligne avec des fonctions cloud facultatives.",
+    pressBody: "Elevenward est un RPG original de carrière et de vie dans le football signé Beopity, conçu pour des carrières complètes hors ligne avec des fonctions cloud facultatives.",
   },
 };
 
@@ -234,7 +234,7 @@ export type ElevenwardUiCopy = {
 export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
   en: {
     skip: "Skip to main content",
-    backToStudio: "Howeth Studio home",
+    backToStudio: "Beopity home",
     overview: "Overview",
     career: "Career",
     world: "World",
@@ -252,7 +252,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
     worldEyebrow: "A living football world",
     promiseEyebrow: "Fair by design",
     privacyAction: "Read the privacy promise",
-    studioLine: "An original game by Howeth Studio",
+    studioLine: "An original game by Beopity",
     stats: [["4", "positions"], ["12", "archetypes"], ["20", "seasons maximum"], ["100%", "offline career"]],
     fairPoints: ["No ads", "No subscriptions", "No energy timers", "Optional permanent boosts"],
     preview: {
@@ -271,7 +271,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
   },
   es: {
     skip: "Saltar al contenido principal",
-    backToStudio: "Inicio de Howeth Studio",
+    backToStudio: "Inicio de Beopity",
     overview: "Resumen",
     career: "Carrera",
     world: "Mundo",
@@ -289,7 +289,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
     worldEyebrow: "Un mundo futbolístico vivo",
     promiseEyebrow: "Justo por diseño",
     privacyAction: "Leer la promesa de privacidad",
-    studioLine: "Un juego original de Howeth Studio",
+    studioLine: "Un juego original de Beopity",
     stats: [["4", "posiciones"], ["12", "arquetipos"], ["20", "temporadas máximo"], ["100%", "carrera sin conexión"]],
     fairPoints: ["Sin anuncios", "Sin suscripciones", "Sin límites de energía", "Mejoras permanentes opcionales"],
     preview: {
@@ -308,7 +308,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
   },
   "pt-br": {
     skip: "Ir para o conteúdo principal",
-    backToStudio: "Início da Howeth Studio",
+    backToStudio: "Início da Beopity",
     overview: "Visão geral",
     career: "Carreira",
     world: "Mundo",
@@ -326,7 +326,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
     worldEyebrow: "Um mundo vivo do futebol",
     promiseEyebrow: "Justo desde o início",
     privacyAction: "Ler o compromisso de privacidade",
-    studioLine: "Um jogo original da Howeth Studio",
+    studioLine: "Um jogo original da Beopity",
     stats: [["4", "posições"], ["12", "arquétipos"], ["20", "temporadas no máximo"], ["100%", "carreira offline"]],
     fairPoints: ["Sem anúncios", "Sem assinaturas", "Sem limite de energia", "Bônus permanentes opcionais"],
     preview: {
@@ -345,7 +345,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
   },
   fr: {
     skip: "Aller au contenu principal",
-    backToStudio: "Accueil Howeth Studio",
+    backToStudio: "Accueil Beopity",
     overview: "Aperçu",
     career: "Carrière",
     world: "Monde",
@@ -363,7 +363,7 @@ export const elevenwardUiCopy: Record<ElevenwardLocale, ElevenwardUiCopy> = {
     worldEyebrow: "Un monde du football vivant",
     promiseEyebrow: "Équitable par conception",
     privacyAction: "Lire la promesse de confidentialité",
-    studioLine: "Un jeu original de Howeth Studio",
+    studioLine: "Un jeu original de Beopity",
     stats: [["4", "postes"], ["12", "archétypes"], ["20", "saisons maximum"], ["100%", "carrière hors ligne"]],
     fairPoints: ["Sans publicité", "Sans abonnement", "Sans limite d’énergie", "Bonus permanents facultatifs"],
     preview: {
@@ -405,7 +405,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
       ["Voluntary feedback", "Guests and signed-in players can send a category and message, optional contact email or support code, and selected diagnostics after reviewing them. These submissions are used to investigate and respond to support requests."],
       ["Sharing and reviews", "Sharing a career card is voluntary. Your selected player name, fictional club, position, character artwork and career statistics can appear in the shared card. The sharing app handles it under its own policy. Studio links open a browser only when selected. Previous Apple review-prompt date and version are stored locally; Elevenward does not know whether you post a review."],
       ["Content updates", "When online, Elevenward can check a public manifest and download verified football-world content without an account. This content check does not upload a career save. Active careers keep their existing world definition."],
-      ["Guest careers", "Career snapshots and the recovery journal stay on your device. A guest sends no career save to Howeth Studio."],
+      ["Guest careers", "Career snapshots and the recovery journal stay on your device. A guest sends no career save to Beopity."],
       ["Optional accounts", "Optional Apple or Google sign-in uses provider account identifiers and any email supplied by the provider. Accounts can synchronize versioned career snapshots, private Hall of Fame archives, purchase entitlements, and sharing and analytics preferences."],
       ["Public leaderboards", "New signed-in accounts publish a career score and position after cloud sync unless sharing is turned off. Existing accounts start private until you enable sharing. This account setting carries across devices; turning it off removes your entries. Your career name stays private. You may claim one moderated public username or use a generated alias; other players can report a username and hide it on their device."],
       ["Purchases", "Apple or Google and RevenueCat process purchases and verification. RevenueCat uses an app purchase identifier for guests and the Elevenward account identifier when signed in. Purchase history and entitlement information support functionality and purchase analytics. Elevenward does not store payment-card details."],
@@ -438,7 +438,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
       ["Comentarios voluntarios", "Los invitados y jugadores con cuenta pueden enviar una categoría y mensaje, correo o código de soporte opcionales y diagnósticos seleccionados tras revisarlos. Se usan para investigar y responder a solicitudes de soporte."],
       ["Compartir y reseñas", "Compartir una tarjeta de carrera es opcional. Puede mostrar el nombre elegido del jugador, club ficticio, posición, ilustración y estadísticas. La app elegida gestiona la tarjeta según su política. Los enlaces al estudio abren el navegador solo al seleccionarlos. La fecha y versión del aviso de reseña de Apple se guardan localmente; Elevenward no sabe si publicas una reseña."],
       ["Actualizaciones de contenido", "Con conexión, Elevenward puede consultar un manifiesto público y descargar contenido futbolístico verificado sin cuenta. Esta consulta no sube partidas. Las carreras activas conservan su mundo existente."],
-      ["Carreras de invitado", "Las partidas y el diario de recuperación permanecen en tu dispositivo. Un invitado no envía carreras a Howeth Studio."],
+      ["Carreras de invitado", "Las partidas y el diario de recuperación permanecen en tu dispositivo. Un invitado no envía carreras a Beopity."],
       ["Cuentas opcionales", "El acceso opcional con Apple o Google usa identificadores de cuenta y el correo que proporcione el proveedor. Puede sincronizar partidas versionadas, archivos privados del Salón de la Fama, derechos de compra y preferencias de compartir y analítica."],
       ["Clasificaciones públicas", "Las cuentas nuevas con sesión iniciada publican la puntuación y posición de una carrera tras sincronizarse, salvo si desactivas el uso compartido. Las cuentas existentes permanecen privadas hasta que lo actives. Esta opción de la cuenta se aplica en todos tus dispositivos; al desactivarla se retiran tus entradas. El nombre de tu carrera sigue siendo privado. Puedes elegir un nombre público moderado o usar un alias generado; otros jugadores pueden denunciar y ocultar un nombre en su dispositivo."],
       ["Compras", "Apple o Google y RevenueCat procesan compras y verificación. RevenueCat usa un identificador de compras para invitados y el identificador de cuenta de Elevenward al iniciar sesión. El historial y los derechos de compra sirven para el funcionamiento y la analítica de compras. Elevenward no guarda datos de tarjetas."],
@@ -471,7 +471,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
       ["Feedback voluntário", "Convidados e jogadores com conta podem enviar categoria e mensagem, e-mail ou código de suporte opcionais e diagnósticos selecionados após revisá-los. São usados para investigar e responder a pedidos de suporte."],
       ["Compartilhamento e avaliações", "Compartilhar um cartão de carreira é opcional. Ele pode mostrar nome escolhido do jogador, clube fictício, posição, arte e estatísticas. O app escolhido trata o cartão segundo sua política. Links do estúdio abrem o navegador apenas quando selecionados. Data e versão do aviso de avaliação da Apple ficam salvas localmente; Elevenward não sabe se você publica uma avaliação."],
       ["Atualizações de conteúdo", "Online, Elevenward pode consultar um manifesto público e baixar conteúdo de futebol verificado sem conta. Essa consulta não envia saves. Carreiras ativas preservam o mundo existente."],
-      ["Carreiras de convidado", "Os saves e o diário de recuperação ficam no aparelho. Um convidado não envia a carreira à Howeth Studio."],
+      ["Carreiras de convidado", "Os saves e o diário de recuperação ficam no aparelho. Um convidado não envia a carreira à Beopity."],
       ["Contas opcionais", "O acesso opcional com Apple ou Google usa identificadores da conta e o e-mail fornecido pelo provedor. Pode sincronizar saves versionados, arquivos privados do Hall da Fama, direitos de compra e preferências de compartilhamento e análise."],
       ["Rankings públicos", "Novas contas conectadas publicam a pontuação e a posição da carreira após a sincronização, a menos que o compartilhamento seja desativado. Contas existentes permanecem privadas até que você o ative. Essa opção da conta vale em todos os seus aparelhos; ao desativá-la, suas entradas são removidas. O nome da carreira permanece privado. Você pode escolher um nome público moderado ou usar um apelido gerado; outros jogadores podem denunciar e ocultar um nome no aparelho."],
       ["Compras", "Apple ou Google e RevenueCat processam compras e verificação. RevenueCat usa um identificador de compras para convidados e o identificador da conta Elevenward após o acesso. Histórico e direitos de compra servem ao funcionamento e à análise de compras. Elevenward não guarda dados de cartão."],
@@ -504,7 +504,7 @@ export const elevenwardDetails: Record<ElevenwardLocale, ElevenwardDetails> = {
       ["Commentaires volontaires", "Invités et joueurs connectés peuvent envoyer catégorie et message, e-mail ou code d’assistance facultatifs et diagnostics sélectionnés après les avoir vérifiés. Ils servent à examiner les demandes d’assistance et à y répondre."],
       ["Partage et avis", "Partager une carte de carrière est facultatif. Elle peut afficher nom choisi du joueur, club fictif, poste, visuel et statistiques. L’application choisie traite la carte selon sa politique. Les liens du studio ouvrent un navigateur uniquement après sélection. Date et version de l’invite d’avis Apple sont conservées localement ; Elevenward ne sait pas si vous publiez un avis."],
       ["Mises à jour du contenu", "En ligne, Elevenward peut consulter un manifeste public et télécharger du contenu de football vérifié sans compte. Cette consultation n’envoie pas de sauvegarde. Les carrières actives conservent leur monde existant."],
-      ["Carrières invitées", "Les sauvegardes et le journal de récupération restent sur l’appareil. Un invité n’envoie aucune carrière à Howeth Studio."],
+      ["Carrières invitées", "Les sauvegardes et le journal de récupération restent sur l’appareil. Un invité n’envoie aucune carrière à Beopity."],
       ["Comptes facultatifs", "La connexion facultative Apple ou Google utilise les identifiants de compte et l’e-mail fourni par le prestataire. Elle peut synchroniser sauvegardes versionnées, archives privées du Panthéon, droits d’achat et préférences de partage et d’analyse."],
       ["Classements publics", "Les nouveaux comptes connectés publient le score et le poste d’une carrière après synchronisation, sauf si le partage est désactivé. Les comptes existants restent privés jusqu’à ce que vous l’activiez. Ce réglage du compte s’applique sur tous vos appareils ; le désactiver retire vos entrées. Le nom de votre carrière reste privé. Vous pouvez choisir un pseudonyme public modéré ou utiliser un alias généré ; les autres joueurs peuvent signaler et masquer un nom sur leur appareil."],
       ["Achats", "Apple ou Google et RevenueCat traitent achats et vérification. RevenueCat utilise un identifiant d’achat pour les invités et l’identifiant du compte Elevenward après connexion. Historique et droits d’achat servent au fonctionnement et à l’analyse des achats. Elevenward ne conserve pas les données de carte."],

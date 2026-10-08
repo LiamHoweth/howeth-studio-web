@@ -5,12 +5,12 @@ import {
   StudioPageIntro,
   StudioSiteFooter,
 } from "@/components/studio/StudioMarketing";
-import { howethStudioConfig } from "@/lib/siteConfig";
+import { beopityConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Reach Howeth Studio for project inquiries, partnerships, or product support — email and CareNote CNA contact options.",
+    "Reach Beopity for project inquiries, partnerships, or product support — email and CareNote CNA contact options.",
   alternates: {
     canonical: "/contact/",
   },
@@ -45,8 +45,8 @@ export default function ContactPage() {
           </h2>
           <p className="studio-mono studio-contact-page__label">Direct</p>
           <p className="studio-contact-page__line">
-            <a className="studio-cta" href={`mailto:${howethStudioConfig.contactEmail}`}>
-              {howethStudioConfig.contactEmail}
+            <a className="studio-cta" href={`mailto:${beopityConfig.contactEmail}`}>
+              {beopityConfig.contactEmail}
             </a>
           </p>
           <p className="studio-mono studio-contact-page__label">Product support</p>

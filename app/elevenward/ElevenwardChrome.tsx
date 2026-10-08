@@ -81,7 +81,7 @@ export function ElevenwardFooter({ locale }: { locale: ElevenwardLocale }) {
         <Link href={elevenwardRoute(locale, "/account-deletion")}>{ui.deleteAccount}</Link>
         <Link href={elevenwardRoute(locale, "/press")}>{ui.press}</Link>
       </nav>
-      <span className="ew-footer__copyright">© {new Date().getFullYear()} Howeth Studio</span>
+      <span className="ew-footer__copyright">© {new Date().getFullYear()} Beopity</span>
     </footer>
   );
 }

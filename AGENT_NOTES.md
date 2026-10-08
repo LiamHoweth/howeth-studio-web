@@ -1,3 +1,18 @@
+- October 7, 2026: Public branding is Beopity, with AI artwork under
+  `public/beopity/`. Keep existing product artwork, app identifiers, support inboxes,
+  API/data resources, localized documents, and the private personal route intact.
+  The API allows both website domains. The new apex and API domains are attached
+  to Railway but Namecheap DNS still needs
+  authenticated setup. See `docs/beopity-domain-migration.md` for current records.
+  Keep production `NEXT_PUBLIC_SITE_URL=https://howethstudio.com` and
+  `SITE_REDIRECTS_ENABLED=false` until new-domain DNS/HTTPS verification; then switch
+  to Beopity and enable the tested permanent redirects. The current Railway plan
+  cannot attach a third custom web hostname while retaining the old domain.
+  Rebrand validation: clean install, lint, TypeScript/static build, four hosting tests,
+  49-page/44-URL export audit, and background phone/tablet/desktop checks pass.
+  Runtime audit is clean; the full audit retains five known mitigated dev findings.
+  Sharp was updated to 0.35.5 to fix a newly reported transitive vulnerability.
+
 # Current project notes
 
 - October 5, 2026: Elevenward’s public App Store listing was verified at

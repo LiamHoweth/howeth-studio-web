@@ -3,11 +3,12 @@ function cleanUrl(value: string | undefined): string {
 }
 
 export const siteUrl =
-  cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) || "https://howethstudio.com";
+  cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) || "https://beopity.com";
 
-/** Shown on Howeth Studio marketing pages (home footer, /contact/, etc.). */
-export const howethStudioConfig = {
+/** Shown on Beopity marketing pages (home footer, /contact/, etc.). */
+export const beopityConfig = {
   contactEmail:
+    cleanUrl(process.env.NEXT_PUBLIC_BEOPITY_CONTACT_EMAIL) ||
     cleanUrl(process.env.NEXT_PUBLIC_HOWETH_STUDIO_CONTACT_EMAIL) ||
     "howethstudio@gmail.com",
   // Elevenward is a product area of the studio site, not a separate web
