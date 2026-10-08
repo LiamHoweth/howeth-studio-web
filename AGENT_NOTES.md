@@ -1,3 +1,14 @@
+- October 7 Beopity redesign: homepage uses a cursor-responsive 3D logo with no
+  viewer labels/controls. `BeopitySculpture` lazy-loads `beopityScene`; the original
+  mark is the WebGL fallback. The scene respects reduced motion, caps DPR/fps,
+  sleeps when still/hidden, and disposes its resources on navigation. Regenerate
+  `public/beopity/logo.glb` with `npm run generate:beopity`.
+- Optional original ambient music lives in root-mounted `AmbientMusic` and
+  `lib/ambientAudio.ts`. Play is explicit; volume zero mutes. Public navigation
+  retains music, hidden documents pause without auto-resume, and admin/personal
+  routes release audio. No remote audio or persisted preference. CI includes
+  `test:beopity` and `test:ambient`; see `docs/beopity-design.md`.
+
 # Current project notes
 
 - October 7, 2026: Public branding is Beopity, with AI artwork under
@@ -63,9 +74,9 @@
 
 - The public portfolio has seven products. `lib/products.ts` is the shared source
   for home/Work/product artwork; all five Codex Games projects are included.
-- Shared visual system: warm paper, ink, cobalt; `StudioSiteHeader` / `StudioSiteFooter`
+- Shared visual system: graphite, warm ivory, mint; `StudioSiteHeader` / `StudioSiteFooter`
   provide studio chrome. `ProductPage` provides the reusable product structure.
-  `ProductArtwork` keeps app-specific color and optimized public demo imagery.
+  `ProductArtwork` keeps official app identities and optimized public demo imagery.
 - Preserve Elevenward localization, legal/deletion/contact forms, and admin styles.
   The staff console stays noindex and outside the public sitemap.
 - Football Era and CareNote support/detail routes share `product-legacy.css`.

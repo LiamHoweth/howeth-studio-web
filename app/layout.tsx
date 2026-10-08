@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/siteConfig";
 import { IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
 import { DocumentLanguage } from "@/components/studio/DocumentLanguage";
+import { AmbientMusic } from "@/components/studio/AmbientMusic";
 import "@/styles/carenote-marketing.css";
 import "./globals.css";
 import "@/styles/studio-chrome.css";
+import "@/styles/ambient-music.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -60,7 +62,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${manrope.variable} ${sora.variable} ${studioMono.variable}`}
     >
-      <body><DocumentLanguage />{children}</body>
+      <body><DocumentLanguage />{children}<AmbientMusic /></body>
     </html>
   );
 }

@@ -2,20 +2,20 @@
 
 /* Football Era uses the shared studio canvas on every public route. */
 .fe-page-root {
-  --ink: #17211f;
-  --ink-soft: #5c6861;
-  --line: #d9ddd5;
-  --line-strong: #bec8bb;
-  --blue: #17211f;
-  --blue-deep: #17211f;
+  --ink: var(--studio-ink);
+  --ink-soft: var(--studio-muted);
+  --line: var(--studio-line);
+  --line-strong: var(--studio-line-strong);
+  --blue: var(--studio-ink);
+  --blue-deep: var(--studio-ink);
   min-height: 100vh;
-  color: #17211f;
-  background: #f5f3ee;
-  color-scheme: light;
+  color: var(--studio-ink);
+  background: var(--studio-paper);
+  color-scheme: dark;
 }
 
 .fe-page-root :focus-visible {
-  outline: 2px solid #3157e8;
+  outline: 2px solid var(--studio-accent);
   outline-offset: 4px;
 }
 
@@ -32,10 +32,10 @@
 .fe-page-root .fe-asc-block {
   margin: 18px 0 16px;
   padding: 20px 22px;
-  border: 1px solid #d9ddd5;
+  border: 1px solid var(--studio-line);
   border-radius: 12px;
-  color: #17211f;
-  background: #eeefe8;
+  color: var(--studio-ink);
+  background: var(--studio-panel);
   font-family: var(--font-studio-mono), ui-monospace, monospace;
   font-size: 0.86rem;
   line-height: 1.85;
@@ -45,7 +45,7 @@
 
 .fe-page-root .fe-copy-limit {
   display: inline-block;
-  color: #5c6861;
+  color: var(--studio-muted);
   font-family: var(--font-manrope), system-ui, sans-serif;
   font-size: 0.62em;
   font-weight: 500;
@@ -55,7 +55,7 @@
 
 .fe-page-root .fe-copy-hint {
   margin-bottom: 0;
-  color: #5c6861;
+  color: var(--studio-muted);
   font-size: 0.79rem;
   line-height: 1.7;
 }

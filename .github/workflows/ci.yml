@@ -20,6 +20,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:hosting
+      - run: npm run test:beopity
+      - run: npm run test:ambient
       - run: npm run build
       # The build command requires exact mitigation bytes/behavior and records the full,
       # unmodified npm audit report and its original exit status.

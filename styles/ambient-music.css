@@ -1,0 +1,85 @@
+.ambient-music {
+  position: fixed;
+  right: max(22px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 35;
+  color: var(--studio-ink);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.ambient-music__dock {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--studio-line-strong);
+  border-radius: 999px;
+  background: var(--studio-panel);
+  box-shadow: 0 6px 24px #0004;
+}
+
+.ambient-music button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: color 160ms, background-color 160ms;
+}
+
+.ambient-music button:hover { color: var(--studio-accent); background: #25352a; }
+.ambient-music button:disabled { cursor: default; color: var(--studio-muted); }
+.ambient-music .ambient-music__play { gap: 11px; padding: 0 12px 0 14px; font-weight: 600; }
+.ambient-music__mobile-action { display: none; width: 16px; height: 16px; fill: currentColor; }
+.ambient-music__volume-toggle svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ambient-music button:focus-visible,
+.ambient-music input:focus-visible { outline: 2px solid var(--studio-accent); outline-offset: 4px; }
+
+.ambient-music__bars { display: flex; align-items: center; gap: 2px; width: 17px; height: 18px; color: var(--studio-accent); }
+.ambient-music__bars i { width: 2px; height: 7px; background: currentColor; border-radius: 2px; transform-origin: center; }
+.ambient-music__bars i:nth-child(2) { height: 13px; }
+.ambient-music__bars i:nth-child(3) { height: 9px; }
+.ambient-music[data-playing="true"] .ambient-music__bars i { animation: beopity-music-wave 1.8s ease-in-out infinite alternate; }
+.ambient-music[data-playing="true"] .ambient-music__bars i:nth-child(2) { animation-delay: -0.4s; }
+.ambient-music[data-playing="true"] .ambient-music__bars i:nth-child(3) { animation-delay: -1.1s; }
+.ambient-music[data-playing="true"] .ambient-music__bars i:nth-child(4) { animation-delay: -0.7s; }
+
+.ambient-music__panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  width: min(252px, calc(100vw - 36px));
+  box-sizing: border-box;
+  padding: 18px 20px 14px;
+  border: 1px solid var(--studio-line-strong);
+  border-radius: 18px;
+  background: var(--studio-panel);
+  box-shadow: 0 8px 32px #0006;
+}
+.ambient-music__panel[hidden] { display: none; }
+.ambient-music__panel-title { display: flex; flex-direction: column; gap: 3px; margin-bottom: 18px; }
+.ambient-music__panel-title span:first-child { font-weight: 700; font-size: 0.86rem; }
+.ambient-music__panel-title span:last-child { color: var(--studio-muted); font-size: 0.68rem; }
+.ambient-music__volume-label { display: flex; justify-content: space-between; align-items: center; }
+.ambient-music__volume-label output { color: var(--studio-accent); font-variant-numeric: tabular-nums; }
+.ambient-music input[type="range"] { display: block; box-sizing: border-box; width: 100%; min-height: 44px; margin: 0; accent-color: var(--studio-accent); cursor: pointer; }
+.ambient-music__panel p { margin: 2px 0 0; color: var(--studio-muted); font-size: 0.67rem; }
+.ambient-music__status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@keyframes beopity-music-wave { from { transform: scaleY(0.65); } to { transform: scaleY(1.25); } }
+@media (max-width: 600px) {
+  .ambient-music { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); }
+  .ambient-music__mobile-action { display: block; }
+  .ambient-music__label, .ambient-music__bars { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ambient-music button { transition: none; } .ambient-music__bars i { animation: none !important; } }
+@media print { .ambient-music { display: none; } }
