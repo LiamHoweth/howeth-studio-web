@@ -1,41 +1,15 @@
-/** Original Beopity composition. No recording, network request, or persisted preference. */
-export const AMBIENT_BEAT_SECONDS = 60 / 58;
-export const AMBIENT_PHRASE_SECONDS = AMBIENT_BEAT_SECONDS * 8;
+import { AMBIENT_TRACKS } from "./ambientTracks";
 
-export interface AmbientNote {
-  kind: "pad" | "bass" | "bell";
-  midi: number;
-  offset: number;
+export { AMBIENT_TRACKS } from "./ambientTracks";
+
+export type AmbientPlaybackStatus = "idle" | "starting" | "playing" | "paused" | "blocked" | "unavailable";
+
+export interface AmbientSnapshot {
+  status: AmbientPlaybackStatus;
+  trackIndex: number;
+  currentTime: number;
   duration: number;
-  pan: number;
-}
-
-const harmony = [
-  { bass: 38, pad: [50, 57, 61, 64], melody: [66, 64] },
-  { bass: 35, pad: [47, 54, 57, 62], melody: [62, 59] },
-  { bass: 31, pad: [43, 50, 54, 59], melody: [59, 62] },
-  { bass: 33, pad: [45, 52, 59, 62], melody: [64, 61] },
-] as const;
-
-export function midiFrequency(midi: number): number {
-  return 440 * 2 ** ((midi - 69) / 12);
-}
-
-/** A spacious D-major/B-minor progression, with alternate melody octaves each loop. */
-export function ambientPhrase(index: number): AmbientNote[] {
-  const chord = harmony[((Math.floor(index) % harmony.length) + harmony.length) % harmony.length];
-  const octave = Math.floor(index / harmony.length) % 2 === 0 ? 12 : 0;
-  return [
-    ...chord.pad.map((midi, voice): AmbientNote => ({
-      kind: "pad", midi, offset: 0, duration: AMBIENT_PHRASE_SECONDS + 2.6,
-      pan: (voice - 1.5) * 0.16,
-    })),
-    { kind: "bass", midi: chord.bass, offset: 0, duration: AMBIENT_PHRASE_SECONDS, pan: 0 },
-    ...chord.melody.map((midi, voice): AmbientNote => ({
-      kind: "bell", midi: midi + octave, offset: (voice === 0 ? 2.5 : 6) * AMBIENT_BEAT_SECONDS,
-      duration: 3.5, pan: voice === 0 ? -0.2 : 0.2,
-    })),
-  ];
+  volume: number;
 }
 
 export function allowsAmbientMusic(pathname: string): boolean {
@@ -44,234 +18,303 @@ export function allowsAmbientMusic(pathname: string): boolean {
   );
 }
 
-type PlaybackState = "playing" | "paused";
-type AudioContextFactory = () => AudioContext;
-interface Voice {
-  sources: OscillatorNode[];
-  nodes: AudioNode[];
+type AudioFactory = () => HTMLAudioElement;
+let mediaSessionOwner: object | null = null;
+
+function browserAudio(): HTMLAudioElement {
+  return new Audio();
 }
 
-function browserAudioContext(): AudioContext {
-  const BrowserAudioContext = window.AudioContext ??
-    (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-  if (!BrowserAudioContext) throw new Error("Web Audio is unavailable.");
-  return new BrowserAudioContext({ latencyHint: "playback" });
-}
-
-/** The graph is created only inside play(), which is called from a user action. */
+/** Streams one selected recording. The caller owns autoplay and visibility intent. */
 export class AmbientAudio {
-  private context: AudioContext | null = null;
-  private input: BiquadFilterNode | null = null;
-  private output: GainNode | null = null;
-  private graph: AudioNode[] = [];
-  private voices = new Set<Voice>();
-  private scheduler: ReturnType<typeof setInterval> | null = null;
-  private suspendTimer: ReturnType<typeof setTimeout> | null = null;
-  private phraseIndex = 0;
-  private nextPhraseAt = 0;
-  private volume = 0.38;
-  private playing = false;
+  private audio: HTMLAudioElement | null = null;
+  private snapshot: AmbientSnapshot = {
+    status: "idle", trackIndex: 0, currentTime: 0,
+    duration: AMBIENT_TRACKS[0].duration, volume: 0.2,
+  };
   private requestedPlayback = false;
   private disposed = false;
   private generation = 0;
-  private readonly onPlaybackChange: (state: PlaybackState) => void;
-  private readonly createContext: AudioContextFactory;
+  private pendingPlay: number | null = null;
+  private changingSource = false;
+  private pendingSeek: number | null = null;
+  private mediaSession: MediaSession | null = null;
+  private readonly mediaSessionIdentity = {};
 
   constructor(
-    onPlaybackChange: (state: PlaybackState) => void,
-    createContext: AudioContextFactory = browserAudioContext,
-  ) {
-    this.onPlaybackChange = onPlaybackChange;
-    this.createContext = createContext;
+    private readonly onChange: (snapshot: AmbientSnapshot) => void,
+    private readonly createAudio: AudioFactory = browserAudio,
+  ) {}
+
+  getSnapshot(): AmbientSnapshot {
+    return { ...this.snapshot };
   }
 
   async play(): Promise<boolean> {
     if (this.disposed) return false;
+    if (this.snapshot.status === "playing" && this.audio && !this.audio.paused) return true;
     const request = ++this.generation;
+    this.pendingPlay = request;
     this.requestedPlayback = true;
-    this.cancelSuspend();
-    const context = this.context ?? this.createGraph();
-    await context.resume();
-    if (this.disposed || request !== this.generation) {
-      if (!this.disposed && !this.requestedPlayback && context.state === "running") {
-        void context.suspend().catch(() => {});
+    this.update({ status: "starting" });
+    let audio: HTMLAudioElement;
+    try {
+      audio = this.ensureAudio();
+      await audio.play();
+      if (this.disposed || request !== this.generation) {
+        // An old play can resolve after pause or a source change. Do not pause
+        // a newer, valid playback request on the shared element.
+        if (this.disposed || !this.requestedPlayback) audio.pause();
+        return false;
       }
+      this.pendingPlay = null;
+      if (audio.paused) {
+        this.requestedPlayback = false;
+        this.update({ status: "paused" });
+        return false;
+      }
+      this.readPosition();
+      this.update({ status: "playing" });
+      return true;
+    } catch (error) {
+      if (this.disposed || request !== this.generation) return false;
+      this.pendingPlay = null;
+      this.requestedPlayback = false;
+      const blocked = typeof error === "object" && error !== null && "name" in error && error.name === "NotAllowedError";
+      this.update({ status: blocked ? "blocked" : "unavailable" });
+      this.audio?.pause();
       return false;
     }
-    if (context.state !== "running") throw new Error("Audio playback is unavailable.");
-    this.playing = true;
-    this.output!.gain.cancelScheduledValues(context.currentTime);
-    this.output!.gain.setTargetAtTime(this.volume * 0.42, context.currentTime, 0.25);
-    this.schedule();
-    this.stopScheduler();
-    this.scheduler = setInterval(() => this.schedule(), 250);
-    this.onPlaybackChange("playing");
-    return true;
   }
 
   pause(): void {
+    if (this.disposed) return;
     ++this.generation;
+    this.pendingPlay = null;
     this.requestedPlayback = false;
-    this.playing = false;
-    this.stopScheduler();
-    this.cancelSuspend();
-    const context = this.context;
-    if (!context || context.state === "closed") return;
-    const output = this.output!;
-    output.gain.cancelScheduledValues(context.currentTime);
-    output.gain.setTargetAtTime(0, context.currentTime, 0.035);
-    this.onPlaybackChange("paused");
-    // Fade before suspension to avoid an abrupt click. Never automatically resume.
-    this.suspendTimer = setTimeout(() => {
-      this.suspendTimer = null;
-      if (!this.playing && !this.disposed && context.state !== "closed") {
-        void context.suspend().catch(() => {});
-      }
-    }, 180);
+    this.update({ status: "paused" });
+    this.audio?.pause();
+    this.readPosition();
+  }
+
+  next(): Promise<boolean> {
+    return this.selectTrack(this.snapshot.trackIndex + 1);
+  }
+
+  previous(): Promise<boolean> {
+    if (this.snapshot.currentTime > 3) {
+      this.seek(0);
+      return Promise.resolve(this.snapshot.status === "playing");
+    }
+    return this.selectTrack(this.snapshot.trackIndex - 1);
+  }
+
+  seek(seconds: number): void {
+    if (this.disposed || !Number.isFinite(seconds)) return;
+    const currentTime = Math.max(0, Math.min(this.snapshot.duration, seconds));
+    this.pendingSeek = currentTime;
+    if (this.audio) this.applyPendingSeek();
+    this.update({ currentTime });
   }
 
   setVolume(volume: number): void {
-    this.volume = Number.isFinite(volume) ? Math.max(0, Math.min(1, volume)) : 0;
-    if (this.playing && this.context && this.output) {
-      this.output.gain.setTargetAtTime(this.volume * 0.42, this.context.currentTime, 0.08);
+    if (this.disposed) return;
+    const bounded = Number.isFinite(volume) ? Math.max(0, Math.min(1, volume)) : 0;
+    if (this.audio) {
+      this.audio.volume = bounded;
+      // Muting also works on platforms where hardware owns the volume level.
+      this.audio.muted = bounded === 0;
     }
+    this.update({ volume: bounded });
   }
 
   close(): void {
     if (this.disposed) return;
     this.disposed = true;
-    this.requestedPlayback = false;
     ++this.generation;
-    this.playing = false;
-    this.stopScheduler();
-    this.cancelSuspend();
-    const context = this.context;
-    if (context && this.output) {
-      this.output.gain.cancelScheduledValues(context.currentTime);
-      this.output.gain.setValueAtTime(0, context.currentTime);
+    this.pendingPlay = null;
+    this.requestedPlayback = false;
+    this.snapshot.status = "paused";
+    this.pendingSeek = null;
+    const audio = this.audio;
+    if (audio) {
+      for (const [event, listener] of this.listeners) audio.removeEventListener(event, listener);
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
     }
-    for (const voice of this.voices) {
-      for (const source of voice.sources) {
-        source.onended = null;
-        try { source.stop(); } catch { /* A completed source is already stopped. */ }
-      }
-      for (const node of voice.nodes) node.disconnect();
+    this.audio = null;
+    if (this.mediaSession && mediaSessionOwner === this.mediaSessionIdentity) {
+      try {
+        this.mediaSession.metadata = null;
+        this.mediaSession.playbackState = "none";
+      } catch { /* The platform may release its session before cleanup. */ }
+      mediaSessionOwner = null;
     }
-    this.voices.clear();
-    for (const node of this.graph) node.disconnect();
-    this.graph = [];
-    context?.removeEventListener("statechange", this.handleContextState);
-    if (context && context.state !== "closed") void context.close().catch(() => {});
-    this.context = null;
-    this.input = null;
-    this.output = null;
+    this.mediaSession = null;
   }
 
-  private readonly handleContextState = (): void => {
-    if (this.playing && this.context?.state !== "running") {
-      this.playing = false;
-      this.requestedPlayback = false;
-      ++this.generation;
-      this.stopScheduler();
-      this.onPlaybackChange("paused");
+  private async selectTrack(index: number): Promise<boolean> {
+    if (this.disposed) return false;
+    const shouldPlay = this.requestedPlayback;
+    ++this.generation;
+    this.pendingPlay = null;
+    this.pendingSeek = null;
+    const trackIndex = (index + AMBIENT_TRACKS.length) % AMBIENT_TRACKS.length;
+    this.update({
+      trackIndex, currentTime: 0, duration: AMBIENT_TRACKS[trackIndex].duration,
+      status: shouldPlay ? "starting" : this.snapshot.status === "idle" ? "idle" : "paused",
+    });
+    if (this.audio) {
+      this.changingSource = true;
+      try {
+        this.audio.pause();
+        this.audio.src = AMBIENT_TRACKS[trackIndex].src;
+        this.audio.load();
+      } catch {
+        this.requestedPlayback = false;
+        this.update({ status: "unavailable" });
+        return false;
+      } finally {
+        this.changingSource = false;
+      }
     }
+    return shouldPlay ? this.play() : false;
+  }
+
+  private ensureAudio(): HTMLAudioElement {
+    if (this.audio) {
+      if (this.audio.error) {
+        // A media error can persist across play() calls. Reload the selected
+        // recording on an explicit retry and restore its last position.
+        this.pendingSeek ??= this.snapshot.currentTime;
+        this.audio.load();
+        this.applyPendingSeek();
+      }
+      return this.audio;
+    }
+    const audio = this.createAudio();
+    this.audio = audio;
+    audio.preload = "metadata";
+    audio.loop = false;
+    audio.volume = this.snapshot.volume;
+    audio.muted = this.snapshot.volume === 0;
+    for (const [event, listener] of this.listeners) audio.addEventListener(event, listener);
+    audio.src = AMBIENT_TRACKS[this.snapshot.trackIndex].src;
+    audio.load();
+    this.applyPendingSeek();
+    this.installMediaSession();
+    return audio;
+  }
+
+  private readonly handlePlaying = (): void => {
+    const audio = this.audio;
+    if (!audio) return;
+    if (this.disposed || !this.requestedPlayback) {
+      audio.pause();
+      return;
+    }
+    if (!audio.paused) this.update({ status: "playing" });
   };
 
-  private createGraph(): AudioContext {
-    const context = this.createContext();
-    this.context = context;
+  private readonly handlePause = (): void => {
+    if (!this.audio?.paused || this.disposed || this.changingSource) return;
+    // Native media queues pause before ended at the end of a recording.
+    // Preserve the playlist intent so the ended handler can advance it.
+    if (this.audio.ended && this.requestedPlayback) {
+      this.readPosition();
+      return;
+    }
+    // load() may queue the old source's pause while a new play is pending.
+    if (this.snapshot.status === "playing" ||
+      (this.snapshot.status === "starting" && this.pendingPlay !== this.generation)) {
+      ++this.generation;
+      this.pendingPlay = null;
+      this.requestedPlayback = false;
+      this.update({ status: "paused" });
+    }
+    this.readPosition();
+  };
+
+  private readonly handleEnded = (): void => {
+    if (this.disposed || !this.requestedPlayback || !this.audio?.ended) return;
+    void this.next();
+  };
+
+  private readonly handleError = (): void => {
+    if (this.disposed || !this.audio?.error) return;
+    ++this.generation;
+    this.pendingPlay = null;
+    this.requestedPlayback = false;
+    this.update({ status: "unavailable" });
+    this.audio.pause();
+  };
+
+  private readonly handleWaiting = (): void => {
+    if (!this.disposed && this.requestedPlayback && !this.audio?.paused) this.update({ status: "starting" });
+  };
+
+  private readonly handleMetadata = (): void => {
+    if (this.disposed) return;
+    this.readPosition();
+    this.applyPendingSeek();
+  };
+
+  private readonly handleTime = (): void => {
+    this.readPosition();
+  };
+
+  private readonly listeners: ReadonlyArray<readonly [string, EventListener]> = [
+    ["playing", this.handlePlaying], ["pause", this.handlePause], ["ended", this.handleEnded],
+    ["error", this.handleError], ["waiting", this.handleWaiting],
+    ["loadedmetadata", this.handleMetadata], ["durationchange", this.handleMetadata],
+    ["timeupdate", this.handleTime], ["seeked", this.handleTime],
+  ];
+
+  private applyPendingSeek(): void {
+    if (!this.audio || this.pendingSeek === null) return;
+    const time = Math.min(this.snapshot.duration, this.pendingSeek);
     try {
-      const input = context.createBiquadFilter();
-      this.graph.push(input);
-      input.type = "lowpass";
-      input.frequency.value = 2400;
-      input.Q.value = 0.5;
-      const output = context.createGain();
-      this.graph.push(output);
-      output.gain.value = 0;
-      const delay = context.createDelay(2);
-      this.graph.push(delay);
-      delay.delayTime.value = AMBIENT_BEAT_SECONDS * 0.5;
-      const feedback = context.createGain();
-      this.graph.push(feedback);
-      feedback.gain.value = 0.19;
-      const wet = context.createGain();
-      this.graph.push(wet);
-      wet.gain.value = 0.18;
-      // Each node is recorded immediately so close() also releases a partial graph.
-      input.connect(output);
-      input.connect(delay);
-      delay.connect(feedback);
-      feedback.connect(delay);
-      delay.connect(wet);
-      wet.connect(output);
-      output.connect(context.destination);
-      this.input = input;
-      this.output = output;
-      this.nextPhraseAt = context.currentTime + 0.12;
-      context.addEventListener("statechange", this.handleContextState);
-      return context;
-    } catch (error) {
-      this.close();
-      throw error;
-    }
+      this.audio.currentTime = time;
+      this.pendingSeek = null;
+    } catch { /* Retry after metadata on browsers that reject an early seek. */ }
   }
 
-  private schedule(): void {
-    const context = this.context;
-    if (!this.playing || !context || !this.input) return;
-    // AudioContext time freezes while suspended. A throttled timer never emits a backlog.
-    if (this.nextPhraseAt < context.currentTime - 0.2) this.nextPhraseAt = context.currentTime + 0.05;
-    while (this.nextPhraseAt < context.currentTime + 0.8) {
-      for (const note of ambientPhrase(this.phraseIndex)) this.scheduleNote(note, this.nextPhraseAt);
-      this.phraseIndex += 1;
-      this.nextPhraseAt += AMBIENT_PHRASE_SECONDS;
-    }
+  private readPosition(): void {
+    if (!this.audio || this.disposed) return;
+    const duration = Number.isFinite(this.audio.duration) && this.audio.duration > 0
+      ? this.audio.duration : AMBIENT_TRACKS[this.snapshot.trackIndex].duration;
+    const position = this.pendingSeek ?? this.audio.currentTime;
+    const currentTime = Number.isFinite(position) ? Math.max(0, Math.min(duration, position)) : 0;
+    this.update({ duration, currentTime });
   }
 
-  private scheduleNote(note: AmbientNote, phraseAt: number): void {
-    const context = this.context!;
-    const start = phraseAt + note.offset;
-    const end = start + note.duration;
-    const envelope = context.createGain();
-    const pan = context.createStereoPanner();
-    pan.pan.value = note.pan;
-    envelope.connect(pan);
-    pan.connect(this.input!);
-    const peak = note.kind === "bass" ? 0.032 : note.kind === "bell" ? 0.026 : 0.022;
-    envelope.gain.setValueAtTime(0, start);
-    if (note.kind === "bell") {
-      envelope.gain.linearRampToValueAtTime(peak, start + 0.045);
-      envelope.gain.exponentialRampToValueAtTime(0.0001, end - 0.05);
-    } else {
-      envelope.gain.linearRampToValueAtTime(peak, start + 2.3);
-      envelope.gain.setValueAtTime(peak, end - 2.5);
-      envelope.gain.linearRampToValueAtTime(0.0001, end - 0.05);
-    }
-    envelope.gain.linearRampToValueAtTime(0, end);
-    const source = context.createOscillator();
-    source.type = note.kind === "pad" ? "triangle" : "sine";
-    source.frequency.value = midiFrequency(note.midi);
-    source.detune.value = note.kind === "pad" ? note.pan * 12 : 0;
-    source.connect(envelope);
-    const voice: Voice = { sources: [source], nodes: [source, envelope, pan] };
-    this.voices.add(voice);
-    source.onended = () => {
-      source.onended = null;
-      this.voices.delete(voice);
-      for (const node of voice.nodes) node.disconnect();
-    };
-    source.start(start);
-    source.stop(end);
+  private update(changes: Partial<AmbientSnapshot>): void {
+    if (this.disposed) return;
+    this.snapshot = { ...this.snapshot, ...changes };
+    this.updateMediaSession();
+    this.onChange(this.getSnapshot());
   }
 
-  private stopScheduler(): void {
-    if (this.scheduler !== null) clearInterval(this.scheduler);
-    this.scheduler = null;
+  private installMediaSession(): void {
+    if (typeof navigator === "undefined" || !navigator.mediaSession) return;
+    this.mediaSession = navigator.mediaSession;
+    mediaSessionOwner = this.mediaSessionIdentity;
+    this.updateMediaSession();
   }
 
-  private cancelSuspend(): void {
-    if (this.suspendTimer !== null) clearTimeout(this.suspendTimer);
-    this.suspendTimer = null;
+  private updateMediaSession(): void {
+    if (!this.mediaSession || mediaSessionOwner !== this.mediaSessionIdentity) return;
+    try {
+      const track = AMBIENT_TRACKS[this.snapshot.trackIndex];
+      if (typeof MediaMetadata !== "undefined" && this.mediaSession.metadata?.title !== track.title) {
+        this.mediaSession.metadata = new MediaMetadata({ title: track.title, artist: track.artist });
+      }
+      this.mediaSession.playbackState = this.snapshot.status === "playing" ? "playing"
+        : this.snapshot.status === "idle" ? "none" : "paused";
+      if (this.snapshot.duration > 0) this.mediaSession.setPositionState?.({
+        duration: this.snapshot.duration, playbackRate: 1, position: this.snapshot.currentTime,
+      });
+    } catch { /* Media Session is optional and never prevents playback. */ }
   }
 }

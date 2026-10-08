@@ -23,21 +23,37 @@ it with `npm run generate:beopity`, and verify it with `npm run test:beopity`.
 
 `BeopitySculpture.tsx` owns accessible presentation. Its dynamically imported
 `beopityScene.ts` owns Three.js loading, lighting, interaction, and resource cleanup.
-The original mark displays before loading and when WebGL is unavailable. The
-sculpture follows the mouse position with smoothly eased, bounded rotation. It is
+An inline vector version displays before loading and when WebGL is unavailable.
+It stays sharp at every size and responds to the cursor while the 3D files load.
+The sculpture follows the mouse position with smoothly eased, bounded rotation. It is
 pure brand decoration, with no viewer labels or controls; touch scrolling stays
 native. Reduced motion keeps the view still. Rendering stops once the cursor
-response settles and while the scene/document is hidden, with a 30 fps cap and
-DPR capped at 1.75.
+response settles and while the scene/document is hidden. The canvas uses a bounded
+pixel budget for sharp edges on Retina displays without an idle rendering loop.
 
 ## Music
 
-The optional **Drift / Beopity** ambient composition is synthesized locally with
-Web Audio: soft chords, a quiet bass, and sparse bell notes. `AmbientMusic.tsx`
-owns the player; `lib/ambientAudio.ts` owns scheduling and the audio graph. It
-starts silent, requires an explicit Play action, and has pause and volume/mute
-controls. Public client navigation retains playback. Hidden documents pause;
-returning never restarts music automatically. Private/personal routes unmount the
-player and close its audio context. No external audio service, recording,
-analytics, cookie, or persisted preference is introduced. Verify the lifecycle
-with `npm run test:ambient`.
+The Beopity playlist contains ten distinct original instrumental tracks, scored
+and rendered by `scripts/generate-beopity-music.py`. Final MP3s live under
+`public/beopity/music/`; `lib/ambientTracks.ts` supplies their titles and durations.
+The arrangements combine soft chords, bass, melodic motifs, and restrained rhythm.
+Regeneration requires Python with NumPy plus ffmpeg/ffprobe; it does not run during
+deployment. `docs/beopity-music-render.json` records measured duration, audio levels,
+and file hashes. `npm run test:music` verifies the catalogue and encoded assets
+using the project's existing Node dependencies.
+
+`AmbientMusic.tsx` owns the bottom-right player and playback intent;
+`lib/ambientAudio.ts` owns one native audio element. It streams the selected song,
+provides previous/play/pause/next, seek and volume controls, and advances through
+the playlist when a track ends. Previous restarts a track after three seconds;
+otherwise it selects the preceding song. Paused track changes stay paused.
+
+Playback is requested by default. Browsers that block autoplay receive a first
+interaction retry; an explicit Pause prevents that retry. The page is paused while
+hidden. Public client navigation retains the player, while private/personal routes
+release it. A `?music=off` entry keeps playback quiet until an explicit Play action.
+There is no external audio service, recording, analytics, cookie, or persisted
+preference. Verify playback races and asset integrity with `npm run test:ambient`.
+
+Autoplay behavior follows the browser's policy; see
+[Chrome's autoplay documentation](https://developer.chrome.com/blog/autoplay/).

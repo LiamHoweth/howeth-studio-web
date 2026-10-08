@@ -1,13 +1,18 @@
 - October 7 Beopity redesign: homepage uses a cursor-responsive 3D logo with no
-  viewer labels/controls. `BeopitySculpture` lazy-loads `beopityScene`; the original
-  mark is the WebGL fallback. The scene respects reduced motion, caps DPR/fps,
-  sleeps when still/hidden, and disposes its resources on navigation. Regenerate
+  viewer labels/controls. `BeopitySculpture` handles pointer input before lazy-loading
+  `beopityScene`; its crisp vector fallback responds during loading or WebGL failure.
+  The scene respects reduced motion, caps pixel cost, sleeps when still/hidden,
+  and disposes its resources on navigation. Regenerate
   `public/beopity/logo.glb` with `npm run generate:beopity`.
-- Optional original ambient music lives in root-mounted `AmbientMusic` and
-  `lib/ambientAudio.ts`. Play is explicit; volume zero mutes. Public navigation
-  retains music, hidden documents pause without auto-resume, and admin/personal
-  routes release audio. No remote audio or persisted preference. CI includes
-  `test:beopity` and `test:ambient`; see `docs/beopity-design.md`.
+- Ten original chill tracks live in `public/beopity/music/`, described by
+  `lib/ambientTracks.ts`; regenerate with `scripts/generate-beopity-music.py`.
+  Root-mounted `AmbientMusic` provides previous/play/pause/next, seek and volume.
+  `lib/ambientAudio.ts` streams one MP3 at a time. Autoplay is requested by default
+  with a first-interaction retry when blocked; explicit Pause disables that retry.
+  `?music=off` skips automatic playback for quiet entry/review. Public navigation
+  retains music, hidden documents pause, and admin/personal routes release audio.
+  No external audio service or persisted preference. CI includes `test:beopity`
+  and `test:ambient`; see `docs/beopity-design.md`.
 
 # Current project notes
 

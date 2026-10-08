@@ -13,7 +13,8 @@
     "test:hosting": "node --test scripts/serve-site.test.mjs",
     "generate:beopity": "node scripts/generate-beopity-model.mjs",
     "test:beopity": "node --test scripts/beopity-model.test.mjs",
-    "test:ambient": "node --test scripts/ambient-audio.test.mjs"
+    "test:ambient": "node --test scripts/ambient-audio.test.mjs",
+    "test:music": "node --test scripts/beopity-music.test.mjs"
   },
   "dependencies": {
     "compression": "^1.8.2",
