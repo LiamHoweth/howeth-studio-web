@@ -50,10 +50,14 @@ otherwise it selects the preceding song. Paused track changes stay paused.
 
 Playback is requested by default. Browsers that block autoplay receive a first
 interaction retry; an explicit Pause prevents that retry. The page is paused while
-hidden. Public client navigation retains the player, while private/personal routes
-release it. A `?music=off` entry keeps playback quiet until an explicit Play action.
+hidden. Pointer retries wait for release so touch has browser activation, alongside
+the keyboard retry. Public client navigation retains the player, while
+private/personal routes release it. A `?music=off` entry keeps playback quiet until
+an explicit Play action.
 There is no external audio service, recording, analytics, cookie, or persisted
 preference. Verify playback races and asset integrity with `npm run test:ambient`.
 
 Autoplay behavior follows the browser's policy; see
 [Chrome's autoplay documentation](https://developer.chrome.com/blog/autoplay/).
+Touch and mouse activation timing follows
+[MDN's user activation guide](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/User_activation).
