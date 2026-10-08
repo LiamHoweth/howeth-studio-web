@@ -88,7 +88,8 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     };
 
     document.addEventListener("visibilitychange", handleVisibility);
-    document.addEventListener("pointerdown", retryOnActivation);
+    // Touch receives browser activation on release; mouse activation remains active.
+    document.addEventListener("pointerup", retryOnActivation);
     document.addEventListener("keydown", retryOnActivation);
     window.addEventListener("pagehide", pauseOnPageExit);
     window.addEventListener("pageshow", resumeIfRequested);
@@ -97,7 +98,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     return () => {
       active = false;
       document.removeEventListener("visibilitychange", handleVisibility);
-      document.removeEventListener("pointerdown", retryOnActivation);
+      document.removeEventListener("pointerup", retryOnActivation);
       document.removeEventListener("keydown", retryOnActivation);
       window.removeEventListener("pagehide", pauseOnPageExit);
       window.removeEventListener("pageshow", resumeIfRequested);

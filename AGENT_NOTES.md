@@ -8,7 +8,8 @@
   `lib/ambientTracks.ts`; regenerate with `scripts/generate-beopity-music.py`.
   Root-mounted `AmbientMusic` provides previous/play/pause/next, seek and volume.
   `lib/ambientAudio.ts` streams one MP3 at a time. Autoplay is requested by default
-  with a first-interaction retry when blocked; explicit Pause disables that retry.
+  with a retry after pointer release or a keypress when blocked; explicit Pause
+  disables that retry.
   `?music=off` skips automatic playback for quiet entry/review. Public navigation
   retains music, hidden documents pause, and admin/personal routes release audio.
   No external audio service or persisted preference. CI includes `test:beopity`
