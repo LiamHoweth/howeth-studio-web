@@ -1,6 +1,6 @@
 # Beopity domain migration
 
-Prepared October 7, 2026. The registrar remains Namecheap and the application,
+DNS configured October 7, 2026. The registrar remains Namecheap and the application,
 API, PostgreSQL, volumes, buckets, repositories, and app identities stay in their
 existing Railway project. No registrar transfer or paid plan change is needed for
 the primary apex domain.
@@ -11,12 +11,19 @@ the primary apex domain.
 - `api.beopity.com` is attached to `football-era-api`, port 8080.
 - Existing `howethstudio.com` and `api.howethstudio.com` remain attached.
 - Namecheap uses `dns1.registrar-servers.com` and `dns2.registrar-servers.com`.
-  The available background browser session is signed out, so DNS has not been edited.
+  The apex ALIAS, API CNAME, and both ownership TXT records are saved. Existing
+  mail settings, SPF, nameservers, and DNSSEC settings were preserved.
 - The API now allows the new website origins while preserving the old origins.
-- New-domain DNS verification and TLS certificates are pending. This is not a
-  completed primary-domain cutover.
+- Railway verifies both new domains and reports valid TLS certificates. Both
+  new HTTPS origins respond successfully. Production is configured with Beopity
+  canonical/API URLs and permanent legacy website redirects. Cutover deployment
+  `c4a2948f-292b-4bfe-ae34-52b108cebbaa` is SUCCESS on reviewed main `cb4c906`.
+  Old website deep links preserve paths and query strings with 308. Both API
+  health endpoints report the existing database ready; Beopity CORS passes.
 - The current Railway plan rejects a third custom web hostname. `www.beopity.com`
-  is not attached. Do not remove the legacy apex just to free its slot.
+  is not attached. Namecheap forwards HTTP `www` requests permanently to
+  `https://beopity.com/`; HTTPS `www` is not supported by that forwarding.
+  Do not remove the legacy apex just to free its slot.
 
 ## Namecheap DNS
 
@@ -32,7 +39,9 @@ inventorying them. These targets are from the actual Railway domain creation.
 | CNAME | `api` | `gts55kam.up.railway.app` |
 | TXT | `_railway-verify.api` | `railway-verify=f714c8e54d0546bcce13b28a1c90462c2a0b83ec3736224ef0321493bd8686d0` |
 
-Use Automatic TTL. Namecheap supports ALIAS at the root, where an ordinary CNAME
+Use Automatic TTL for CNAME/TXT. Namecheap saves the ALIAS with its fixed five-minute
+TTL. The `www` parking CNAME was replaced with a Permanent (301) URL Redirect to
+`https://beopity.com/`. Namecheap supports ALIAS at the root, where an ordinary CNAME
 cannot coexist with the zone's other records. Keep its existing nameservers.
 
 References: [Namecheap ALIAS instructions](https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/)
@@ -56,11 +65,11 @@ https://howethstudio.com,https://www.howethstudio.com,https://beopity.com,https:
 
 ## Activate the primary domain
 
-Until DNS and HTTPS are verified, deploy the Beopity brand with web variables
+For future migrations, until DNS and HTTPS are verified, deploy the brand with web variables
 `NEXT_PUBLIC_SITE_URL=https://howethstudio.com` and `SITE_REDIRECTS_ENABLED=false`.
 This keeps current search and support URLs reachable during setup.
 
-After verification, set web variables together and deploy the current reviewed main:
+The production cutover sets these web variables together and rebuilds reviewed main:
 
 ```bash
 railway variable set NEXT_PUBLIC_SITE_URL=https://beopity.com NEXT_PUBLIC_API_ORIGIN=https://api.beopity.com SITE_REDIRECTS_ENABLED=true --service howeth-studio-web

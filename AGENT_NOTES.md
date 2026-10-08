@@ -1,19 +1,22 @@
+# Current project notes
+
 - October 7, 2026: Public branding is Beopity, with AI artwork under
-  `public/beopity/`. Keep existing product artwork, app identifiers, support inboxes,
+  `public/beopity/`. Keep product artwork, app identifiers, support inboxes,
   API/data resources, localized documents, and the private personal route intact.
-  The API allows both website domains. The new apex and API domains are attached
-  to Railway but Namecheap DNS still needs
-  authenticated setup. See `docs/beopity-domain-migration.md` for current records.
-  Keep production `NEXT_PUBLIC_SITE_URL=https://howethstudio.com` and
-  `SITE_REDIRECTS_ENABLED=false` until new-domain DNS/HTTPS verification; then switch
-  to Beopity and enable the tested permanent redirects. The current Railway plan
-  cannot attach a third custom web hostname while retaining the old domain.
+  Namecheap apex/API records are saved; Railway verifies both domains with valid
+  TLS certificates. Production configuration uses `https://beopity.com` and
+  `https://api.beopity.com`, with tested permanent old-website redirects enabled.
+  Keep `api.howethstudio.com` serving released apps directly; API CORS allows both
+  website origins. See `docs/beopity-domain-migration.md` for records and rollback.
+  The plan cannot attach HTTPS `www` as a third web domain while retaining the old
+  apex; Namecheap provides HTTP-only `www` forwarding to the new primary.
   Rebrand validation: clean install, lint, TypeScript/static build, four hosting tests,
   49-page/44-URL export audit, and background phone/tablet/desktop checks pass.
-  Runtime audit is clean; the full audit retains five known mitigated dev findings.
-  Sharp was updated to 0.35.5 to fix a newly reported transitive vulnerability.
-
-# Current project notes
+  Runtime audit is clean; full audit retains five known mitigated dev findings.
+  Sharp was updated to 0.35.5 to fix a transitive vulnerability.
+  Production cutover deployment `c4a2948f-292b-4bfe-ae34-52b108cebbaa` is SUCCESS
+  on reviewed main `cb4c906`; old website deep links preserve path/query with 308.
+  Both API health checks report the existing database ready, and Beopity CORS passes.
 
 - October 5, 2026: Elevenward’s public App Store listing was verified at
   `https://apps.apple.com/us/app/elevenward/id6809308325`; Android remains in
