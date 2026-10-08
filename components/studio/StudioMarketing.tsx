@@ -26,8 +26,8 @@ export function StudioWorkSection() {
     <section className="studio-work" aria-labelledby="work-heading">
       <div className="studio-work__head">
         <div>
-          <p className="studio-mono studio-section-label">01 / The collection</p>
-          <h2 id="work-heading">Find your next favorite.</h2>
+          <p className="studio-mono studio-section-label">Our work</p>
+          <h2 id="work-heading">Apps & games.</h2>
         </div>
         <p>Seven products. Plenty of possibilities.<br />Explore what’s live and what’s taking shape.</p>
       </div>
@@ -41,7 +41,7 @@ export function StudioAboutSection() {
     <section className="studio-about" aria-labelledby="about-heading">
       <div className="studio-about__grid">
         <div>
-          <p className="studio-mono studio-section-label">02 / Behind the work</p>
+          <p className="studio-mono studio-section-label">The studio</p>
           <h2 id="about-heading">Small on purpose.<br /><em>Curious by nature.</em></h2>
         </div>
         <div className="studio-about__copy">
@@ -62,7 +62,7 @@ export function StudioSiteFooter({ year }: { year: number }) {
     <footer id="contact" className="studio-footer">
       <div className="studio-footer__invitation">
         <p className="studio-mono">Have something in mind?</p>
-        <Link href="/contact/">Good things start<br />with a <em>conversation.</em><span aria-hidden="true">↗</span></Link>
+        <Link href="/contact/">Let’s make<br /><em>something matter.</em><span aria-hidden="true">↗</span></Link>
       </div>
       <div className="studio-footer__bottom">
         <Link className="studio-footer__wordmark" href="/">beopity</Link>

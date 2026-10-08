@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { BeopitySculpture } from "@/components/studio/BeopitySculpture";
 import { StudioAboutSection, StudioSiteFooter, StudioWorkSection } from "@/components/studio/StudioMarketing";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 
@@ -18,21 +18,13 @@ export default function HomePage() {
       <section className="studio-hero" aria-labelledby="studio-hero-title">
         <div className="studio-hero__body">
           <p className="studio-mono studio-hero__eyebrow"><span aria-hidden="true" /> Independent by design</p>
-          <h1 id="studio-hero-title">Small studio.<br />Big <em>possibilities.</em></h1>
-          <p className="studio-hero__lede">Thoughtful apps for the everyday.<br />Games that take you somewhere else.</p>
-          <Link className="studio-button" href="#work">Explore the collection <span aria-hidden="true">↘</span></Link>
-          <div className="studio-hero__foot studio-mono"><span>Built with care.</span><span>Made to be used.</span></div>
+          <h1 id="studio-hero-title">A little<br />curiosity.<br /><em>Endless play.</em></h1>
+          <p className="studio-hero__lede">We’re Beopity. Makers of thoughtful apps<br className="studio-desktop-break" /> and worlds worth getting lost in.</p>
+          <Link className="studio-button" href="#work">Discover our work <span aria-hidden="true">↗</span></Link>
         </div>
-        <div className="studio-hero__scene studio-hero__scene--beopity">
-          <Image className="beopity-hero-art" src="/beopity/brand.webp" alt="Beopity: an ivory b emblem and wordmark on charcoal with a subtle teal glow" width={1254} height={1254} priority />
-          <div className="beopity-hero-links" aria-label="Explore our apps and games">
-            <Link href="/football-era/">Football Era <span aria-hidden="true">↗</span></Link>
-            <Link href="/elevenward/">Elevenward <span aria-hidden="true">↗</span></Link>
-            <Link href="/noctara/">Noctara <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
+        <BeopitySculpture />
       </section>
-      <div className="studio-manifesto"><p>Useful in your day.<br /><span>Immersive in your downtime.</span></p><span className="studio-mono">Different ideas.<br />The same attention to detail.</span></div>
+      <div className="studio-manifesto"><span className="studio-mono">Made with intention.<br />Played your way.</span><p>Good ideas.<br /><span>Even better experiences.</span></p><Link href="#work" className="studio-manifesto__scroll" aria-label="Scroll to our collection">↓</Link></div>
       <div id="work"><StudioWorkSection /></div>
       <div id="about"><StudioAboutSection /></div>
     </main>

@@ -10,7 +10,10 @@
     "lint": "eslint .",
     "postinstall": "node scripts/security-patches.cjs --apply && node scripts/security-regressions.cjs",
     "validate:security": "node scripts/security-gate-tests.cjs && node scripts/security-audit.cjs",
-    "test:hosting": "node --test scripts/serve-site.test.mjs"
+    "test:hosting": "node --test scripts/serve-site.test.mjs",
+    "generate:beopity": "node scripts/generate-beopity-model.mjs",
+    "test:beopity": "node --test scripts/beopity-model.test.mjs",
+    "test:ambient": "node --test scripts/ambient-audio.test.mjs"
   },
   "dependencies": {
     "compression": "^1.8.2",
@@ -18,13 +21,15 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "serve": "^14.2.5",
-    "serve-handler": "^6.1.7"
+    "serve-handler": "^6.1.7",
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@types/node": "^20.17.12",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "@types/three": "0.186.0",
     "eslint": "^9.18.0",
     "eslint-config-next": "^16.3.2",
     "railway": "^3.10.0",

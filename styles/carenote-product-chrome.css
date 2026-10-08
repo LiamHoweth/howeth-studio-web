@@ -3,7 +3,7 @@
 /* CareNote shares the studio canvas and keeps its support routes in the same system. */
 body:has(.carenote-product) {
   margin: 0;
-  background: #f5f3ee;
+  background: var(--studio-paper);
 }
 
 body:has(.carenote-product)::before,
@@ -12,26 +12,26 @@ body:has(.carenote-product)::after {
 }
 
 .carenote-product {
-  --cn-paper: var(--studio-paper, #f5f3ee);
-  --cn-panel: #faf9f5;
-  --cn-ink: var(--studio-ink, #17211f);
-  --cn-muted: #5c6861;
-  --cn-rule: #ddded5;
-  --cn-accent: #e9bbaa;
+  --cn-paper: var(--studio-paper);
+  --cn-panel: var(--studio-panel);
+  --cn-ink: var(--studio-ink);
+  --cn-muted: var(--studio-muted);
+  --cn-rule: var(--studio-line);
+  --cn-accent: var(--studio-accent);
   --ink: var(--cn-ink);
   --ink-soft: var(--cn-muted);
   --line: var(--cn-rule);
-  --line-strong: #c2c5b9;
+  --line-strong: var(--studio-line-strong);
   --blue: var(--cn-ink);
   --blue-deep: var(--cn-ink);
   min-height: 100vh;
   color: var(--cn-ink);
   background: var(--cn-paper);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 .carenote-product :focus-visible {
-  outline: 2px solid var(--cn-ink);
+  outline: 2px solid var(--cn-accent);
   outline-offset: 4px;
 }
 
@@ -87,7 +87,7 @@ body:has(.carenote-product)::after {
 .cn-product-nav__links a:hover,
 .cn-product-nav__links a[aria-current="page"] {
   color: var(--cn-ink);
-  background: #e8e8df;
+  background: var(--studio-panel);
 }
 
 .cn-product-nav__download {
