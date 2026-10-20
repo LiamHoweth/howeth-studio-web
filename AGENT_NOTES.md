@@ -1,9 +1,14 @@
-- October 7 Beopity redesign: homepage uses a cursor-responsive 3D logo with no
-  viewer labels/controls. `BeopitySculpture` handles pointer input before lazy-loading
-  `beopityScene`; its crisp vector fallback responds during loading or WebGL failure.
-  The scene respects reduced motion, caps pixel cost, sleeps when still/hidden,
-  and disposes its resources on navigation. Regenerate
-  `public/beopity/logo.glb` with `npm run generate:beopity`.
+- October 20 black-cat redesign (branch `codex/beopity-cat-redesign`): approved
+  artwork in `design/branding/` (never edited); `npm run generate:beopity` derives
+  `public/beopity/` web assets. Public copy uses lowercase "beopity" (legal and
+  localized Elevenward text unchanged). Studio pages (home/work/about/contact) use
+  `StudioTrail`: a reserved right lane plus mint `data-cat-wander` interludes where
+  the procedural 3D cat walks. Scroll distance drives `lib/cat/{route,walker,gait}.ts`
+  (pure, tested by `npm run test:beopity`); `components/studio/cat/` holds the rig,
+  lazy WebGL renderer and DOM driver. Reduced motion/no WebGL show the painted cat.
+  Product pages share header/footer/type but have no walking cat. Design references
+  and architecture: `docs/beopity-design.md`. `next dev` appends to AGENTS.md and
+  edits next-env.d.ts; restore them before committing.
 - Ten original chill tracks live in `public/beopity/music/`, described by
   `lib/ambientTracks.ts`; regenerate with `scripts/generate-beopity-music.py`.
   Root-mounted `AmbientMusic` provides previous/play/pause/next, seek and volume.

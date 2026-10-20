@@ -6,11 +6,12 @@ import {
   StudioWorkSection,
 } from "@/components/studio/StudioMarketing";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { StudioTrail } from "@/components/studio/StudioTrail";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Products from Beopity — Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
+    "Products from beopity — Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   alternates: {
     canonical: "/work/",
   },
@@ -25,21 +26,23 @@ export default function WorkPage() {
         Skip to main content
       </a>
       <StudioSiteHeader />
-      <main id="main" className="studio-landing__main">
-        <nav className="studio-subcrumb studio-mono" aria-label="Breadcrumb">
-          <Link href="/">Index</Link>
-          <span aria-hidden="true"> · </span>
-          <span>Work</span>
-        </nav>
-        <StudioPageIntro
-          index="002"
-          eyebrow="Apps & games"
-          title="A little curiosity. A lot to explore."
-          description="Thoughtful apps and games from Beopity. Browse the full collection, from everyday companions to worlds still taking shape."
-        />
-        <StudioWorkSection />
-        <StudioSiteFooter year={year} />
+      <main id="main">
+        <StudioTrail>
+          <nav className="studio-subcrumb studio-mono" aria-label="Breadcrumb">
+            <Link href="/">Index</Link>
+            <span aria-hidden="true"> · </span>
+            <span>Work</span>
+          </nav>
+          <StudioPageIntro
+            index="002"
+            eyebrow="Apps & games"
+            title="A little curiosity. A lot to explore."
+            description="Thoughtful apps and games from beopity. Browse the full collection, from everyday companions to worlds still taking shape."
+          />
+          <StudioWorkSection />
+        </StudioTrail>
       </main>
+      <StudioSiteFooter year={year} />
     </div>
   );
 }

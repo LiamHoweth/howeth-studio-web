@@ -5,12 +5,13 @@ import {
   StudioPageIntro,
   StudioSiteFooter,
 } from "@/components/studio/StudioMarketing";
+import { StudioTrail } from "@/components/studio/StudioTrail";
 import { beopityConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Reach Beopity for project inquiries, partnerships, or product support — email and CareNote CNA contact options.",
+    "Reach beopity for project inquiries, partnerships, or product support — email and CareNote CNA contact options.",
   alternates: {
     canonical: "/contact/",
   },
@@ -25,44 +26,48 @@ export default function ContactPage() {
         Skip to main content
       </a>
       <StudioSiteHeader />
-      <main id="main" className="studio-landing__main">
-        <nav className="studio-subcrumb studio-mono" aria-label="Breadcrumb">
-          <Link href="/">Index</Link>
-          <span aria-hidden="true"> · </span>
-          <span>Contact</span>
-        </nav>
+      <main id="main">
+        <StudioTrail>
+          <nav className="studio-subcrumb studio-mono" aria-label="Breadcrumb">
+            <Link href="/">Index</Link>
+            <span aria-hidden="true"> · </span>
+            <span>Contact</span>
+          </nav>
 
-        <StudioPageIntro
-          index="004"
-          eyebrow="Start a conversation"
-          title="Have a useful problem to solve?"
-          description="Share the product, the audience, and where the work is stuck. You will hear directly from the person who would design and build it."
-        />
+          <StudioPageIntro
+            index="004"
+            eyebrow="Start a conversation"
+            title="Have a useful problem to solve?"
+            description="Share the product, the audience, and where the work is stuck. You will hear directly from the person who would design and build it."
+          />
 
-        <section className="studio-contact-page" aria-labelledby="contact-heading">
-          <h2 id="contact-heading" className="studio-contact-page__title">
-            Contact
-          </h2>
-          <p className="studio-mono studio-contact-page__label">Direct</p>
-          <p className="studio-contact-page__line">
-            <a className="studio-cta" href={`mailto:${beopityConfig.contactEmail}`}>
-              {beopityConfig.contactEmail}
-            </a>
-          </p>
-          <p className="studio-mono studio-contact-page__label">Product support</p>
-          <p className="studio-contact-page__copy">
-            For CareNote CNA questions or feedback, you can use the in-product support flow
-            or the marketing-site form.
-          </p>
-          <p className="studio-contact-page__line">
-            <Link className="studio-cta studio-cta--quiet" href="/carenote-cna/contact/">
-              CareNote CNA contact form
-            </Link>
-          </p>
-        </section>
-
-        <StudioSiteFooter year={year} />
+          <section className="studio-contact-page" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" className="studio-mono studio-section-label">
+              Contact
+            </h2>
+            <div className="studio-contact-card studio-contact-card--paper">
+              <p className="studio-mono">Direct</p>
+              <h3 className="studio-contact-card__title">Write to the studio</h3>
+              <p>Project inquiries, partnerships and press.</p>
+              <a className="studio-cta" href={`mailto:${beopityConfig.contactEmail}`}>
+                {beopityConfig.contactEmail}
+              </a>
+            </div>
+            <div className="studio-contact-card">
+              <p className="studio-mono">Product support</p>
+              <h3 className="studio-contact-card__title">CareNote CNA</h3>
+              <p>
+                For CareNote CNA questions or feedback, you can use the in-product support flow
+                or the marketing-site form.
+              </p>
+              <Link className="studio-cta studio-cta--quiet" href="/carenote-cna/contact/">
+                CareNote CNA contact form
+              </Link>
+            </div>
+          </section>
+        </StudioTrail>
       </main>
+      <StudioSiteFooter year={year} />
     </div>
   );
 }

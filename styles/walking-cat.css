@@ -1,0 +1,10 @@
+/* Fixed, click-through host for the walking cat. Only its transform changes per frame. */
+.walking-cat { position: fixed; left: 0; top: 0; z-index: 30; width: 0; height: 0; pointer-events: none; contain: layout style size; will-change: transform; }
+.walking-cat[data-state="static"] { display: none; }
+.walking-cat canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .35s ease; }
+.walking-cat[data-state="live"] canvas { opacity: 1; }
+/* The painted cat stands in until the 3D cat is ready, in the same footprint. */
+.walking-cat__poster { position: absolute; left: 50%; top: 26%; width: auto; height: 41%; transform: translateX(-50%); filter: drop-shadow(0 0 22px #bfeccb38) drop-shadow(0 8px 10px #0008); transition: opacity .35s ease; }
+.walking-cat[data-state="live"] .walking-cat__poster { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .walking-cat canvas, .walking-cat__poster { transition: none; } }
+@media print { .walking-cat { display: none; } }
