@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { siteUrl } from "@/lib/siteConfig";
-import { IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
 import { DocumentLanguage } from "@/components/studio/DocumentLanguage";
 import { AmbientMusic } from "@/components/studio/AmbientMusic";
 import "@/styles/carenote-marketing.css";
@@ -22,6 +22,15 @@ const sora = Sora({
   display: "swap",
 });
 
+// Soft, hand-finished display serif for editorial headlines.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 const studioMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -34,20 +43,23 @@ const metadataBase = new URL(siteUrl);
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: "Beopity",
-    template: "%s | Beopity",
+    default: "beopity",
+    template: "%s | beopity",
   },
   description:
-    "Beopity — independent software development and mobile products including Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
+    "beopity — independent software development and mobile products including Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   icons: {
-    icon: [{ url: "/beopity/favicon.png", type: "image/png" }],
+    icon: [
+      { url: "/beopity/favicon.png", type: "image/png", sizes: "48x48" },
+      { url: "/beopity/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
     apple: "/beopity/apple-touch-icon.png",
   },
   twitter: { card: "summary_large_image", images: ["/beopity/social.png"] },
   openGraph: {
     type: "website",
-    siteName: "Beopity",
-    images: [{ url: "/beopity/social.png", width: 1200, height: 630, alt: "Beopity — independent apps and games" }],
+    siteName: "beopity",
+    images: [{ url: "/beopity/social.png", width: 1200, height: 630, alt: "beopity: a black kitten above the lowercase beopity wordmark" }],
   },
 };
 
@@ -60,7 +72,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${manrope.variable} ${sora.variable} ${studioMono.variable}`}
+      className={`${manrope.variable} ${sora.variable} ${fraunces.variable} ${studioMono.variable}`}
     >
       <body><DocumentLanguage />{children}<AmbientMusic /></body>
     </html>

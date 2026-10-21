@@ -104,5 +104,6 @@ AI assets were produced with the built-in image generation tool. The original lo
 prompt requested a sculptural lowercase b above the exact wordmark "beopity", on
 charcoal with ivory type and subtle teal edge lighting, inspired by the current
 Football Era and Elevenward icons. The icon edit preserved the b and removed the
-wordmark/background. `public/beopity/brand-original.png` and `icon-original.png`
-retain the originals; optimized website, social, and favicon assets are siblings.
+wordmark/background. That first "b" identity was superseded on October 20, 2026 by
+the approved black-cat artwork; see `docs/beopity-artwork.md`. Its originals remain
+in Git history (commit 83b3128).

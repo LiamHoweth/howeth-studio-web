@@ -1,42 +1,27 @@
-# Beopity artwork
+# beopity artwork
 
-Generated with the built-in image generation tool on October 7, 2026. The originals
-are `public/beopity/brand-original.png` and `public/beopity/icon-original.png`.
-Website siblings are `brand.webp`, `icon.webp`, `social.png`, `favicon.png`, and
-`apple-touch-icon.png`. Optimization uses Sharp resizing/encoding; the artwork
-itself is generated rather than a vector replacement. The transparent icon retains
-its alpha; favicons are composited onto charcoal for contrast.
+## Current identity (October 20, 2026)
 
-## Original generation prompt
+The approved originals live in `design/branding/` and are never edited:
 
-Use case: logo-brand. Asset type: final brand artwork for the Beopity independent
-apps and games studio, square 2048x2048 composition. Create a polished premium
-brand image: a distinctive sculptural lowercase b emblem above the exact lowercase
-wordmark "beopity" (letters b e o p i t y), with clean custom geometric rounded
-sans-serif typography. The b emblem should feel simple, clever, friendly, and
-memorable, built from two connected rounded loops with a clear stem, not a sports
-symbol. Color palette inspired by Football Era and Elevenward app artwork:
-almost-black charcoal background (#090d0e), warm ivory (#eeece5) emblem and wordmark,
-with extremely subtle cool emerald/teal edge lighting on the emblem only. Strong
-restrained monochrome design; no neon, no rainbow gradients. Flat front-facing
-centered branding with plenty of breathing room, clear legibility at small sizes,
-subtle premium grain in the dark background, sharp lettering. Only text is
-"beopity". No slogans, sports equipment, balls, player silhouettes, 11 numerals,
-watermark, mockup or extra badges. The image should be a usable standalone logo
-artwork, not a logo presentation board.
+- `beopity-black-cat-logo.png` (1254 × 1254): an original fluffy black kitten
+  with pale mint eyes, warm inner ears and a hooked tail, seated above the
+  rounded lowercase wordmark **beopity** on mint paper.
+- `beopity-tiktok-pfp.png` (1254 × 1254): the same kitten as a close-up portrait,
+  head tilted, above the wordmark.
 
-The tool returned a 1254 × 1254 original. Exact wordmark spelling and composition
-were inspected before integration.
+`npm run generate:beopity` (`scripts/generate-beopity-brand.mjs`) derives every
+website asset in `public/beopity/` with Sharp: the full lockup, a mascot-only
+cut-out, the wordmark as a recolourable alpha mask, portrait/favicon/touch icons,
+the 1200 × 630 social card and a seamless paper-grain tile. Crops and thresholds
+are fixed in the script, so the output is reproducible. See
+`docs/beopity-design.md` for where each asset is used.
 
-## Icon edit prompt
+The 3D walking cat is procedural (`components/studio/cat/catModel.ts`). It
+follows the mascot's proportions and colours without copying pixels from the art.
 
-Edit the Beopity logo artwork into a square app/site icon. Keep the exact distinctive
-lowercase b emblem design, its two rounded loops, its stem, warm ivory color, and
-very subtle teal edge light. Remove the "beopity" wordmark entirely. Remove the dark
-backdrop to make a genuinely transparent background. Center and enlarge the b
-emblem to fill about 80 percent of a square canvas, with balanced padding and the
-entire symbol visible. Preserve the smooth premium shape. No text, no extra
-elements, no watermark.
+## Previous identity
 
-The original brand image was supplied as the edit reference. The tool returned a
-1254 × 1254 RGBA image with transparency.
+The October 7, 2026 sculptural "b" emblem, its originals (`brand-original.png`,
+`icon-original.png`), derivatives and `logo.glb` were retired in this redesign.
+They remain in Git history at commit 83b3128.

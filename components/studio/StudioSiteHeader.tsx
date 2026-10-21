@@ -7,7 +7,7 @@ import { BeopityBrand } from "@/components/studio/BeopityBrand";
 
 const navigation = [
   { href: "/work/", label: "Work" },
-  { href: "/about/", label: "About" },
+  { href: "/about/", label: "Studio" },
   { href: "/contact/", label: "Contact" },
 ] as const;
 

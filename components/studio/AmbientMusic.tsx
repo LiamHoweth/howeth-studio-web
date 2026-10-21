@@ -142,7 +142,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
   const announcement = snapshot.status === "unavailable" ? "Music is unavailable. Try another track or select Play to retry."
     : snapshot.status === "blocked" ? "Music is ready. Select Play to start."
       : starting ? `Starting ${track.title}.`
-        : playing ? `Playing ${track.title} by Beopity.`
+        : playing ? `Playing ${track.title} by beopity.`
           : snapshot.status === "paused" ? "Music paused."
             : "";
 
@@ -152,7 +152,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
       ref={dock}
       lang="en"
       role="region"
-      aria-label="Beopity music player"
+      aria-label="beopity music player"
       data-playing={playing}
       style={{ "--ambient-track-accent": track.accent, "--ambient-progress": `${progress}%` } as CSSProperties}
       onKeyDown={(event) => {
@@ -172,7 +172,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
           </div>
           <div className="ambient-music__track">
             <span className="ambient-music__title" title={track.title}>{track.title}</span>
-            <span className="ambient-music__artist">Beopity <span aria-hidden="true">·</span> <span aria-label={`Track ${snapshot.trackIndex + 1} of ${AMBIENT_TRACKS.length}`}>{String(snapshot.trackIndex + 1).padStart(2, "0")} / {AMBIENT_TRACKS.length}</span></span>
+            <span className="ambient-music__artist">beopity <span aria-hidden="true">·</span> <span aria-label={`Track ${snapshot.trackIndex + 1} of ${AMBIENT_TRACKS.length}`}>{String(snapshot.trackIndex + 1).padStart(2, "0")} / {AMBIENT_TRACKS.length}</span></span>
           </div>
           <div className="ambient-music__transport" role="group" aria-label="Playback controls">
             <button type="button" aria-label="Previous track" title="Previous track" onClick={() => void changeTrack("previous")}>
