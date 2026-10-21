@@ -89,8 +89,10 @@ jump snapping, rig budget and disposal.
 
 Performance and safety: the host is `position: fixed`, `pointer-events: none`,
 `aria-hidden`, moved with a transform only; the canvas is a bounded square around
-the cat (≤1.4 MP backing store) instead of a full-screen layer. Rendering runs
-only while walking, settling, glancing or blinking and stops while the document
+the cat (≤1.4 MP backing store) instead of a full-screen layer. Its scale is
+capped to the complete turning silhouette, including the skinned tail and
+outline, inside the reserved lane. The wider lane keeps the companion visible
+without covering content. Rendering runs only while walking, settling, glancing or blinking and stops while the document
 is hidden. Three.js loads after mount; the painted cut-out follows the route
 until the first 3D frame and remains if WebGL is unavailable or lost. With
 `prefers-reduced-motion: reduce` no WebGL loads and the painted cat sits in the

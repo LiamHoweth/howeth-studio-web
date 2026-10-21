@@ -2,7 +2,7 @@ import { mkdir } from 'node:fs/promises';
 import sharp from 'sharp';
 
 // Web derivatives of the two approved artworks in design/branding/. The originals
-// stay untouched; every output here can be regenerated with `npm run generate:brand`.
+// stay untouched; every output here can be regenerated with `npm run generate:beopity`.
 const root = new URL('../', import.meta.url);
 const source = (name) => new URL(`design/branding/${name}`, root).pathname;
 const out = (name) => new URL(`public/beopity/${name}`, root).pathname;

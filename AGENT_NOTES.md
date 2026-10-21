@@ -5,7 +5,9 @@
   `StudioTrail`: a reserved right lane plus mint `data-cat-wander` interludes where
   the procedural 3D cat walks. Scroll distance drives `lib/cat/{route,walker,gait}.ts`
   (pure, tested by `npm run test:beopity`); `components/studio/cat/` holds the rig,
-  lazy WebGL renderer and DOM driver. Reduced motion/no WebGL show the painted cat.
+  lazy WebGL renderer and DOM driver. `fitCatToLane` caps the complete turning
+  silhouette (including the skinned tail and ink) to the lane; the model regression
+  covers compact/desktop widths. Reduced motion/no WebGL show the painted cat.
   Product pages share header/footer/type but have no walking cat. Design references
   and architecture: `docs/beopity-design.md`. `next dev` appends to AGENTS.md and
   edits next-env.d.ts; restore them before committing.

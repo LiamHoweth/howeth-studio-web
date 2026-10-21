@@ -13,10 +13,12 @@ async function load(path, replacements = {}) {
   return `data:text/javascript;base64,${Buffer.from(compiled.outputText).toString('base64')}`;
 }
 const gaitURL = await load('lib/cat/gait.ts');
+const viewURL = await load('lib/cat/view.ts');
 const routeURL = await load('lib/cat/route.ts', { '"./gait"': JSON.stringify(gaitURL) });
 const walkerURL = await load('lib/cat/walker.ts', { '"./gait"': JSON.stringify(gaitURL) });
 const modelURL = await load('components/studio/cat/catModel.ts', { '"@/lib/cat/gait"': JSON.stringify(gaitURL) });
 const gait = await import(gaitURL);
+const { CAT_SCREEN_UNITS, CAT_FULL_TURN_WIDTH_UNITS, CAT_LANE_INSET, fitCatToLane } = await import(viewURL);
 const { routeAt } = await import(routeURL);
 const { CatWalker } = await import(walkerURL);
 const { createCatModel, applyCatPose } = await import(modelURL);
@@ -95,6 +97,63 @@ test('route follows the lane, crosses open bands and never leaves the page secti
   // At the end the cat waits on the page and scrolls away with it.
   const end = routeAt(layout, 7000);
   assert.equal(end.pageY, 6025); assert.equal(end.y, 6025 - 7000);
+});
+
+test('the full skinned and outlined turning silhouette fits compact and desktop lanes', () => {
+  const model = createCatModel();
+  const vertex = new THREE.Vector3(), scale = new THREE.Vector3();
+  let radius = 0;
+  const yawBounds = Array.from({ length: 16 }, (_, index) => ({ yaw: index * Math.PI / 8, min: Infinity, max: -Infinity }));
+  try {
+    for (const sit of [0, 0.5, 1]) for (const phase of [0, 0.25, 0.5, 0.75]) for (const direction of [-1, 1]) {
+      applyCatPose(model, gait.computePose({ phase, walk: 1, speed: 3, sit, time: phase * 20, look: { x: direction, y: direction }, blink: 0 }));
+      model.root.updateMatrixWorld(true);
+      model.root.traverse((object) => {
+        if (!object.isMesh && !object.isLineSegments) return;
+        const positions = object.geometry.getAttribute('position');
+        object.getWorldScale(scale);
+        // The outline shader pushes normalized (possibly skinned) normals out
+        // before the world transform; its maximum displacement bounds all normals.
+        const thickness = object.material.uniforms?.uThickness?.value || 0;
+        const outline = thickness * Math.max(Math.abs(scale.x), Math.abs(scale.y), Math.abs(scale.z));
+        for (let index = 0; index < positions.count; index++) {
+          vertex.fromBufferAttribute(positions, index);
+          if (object.isSkinnedMesh) object.applyBoneTransform(index, vertex);
+          vertex.applyMatrix4(object.matrixWorld);
+          // This radius also bounds every intermediate yaw, rather than only the
+          // sampled headings. Keep symmetric extrema about the canvas origin.
+          radius = Math.max(radius, Math.hypot(vertex.x, vertex.z) + outline);
+          for (const bound of yawBounds) {
+            const x = vertex.x * Math.cos(bound.yaw) + vertex.z * Math.sin(bound.yaw);
+            bound.min = Math.min(bound.min, x - outline);
+            bound.max = Math.max(bound.max, x + outline);
+          }
+        }
+      });
+    }
+    assert.ok(radius <= CAT_FULL_TURN_WIDTH_UNITS / 2, `full-turn symmetric radius ${radius}`);
+
+    for (const [laneWidth, desiredHeight, viewportWidth] of [[60, 78, 320], [84, 78, 320], [140, 188, 1024], [180, 188, 1024]]) {
+      const cat = fitCatToLane(desiredHeight, laneWidth);
+      const pxPerUnit = cat.height / CAT_SCREEN_UNITS;
+      assert.ok(cat.height <= desiredHeight && cat.height > 0);
+      near(cat.width, pxPerUnit * CAT_FULL_TURN_WIDTH_UNITS, 1e-9, 'route uses the complete silhouette width');
+      const layout = {
+        viewport: { width: viewportWidth, height: 900 }, anchor: 540,
+        lane: { left: viewportWidth - laneWidth, top: 0, width: laneWidth, height: 6000 },
+        bands: [], cat, meander: 1100,
+      };
+      for (let scroll = 0; scroll <= 6000; scroll += 50) {
+        const point = routeAt(layout, scroll);
+        for (const bound of yawBounds) {
+          assert.ok(point.x + bound.min * pxPerUnit >= layout.lane.left, 'turning tail/head never cover adjacent content');
+          assert.ok(point.x + bound.max * pxPerUnit <= viewportWidth, 'turning tail/head never clip at the viewport edge');
+        }
+        assert.ok(point.x - radius * pxPerUnit >= layout.lane.left && point.x + radius * pxPerUnit <= viewportWidth, 'all intermediate yaws also fit');
+      }
+      assert.ok(cat.width <= laneWidth - CAT_LANE_INSET * 2);
+    }
+  } finally { model.dispose(); }
 });
 
 const options = { pxPerUnit: 110, elevation: 0.42, snapDistance: 700 };

@@ -1,6 +1,6 @@
 import { computePose } from "@/lib/cat/gait";
 import { routeAt, type RouteLayout } from "@/lib/cat/route";
-import { CAMERA_ELEVATION, CAT_SCREEN_UNITS, VIEW_UNITS } from "@/lib/cat/view";
+import { CAMERA_ELEVATION, CAT_SCREEN_UNITS, VIEW_UNITS, fitCatToLane } from "@/lib/cat/view";
 import { CatWalker } from "@/lib/cat/walker";
 import type { CatRenderer } from "./catScene";
 
@@ -24,9 +24,8 @@ function cssNumber(style: CSSStyleDeclaration, name: string, fallback: number) {
 export function measureRoute(lane: HTMLElement): RouteLayout {
   const scrollY = window.scrollY;
   const style = getComputedStyle(lane);
-  const height = cssNumber(style, "--cat-size", 140);
-  const pxPerUnit = height / CAT_SCREEN_UNITS;
   const rect = lane.getBoundingClientRect();
+  const cat = fitCatToLane(cssNumber(style, "--cat-size", 140), rect.width);
   const bands = Array.from(document.querySelectorAll<HTMLElement>("[data-cat-wander]"), (band) => {
     const box = band.getBoundingClientRect();
     return { left: box.left, top: box.top + scrollY, width: box.width, height: box.height, target: Number(band.dataset.catWander) || 0.4 };
@@ -36,7 +35,7 @@ export function measureRoute(lane: HTMLElement): RouteLayout {
     anchor: window.innerHeight * cssNumber(style, "--cat-anchor", 0.6),
     lane: { left: rect.left, top: rect.top + scrollY, width: rect.width, height: rect.height },
     bands,
-    cat: { width: pxPerUnit * 0.68, height },
+    cat,
     meander: 1100,
   };
 }
@@ -139,7 +138,7 @@ export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver 
     attach(next) {
       renderer = next;
       renderer.setSize(size);
-        scheduleBlink();
+      scheduleBlink();
       // Draw the current pose immediately so the fallback can fade without a gap.
       cancelAnimationFrame(frame); frame = 0; last = 0;
       tick(performance.now());

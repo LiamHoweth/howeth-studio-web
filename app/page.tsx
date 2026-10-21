@@ -40,7 +40,6 @@ export default function HomePage() {
             <div className="studio-art__card">
               <Image src="/beopity/logo.webp" alt="beopity: a black kitten with pale mint eyes sitting above the lowercase beopity wordmark" width={1080} height={1080} sizes="(max-width: 860px) 92vw, 40vw" priority />
             </div>
-            <figcaption className="studio-mono studio-art__tag">Curious since day one</figcaption>
           </figure>
         </section>
         <StudioInterlude index="01 — The approach" wander={0.4}>Every product begins with <em>a little curiosity.</em></StudioInterlude>
