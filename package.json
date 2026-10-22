@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "compression": "^1.8.2",
-    "next": "^16.3.2",
+    "next": "^16.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "serve": "^14.2.5",
@@ -32,7 +32,7 @@
     "@types/react-dom": "^19.0.2",
     "@types/three": "0.186.0",
     "eslint": "^9.18.0",
-    "eslint-config-next": "^16.3.2",
+    "eslint-config-next": "^16.4.2",
     "railway": "^3.10.0",
     "typescript": "^5.7.2"
   },
