@@ -1,3 +1,5 @@
+- October 21, 2026: SuperLife privacy and support are available at `/superlife/privacy/` and `/superlife/support/`, using the owner-approved public contact howethstudio@gmail.com. They describe the offline release candidate with native StoreKit, local optional diagnostics, explicit exports, and no configured ads/cloud/Game Center/analytics. Keep these disclosures synchronized before enabling services. The pages reuse existing product typography and studio chrome without adding a public download claim.
+
 - October 20 black-cat redesign (branch `codex/beopity-cat-redesign`): approved
   artwork in `design/branding/` (never edited); `npm run generate:beopity` derives
   `public/beopity/` web assets. Public copy uses lowercase "beopity" (legal and
