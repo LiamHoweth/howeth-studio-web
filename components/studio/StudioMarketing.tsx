@@ -48,7 +48,7 @@ export function StudioWorkSection() {
           <p className="studio-mono studio-section-label">Selected work</p>
           <h2 id="work-heading">Apps &amp; <em>games.</em></h2>
         </div>
-        <p>Seven products, from a calmer bedtime to a career-defining season. Explore what’s live and what’s taking shape.</p>
+        <p>Eight products, from a calmer bedtime to a career-defining season. Explore what’s live and what’s taking shape.</p>
       </div>
       <ProductCollection />
     </section>

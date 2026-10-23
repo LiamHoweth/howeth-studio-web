@@ -47,3 +47,8 @@ export const elevenwardConfig = {
     cleanUrl(process.env.NEXT_PUBLIC_ELEVENWARD_APP_STORE_URL) ||
     "https://apps.apple.com/us/app/elevenward/id6809308325",
 };
+
+export const mathWarsConfig = {
+  siteName: "Math Wars",
+  supportEmail: beopityConfig.contactEmail,
+};
