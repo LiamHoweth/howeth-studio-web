@@ -30,6 +30,9 @@ const studioRoutes = [
   "/baseball-era/support",
   "/baseball-era/privacy",
   "/sprout-to-stars",
+  "/math-wars",
+  "/math-wars/support",
+  "/math-wars/privacy",
   "/superlife/privacy",
   "/superlife/support",
 ] as const;

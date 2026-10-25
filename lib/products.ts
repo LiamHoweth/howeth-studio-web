@@ -7,7 +7,7 @@ export type Product = {
   platform: string;
   status: string;
   accent: string;
-  art: "football" | "elevenward" | "noctara" | "basketball" | "baseball" | "sprout" | "carenote";
+  art: "football" | "elevenward" | "noctara" | "basketball" | "baseball" | "sprout" | "carenote" | "mathwars";
   icon: string;
   screenshot?: string;
 };
@@ -21,6 +21,7 @@ export const products: readonly Product[] = [
   { slug: "sprout-to-stars", name: "Sprout to Stars", category: "Games", tagline: "A little farm. A bigger universe.", description: "A cozy incremental farm where crops, crews, and curious discoveries turn a small growing operation into something much bigger.", platform: "iPhone · iPad", status: "In development", accent: "#c9dfb7", art: "sprout", icon: "/portfolio/sprout-icon.webp", screenshot: "/portfolio/sprout-screen.webp" },
   { slug: "carenote-cna", name: "CareNote CNA", category: "Apps", tagline: "More care. Less paperwork.", description: "Structured shift notes for caregivers. Capture observations, review suggestions, and keep the final say on every saved note.", platform: "iPhone", status: "On the App Store", accent: "#bfe1e8", art: "carenote", icon: "/portfolio/carenote-icon.webp" },
   { slug: "baseball-era", name: "Baseball Era", category: "Games", tagline: "From rookie to the record books.", description: "A baseball career from the minors to the majors. Step up to the plate, develop your skills, and chase a place in the record books.", platform: "iPhone · iPad", status: "In development", accent: "#ded3b6", art: "baseball", icon: "/portfolio/baseball-icon.webp", screenshot: "/portfolio/baseball-screen.webp" },
+  { slug: "math-wars", name: "Math Wars", category: "Games", tagline: "Aim with math. Win with curves.", description: "A turn-based battle where every shot is an equation. Type y = f(x) and bend your shot around walls, through cover, and onto your rivals.", platform: "iPhone · iPad", status: "In development", accent: "#c3bdf2", art: "mathwars", icon: "/portfolio/math-wars-icon.webp", screenshot: "/portfolio/math-wars-screen.webp" },
 ];
 
 export function getProduct(slug: string): Product {
