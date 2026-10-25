@@ -15,24 +15,24 @@ export default function MathWarsPrivacyPage() {
       slug="math-wars"
       label="Privacy"
       title="Math Wars privacy policy"
-      description="Effective October 23, 2026. Math Wars for iPhone and iPad is published by Liam Howeth (“we”, “us”). This policy explains what the game stores on your device and what Online versus sends during a match."
+      description="Effective October 25, 2026. Math Wars for iPhone and iPad is published by Liam Howeth (“we”, “us”). This policy explains local saves, optional online play, hosting logs, and support messages."
     >
       <section>
         <h2>The short version</h2>
-        <p><strong>We don’t collect anything about you.</strong> Not your name, not your email, not where you are, and nothing about how you play.</p>
         <p><strong>Your game stays on your device.</strong> Your player name, coins, badges, stars, and settings are saved on your iPhone or iPad only. We can’t see them.</p>
-        <p><strong>Online play shares only what the match needs.</strong> Other players see a nickname the server makes up, your avatar, your rating, and your shots. Nothing is kept after the match.</p>
+        <p><strong>Online play sends match data.</strong> Other players see a nickname the server makes up, your avatar, your rating, and your shots. The relay keeps gameplay data in memory for the live session or match.</p>
+        <p><strong>Hosting logs last longer.</strong> Our hosting provider, Railway, records technical connection information, including IP addresses, for up to 90 days. We use operational logs to run, secure, and troubleshoot online play.</p>
         <p><strong>No ads, accounts, chat, or tracking.</strong> Nobody in the game can message you.</p>
-        <p><strong>Want to erase everything?</strong> Delete the app. That removes all of your game data from the device.</p>
+        <p><strong>You control your local save.</strong> Deleting the app removes its game data from that device. Hosting logs and any email you send us have separate retention periods, explained below.</p>
         <p><strong>Questions?</strong> Ask a parent or guardian to email us at {email}.</p>
       </section>
       <section>
         <h2>1. Summary</h2>
-        <p>Math Wars is designed to work without collecting personal information from anyone, including children. The game contains no advertising, analytics, crash-reporting, tracking, or other third-party software. The only server we operate for the game is a relay for Online versus, which passes match data between players while a match is live and keeps no record of it afterward.</p>
+        <p>Math Wars has no accounts, advertising, analytics SDKs, or cross-app tracking. Your saved profile and progress stay on your device. Optional Online versus uses our relay server, hosted by Railway, to pass match data between players. Railway retains operational logs, and we receive information you choose to email to support.</p>
       </section>
       <section>
         <h2>2. Information we collect</h2>
-        <p>None. We do not have an account or profile for you, and we do not keep a copy of your game data. Online versus sends a small amount of match data through our relay server, described in section 4, but the server does not store it, so we do not collect or retain it.</p>
+        <p>We do not receive your saved profile, progress, or the player name you type. Online play processes the match information described in section 4. Our hosting provider records technical connection and service logs, and support email contains the contact details and content you choose to send. These uses support game operation, security, troubleshooting, and answering your requests. We do not sell this information, use it for advertising, or combine it with activity in other companies’ apps or websites.</p>
       </section>
       <section>
         <h2>3. Information stored only on your device</h2>
@@ -48,13 +48,14 @@ export default function MathWarsPrivacyPage() {
       </section>
       <section>
         <h2>4. Online versus</h2>
-        <p>Online versus is optional. Bots, Pass &amp; Play, challenges, and the tutorial work without an internet connection. When you open Online versus, the app connects to our relay server over an encrypted connection and sends only what a live match needs:</p>
+        <p>Online versus is optional. Bots, Pass &amp; Play, challenges, and the tutorial work without an internet connection. When you choose to find a match or create or join a friend room, the app connects to our relay server over an encrypted connection and exchanges:</p>
         <p><strong>A generated nickname.</strong> The server makes up a nickname for each connection, such as “Swift Comet 42”. Your typed player name is never sent.</p>
         <p><strong>Your avatar and rating.</strong> A short catalogue id for your avatar, and your versus rating from your device, used to pair players and choose the map.</p>
         <p><strong>Turn data.</strong> The functions you fire (only characters the math keypad can type, up to 160 of them), your chosen direction, the path and result of each shot, and where you move. The server passes these to the other player so both games stay in step.</p>
         <p><strong>Match codes and resume tokens.</strong> A five-character friend code lasts up to 10 minutes. A random resume token lets you rejoin after a dropped connection and lasts only for that match.</p>
-        <p>The other player sees your nickname, avatar, rating, and shots. There is no chat or free text, so players cannot send each other messages. The server keeps this information in memory only while the match is live. It has no database and keeps nothing after the match ends. Its logs contain only event names and match ids.</p>
-        <p>As with any internet connection, the hosting provider that runs our server handles your device’s IP address to deliver the connection, and its standard request logs may record it. We do not use IP addresses to identify, track, or profile players.</p>
+        <p>The other player sees your nickname, avatar, rating, and shots. There is no chat or free text. The relay has no gameplay database. Connection details stay in memory for the session; match history and resume tokens are removed when the match ends. Friend rooms expire after 10 minutes, and disconnected players have a 30-second reconnect window.</p>
+        <p><strong>Operational logs are separate from match data.</strong> Our server logs service events, timestamps, and random match ids. It does not deliberately log player names, functions, resume tokens, or IP addresses. Railway’s infrastructure separately records HTTP connection metadata, including IP address, User-Agent, request id, timestamp, response status, and duration. We use operational logs for service operation, security, and troubleshooting, not advertising or profiling.</p>
+        <p>Railway states that logs are retained for up to 90 days before automatic deletion. Its shorter plan-dependent viewing window does not shorten the underlying retention period. These infrastructure logs cannot be selectively deleted or redacted by us. See <a href="https://docs.railway.com/observability/logs">Railway’s logging documentation</a> and its <a href="https://station.railway.com/questions/can-http-request-logging-be-disabled-or-30c1f581">request-log retention guidance</a>.</p>
       </section>
       <section>
         <h2>5. Things the app does not do</h2>
@@ -63,35 +64,35 @@ export default function MathWarsPrivacyPage() {
       </section>
       <section>
         <h2>6. Sharing a shot</h2>
-        <p>If you tap Share my shot on a results screen, the app creates a picture of your shot and opens Apple’s standard share sheet so that you choose where it goes, for example Messages or Photos. The app does not send the picture anywhere by itself, and we never receive it. The app or service you choose handles it under its own privacy policy. If you don’t tap Share, nothing is shared.</p>
+        <p>If you tap Share my shot on a results screen, the app creates a picture containing the arena, in-match player names, your function, and shot statistics, then opens Apple’s standard share sheet so that you choose where it goes, for example Messages or Photos. Review the picture before sharing it. The app does not send it anywhere by itself, and we do not receive it unless you send it to us. The destination app or service handles it under its own privacy policy.</p>
       </section>
       <section>
         <h2>7. Information Apple may provide to us</h2>
-        <p>Apple runs the App Store and may collect information under <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a>. If you have chosen in your device settings to share analytics with app developers, Apple may give us aggregated statistics and crash reports, such as how many devices installed the app or where a crash happened in our code. This information does not identify you, and we use it only to fix bugs and improve the game. You can turn this sharing off in Settings → Privacy &amp; Security → Analytics &amp; Improvements.</p>
+        <p>Apple runs the App Store and may collect information under <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a>. Depending on your Apple settings, Apple may provide app usage statistics and crash reports to help us fix bugs and improve the game. You can manage this sharing in Settings → Privacy &amp; Security → Analytics &amp; Improvements.</p>
       </section>
       <section>
         <h2>8. Children’s privacy</h2>
-        <p>Math Wars is made for players of all ages. We designed it so that it does not collect personal information from children under 13, or from anyone else. Online play uses generated nicknames and allows no free text, so players cannot share personal details with each other through the game. Because the app collects no personal information, it does not ask for parental consent, and there is no child data for us to review or delete.</p>
-        <p>If you are a parent or guardian and believe information about your child has reached us, for example in an email, contact {email} and we will delete it promptly.</p>
+        <p>Math Wars does not ask players for their age, real name, email address, or other contact details. Online players receive generated nicknames, and there is no chat. Offline modes can be used without sending gameplay information to our server. Online connections still create the technical logs described in section 4.</p>
+        <p>If you are under 13 and need support, ask a parent or guardian to contact us. Parents and guardians can email {email} about information their child may have sent. We will investigate and respond to access or deletion requests, including explaining any hosting-log deletion limits.</p>
       </section>
       <section>
         <h2>9. How to see, change, or delete your data</h2>
         <p><strong>See or change it:</strong> your name, avatar, and settings are on the Profile and Settings screens.</p>
         <p><strong>Delete all of it:</strong> delete the app from your device. Touch and hold the app icon, then choose Remove App → Delete App. This permanently removes the save file and its backups from the device.</p>
         <p><strong>Remove it from backups:</strong> on iPhone or iPad, go to Settings → your name → iCloud → Manage Storage (or Manage Account Storage) → Backups. Older device backups may still contain the data until they are deleted or replaced.</p>
-        <p>Because we hold no personal information, we have nothing to give you, correct, or delete on our side. You can still contact us with any request, and we will reply.</p>
+        <p>Deleting the app does not delete hosting logs or messages you emailed to support. Logs expire as described in section 4. Contact {email} to request access, correction, or deletion of support information. We will explain any information we cannot locate or delete and why.</p>
       </section>
       <section>
         <h2>10. Security</h2>
-        <p>Your game data is stored in the app’s private container and protected by iOS security, including device encryption when your device has a passcode. Online versus uses an encrypted connection. We do not keep a copy of your game data.</p>
+        <p>Your saved progress is stored in the app’s private container and protected by iOS security, including device encryption when your device has a passcode. Online versus uses an encrypted connection. Railway processes connection information to host the service, and our email provider processes support correspondence. We do not keep a server-side copy of your saved progress.</p>
       </section>
       <section>
         <h2>11. Your rights</h2>
-        <p>Depending on where you live, laws such as the EU or UK GDPR or US state privacy laws may give you rights to access, correct, delete, or move your personal information, or to object to its use. Because the app does not collect or keep personal information, we hold no data to which these rights would apply. You can manage everything on your device as described in section 9, and you can contact us at any time.</p>
+        <p>Depending on where you live, you may have rights to access, correct, delete, or receive a copy of personal information, or to object to its use. Contact {email} to make a request. We will respond under applicable requirements and explain any limits, including Railway’s automatic log-retention period. You can manage your local save as described in section 9.</p>
       </section>
       <section>
         <h2>12. Emailing us</h2>
-        <p>If you email us, we receive your email address, your message, and any attachments you choose to send, and we use them only to answer you. Please don’t include passwords, payment details, or other personal information you don’t need to share.</p>
+        <p>If you email us, we receive your email address, your message, and any attachments you choose to send. We use them to answer your request and handle related follow-up, and retain them for as long as needed for that purpose or any applicable legal obligation. You can request deletion by emailing {email}. Please don’t include passwords, payment details, or personal information you don’t need to share.</p>
       </section>
       <section>
         <h2>13. Changes to this policy</h2>

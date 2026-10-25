@@ -39,7 +39,7 @@ export default function MathWarsSupportPage() {
           </details>
           <details>
             <summary>What does online play send, and is it kept?</summary>
-            <p>For the live match only, our relay server passes your generated nickname, avatar, rating, and turn data, such as the functions you fire and where you move, between the two players. The server has no database and keeps nothing after the match ends. Its logs contain only event names and match ids. See the <Link href="/math-wars/privacy/">privacy policy</Link> for details.</p>
+            <p>Our relay server passes your generated nickname, avatar, rating, and turn data, such as the functions you fire and where you move, between the two players. It has no gameplay database, and live match history is removed when the match ends. Operational hosting logs, including connection metadata, are retained separately for up to 90 days. See the <Link href="/math-wars/privacy/">privacy policy</Link> for details.</p>
           </details>
           <details>
             <summary>Do I need an account, or do I have to pay for anything?</summary>
@@ -52,7 +52,7 @@ export default function MathWarsSupportPage() {
           <details>
             <summary>How do I delete my data?</summary>
             <p>Delete the app: touch and hold the Math Wars icon, then choose Remove App → Delete App. This permanently removes your save and its backup copy from the device. Older iCloud or computer backups of your device may still contain it until they are deleted or replaced.</p>
-            <p>We never receive your progress, so there is nothing for us to delete on our side. You are still welcome to email us with any request.</p>
+            <p>We do not receive your saved progress. Deleting the app does not delete retained hosting logs or emails you sent us. The <Link href="/math-wars/privacy/">privacy policy</Link> explains log retention and how to request deletion of support information.</p>
           </details>
           <details>
             <summary>Can I change the turn timer or controls?</summary>
@@ -66,7 +66,7 @@ export default function MathWarsSupportPage() {
       </section>
       <section>
         <h2>Privacy</h2>
-        <p>Math Wars does not collect personal information. Read the <Link href="/math-wars/privacy/">Math Wars privacy policy</Link> to see what stays on your device and what online play sends.</p>
+        <p>Read the <Link href="/math-wars/privacy/">Math Wars privacy policy</Link> to see what stays on your device, what online play sends, and how hosting logs and support messages are handled.</p>
       </section>
     </ProductInfoPage>
   );

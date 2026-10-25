@@ -48,7 +48,7 @@ export default function MathWarsPage() {
         paragraphs: [
           "Slope, intercepts, parabolas, absolute value, sine waves, roots, and logarithms all become ways to win. An optional aim preview shows where your curve begins, and a typo or undefined value fizzles with a plain-language explanation.",
           "Choose a relaxed, standard, or speedy turn timer, or turn it off. A left-handed keypad, hardware keyboard support on iPad, Reduce Motion support, and adjustable haptics let everyone play their way.",
-          "Math Wars has no ads, accounts, chat, or tracking. Progress stays on your device, and online players see only a generated nickname. Math Wars is being prepared for its App Store release; details will appear here when they are available.",
+          "Math Wars has no ads, accounts, chat, or tracking. Progress stays on your device, and online players get a generated nickname. Math Wars is being prepared for its App Store release; details will appear here when they are available.",
         ],
       }}
       links={[
