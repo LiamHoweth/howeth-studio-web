@@ -13,9 +13,16 @@ export type LegName = (typeof LEGS)[number];
 export const WALK_OFFSETS: Record<LegName, number> = { hindLeft: 0, foreLeft: 0.25, hindRight: 0.5, foreRight: 0.75 };
 /** Fraction of each cycle a foot stays planted. Above 0.5 keeps three feet down at times. */
 export const DUTY = 0.62;
-/** Ground distance (world units) covered by one complete gait cycle at walking pace. */
+/** Ground distance (world units) covered by one complete gait cycle when ambling. */
 export const BASE_STRIDE = 0.4;
-export const MAX_STRIDE_SCALE = 1.7;
+/** Stride grows to this multiple of BASE_STRIDE at cruising pace. */
+export const MAX_STRIDE_SCALE = 1.6;
+/** Ground speed (world units/s) at which the stride is fully lengthened. */
+export const CRUISE_SPEED = 0.7;
+/** Firm cap on complete gait cycles per second: a calm walk, never a scurry. */
+export const MAX_CADENCE = 1.1;
+/** Fastest walk the cadence and longest stride allow, in world units/s. */
+export const MAX_WALK_SPEED = MAX_CADENCE * BASE_STRIDE * MAX_STRIDE_SCALE;
 export const PAW_RADIUS = 0.052;
 
 export type LegSpec = { hip: [number, number, number]; upper: number; lower: number; bend: 1 | -1 };
@@ -40,9 +47,9 @@ export const smoothstep = (edge0: number, edge1: number, value: number) => {
   return t * t * (3 - 2 * t);
 };
 
-/** Stride lengthens with speed so a fast scroll reads as bounding, not frantic pedalling. */
+/** Stride lengthens with speed, so walking faster means longer steps rather than quicker ones. */
 export function strideFor(speed: number): number {
-  return BASE_STRIDE * clamp(1 + Math.max(0, speed - 0.9) / 1.6, 1, MAX_STRIDE_SCALE);
+  return BASE_STRIDE * (1 + (MAX_STRIDE_SCALE - 1) * smoothstep(0, CRUISE_SPEED, Math.abs(speed)));
 }
 
 /**
@@ -122,7 +129,7 @@ export function computePose(input: GaitInput): CatPose {
   const walk = clamp(input.walk, 0, 1) * (1 - clamp(input.sit, 0, 1));
   const sit = clamp(input.sit, 0, 1);
   const stride = strideFor(input.speed);
-  const lift = mix(0.06, 0.1, clamp((input.speed - 0.9) / 2, 0, 1));
+  const lift = mix(0.055, 0.075, clamp(Math.abs(input.speed) / CRUISE_SPEED, 0, 1));
   const cycle = input.phase * TAU;
   const bob = walk * 0.013 * Math.cos(cycle * 2);
   const frame = bodyFrame(sit, bob);
@@ -158,9 +165,14 @@ export function computePose(input: GaitInput): CatPose {
     const walkingPitch = index === 0 ? 0.95 : 0.02 + 0.3 * smoothstep(0.6, 1, t);
     const seatedPitch = index === 0 ? -0.5 : index < 4 ? -0.15 : 0;
     const seatedYaw = index === 0 ? 0.75 : 0.3 + 0.04 * idle * t;
+    // The tail stays raised while the cat lowers itself, then drops as it coils
+    // from the tip, so it wraps the haunch instead of trailing out flat or
+    // sweeping wide mid-transition.
+    const settle = smoothstep(0.75, 1, sit);
+    const curl = smoothstep(0.5 * (1 - t), 1 - 0.5 * t, settle);
     return {
-      pitch: mix(walkingPitch, seatedPitch, sit),
-      yaw: mix((0.14 * sway + 0.04 * idle) * (0.4 + t), seatedYaw, sit),
+      pitch: mix(walkingPitch, seatedPitch, settle),
+      yaw: mix((0.14 * sway + 0.04 * idle) * (0.4 + t), seatedYaw, curl),
     };
   });
 

@@ -67,36 +67,95 @@ audio are used. Awards were verified on the cited Awwwards pages on 2026-10-20.
 
 | Module | Role |
 | --- | --- |
-| `lib/cat/gait.ts` | Pure gait: lateral-sequence walk (quarter-cycle footfalls, 62% stance), stride that lengthens with speed, two-bone leg IK, seated pose, tail and head |
-| `lib/cat/route.ts` | Pure route: scroll → cat position in the lane, gentle meander, crossings through `[data-cat-wander]` ground, waiting at either lane end |
-| `lib/cat/walker.ts` | Pure state: distance → gait phase, heading, back-up vs. turn-round hysteresis, stand after 0.12 s, sit facing the visitor after 1.3 s, jump snapping |
-| `lib/cat/view.ts` | Shared orthographic camera constants |
+| `lib/cat/gait.ts` | Pure gait: lateral-sequence walk (quarter-cycle footfalls, 62% stance), stride that lengthens with speed under a firm cadence cap (`MAX_CADENCE`, 1.1 cycles/s), two-bone leg IK, seated pose, tail and head |
+| `lib/cat/view.ts` | Camera constants, the measured silhouette envelope (`CAT_ENVELOPE`, by heading, seated and vertical), glow/shadow sizes and `fitCat`, which sizes the cat for its lane |
+| `lib/cat/route.ts` | Pure route planning: lane, gentle meander and crossings of `[data-cat-wander]` ground, sampled every 6 px and checked against measured content; blocked stretches, safe destinations |
+| `lib/cat/motion.ts` | The cat's own movement along the route: bounded speed and acceleration over elapsed time, stopping exactly at its destination |
+| `lib/cat/walker.ts` | Pure state: distance → gait phase (cadence-capped), heading, back-up, standing turns where there is room, sit-pivot-stand where there is not, stand after 0.12 s, sit facing the visitor after 1.3 s |
+| `lib/cat/companion.ts` | Per-frame orchestration: scroll → destination, comfort zone, discreet repositioning, fading under fixed chrome |
 | `components/studio/cat/catModel.ts` | Procedural Three.js rig: body → head/legs (hip → knee → paw)/skinned bone tail; toon fur shader with painterly grain and warm rim; ink outlines |
 | `components/studio/cat/catScene.ts` | Lazy WebGL renderer, lantern glow and contact shadow, bounded pixel ratio, context-loss handling, disposal |
-| `components/studio/cat/catDriver.ts` | DOM measurement, scroll/resize/pointer/visibility listeners, render loop that sleeps when settled |
+| `components/studio/cat/catDriver.ts` | DOM measurement (lane, open ground, text line boxes, media, controls with focus rings, header and player), listeners, render loop that sleeps when settled |
 | `components/studio/WalkingCat.tsx` | React shell: painted fallback, reduced motion, lazy import |
+| `lib/scroll/calmWheel.ts`, `components/studio/CalmScroll.tsx` | Calmer wheel/trackpad scrolling on the studio pages (separate from the cat) |
 
-Scroll distance is the only driver. Stance feet travel back exactly as far as the
-body moves, so planted paws stay on the page. Scrolling back briefly makes the
-cat back up; a sustained reversal turns it round to walk up the page. When
-scrolling stops it stands, then sits and turns to face the visitor with the
-mascot's head tilt; its eyes follow a fine pointer and it blinks occasionally.
+### Size
+
+The cat is sized from its real silhouette rather than a worst-case circle. The
+envelope test projects every vertex of every allowed pose (walking, turning,
+sitting down, seated pivots; tail, whiskers, outline, shadow and glow) through
+the camera. `fitCat` then picks the larger of two modes for the space between
+the lane's left edge and the viewport edge (the cat may use the empty page
+margin): a *standing-turn* cat that fits side-on, or a *seated-turn* cat that
+walks square-on and sits to pivot when it turns round. The walk also stays
+`CONTENT_EDGE` (8 px) inside the lane, beyond the focus rings of cards and links
+that end at the content edge. Wide desktop lanes use standing turns; tablets and
+phones sit to turn. The rendered seated cat is about 1.7× its previous height on
+desktop, 1.8× on tablet and 1.5× on phones. The phone lane grew from 84 to
+88 px for this (content column 290 → 286 px on a 390 px phone).
+
+### Route and clearance
+
+The driver measures every text line box (via ranges, so wrapped and enlarged
+text is exact), image and control (inflated by the 7 px focus ring) in `main`
+and the footer. The route samples the lane every 6 px; each sample must hold
+the cat's walking silhouette plus whatever it may do there (turn standing, or
+sit and pivot) and clearance (`catClearance`, ≥8 px, more than the sample
+spacing so the sweep between samples is covered). A wander crossing is used
+only if every sample of the way out and back is clear; a marked section that is
+crowded at the current width or text size is simply not crossed. Any stretch
+that still fails is blocked: the cat walks only along clear paths, waits at the
+edge, and if the visitor stays beyond it, fades out and reappears on the far
+side. A wide lane narrows to square-on walking beside small intrusions (the
+tilted hero card). Fonts loading, resize, filtering and other DOM changes
+re-measure the route without counting as walking.
+
+### Motion
+
+Scrolling only chooses a destination (the anchor at `--cat-anchor` of the
+viewport, moved into the open stage between the sticky header and the music
+player when a short viewport brings them close, with a small comfort zone). The cat walks there along the route with
+bounded speed (0.70 world units/s, the cadence cap times the longest stride)
+and acceleration (1.1 units/s²), integrated over elapsed time; frame gaps are
+clamped. Steps come from distance actually walked, so feet stay planted and
+cadence never exceeds 1.1 cycles/s however fast the page moves. The page
+carries the cat while it walks, so fast scrolling leaves it behind rather than
+making it sprint. Destinations more than 2.6 s of walking away (flings,
+scrollbar drags, Page Down, Home/End, anchors, restored tabs) are reached by a
+discreet reposition: the cat fades out where it is (or is already off-screen),
+reappears just short of the destination on its feet and walks in, with no
+walking distance counted. It fades rather than slide under the sticky header
+or the music player, looking ahead by the current scroll speed and hiding at
+once after an instant jump. When scrolling stops it stands, then sits and
+turns to face the visitor with the mascot's head tilt; its eyes follow a fine
+pointer and it blinks occasionally.
+
+### Calm scrolling
+
+`CalmScroll` (mounted by `StudioTrail`) eases plain vertical wheel gestures to
+70% of the browser's travel: a mouse notch settles in about 0.2–0.4 s, trackpad
+deltas follow within a few frames (the OS momentum is kept, just shorter), and
+pending travel is capped at 0.9 viewports, dropped on reversal. Ctrl/Cmd-wheel
+zoom, Shift/horizontal wheels and swipes, nested scroll areas, form controls,
+touch, keyboard, scrollbar dragging and anchors stay native, and any of them
+cancels easing. Reduced motion leaves scrolling fully native.
 
 The cat is regenerated by editing `catModel.ts`/`gait.ts`; there is no model file
 to download. `npm run test:beopity` covers IK, footfall order, planted feet,
-ground contact for every pose, lane containment and crossings, reversal, sitting,
-jump snapping, rig budget and disposal.
+ground contact, the silhouette envelope, size at each width, route clearance
+(open/crowded crossings, intrusions, waiting), bounded motion, cadence,
+narrow/wide turning, slow and aggressive scroll scenarios with dropped frames,
+chrome fading, rig budget, disposal and calm-scroll behaviour.
 
 Performance and safety: the host is `position: fixed`, `pointer-events: none`,
-`aria-hidden`, moved with a transform only; the canvas is a bounded square around
-the cat (≤1.4 MP backing store) instead of a full-screen layer. Its scale is
-capped to the complete turning silhouette, including the skinned tail and
-outline, inside the reserved lane. The wider lane keeps the companion visible
-without covering content. Rendering runs only while walking, settling, glancing or blinking and stops while the document
-is hidden. Three.js loads after mount; the painted cut-out follows the route
-until the first 3D frame and remains if WebGL is unavailable or lost. With
-`prefers-reduced-motion: reduce` no WebGL loads and the painted cat sits in the
-lane (CSS `position: sticky`), so content is fully usable without animation.
+`aria-hidden`, moved with a transform and faded with opacity only; the canvas is
+a bounded square around the cat (≤1.4 MP backing store) instead of a full-screen
+layer. Rendering runs only while walking, settling, glancing or blinking and
+stops while the document is hidden. Three.js loads after mount; the painted
+cut-out follows the route until the first 3D frame and remains if WebGL is
+unavailable or lost. With `prefers-reduced-motion: reduce` no WebGL loads and
+the painted cat sits in the lane (CSS `position: sticky`), so content is fully
+usable without animation.
 
 ## Music
 

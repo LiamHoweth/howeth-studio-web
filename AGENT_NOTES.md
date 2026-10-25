@@ -11,11 +11,16 @@ SuperLife launch scope, October 21: the owner deferred all IAP for 1.0. Its appr
   `public/beopity/` web assets. Public copy uses lowercase "beopity" (legal and
   localized Elevenward text unchanged). Studio pages (home/work/about/contact) use
   `StudioTrail`: a reserved right lane plus mint `data-cat-wander` interludes where
-  the procedural 3D cat walks. Scroll distance drives `lib/cat/{route,walker,gait}.ts`
-  (pure, tested by `npm run test:beopity`); `components/studio/cat/` holds the rig,
-  lazy WebGL renderer and DOM driver. `fitCatToLane` caps the complete turning
-  silhouette (including the skinned tail and ink) to the lane; the model regression
-  covers compact/desktop widths. Reduced motion/no WebGL show the painted cat.
+  the procedural 3D cat walks. Scroll picks a destination; `lib/cat/companion.ts`
+  walks the cat there with bounded speed/acceleration/cadence (`motion.ts`, `gait.ts`)
+  along a route planned against measured text/media/controls (`route.ts`), and
+  repositions discreetly (fade) instead of sprinting. `view.ts` holds the measured
+  silhouette envelope and `fitCat` (standing turns on desktop, sit-to-turn on
+  narrow lanes); the envelope test re-projects the real rig. `CalmScroll` eases
+  wheel travel to 70% on studio pages. Pure modules are tested by
+  `npm run test:beopity`; `components/studio/cat/` holds the rig, lazy WebGL
+  renderer and DOM driver (with an optional `window.__beopityCatProbe` test hook).
+  Reduced motion/no WebGL show the painted cat.
   Product pages share header/footer/type but have no walking cat. Design references
   and architecture: `docs/beopity-design.md`. `next dev` appends to AGENTS.md and
   edits next-env.d.ts; restore them before committing.
