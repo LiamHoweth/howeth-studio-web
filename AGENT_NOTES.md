@@ -32,6 +32,8 @@ SuperLife launch scope, October 21: the owner deferred all IAP for 1.0. Its appr
 
 # Current project notes
 
+- Math Wars publication verified 2026-10-25 12:03 CDT / 2026-10-25 17:03 UTC: PR #19 merged as `500332764dd1342d18435cc554ce0a394c474f3b`; PR and main CI passed. Railway web deployment `7e84a997-c0c8-4765-aa9b-cffe5bb5674b` is SUCCESS for that revision. Product/support/privacy and artwork return 200, the policy includes the 90-day hosting-log disclosure, and the legacy domain preserves the deep path/query with 308. Existing SuperLife pages and API health return 200. Clean install, lint, security gate, all 39 tests, static build, and full/production audits passed (0 vulnerabilities). No infrastructure/configuration changes.
+
 - October 7, 2026: Public branding is Beopity, with AI artwork under
   `public/beopity/`. Keep product artwork, app identifiers, support inboxes,
   API/data resources, localized documents, and the private personal route intact.
