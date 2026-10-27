@@ -1,28 +1,48 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { StudioSiteFooter } from "@/components/studio/StudioMarketing";
 import { footballEraConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Football Era Privacy Policy",
   description:
-    "How Football Era handles optional accounts, cloud career saves, authenticated leaderboards, purchases, and anonymous gameplay analytics.",
+    "How Football Era handles optional accounts, cloud career saves, authenticated leaderboards, purchases, and optional gameplay and purchase analytics.",
   alternates: { canonical: "/football-era/privacy/" },
 };
 
 export default function FootballEraPrivacyPage() {
   return (
     <>
+      <a className="studio-skip" href="#main">Skip to main content</a>
       <StudioSiteHeader />
-      <main className="page-main">
+      <main id="main" className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: September 21, 2026. This policy explains how Football Era
+              Effective date: October 7, 2026. This policy explains how Football Era
               (“the app”), published by Howeth Studio, handles information when you
               play as a guest or choose to create an account.
+            </p>
+          </section>
+
+          <section className="section section-card">
+            <h2>Voluntary sharing and studio discovery</h2>
+            <p>
+              Share buttons open your device’s share menu only when you choose them.
+              A game summary can include the score, result, fictional opponent, and
+              game statistics, along with a public Football Era link. It omits player,
+              career, and account names, account identifiers, full saves, payment
+              information, and reward details. The sharing app and recipient you
+              choose handle the shared information under their own policies.
+            </p>
+            <p>
+              Howeth Studio discovery links open a browser only after a tap. Public
+              share and discovery links include fixed campaign labels identifying
+              Football Era and the action, without device or player identifiers.
+              These actions add no analytics event or account data collection.
             </p>
           </section>
 
@@ -115,17 +135,44 @@ export default function FootballEraPrivacyPage() {
 
           <section className="section two-column">
             <article className="section-card">
-              <h2>Anonymous analytics and diagnostics</h2>
+              <h2>Optional gameplay and purchase analytics</h2>
               <p>
                 Separately from any account, optional analytics use a random
                 installation identifier and may include app version and platform,
                 sessions, features opened, weekly outcomes, aggregate progression,
-                purchase category and rarity, skill upgrades, contracts, season and
+                in-game item category and rarity, skill upgrades, contracts, season and
                 retirement results, and aggregate career statistics. We use this to
-                measure reliability, retention, and game balance. It is not used for
-                advertising or cross-app tracking, and it is not combined with your
+                measure reliability, retention, and game balance. Purchase analytics
+                also measure Shop and offer views, store availability, selected
+                products, purchase and restore outcomes, and whether verified
+                benefits were saved, with coarse timing and queue-health categories
+                to diagnose delivery problems. Events include their occurrence time, app
+                version and build, platform, configured environment, fixed product
+                and offer categories, and coarse availability or outcome context.
+                We use this to understand purchase reliability and whether offers
+                are useful. Analytics are not used for
+                advertising or cross-app tracking, and they are not combined with your
                 Apple or Google account identity. Football Era asks for your choice
                 before registering an analytics installation or sending an event.
+                Existing gameplay consent does not authorize the expanded purchase
+                analytics; the app asks for a new choice before collecting them.
+              </p>
+              <p>
+                If an offer presentation test is enabled, an eligible installation
+                may be randomly assigned a consistent version of its wording or
+                presentation. Analytics record fixed test and variant categories
+                to compare usefulness and reliability. Participation does not
+                connect your analytics installation to a Football Era account or
+                RevenueCat customer identity.
+              </p>
+              <p>
+                This analytics system stays separate from RevenueCat customer and
+                Football Era account identities. It excludes player and account
+                names, email addresses, receipts, store transaction identifiers,
+                payment-card details, and full saves. A random installation
+                identifier lets us recognize repeat sessions on the same
+                installation; it does not make the data unlinked to a device for
+                App Store privacy disclosures.
               </p>
             </article>
             <article className="section-card">
@@ -137,8 +184,11 @@ export default function FootballEraPrivacyPage() {
                 metadata to operate and secure those services. Apple processes App
                 Store purchases. RevenueCat receives an anonymous purchase identifier,
                 product and purchase history, transaction metadata, and limited app and
-                device details to validate purchases, prevent fraud, and restore
-                gamepasses. Football Era does not send RevenueCat your career saves or
+                device details to validate purchases, prevent fraud, restore
+                gamepasses, and provide purchase analytics. These records can be
+                linked to RevenueCat&apos;s customer and device profile even though
+                its purchase identifier is anonymous. Football Era does not send
+                RevenueCat your career saves or
                 Football Era account identity, and Howeth Studio does not receive your
                 payment-card details. We do not sell personal information or use saved
                 careers to train third-party generative models.
@@ -154,7 +204,8 @@ export default function FootballEraPrivacyPage() {
                 Sessions expire after 90 days of inactivity and roll forward while
                 used. Raw anonymous gameplay events are retained for up to 13 months,
                 rejected leaderboard audits for up to 90 days, and inactive anonymous
-                installations and snapshots for up to 24 months. Feedback submissions
+                installations and snapshots for up to 24 months. Purchase analytics
+                follow the same event retention and deletion rules. Feedback submissions
                 and username moderation reports are retained for up to 12 months.
                 Backups expire on
                 their normal schedule, and statistics may be kept only after they have
@@ -165,7 +216,7 @@ export default function FootballEraPrivacyPage() {
               <h2>Your choices</h2>
               <ul className="check-list">
                 <li>Play the full offline game without creating an account.</li>
-                <li>Allow or decline anonymous gameplay analytics before collection begins.</li>
+                <li>Allow or decline optional gameplay and purchase analytics before collection begins.</li>
                 <li>Withdraw analytics consent in Settings and request deletion of that installation&apos;s analytics data.</li>
                 <li>Sign out while keeping downloaded careers playable as a guest.</li>
                 <li>Submit anonymous feedback, optionally add a reply email, or keep a failed submission only as an unsent draft on your device.</li>
@@ -221,6 +272,7 @@ export default function FootballEraPrivacyPage() {
           </section>
         </div>
       </main>
+      <StudioSiteFooter year={new Date().getFullYear()} />
     </>
   );
 }

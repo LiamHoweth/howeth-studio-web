@@ -5,14 +5,15 @@ Site : https://howethstudio.com/elevenward/fr/
 Contact presse : howethstudio@gmail.com
 
 Genre : RPG mondial de carrière et de vie dans le football
-Plateformes : iOS et Android
+Plateformes : iPhone et iPad (disponible) ; Android (en développement)
+App Store : https://apps.apple.com/us/app/elevenward/id6809308325
 Joueurs : Solo
 Public : 13 ans et plus
 Langues de lancement : anglais, espagnol, portugais du Brésil et français
 
 Elevenward suit un joueur original de ses débuts à sa retraite. Chaque semaine associe un choix d’entraînement, une décision risquée sur le terrain et des conséquences transparentes sur la forme, la condition, la confiance, l’argent, les relations, les contrats, les transferts, les trophées et l’héritage.
 
-La carrière complète fonctionne hors ligne. Les comptes facultatifs ajoutent la synchronisation, la restauration des achats et des classements sans récompenses. Aucune publicité, loot box, dépense aléatoire, jauge d’énergie ou mécanique pay-to-win.
+La carrière complète fonctionne hors ligne. Les comptes facultatifs ajoutent la synchronisation, la restauration des achats et des classements sans récompenses. Aucune publicité, aucun abonnement, loot box, achat aléatoire ou jauge d’énergie. Les passes permanents facultatifs ajoutent des emplacements, des cosmétiques ou des multiplicateurs de développement et de revenus clairement indiqués.
 
 Signature : Le travail avant le bruit.
 
@@ -20,4 +21,4 @@ Signature : Le travail avant le bruit.
 Howeth Studio est un studio indépendant qui crée des produits numériques réfléchis, respectueux de la vie privée, et des jeux originaux.
 
 Utilisation éditoriale :
-Ces ressources peuvent être utilisées pour présenter Elevenward fidèlement. Préservez leurs proportions, leurs couleurs et l’espace libre. Ne modifiez pas les marques et ne suggérez aucun soutien. Contactez Howeth Studio pour tout autre format ou usage. Les visuels de pré-lancement peuvent évoluer.
+Ces ressources peuvent être utilisées pour présenter Elevenward fidèlement. Préservez leurs proportions, leurs couleurs et l’espace libre. Ne modifiez pas les marques et ne suggérez aucun soutien. Contactez Howeth Studio pour tout autre format ou usage. Les visuels et captures de démonstration peuvent évoluer avec les mises à jour.

@@ -2,13 +2,35 @@
 
 Marketing site for Howeth Studio apps, built with Next.js and exported as static HTML for hosting on Railway.
 
-## Product marketing chrome
+## Portfolio and shared design
 
-- **Howeth Studio** home uses the warm editorial shell in `app/globals.css` (`.studio-landing`).
-- **Football Era** routes wrap content in `.fe-page-root`; `styles/football-era-marketing.css` scopes the **dark stadium** colorway to `body:has(.fe-page-root)` so the first paint matches production (no client-only `html` class).
-- **CareNote CNA** routes wrap in `.carenote-product`; `styles/carenote-product-chrome.css` applies the **same header/nav rhythm** as the studio home with a **cream field** and **coral** hover accents on links.
-- **Elevenward** lives entirely under `howethstudio.com/elevenward/`, with localized marketing, support, privacy, deletion, and press routes sharing one product navigation system.
-- **Noctara** lives at `/noctara/`, with its dark Horizon palette scoped in `styles/noctara-marketing.css`. Its current page links to the verified Noctara privacy and support endpoints and does not show a download link before the App Store listing is public.
+The public collection contains all five projects in the local Codex Games workspace
+(Football Era, Elevenward, Basketball Era, Baseball Era, and Sprout to Stars), plus
+Noctara and the existing CareNote CNA app.
+
+- `lib/products.ts` is the typed catalogue used by home, Work, and product artwork.
+- `ProductCollection` provides All / Games / Apps filtering with announced counts.
+- `StudioSiteHeader`, `StudioSiteFooter`, `studio-chrome.css`, and `app/globals.css`
+  define the warm paper, ink, and cobalt visual system across studio and product pages.
+- `ProductPage` supplies reusable product heroes, feature grids, details, resources,
+  and the shared footer. Keep product-specific artwork in `ProductArtwork`.
+- Elevenward keeps its four languages and native localized support/privacy/deletion
+  routes. Its staff console is excluded from the public catalogue and sitemap.
+- `styles/product-legacy.css` keeps existing Football Era and CareNote information
+  pages consistent without changing their forms or legal text.
+- `public/portfolio/` contains optimized authored app icons and demo screenshots;
+  no private app data or source repositories are copied into the site.
+
+Football Era, Elevenward, CareNote CNA, and Noctara have public App Store listings.
+Football Era and Elevenward were verified against Apple on October 5, 2026.
+Basketball Era, Baseball Era, and Sprout to Stars remain marked In development.
+Recheck availability before changing these labels. Noctara links to its existing privacy and support
+endpoints; its current release is free and includes optional local bedtime sessions.
+
+The design draws on image-first portfolios and restrained navigation seen at
+[Pentagram](https://www.awwwards.com/sites/pentagram), oversized typography at
+[Born & Bred](https://www.awwwards.com/sites/born-bred), and product presentation at
+[Superlist](https://www.superlist.com/). Assets and app identities belong to Howeth Studio.
 
 ## Local development
 
@@ -16,6 +38,13 @@ Marketing site for Howeth Studio apps, built with Next.js and exported as static
 npm install
 npm run dev
 ```
+
+## Validation
+
+Run `npm ci`, `npm run lint`, `npm run build`, and
+`npm audit --audit-level=high` before committing. Check the exported pages in a
+browser at phone and tablet widths, with keyboard navigation, enlarged text,
+and reduced motion. Test the product filters and preserve existing form behavior.
 
 ## Production build
 
@@ -38,6 +67,7 @@ Set these in Railway (or `.env.local` for local builds):
 - `NEXT_PUBLIC_CARENOTE_SUPPORT_FORM_ENDPOINT` — optional JSON endpoint for the contact form; if empty, the form falls back to `mailto:`
 - `NEXT_PUBLIC_FOOTBALL_ERA_APP_STORE_URL` — App Store URL for Football Era when available
 - `NEXT_PUBLIC_FOOTBALL_ERA_TESTFLIGHT_URL` — optional TestFlight URL for Football Era
+- `NEXT_PUBLIC_ELEVENWARD_APP_STORE_URL` — Elevenward App Store URL; defaults to its verified public listing
 - `NEXT_PUBLIC_FOOTBALL_ERA_SUPPORT_EMAIL` — support inbox for Football Era privacy/support pages (defaults to `hello@footballera.game` if unset)
 
 ## Static hosting and 404s
@@ -50,7 +80,9 @@ If you still see a **404** for a valid page:
 2. **Redeploy after clearing a bad cache**: delete `.next` locally, run `npm run build`, and redeploy the fresh `out/` output.
 3. **Unknown paths** should return the styled **`404.html`** from the export. If your host does not map missing URLs to `404.html`, add a **rewrite rule** in the Render dashboard (see [Static Site Redirects and Rewrites](https://render.com/docs/redirects-rewrites)) so unmatched requests serve `404.html` with a 404 status.
 
-[Mescubook](https://mescubook.com/) uses separate HTML files (`work.html`, `about.html`, …). This site mirrors that **information architecture** with real routes **`/work/`**, **`/about/`**, and **`/contact/`** while keeping the long-scroll **index** and all CareNote / Football Era marketing pages.
+The studio uses real `/work/`, `/games/`, `/press/`, `/about/`, and `/contact/` routes alongside the
+long-scroll home page and dedicated product pages. Keep `app/sitemap.ts` and the
+legacy `public/sitemap.xml` mirror synchronized when adding public routes.
 
 ## Railway
 
@@ -74,3 +106,29 @@ The public API origin is `https://api.howethstudio.com`.
 ## DNS for howethstudio.com
 
 At your DNS provider, add the records Railway shows when you attach the domain. Prefer one canonical hostname (apex or `www`) and redirect the other so search engines see one primary URL. Keep the current host active until the Railway URL has been verified, then change DNS to avoid downtime.
+
+## Career-game discovery and press
+
+`/games/` compares the four sports careers and links to their product pages.
+`/press/` provides product facts, existing public app artwork, demo screenshots,
+and the configured studio contact. `lib/gameMarketing.ts` holds these four games'
+search metadata and approved store links. Reuse it when adding career-game links.
+
+The four product landings include related games, canonical/OG/Twitter metadata,
+and factual VideoGame/BreadcrumbList JSON-LD. There are no fabricated prices or
+ratings, and no promise of rich results. Social preview PNGs are in
+`public/portfolio/og/`. Elevenward keeps its localized landings and press materials.
+
+This change adds no analytics SDK, cookie, subscription, or backend workload.
+Deploy the reviewed static-site change before releasing app updates that link to
+`/games/`. Reconcile the existing dirty checkout with current main; do not push its
+unrelated changes. After deployment check `/games/`, `/press/`, the four landings,
+sitemap, and image URLs. Search Console and App Store Connect campaign reports
+can measure discovery without adding a paid analytics service.
+
+The Baseball privacy route mirrors the current app source policy, and Football
+plus localized Elevenward policies disclose voluntary sharing/discovery behavior.
+These changes are local review candidates; owner privacy attestations and public
+hosting are separate. Basketball has no complete public privacy policy in this
+checkout yet. Baseball/Basketball artwork follows the current October 5 approved
+icon choices (Emerald Flight/Crowned Ball), without implying a public release.

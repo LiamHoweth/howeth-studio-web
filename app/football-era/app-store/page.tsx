@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { StudioSiteFooter } from "@/components/studio/StudioMarketing";
 
 export const metadata: Metadata = {
   title: "Football Era — App Store Details",
@@ -39,8 +40,9 @@ function CopyBlock({
 export default function FootballEraAppStorePage() {
   return (
     <>
+      <a className="studio-skip" href="#main">Skip to main content</a>
       <StudioSiteHeader />
-      <main className="page-main">
+      <main id="main" className="page-main">
         <div className="site-shell">
           <section className="hero-panel">
             <span className="eyebrow">App Store · Account-enabled release</span>
@@ -208,6 +210,7 @@ Football Era is local-first and remains fully playable without an account or net
           </section>
         </div>
       </main>
+      <StudioSiteFooter year={new Date().getFullYear()} />
     </>
   );
 }

@@ -1,0 +1,18 @@
+.game-discovery { width: min(1320px, calc(100% - 80px)); margin-inline: auto; padding-block: 48px 60px; border-top: 1px solid rgba(23, 33, 31, .18); color: #17211f; font-family: var(--font-manrope), system-ui, sans-serif; }
+.game-discovery * { box-sizing: border-box; }
+.game-discovery__eyebrow { margin: 0 0 18px; color: #5c6861; font: 500 .75rem/1.6 var(--font-studio-mono), monospace; text-transform: uppercase; letter-spacing: .065em; }
+.game-discovery__heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+.game-discovery h2 { margin: 0; font: 500 clamp(1.7rem, 3vw, 2.6rem)/1.2 var(--font-sora), sans-serif; letter-spacing: -.05em; }
+.game-discovery a { color: #17211f; text-decoration: none; }
+.game-discovery__heading > a { display: inline-flex; align-items: center; min-height: 44px; gap: 10px; font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
+.game-discovery ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0; }
+.game-discovery li > a { display: flex; align-items: center; gap: 16px; height: 100%; padding: 20px 16px; border: 1px solid rgba(23, 33, 31, .18); border-radius: 12px; }
+.game-discovery li > a:hover { border-color: #3157e8; background: rgba(49, 87, 232, .04); }
+.game-discovery li > a > span:last-child { margin-left: auto; }
+.game-discovery img { width: 56px; height: 56px; flex: 0 0 auto; border-radius: 13px; }
+.game-discovery strong { display: block; font-size: .9rem; line-height: 1.5; }
+.game-discovery small { display: block; margin-top: 5px; color: #5c6861; font-size: .75rem; line-height: 1.5; }
+.game-discovery a:focus-visible { outline: 2px solid #3157e8; outline-offset: 5px; }
+@media (max-width: 1000px) { .game-discovery ul { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .game-discovery { width: calc(100% - 40px); padding-block: 40px; } }
+@media (max-width: 360px) { .game-discovery { width: calc(100% - 28px); } }

@@ -5,14 +5,15 @@ Website: https://howethstudio.com/elevenward/
 Press contact: howethstudio@gmail.com
 
 Genre: Global football career and life RPG
-Platforms: iOS and Android
+Platforms: iPhone and iPad (available); Android (in development)
+App Store: https://apps.apple.com/us/app/elevenward/id6809308325
 Players: Single-player
 Audience: Ages 13+
 Launch languages: English, Spanish, Brazilian Portuguese, and French
 
 Elevenward follows one original player from prospect to retirement. Each matchweek asks the player to choose a training focus, manage risk in a decisive football moment, and live with transparent consequences across form, fitness, trust, money, relationships, contracts, transfers, trophies, and legacy.
 
-The full career is playable offline. Optional accounts add cloud synchronization, purchase recovery, and prize-free leaderboards. The game contains no advertising, loot boxes, randomized purchases, energy timers, or pay-to-win mechanics. Optional purchases are permanent career-slot and presentation-cosmetic upgrades.
+The full career is playable offline. Optional accounts add cloud synchronization, purchase recovery, and prize-free leaderboards. The game contains no advertising, subscriptions, loot boxes, randomized purchases, or energy timers. Optional one-time permanent passes add career slots, cosmetics, or clearly shown development and income multipliers.
 
 Key launch scope:
 - 20-season career lifecycle
@@ -30,4 +31,4 @@ About Howeth Studio:
 Howeth Studio is an independent studio creating thoughtful, privacy-conscious digital products and original games.
 
 Editorial usage:
-These assets may be used for accurate editorial coverage of Elevenward. Preserve their proportions, colors, and clear space. Do not alter the marks or imply endorsement. Contact Howeth Studio for another format or use. Pre-release artwork may be updated before launch.
+These assets may be used for accurate editorial coverage of Elevenward. Preserve their proportions, colors, and clear space. Do not alter the marks or imply endorsement. Contact Howeth Studio for another format or use. Artwork and demo screenshots may change as the game evolves.

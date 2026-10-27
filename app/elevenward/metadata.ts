@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { gamePreviewImage } from "@/lib/gameMarketing";
 import {
   elevenwardCopy,
   elevenwardLanguageTag,
@@ -48,6 +49,9 @@ export function createElevenwardMetadata(
       description,
       url: pathFor(locale, kind),
       locale: locale === "pt-br" ? "pt_BR" : locale,
+      siteName: "Howeth Studio",
+      images: [gamePreviewImage("elevenward")],
     },
+    twitter: { card: "summary_large_image", title, description, images: [gamePreviewImage("elevenward")] },
   };
 }

@@ -5,14 +5,15 @@ Site: https://howethstudio.com/elevenward/pt-br/
 Contato de imprensa: howethstudio@gmail.com
 
 Gênero: RPG global de carreira e vida no futebol
-Plataformas: iOS e Android
+Plataformas: iPhone e iPad (disponível); Android (em desenvolvimento)
+App Store: https://apps.apple.com/us/app/elevenward/id6809308325
 Jogadores: Um jogador
 Público: 13+
 Idiomas de lançamento: inglês, espanhol, português do Brasil e francês
 
 Elevenward acompanha um jogador original do início da carreira à aposentadoria. Cada rodada une foco de treino, uma decisão de risco em campo e consequências transparentes sobre fase, preparo, confiança, dinheiro, relações, contratos, transferências, títulos e legado.
 
-A carreira completa funciona offline. Contas opcionais oferecem sincronização, recuperação de compras e rankings sem prêmios. Não há anúncios, loot boxes, compras aleatórias, energia ou vantagens pagas.
+A carreira completa funciona offline. Contas opcionais oferecem sincronização, recuperação de compras e rankings sem prêmios. Não há anúncios, assinaturas, loot boxes, compras aleatórias ou energia. Passes permanentes opcionais adicionam espaços, cosméticos ou multiplicadores de desenvolvimento e renda claramente indicados.
 
 Frase da marca: O trabalho antes do barulho.
 
@@ -20,4 +21,4 @@ Sobre a Howeth Studio:
 A Howeth Studio é um estúdio independente que cria produtos digitais cuidadosos, com respeito à privacidade, e jogos originais.
 
 Uso editorial:
-Estes materiais podem ser usados em cobertura editorial fiel do Elevenward. Preserve proporções, cores e área de respiro. Não altere as marcas nem sugira endosso. Fale com a Howeth Studio para outros formatos ou usos. A arte de pré-lançamento pode mudar.
+Estes materiais podem ser usados em cobertura editorial fiel do Elevenward. Preserve proporções, cores e área de respiro. Não altere as marcas nem sugira endosso. Fale com a Howeth Studio para outros formatos ou usos. Artes e capturas de demonstração podem mudar com as atualizações.

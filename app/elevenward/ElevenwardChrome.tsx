@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
 import {
@@ -12,7 +13,13 @@ export function elevenwardRoute(locale: ElevenwardLocale, suffix = "") {
   return `${prefix}${suffix}/`;
 }
 
-export function ElevenwardNav({ locale }: { locale: ElevenwardLocale }) {
+export function ElevenwardNav({
+  locale,
+  active,
+}: {
+  locale: ElevenwardLocale;
+  active?: "overview" | "support";
+}) {
   const ui = elevenwardUiCopy[locale];
   const home = elevenwardRoute(locale);
 
@@ -22,16 +29,16 @@ export function ElevenwardNav({ locale }: { locale: ElevenwardLocale }) {
       <header className="ew-header">
         <div className="ew-header__inner">
           <Link className="ew-wordmark" href={home} aria-label={`Elevenward — ${ui.overview}`}>
-            <span aria-hidden="true">03</span>
+            <Image src="/portfolio/elevenward-icon.webp" width={36} height={36} alt="" />
             <strong>Elevenward</strong>
           </Link>
 
           <nav className="ew-nav" aria-label="Elevenward">
-            <Link href={home}>{ui.overview}</Link>
+            <Link href={home} aria-current={active === "overview" ? "page" : undefined}>{ui.overview}</Link>
             <Link href={`${home}#career`}>{ui.career}</Link>
             <Link href={`${home}#world`}>{ui.world}</Link>
             <Link href={`${home}#fair-play`}>{ui.fairPlay}</Link>
-            <Link className="ew-nav__support" href={elevenwardRoute(locale, "/support")}>
+            <Link className="ew-nav__support" href={elevenwardRoute(locale, "/support")} aria-current={active === "support" ? "page" : undefined}>
               {ui.support}
             </Link>
           </nav>
@@ -65,7 +72,7 @@ export function ElevenwardFooter({ locale }: { locale: ElevenwardLocale }) {
   return (
     <footer className="ew-footer">
       <div className="ew-footer__brand">
-        <strong>Elevenward</strong>
+        <Link href={elevenwardRoute(locale)}><strong>Elevenward</strong></Link>
         <span>{ui.studioLine}</span>
       </div>
       <nav aria-label="Elevenward footer">

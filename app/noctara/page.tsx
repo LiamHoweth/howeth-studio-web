@@ -1,108 +1,77 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
-import { howethStudioConfig } from "@/lib/siteConfig";
+import { ProductPage } from "@/components/studio/ProductPage";
 
 export const metadata: Metadata = {
   title: "Noctara Sleep & Recovery",
   description:
-    "Noctara turns supported Apple Health sleep data into recovery context, estimated energy forecasts, sleep trends, and a clearer plan for tonight.",
+    "Understand your night and plan your day with Apple Health sleep insights, recovery estimates, flexible schedules, and optional bedtime sessions. Free on the App Store.",
   alternates: { canonical: "/noctara/" },
 };
 
 const features = [
   {
-    number: "01",
-    title: "Understand today",
+    title: "Make sense of your morning",
     description:
-      "See Recovery and Sleep Scores with plain-language context, plus an estimated Energy Forecast for likely peaks and dips.",
+      "See Recovery and Sleep Scores with clear context, an estimated Energy Forecast, and a restedness check-in that starts with how you feel.",
   },
   {
-    number: "02",
-    title: "Look across nights",
+    title: "Find your patterns",
     description:
-      "Explore recorded sleep history, available stages, trends, and weekly insights without filling missing data with invented values.",
+      "Explore available sleep stages, longer-term trends, weekly insights, and habit associations with sample counts to keep the picture in perspective.",
   },
   {
-    number: "03",
-    title: "Prepare for tonight",
+    title: "Plan around your life",
     description:
-      "Review a suggested sleep window and sleep-balance context to help make a practical plan for your evening.",
+      "Set weekday and weekend schedules, adjust tomorrow’s wake time, and review a suggested sleep window with practical guidance for tonight.",
   },
-] as const;
+  {
+    title: "Try a phone bedtime session",
+    description:
+      "Start an optional session yourself, then review and confirm a lower-confidence sleep-time estimate. Sound analysis and optional short clips stay on your device.",
+  },
+  {
+    title: "Wake with a backup",
+    description:
+      "Set an iPhone deadline alarm or add a movement-based Apple Watch wake window while the Watch app is active. The iPhone deadline remains your backup.",
+  },
+  {
+    title: "Ease into the evening",
+    description:
+      "Wind down with three original narrated stories or three ambient soundscapes, with a timer and fade-out. Bring Tonight and Recovery to your Watch complications.",
+  },
+];
 
 export default function NoctaraPage() {
   return (
-    <>
-      <a className="noctara-skip" href="#main">Skip to main content</a>
-      <StudioSiteHeader />
-      <main id="main">
-        <section className="noctara-hero" aria-labelledby="noctara-title">
-          <div className="noctara-hero__copy">
-            <p className="noctara-kicker">Noctara · Sleep &amp; Recovery</p>
-            <h1 id="noctara-title">Understand your night.<br /><em>Own your day.</em></h1>
-            <p className="noctara-lede">
-              Noctara turns supported sleep and recovery information from Apple Health
-              into calm, practical wellness guidance for today and tonight.
-            </p>
-            <div className="noctara-hero__actions">
-              <a className="noctara-button" href="#features">Explore the app</a>
-              <span className="noctara-availability">App Store release in preparation</span>
-            </div>
-          </div>
-          <div className="noctara-hero__art">
-            <Image
-              src="/noctara/horizon-app-icon.png"
-              alt="Noctara Horizon owl mark"
-              width={1024}
-              height={1024}
-              priority
-            />
-            <span aria-hidden="true">NOCTARA</span>
-          </div>
-        </section>
-
-        <section className="noctara-section" id="features" aria-labelledby="noctara-features-title">
-          <div className="noctara-section__heading">
-            <p className="noctara-kicker">The experience</p>
-            <h2 id="noctara-features-title">A clearer picture of rest.</h2>
-          </div>
-          <div className="noctara-features">
-            {features.map((feature) => (
-              <article className="noctara-feature" key={feature.number}>
-                <span className="noctara-feature__number">{feature.number}</span>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="noctara-section noctara-section--access" aria-labelledby="noctara-access-title">
-          <div>
-            <p className="noctara-kicker">Your choice</p>
-            <h2 id="noctara-access-title">Start locally. Sync if you want.</h2>
-          </div>
-          <div className="noctara-access__copy">
-            <p>
-              No account is required. Noctara keeps raw Apple Health samples and detailed
-              sleep-stage timelines on your device. Optional Sign in with Apple syncs
-              derived summaries, preferences, and reports.
-            </p>
-            <p>Every feature is planned to be included during early access at no charge.</p>
-          </div>
-        </section>
-      </main>
-      <footer className="noctara-footer">
-        <p>Noctara provides wellness estimates for information, not medical advice.</p>
-        <nav aria-label="Noctara links">
-          <Link href="/work/">Studio work</Link>
-          <a href="https://noctara-api-production.up.railway.app/privacy">Privacy</a>
-          <a href="https://noctara-api-production.up.railway.app/support">Support</a>
-          <a href={`mailto:${howethStudioConfig.contactEmail}`}>Contact</a>
-        </nav>
-      </footer>
-    </>
+    <ProductPage
+      slug="noctara"
+      eyebrow="Sleep, recovery & energy"
+      headline="Understand your night. Own your day."
+      description="A calmer view of rest. Noctara turns supported Apple Health sleep and recovery information into clear context for today, and a practical plan for tonight."
+      features={features}
+      detail={{
+        title: "Start locally. Sync if you want.",
+        paragraphs: [
+          "Every current feature is free, with no account or purchase required. Noctara reads Apple Health without writing to it. Raw Health records and detailed sleep-stage timelines stay on your device.",
+          "Optional Sign in with Apple syncs supported derived summaries, permanent preferences, and weekly reports. Phone audio, raw sound activity, phone-session estimates, check-ins, habits, and Watch motion readings stay outside account sync.",
+          "Short sound-event clips are off by default. If you choose to retain them, you can delete them in the app, and they expire after 30 days.",
+        ],
+      }}
+      links={[
+        {
+          label: "Download on the App Store",
+          href: "https://apps.apple.com/us/app/noctara-sleep-recovery/id6813928927",
+        },
+        {
+          label: "Support",
+          href: "https://noctara-api-production.up.railway.app/support",
+        },
+        {
+          label: "Privacy",
+          href: "https://noctara-api-production.up.railway.app/privacy",
+        },
+      ]}
+      note="Requires iOS 26 or later. The Apple Watch companion requires watchOS 10 or later. Scores, forecasts, and phone sleep-time estimates provide wellness context, not medical advice."
+    />
   );
 }

@@ -10,6 +10,8 @@ const studioRoutes = [
   "",
   "/about",
   "/work",
+  "/games",
+  "/press",
   "/contact",
   "/noctara",
   "/carenote-cna",
@@ -24,6 +26,10 @@ const studioRoutes = [
   "/football-era/support",
   "/football-era/privacy",
   "/football-era/account-deletion",
+  "/basketball-era",
+  "/baseball-era",
+  "/baseball-era/privacy",
+  "/sprout-to-stars",
 ] as const;
 
 const elevenwardRoutes = [

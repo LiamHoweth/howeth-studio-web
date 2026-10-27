@@ -40,3 +40,9 @@ export const footballEraConfig = {
     "https://apps.apple.com/us/app/football-era/id6762415210",
   testFlightUrl: cleanUrl(process.env.NEXT_PUBLIC_FOOTBALL_ERA_TESTFLIGHT_URL),
 };
+
+export const elevenwardConfig = {
+  appStoreUrl:
+    cleanUrl(process.env.NEXT_PUBLIC_ELEVENWARD_APP_STORE_URL) ||
+    "https://apps.apple.com/us/app/elevenward/id6809308325",
+};

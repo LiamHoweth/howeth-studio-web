@@ -5,14 +5,15 @@ Web: https://howethstudio.com/elevenward/es/
 Contacto de prensa: howethstudio@gmail.com
 
 Género: RPG global de carrera y vida futbolística
-Plataformas: iOS y Android
+Plataformas: iPhone y iPad (disponible); Android (en desarrollo)
+App Store: https://apps.apple.com/us/app/elevenward/id6809308325
 Jugadores: Un jugador
 Público: Mayores de 13 años
 Idiomas de lanzamiento: inglés, español, portugués de Brasil y francés
 
 Elevenward acompaña a un futbolista original desde sus inicios hasta la retirada. Cada jornada combina entrenamiento, una decisión futbolística de riesgo y consecuencias transparentes sobre forma, físico, confianza, dinero, relaciones, contratos, traspasos, títulos y legado.
 
-La carrera completa funciona sin conexión. Las cuentas opcionales añaden sincronización, recuperación de compras y clasificaciones sin premios. No hay publicidad, cajas de botín, compras aleatorias, energía ni ventajas de pago.
+La carrera completa funciona sin conexión. Las cuentas opcionales añaden sincronización, recuperación de compras y clasificaciones sin premios. No hay publicidad, suscripciones, cajas de botín, compras aleatorias ni energía. Los pases permanentes opcionales añaden espacios, cosméticos o multiplicadores de desarrollo e ingresos indicados claramente.
 
 Lema: El trabajo antes del ruido.
 
@@ -20,4 +21,4 @@ Sobre Howeth Studio:
 Howeth Studio es un estudio independiente que crea productos digitales reflexivos, respetuosos con la privacidad y juegos originales.
 
 Uso editorial:
-Estos recursos pueden utilizarse para una cobertura editorial fiel de Elevenward. Conserva sus proporciones, colores y espacio libre. No alteres las marcas ni sugieras respaldo. Contacta con Howeth Studio para otros formatos o usos. El material previo al lanzamiento puede cambiar.
+Estos recursos pueden utilizarse para una cobertura editorial fiel de Elevenward. Conserva sus proporciones, colores y espacio libre. No alteres las marcas ni sugieras respaldo. Contacta con Howeth Studio para otros formatos o usos. Las ilustraciones y capturas de demostración pueden cambiar con las actualizaciones.

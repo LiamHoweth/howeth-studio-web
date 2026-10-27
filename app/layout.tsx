@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, Manrope, Sora } from "next/font/google";
 import "@/styles/carenote-marketing.css";
 import "./globals.css";
+import "@/styles/studio-chrome.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Howeth Studio",
   },
   description:
-    "Howeth Studio — independent software development and mobile products including CareNote CNA, Football Era, Elevenward, and Noctara.",
+    "Howeth Studio — independent software development and mobile products including Noctara, Football Era, Elevenward, Basketball Era, Baseball Era, Sprout to Stars, and CareNote CNA.",
   icons: {
     icon: [{ url: "/studio/favicon.svg", type: "image/svg+xml" }],
   },
