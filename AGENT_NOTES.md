@@ -1,3 +1,12 @@
+- November 9, 2026: `public/app-ads.txt` contains the owner-provided AdMob seller
+  entry for app verification. Football Era marketing says no forced ads; its
+  privacy policy conditionally describes optional ad rewards and separate
+  RevenueCat ad analytics. This website change does not enable live ads in an app.
+  The security-gated build uses supported `next build --webpack` after clean
+  Turbopack builds failed in Next 16.4.2's Google-font query resolver. A scoped
+  typescript-estree override pins minimatch 11.0.5 to fix GHSA-g3hv-75wg-m249;
+  clean install, lint, all 39 existing Node tests, build and both audits pass.
+
 - October 25, 2026: Math Wars has `/math-wars/`, `/math-wars/support/` and `/math-wars/privacy/` for its 1.0 release. Saves stay local; optional Online versus uses an in-memory relay. The policy separately discloses Railway connection/service logs retained for up to 90 days, support email, and names in shared shot images. Do not restore a blanket "Data Not Collected" claim: Railway's shorter plan-dependent log viewing window is not the retention period. Keep copy synchronized with `Services/MathWarsServer/docs/PROTOCOL.md` and the app's privacy disclosures. The catalogue has eight products. Compatible lockfile updates use zod 4.6.7 and fast-uri 3.1.9 to clear their current advisories; preserve the existing security gate.
 
 October 22 deployment repair: Next.js and eslint-config-next are upgraded together to16.4.2, resolving the newly reported Next advisories that rejected the PR16 Railway build. The security gate and existing exact braces mitigation are unchanged. Clean install, lint, security gate, all39 existing Node tests, static build and production audit pass locally; raw full audit still reports the five previously mitigated development findings. Live deployment and the two SuperLife URLs require separate verification.

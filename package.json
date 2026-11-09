@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run validate:security && next build && node scripts/elevenward-document-language.cjs",
+    "build": "npm run validate:security && next build --webpack && node scripts/elevenward-document-language.cjs",
     "start": "node scripts/serve-site.mjs",
     "lint": "eslint .",
     "postinstall": "node scripts/security-patches.cjs --apply && node scripts/security-regressions.cjs",
@@ -40,6 +40,9 @@
   "overrides": {
     "serve": {
       "compression": "1.8.2"
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.5"
     }
   }
 }

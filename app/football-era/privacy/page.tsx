@@ -22,7 +22,7 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: September 21, 2026. This policy explains how Football Era
+              Effective date: November 9, 2026. This policy explains how Football Era
               (“the app”), published by Beopity, handles information when you
               play as a guest or choose to create an account.
             </p>
@@ -128,6 +128,19 @@ export default function FootballEraPrivacyPage() {
                 advertising or cross-app tracking, and it is not combined with your
                 Apple or Google account identity. Football Era asks for your choice
                 before registering an analytics installation or sending an event.
+                In versions with expanded gameplay measurement, this includes
+                career-creation step confirmations, whether a career already existed
+                when measurement began, selected career gameplay modes, games started
+                and durably completed, and coarse elapsed-time categories from that
+                first consented observation to the first completed game. Diagnostic
+                categories cover loading, local saving, cloud sync and opening the
+                field. They exclude raw error messages, crash stacks, player-entered
+                names, full saves and account identifiers. Random session and action
+                references match events without publishing career identifiers.
+                Repeat sessions measure retention; the observation date is not an
+                App Store installation date. Events retain the app version/build,
+                platform, configured environment and distribution channel at occurrence,
+                allowing development and TestFlight observations to be separated.
               </p>
             </article>
             <article className="section-card">
@@ -185,6 +198,38 @@ export default function FootballEraPrivacyPage() {
           </section>
 
           <section className="section two-column">
+            <article className="section-card">
+              <h2>Optional rewarded advertising</h2>
+              <p>
+                In versions that offer ad rewards, offers are off until you enable
+                them in Settings. You can choose an ad after a game or after claiming
+                the free daily reward. Normal rewards and offline play remain
+                available without watching ads. Google AdMob serves these ads and
+                may process IP address, device and app identifiers, advertising
+                interactions, diagnostics, and approximate location derived from IP
+                address for delivery, measurement, security, and fraud prevention.
+                Football Era does not send career names, email addresses, or career
+                saves to AdMob. Non-personalized ads can still require device storage
+                and processing; available consent and privacy choices are presented
+                before ad requests. You can revisit ad privacy choices in Settings.
+              </p>
+              <p>
+                A separate, optional Ad revenue analytics setting allows ad
+                impressions, clicks, placement, and impression-level revenue to be
+                sent to RevenueCat under its existing customer identifier, alongside
+                purchases. This setting is off by default and is separate from
+                gameplay analytics, purchase analytics, and permission to track
+                across other companies’ apps and websites. Disabling it stops new
+                reporting; it does not delete prior provider records. For provider
+                data access or deletion, contact us using the support details below.
+              </p>
+              <p>
+                See <a href="https://policies.google.com/privacy">Google’s privacy policy</a> and{" "}
+                <a href="https://www.revenuecat.com/privacy/">RevenueCat’s privacy policy</a>.
+                The current ad integration is being tested; production ad serving
+                requires a separately validated app update.
+              </p>
+            </article>
             <article className="section-card">
               <h2>Children and families</h2>
               <p>
