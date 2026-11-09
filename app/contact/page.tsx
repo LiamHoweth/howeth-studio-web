@@ -6,6 +6,8 @@ import {
   StudioSiteFooter,
 } from "@/components/studio/StudioMarketing";
 import { StudioTrail } from "@/components/studio/StudioTrail";
+import { Ambience } from "@/components/studio/art/Ambience";
+import { MeadowScene, Sprig } from "@/components/studio/art/Scenery";
 import { beopityConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -45,7 +47,9 @@ export default function ContactPage() {
             <h2 id="contact-heading" className="studio-mono studio-section-label">
               Contact
             </h2>
-            <div className="studio-contact-card studio-contact-card--paper">
+            <div className="studio-contact-card studio-contact-card--meadow">
+              <MeadowScene seed={21} mood="golden" />
+              <Ambience kind="breeze" seed={21} density={0.7} />
               <p className="studio-mono">Direct</p>
               <h3 className="studio-contact-card__title">Write to the studio</h3>
               <p>Project inquiries, partnerships and press.</p>
@@ -54,6 +58,7 @@ export default function ContactPage() {
               </a>
             </div>
             <div className="studio-contact-card">
+              <Sprig className="studio-contact-card__sprig" variant={1} />
               <p className="studio-mono">Product support</p>
               <h3 className="studio-contact-card__title">CareNote CNA</h3>
               <p>

@@ -14,6 +14,9 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     status: "idle", trackIndex: 0, currentTime: 0, duration: AMBIENT_TRACKS[0].duration, volume: 0.2,
   });
   const [showVolume, setShowVolume] = useState(false);
+  // Phones show a compact round button; this opens the full dock above it.
+  const [expanded, setExpanded] = useState(false);
+  const expandButton = useRef<HTMLButtonElement>(null);
   const engine = useRef<AmbientAudio | null>(null);
   const dock = useRef<HTMLDivElement>(null);
   const volumeButton = useRef<HTMLButtonElement>(null);
@@ -46,7 +49,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     const player = new AmbientAudio((state) => {
       if (!active) return;
       // A native/system pause also counts as a pause choice; only our visibility
-      // suspension keeps automatic playback intent for returning to the page.
+      // suspension keeps the visitor's Play intent for returning to the page.
       if (state.status === "paused" && ["playing", "starting"].includes(previousStatus) && !visibilityPause) {
         requestedPlaybackRef.current = false;
       }
@@ -54,9 +57,10 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
       setSnapshot(state);
     });
     engine.current = player;
-    // A shareable quiet entry: no gesture starts music until Play is selected.
+    // Music starts only when the visitor presses Play. `?music=on` may request
+    // autoplay (the browser can still block it); `?music=off` stays quiet.
     if (requestedPlaybackRef.current === null) {
-      requestedPlaybackRef.current = new URLSearchParams(window.location.search).get("music") !== "off";
+      requestedPlaybackRef.current = new URLSearchParams(window.location.search).get("music") === "on";
     }
 
     const resumeIfRequested = () => {
@@ -75,22 +79,8 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
       visibilityPause = true;
       player.pause();
     };
-    const retryOnActivation = (event: PointerEvent | KeyboardEvent) => {
-      if (!event.isTrusted || !requestedPlaybackRef.current || document.hidden) return;
-      if (event.target instanceof Node && dock.current?.contains(event.target)) return;
-      if (event instanceof PointerEvent && event.button !== 0) return;
-      if (event instanceof KeyboardEvent && (
-        event.ctrlKey || event.metaKey || event.altKey ||
-        ["Shift", "Control", "Alt", "Meta", "Escape"].includes(event.key)
-      )) return;
-      const status = player.getSnapshot().status;
-      if (status === "blocked" || status === "idle") void startPlayback();
-    };
 
     document.addEventListener("visibilitychange", handleVisibility);
-    // Touch receives browser activation on release; mouse activation remains active.
-    document.addEventListener("pointerup", retryOnActivation);
-    document.addEventListener("keydown", retryOnActivation);
     window.addEventListener("pagehide", pauseOnPageExit);
     window.addEventListener("pageshow", resumeIfRequested);
     resumeIfRequested();
@@ -98,8 +88,6 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     return () => {
       active = false;
       document.removeEventListener("visibilitychange", handleVisibility);
-      document.removeEventListener("pointerup", retryOnActivation);
-      document.removeEventListener("keydown", retryOnActivation);
       window.removeEventListener("pagehide", pauseOnPageExit);
       window.removeEventListener("pageshow", resumeIfRequested);
       player.close();
@@ -139,6 +127,14 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
     if (engine.current === player && requestedPlaybackRef.current && retryRequested) void startPlayback();
   }
 
+  function toggleExpanded() {
+    if (expanded) setShowVolume(false);
+    setExpanded(!expanded);
+  }
+
+  const playLabel = playing || starting ? "Pause music" : "Play music";
+  const playIcon = <svg viewBox="0 0 24 24" aria-hidden="true"><path d={playing || starting ? "M7 5h3v14H7zM14 5h3v14h-3z" : "M8 5v14l11-7z"} /></svg>;
+
   const announcement = snapshot.status === "unavailable" ? "Music is unavailable. Try another track or select Play to retry."
     : snapshot.status === "blocked" ? "Music is ready. Select Play to start."
       : starting ? `Starting ${track.title}.`
@@ -154,6 +150,7 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
       role="region"
       aria-label="beopity music player"
       data-playing={playing}
+      data-expanded={expanded}
       style={{ "--ambient-track-accent": track.accent, "--ambient-progress": `${progress}%` } as CSSProperties}
       onKeyDown={(event) => {
         if (event.key === "Escape" && showVolume) {
@@ -161,10 +158,14 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
           event.stopPropagation();
           setShowVolume(false);
           volumeButton.current?.focus({ preventScroll: true });
+        } else if (event.key === "Escape" && expanded && expandButton.current?.offsetParent) {
+          event.preventDefault();
+          setExpanded(false);
+          expandButton.current.focus({ preventScroll: true });
         }
       }}
     >
-      <div className="ambient-music__dock">
+      <div className="ambient-music__dock" id="beopity-music-dock">
         <div className="ambient-music__main">
           <div className="ambient-music__cover" aria-hidden="true">
             <span className="ambient-music__disc" />
@@ -178,8 +179,8 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
             <button type="button" aria-label="Previous track" title="Previous track" onClick={() => void changeTrack("previous")}>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h2v14H5zm14 0v14L8 12z" /></svg>
             </button>
-            <button className="ambient-music__play" type="button" onClick={toggleMusic} aria-label={playing || starting ? "Pause music" : "Play music"} title={playing || starting ? "Pause music" : "Play music"} aria-busy={starting}>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d={playing || starting ? "M7 5h3v14H7zM14 5h3v14h-3z" : "M8 5v14l11-7z"} /></svg>
+            <button className="ambient-music__play" type="button" onClick={toggleMusic} aria-label={playLabel} title={playLabel} aria-busy={starting}>
+              {playIcon}
             </button>
             <button type="button" aria-label="Next track" title="Next track" onClick={() => void changeTrack("next")}>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 11 7-11 7zm12 0h2v14h-2z" /></svg>
@@ -231,6 +232,24 @@ function AmbientMusicPlayer({ requestedPlaybackRef }: { requestedPlaybackRef: { 
           onChange={(event) => engine.current?.setVolume(Number(event.target.value) / 100)}
         />
         <p>Ten original tracks. A slower pace.</p>
+      </div>
+      {/* Phones: a compact round Play/Pause plus a small toggle for the full player. */}
+      <div className="ambient-music__mini" role="group" aria-label="Music">
+        <button
+          className="ambient-music__expand"
+          type="button"
+          ref={expandButton}
+          aria-expanded={expanded}
+          aria-controls="beopity-music-dock"
+          aria-label={expanded ? "Hide music player" : "Show music player"}
+          title={expanded ? "Hide music player" : "Show music player"}
+          onClick={toggleExpanded}
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={expanded ? "m7 10 5 5 5-5" : "m7 14 5-5 5 5"} /></svg>
+        </button>
+        <button className="ambient-music__play ambient-music__mini-play" type="button" onClick={toggleMusic} aria-label={playLabel} title={playLabel} aria-busy={starting}>
+          {playIcon}
+        </button>
       </div>
       <span className="ambient-music__status" role="status">{announcement}</span>
     </div>

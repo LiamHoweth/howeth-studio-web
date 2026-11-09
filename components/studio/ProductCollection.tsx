@@ -26,7 +26,7 @@ export function ProductCollection() {
       </div>
       <ol className="collection-grid">
         {visible.map((product) => (
-          <li key={product.slug}>
+          <li key={product.slug} className={product.appStoreUrl ? "has-store" : undefined}>
             <Link className="collection-product" href={`/${product.slug}/`} aria-label={`Explore ${product.name}`}>
               <ProductArtwork product={product} />
               <div className="collection-product__copy">
@@ -41,6 +41,11 @@ export function ProductCollection() {
                 </div>
               </div>
             </Link>
+            {product.appStoreUrl && (
+              <a className="collection-product__store" href={product.appStoreUrl} aria-label={`${product.name} on the App Store`}>
+                App Store <span aria-hidden="true">↗</span>
+              </a>
+            )}
           </li>
         ))}
       </ol>

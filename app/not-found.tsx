@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { StudioSiteHeader } from "@/components/studio/StudioSiteHeader";
+import { Ambience } from "@/components/studio/art/Ambience";
+import { LostMeadow } from "@/components/studio/art/Scenery";
 
 export default function NotFound() {
   return (
@@ -10,14 +12,14 @@ export default function NotFound() {
       </a>
       <StudioSiteHeader />
       <main id="main" className="studio-not-found">
-        <div>
+        <div className="studio-not-found__body">
           <p className="studio-mono studio-not-found__index" aria-hidden="true">
             404
           </p>
           <h1 className="studio-not-found__title">This path leads nowhere.</h1>
           <p className="studio-not-found__copy">
-            That URL does not match a published page. Check the path, or head back to the
-            studio index.
+            Even the studio cat took a wrong turn here. That URL does not match a published page.
+            Check the path, or head back to the studio index.
           </p>
           <div className="studio-not-found__actions">
             <Link className="studio-button" href="/">
@@ -31,7 +33,11 @@ export default function NotFound() {
             </Link>
           </div>
         </div>
-        <Image className="studio-not-found__cat" src="/beopity/cat-sitting.webp" alt="" width={540} height={640} />
+        <div className="studio-not-found__scene" aria-hidden="true">
+          <LostMeadow />
+          <Ambience kind="meadow" seed={404} density={0.6} />
+          <Image className="studio-not-found__cat" src="/beopity/cat-sitting.webp" alt="" width={540} height={640} sizes="160px" />
+        </div>
       </main>
     </div>
   );

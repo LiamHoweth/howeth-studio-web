@@ -1,0 +1,112 @@
+{
+  "bytes": 1806404,
+  "triangles": 23977,
+  "clips": [
+    {
+      "name": "idle_sit",
+      "duration": 5,
+      "counts": [
+        2,
+        151
+      ],
+      "endpoint_max_delta": 0
+    },
+    {
+      "name": "idle_stand",
+      "duration": 4,
+      "counts": [
+        2,
+        121
+      ],
+      "endpoint_max_delta": 0
+    },
+    {
+      "name": "look_around",
+      "duration": 4,
+      "counts": [
+        2,
+        121
+      ],
+      "endpoint_max_delta": 0
+    },
+    {
+      "name": "sit_down",
+      "duration": 1.2,
+      "counts": [
+        2,
+        37
+      ],
+      "endpoint_max_delta": 0.6533237546682358
+    },
+    {
+      "name": "stand_up",
+      "duration": 1.2,
+      "counts": [
+        2,
+        37
+      ],
+      "endpoint_max_delta": 0.6533237546682358
+    },
+    {
+      "name": "walk",
+      "duration": 1,
+      "counts": [
+        2,
+        31
+      ],
+      "endpoint_max_delta": 0
+    }
+  ],
+  "textures": [
+    {
+      "name": "fur_normal",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "fur_basecolor",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "fur_roughness",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "name": "iris_basecolor",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "max_weight_sum_error": 1.3783574104309082e-07,
+  "extensions": [
+    "KHR_materials_specular"
+  ],
+  "three_validation": {
+    "version": "0.186.1",
+    "loader": "GLTFLoader",
+    "embedded_png_decode": "sharp RGBA",
+    "samples_per_clip": 31,
+    "all_deformed_vertices_finite": true,
+    "browser_webgl_render_tested": false,
+    "standing_min_y_m": 0.0002721112,
+    "idle_sit_min_y_m": -0.001858462,
+    "transition_min_y_m": -0.002468242
+  },
+  "notes": [
+    "All four looping clips have exactly matching exported first and last sampler values.",
+    "Sampling proves finite transforms/vertices, not a browser performance or visual acceptance test.",
+    "Tiny seated/transition surface overlap remains, at most about 2.5 mm below Y=0 in sampled poses.",
+    "Source eye morphs export to four material primitives; update all runtime eye submeshes."
+  ],
+  "glb_sha256": "54d3738105458229423ed0084f3823c2c0335aa6a59bccec1bdebdde4abfcf39"
+}

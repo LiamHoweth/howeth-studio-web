@@ -7,6 +7,7 @@ import "@/styles/carenote-marketing.css";
 import "./globals.css";
 import "@/styles/studio-chrome.css";
 import "@/styles/ambient-music.css";
+import "@/styles/bramble.css";
 
 const manrope = Manrope({
   subsets: ["latin"],

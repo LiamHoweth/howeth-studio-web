@@ -1,0 +1,397 @@
+/* HeroJourney: Bramble walks across a painted summer landscape.
+   (components/studio/hero/HeroJourney.tsx)
+
+   World space: a tile 1600 units wide and 1000 tall whose bottom edge is the
+   bottom of the hero. `--u` is one world unit in px, derived from the hero
+   height, so the composition keeps its proportions on every screen. Each band
+   (clouds, mountains, hills, meadow, fringe) is three tiles wide and pans left
+   one tile per loop at its own pace; the meadow pace and Bramble's crossing are
+   tuned so the boots roughly keep pace with the ground.
+   Only transform and opacity animate. `data-paused` (set by HeroJourneyMotion
+   while off-screen) freezes everything; reduced motion shows a still scene. */
+
+.hero-journey {
+  --hj-offset: 76px;
+  --hj-h: max(600px, calc(100vh - var(--hj-offset)));
+  --tile: calc(var(--hj-h) * 1.6);
+  --u: calc(var(--tile) / 1600);
+  --bw: calc(183.3 * var(--u));
+  --hj-pace: 110s;
+  --hj-cross: 24s;
+  --hj-stride: 1.05s;
+  --hj-ink: #22303a;
+  --hj-muted: #3e4d57;
+  --hj-paper: #f6efdc;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--hj-h);
+  overflow: hidden;
+  overflow: clip;
+  color: var(--hj-ink);
+  color-scheme: light;
+  background: #9ccbe8;
+}
+@supports (height: 100svh) {
+  .hero-journey { --hj-h: max(600px, calc(100svh - var(--hj-offset))); }
+}
+/* Portrait screens: draw the world a little smaller so the sky holds the copy. */
+@media (max-aspect-ratio: 1/1) {
+  .hero-journey { --tile: calc(var(--hj-h) * 1.3); }
+}
+/* Narrow screens cross less ground per second, so slow the stride to match. */
+@media (max-width: 900px) {
+  .hero-journey { --hj-pace: 68s; --hj-cross: 18s; --hj-stride: 1.35s; }
+}
+
+.hero-journey__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+/* Golden-hour light laid over the whole scene: a warm bloom from the low sun
+   at the right and a faint amber cast on the ground. */
+.hero-journey__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 78% 55%, rgba(255, 206, 128, .26), rgba(255, 206, 128, 0) 70%),
+    linear-gradient(180deg, rgba(255, 214, 150, 0) 60%, rgba(255, 190, 110, .12));
+}
+.hero-journey__scene svg { display: block; }
+.hj-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.hj-probe { display: none; }
+
+/* ---------- layers ---------- */
+
+.hj-layer { position: absolute; }
+.hj-band {
+  left: -40px;
+  bottom: calc((1000 - var(--lt) - var(--lh)) * var(--u));
+  width: calc(4800 * var(--u));
+  height: calc(var(--lh) * var(--u));
+}
+.hj-track {
+  position: absolute;
+  inset: 0;
+  animation: hj-pan calc(var(--hj-pace) * var(--speed, 1)) linear infinite;
+  will-change: transform;
+}
+.hj-strip { position: absolute; inset: 0; width: 100%; height: 100%; }
+@keyframes hj-pan { to { transform: translate3d(calc(-1600 * var(--u)), 0, 0); } }
+
+.hj-layer--clouds-far .hj-track { --speed: 7.5; }
+.hj-layer--clouds-near .hj-track { --speed: 3.2; animation-delay: -40s; }
+.hj-layer--mountains .hj-track { --speed: 6.5; }
+.hj-layer--hills .hj-track { --speed: 2.4; animation-delay: -30s; }
+.hj-layer--meadow .hj-track { --speed: 1; }
+.hj-layer--fringe .hj-track { --speed: .5; }
+
+.hj-sprite { position: absolute; display: block; }
+.hj-sprite > svg { width: 100%; height: 100%; overflow: visible; }
+
+/* Windmill sails turn slowly; tall grass tufts sway in the breeze. */
+.hj-sails { animation: hj-spin 16s linear infinite; }
+@keyframes hj-spin { to { transform: rotate(1turn); } }
+.hj-sway {
+  transform-origin: 50% 100%;
+  animation: hj-sway var(--sway-d, 4.5s) ease-in-out var(--sway-delay, 0s) infinite alternate;
+}
+@keyframes hj-sway { from { transform: rotate(calc(var(--sway-a, 5deg) * -.6)); } to { transform: rotate(var(--sway-a, 5deg)); } }
+
+/* Cottage chimney smoke: puffs rise, swell, drift away from the sun and fade. */
+.hj-smoke { opacity: 0; animation: hj-smoke 5.2s ease-out var(--smoke-delay, 0s) infinite; }
+@keyframes hj-smoke {
+  0% { opacity: 0; transform: translate(0, 0) scale(.5); }
+  15% { opacity: .85; }
+  100% { opacity: 0; transform: translate(-260%, -420%) scale(2.2); }
+}
+
+/* Shafts of late sun from the low sun, breathing slowly. */
+.hj-beams {
+  left: calc(78% - 1700 * var(--u));
+  bottom: calc(-20 * var(--u));
+  width: calc(1800 * var(--u));
+  height: calc(640 * var(--u));
+  opacity: .7;
+  animation: hj-beams 11s ease-in-out infinite alternate;
+}
+.hj-beams svg { width: 100%; height: 100%; }
+@keyframes hj-beams { from { opacity: .45; } to { opacity: .85; } }
+
+/* ---------- sky and sun ---------- */
+
+.hj-layer--sky { inset: 0; }
+.hj-sky { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hj-sun {
+  position: absolute;
+  /* Golden hour: the sun hangs low over the mountains, beside Bramble's path. */
+  left: calc(78% - 350 * var(--u));
+  bottom: calc((1000 - 455 - 350) * var(--u));
+  width: calc(700 * var(--u));
+  aspect-ratio: 1;
+}
+.hj-sun__disc, .hj-sun__rays, .hj-sun__rays svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hj-sun__rays { display: block; opacity: .7; animation: hj-rays 140s linear infinite; }
+@keyframes hj-rays {
+  0% { transform: rotate(0deg); opacity: .55; }
+  50% { opacity: .85; }
+  100% { transform: rotate(360deg); opacity: .55; }
+}
+
+/* ---------- Bramble ---------- */
+
+.hj-layer--walker { inset: 0; }
+.hj-cross {
+  position: absolute;
+  left: calc(-1 * var(--bw));
+  bottom: calc(64 * var(--u));
+  width: calc(100% + var(--bw));
+  height: calc(250 * var(--u));
+  animation: hj-cross var(--hj-cross) linear calc(var(--hj-cross) * -.42) infinite;
+  will-change: transform;
+}
+@keyframes hj-cross { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(100%, 0, 0); } }
+.hj-walker { position: absolute; left: 0; bottom: 0; width: var(--bw); height: 100%; }
+/* A gentle rise and fall as the footpath undulates. */
+.hj-walker__bob {
+  position: absolute;
+  inset: 0;
+  animation: hj-bob var(--hj-cross) ease-in-out calc(var(--hj-cross) * -.42) infinite;
+}
+@keyframes hj-bob {
+  0%, 100% { transform: translateY(0); }
+  14% { transform: translateY(calc(-5 * var(--u))); }
+  30% { transform: translateY(calc(2 * var(--u))); }
+  47% { transform: translateY(calc(-7 * var(--u))); }
+  63% { transform: translateY(calc(1 * var(--u))); }
+  81% { transform: translateY(calc(-4 * var(--u))); }
+}
+/* Warm rim light from the low sun on the right so the dark house reads against the meadow. */
+.hj-walker .bramble {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(1.5px -1px 0 rgba(255, 200, 120, .75)) drop-shadow(0 0 calc(10 * var(--u)) rgba(255, 196, 120, .28));
+}
+.hero-journey .hj-walker .bramble--walking { animation-duration: var(--hj-stride); }
+.hj-walker__shadow {
+  position: absolute;
+  /* A long evening shadow cast away from the sun, to the left. */
+  left: -46%;
+  right: 22%;
+  bottom: calc(-6 * var(--u));
+  height: calc(22 * var(--u));
+  border-radius: 50%;
+  transform-origin: 100% 50%;
+  background: radial-gradient(closest-side, rgba(40, 46, 52, .34), rgba(40, 46, 52, .14) 60%, rgba(40, 46, 52, 0));
+  animation: hj-step var(--hj-stride) ease-in-out infinite;
+}
+@keyframes hj-step {
+  0%, 50%, 100% { transform: scaleX(1); opacity: 1; }
+  25%, 75% { transform: scaleX(.9); opacity: .78; }
+}
+
+/* A breath of wind combing light across the meadow. */
+.hj-layer--gust { left: 0; right: 0; bottom: 0; height: calc(300 * var(--u)); overflow: hidden; }
+.hj-gust {
+  position: absolute;
+  top: 6%;
+  left: 0;
+  width: 46%;
+  height: 52%;
+  opacity: 0;
+  background: radial-gradient(closest-side, rgba(236, 248, 182, .42), rgba(236, 248, 182, 0));
+  animation: hj-gust 13s ease-in-out infinite;
+}
+.hj-gust--late { top: 40%; width: 36%; height: 40%; animation-duration: 17s; animation-delay: -8s; }
+@keyframes hj-gust {
+  0% { transform: translate3d(-110%, 0, 0); opacity: 0; }
+  20% { opacity: .9; }
+  70% { opacity: .7; }
+  100% { transform: translate3d(240%, 0, 0); opacity: 0; }
+}
+
+/* ---------- birds, seeds, petals, butterflies ---------- */
+
+.hj-life { position: absolute; inset: 0; }
+.hj-fly { position: absolute; height: calc(70 * var(--u)); }
+.hj-fly--west {
+  --fw: calc(170 * var(--u));
+  left: 0;
+  bottom: calc(740 * var(--u));
+  width: calc(100% + var(--fw));
+  animation: hj-fly-west 48s linear -14s infinite;
+}
+.hj-fly--east {
+  --fw: calc(60 * var(--u));
+  left: calc(-1 * var(--fw));
+  bottom: calc(850 * var(--u));
+  width: calc(100% + var(--fw));
+  animation: hj-fly-east 76s linear -52s infinite;
+}
+@keyframes hj-fly-west { 0% { transform: translate3d(0, 0, 0); } 70%, 100% { transform: translate3d(-100%, 0, 0); } }
+@keyframes hj-fly-east { 0% { transform: translate3d(0, 0, 0); } 80%, 100% { transform: translate3d(100%, 0, 0); } }
+.hj-flock { position: absolute; top: 0; height: 100%; width: var(--fw); animation: hj-flock-bob 6s ease-in-out infinite alternate; }
+.hj-fly--west .hj-flock { right: 0; }
+.hj-fly--east .hj-flock { left: 0; }
+@keyframes hj-flock-bob { from { transform: translateY(calc(-8 * var(--u))); } to { transform: translateY(calc(10 * var(--u))); } }
+.hj-bird {
+  position: absolute;
+  display: block;
+  width: calc(34 * var(--u));
+  min-width: 16px;
+  aspect-ratio: 40 / 18;
+}
+.hj-flock--far .hj-bird { width: calc(20 * var(--u)); min-width: 11px; opacity: .72; }
+.hj-bird svg { width: 100%; height: 100%; overflow: visible; }
+/* Each wing pivots at the shoulder: three wingbeats, then a long glide. */
+.hj-bird__wing { transform-box: fill-box; animation: hj-wing-l 2.6s ease-in-out var(--flap-delay, 0s) infinite; }
+.hj-bird__wing--l { transform-origin: 100% 40%; }
+.hj-bird__wing--r { transform-origin: 0% 40%; animation-name: hj-wing-r; }
+.hj-flock--far .hj-bird__wing { animation-duration: 3.4s; }
+@keyframes hj-wing-l {
+  0%, 18%, 36%, 54% { transform: rotate(-28deg); }
+  9%, 27%, 45% { transform: rotate(34deg); }
+  62%, 100% { transform: rotate(-6deg); }
+}
+@keyframes hj-wing-r {
+  0%, 18%, 36%, 54% { transform: rotate(28deg); }
+  9%, 27%, 45% { transform: rotate(-34deg); }
+  62%, 100% { transform: rotate(6deg); }
+}
+
+/* Pollen and motes glinting in the sunbeams. */
+.hj-glint {
+  position: absolute;
+  width: calc(var(--size) * var(--u));
+  min-width: 3px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbe6 0 16%, rgba(255, 228, 160, .65) 32%, rgba(255, 228, 160, 0) 70%);
+  opacity: 0;
+  animation: hj-glint var(--dur) ease-in-out var(--delay) infinite;
+}
+@keyframes hj-glint {
+  0%, 100% { opacity: 0; transform: translate3d(0, 0, 0) scale(.5); }
+  45% { opacity: .95; transform: translate3d(calc(var(--drift) * -.5 * var(--u)), calc(var(--drift) * -.4 * var(--u)), 0) scale(1); }
+  70% { opacity: .3; }
+  85% { opacity: .8; transform: translate3d(calc(var(--drift) * -1 * var(--u)), calc(var(--drift) * -.7 * var(--u)), 0) scale(.8); }
+}
+
+.hj-drift {
+  position: absolute;
+  display: block;
+  width: calc(var(--size) * var(--u));
+  min-width: 6px;
+  opacity: 0;
+  animation: hj-float var(--dur) linear var(--delay) infinite;
+}
+.hj-drift svg { width: 100%; height: auto; overflow: visible; }
+.hj-drift__sway { display: block; animation: hj-drift-sway calc(var(--dur) / 4) ease-in-out infinite alternate; }
+@keyframes hj-float {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg); }
+  12% { opacity: .95; }
+  50% { transform: translate3d(calc(var(--dx) * .45 * var(--u)), calc(var(--rise) * -.55 * var(--u)), 0) rotate(calc(var(--spin) * .5)); }
+  82% { opacity: .85; }
+  100% { opacity: 0; transform: translate3d(calc(var(--dx) * var(--u)), calc(var(--rise) * -1 * var(--u)), 0) rotate(var(--spin)); }
+}
+@keyframes hj-drift-sway { from { transform: translateX(calc(-12 * var(--u))); } to { transform: translateX(calc(12 * var(--u))); } }
+
+.hj-butterfly {
+  position: absolute;
+  display: block;
+  width: calc(36 * var(--u));
+  min-width: 18px;
+  left: 64%;
+  bottom: calc(150 * var(--u));
+  animation: hj-flutter 27s ease-in-out infinite;
+}
+.hj-butterfly--lilac { width: calc(28 * var(--u)); min-width: 15px; left: 24%; bottom: calc(205 * var(--u)); animation-duration: 33s; animation-direction: reverse; animation-delay: -11s; }
+.hj-butterfly__bob { display: block; animation: hj-hover .9s ease-in-out infinite alternate; }
+.hj-butterfly svg { width: 100%; height: auto; overflow: visible; animation: hj-wing .22s ease-in-out infinite alternate; }
+.hj-butterfly--lilac svg { animation-duration: .18s; }
+@keyframes hj-wing { from { transform: scaleX(1); } to { transform: scaleX(.22); } }
+@keyframes hj-hover { from { transform: translateY(calc(-4 * var(--u))) rotate(-6deg); } to { transform: translateY(calc(4 * var(--u))) rotate(6deg); } }
+@keyframes hj-flutter {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  14% { transform: translate3d(calc(-120 * var(--u)), calc(-60 * var(--u)), 0); }
+  29% { transform: translate3d(calc(-230 * var(--u)), calc(12 * var(--u)), 0); }
+  44% { transform: translate3d(calc(-150 * var(--u)), calc(-110 * var(--u)), 0); }
+  60% { transform: translate3d(calc(40 * var(--u)), calc(-70 * var(--u)), 0); }
+  76% { transform: translate3d(calc(130 * var(--u)), calc(18 * var(--u)), 0); }
+  90% { transform: translate3d(calc(60 * var(--u)), calc(-24 * var(--u)), 0); }
+}
+
+/* ---------- the copy ---------- */
+
+.hero-journey__copy {
+  position: relative;
+  z-index: 2;
+  width: min(var(--shell, 1440px), calc(100% - 2 * var(--gutter, 24px)));
+  margin-inline: auto;
+  /* The bottom padding keeps Bramble's lane clear: long copy grows the hero instead. */
+  padding-block: clamp(28px, 7vh, 104px) calc(330 * var(--u));
+}
+.hero-journey__copy-inner { position: relative; max-width: 40rem; }
+/* A soft cream wash so the copy reads over sky, clouds and mountains alike. */
+.hero-journey__copy-inner::before {
+  content: "";
+  position: absolute;
+  inset: -16% -20% -18% -26%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(246, 239, 220, .86), rgba(246, 239, 220, .66) 60%, rgba(246, 239, 220, 0));
+}
+.hero-journey__copy :where(h1) {
+  margin: 0;
+  color: var(--hj-ink);
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  font-size: clamp(2.6rem, 5.4vw, 5.6rem);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(255, 250, 236, .55);
+}
+.hero-journey__copy :where(h1 em) { font-style: italic; color: #2c5f7c; }
+.hero-journey__copy :where(p) {
+  max-width: 34rem;
+  color: var(--hj-muted);
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  line-height: 1.6;
+}
+.hero-journey__copy :where(a) { color: inherit; }
+
+@media (max-width: 640px) {
+  .hero-journey__copy { padding-top: 24px; }
+  .hero-journey__copy-inner::before { inset: -10% -14% -12% -14%; }
+}
+
+/* ---------- off-screen and reduced motion ---------- */
+
+.hero-journey[data-paused="true"] :is(*, *::before, *::after) { animation-play-state: paused !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-journey :is(*, *::before, *::after) { animation: none !important; }
+  .hero-journey .hj-track, .hero-journey .hj-cross { will-change: auto; }
+  /* A composed still: Bramble standing in the meadow to the right of the copy. */
+  .hero-journey .hj-cross { transform: translate3d(66%, 0, 0); }
+  .hero-journey .hj-walker .bramble { --stride: 0; --phase: 0; }
+  .hero-journey .hj-fly--west { transform: translate3d(-46%, 0, 0); }
+  .hero-journey .hj-fly--east { transform: translate3d(22%, 0, 0); }
+  .hero-journey .hj-drift { opacity: .8; }
+  .hero-journey .hj-drift:nth-child(2n) { opacity: 0; }
+  .hero-journey .hj-butterfly svg { transform: scaleX(.8); }
+  .hero-journey .hj-bird__wing--l { transform: rotate(-12deg); }
+  .hero-journey .hj-bird__wing--r { transform: rotate(12deg); }
+  .hero-journey .hj-glint:nth-child(3n) { opacity: .7; }
+  .hero-journey .hj-smoke { opacity: .6; transform: translate(-60%, -80%) scale(1.2); }
+}

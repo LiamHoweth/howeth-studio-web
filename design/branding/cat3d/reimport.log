@@ -1,0 +1,120 @@
+00:00.281  blend            | Read blend: "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/beopity-cat.blend"
+12:23:33 | INFO: Data are loaded, start creating Blender stuff
+12:23:33 | INFO: Blender create Mesh node Beopity_HeadExpressions
+12:23:33 | INFO: Blender create Mesh node Beopity_Cat_Skin
+12:23:33 | INFO: glTF import finished in 0.09s
+00:16.346  render           | Saved: '/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/expression-pupil-dilate.png'
+{
+  "file": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/public/beopity/cat3d/beopity-cat.glb",
+  "sha256": "54d3738105458229423ed0084f3823c2c0335aa6a59bccec1bdebdde4abfcf39",
+  "preview_source": "Actual GLB reimported in Blender; all supplied final PNG previews rendered from the exported asset.",
+  "blender": "5.2.2 LTS",
+  "armatures": 1,
+  "bones": [
+    "root",
+    "hips",
+    "spine_01",
+    "spine_02",
+    "spine_03",
+    "neck",
+    "head",
+    "ear_L",
+    "ear_R",
+    "jaw",
+    "upperarm_L",
+    "forearm_L",
+    "hand_L",
+    "upperarm_R",
+    "forearm_R",
+    "hand_R",
+    "tail_01",
+    "tail_02",
+    "tail_03",
+    "tail_04",
+    "tail_05",
+    "tail_06",
+    "tail_07",
+    "tail_08",
+    "thigh_L",
+    "shin_L",
+    "foot_L",
+    "thigh_R",
+    "shin_R",
+    "foot_R"
+  ],
+  "meshes": [
+    "HeadExpressions",
+    "Beopity_Cat_Skin"
+  ],
+  "clips": {
+    "walk": {
+      "frame_start": 0,
+      "frame_end": 30,
+      "samples": 31,
+      "seconds": 1.0,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": 0.00017125224985647947,
+      "maximum_y_m": 0.42249739170074463
+    },
+    "idle_stand": {
+      "frame_start": 0,
+      "frame_end": 120,
+      "samples": 121,
+      "seconds": 4.0,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": 0.000272122910246253,
+      "maximum_y_m": 0.4207756817340851
+    },
+    "sit_down": {
+      "frame_start": 0,
+      "frame_end": 36,
+      "samples": 37,
+      "seconds": 1.2,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": -0.002461635507643223,
+      "maximum_y_m": 0.452114999294281
+    },
+    "idle_sit": {
+      "frame_start": 0,
+      "frame_end": 150,
+      "samples": 151,
+      "seconds": 5.0,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": -0.0018584622303023934,
+      "maximum_y_m": 0.45524999499320984
+    },
+    "stand_up": {
+      "frame_start": 0,
+      "frame_end": 36,
+      "samples": 37,
+      "seconds": 1.2,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": -0.0024616383016109467,
+      "maximum_y_m": 0.452114999294281
+    },
+    "look_around": {
+      "frame_start": 0,
+      "frame_end": 120,
+      "samples": 121,
+      "seconds": 4.0,
+      "nonfinite_vertices": 0,
+      "lowest_y_m": 0.000272122910246253,
+      "maximum_y_m": 0.43301257491111755
+    }
+  },
+  "morphs": {
+    "blink": {
+      "mesh": "HeadExpressions",
+      "affected_vertices": 2202,
+      "max_local_displacement_m": 0.052008420806172094
+    },
+    "pupil_dilate": {
+      "mesh": "HeadExpressions",
+      "affected_vertices": 646,
+      "max_local_displacement_m": 0.019209772647618646
+    }
+  }
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:49:19)
+
+Blender quit

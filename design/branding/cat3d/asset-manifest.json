@@ -1,0 +1,185 @@
+{
+  "asset": "beopity cat 3D",
+  "created_date": "2026-11-09",
+  "creator": "OpenAI GPT-6 Astra, Blender 5.2.2 LTS",
+  "scope": "All task-created retained files are inside the two authorized cat3d directories. Existing repository files were not modified by this task.",
+  "glb": {
+    "bytes": 1806404,
+    "triangles": 23977,
+    "skins": 1,
+    "joints": 30,
+    "mesh_definitions": 2,
+    "material_primitives": 9,
+    "embedded_textures": 4,
+    "texture_dimensions": [
+      512,
+      512
+    ],
+    "axes": "+Y up; +Z forward; meters",
+    "clips": 6,
+    "morphs": [
+      "blink",
+      "pupil_dilate"
+    ],
+    "sha256": "54d3738105458229423ed0084f3823c2c0335aa6a59bccec1bdebdde4abfcf39"
+  },
+  "files": [
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/CLAUDE_HANDOFF.txt",
+      "repository_path": "design/branding/cat3d/CLAUDE_HANDOFF.txt",
+      "bytes": 8533,
+      "sha256": "8a24612ca8700c151be3e0f5e49697e4f183f22498dcf5869a3f5fb779df2c8b"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/asset-manifest.json",
+      "repository_path": "design/branding/cat3d/asset-manifest.json",
+      "bytes": 8974,
+      "sha256": null,
+      "note": "Manifest self-size recorded; self-hash intentionally omitted."
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/beopity-cat.blend",
+      "repository_path": "design/branding/cat3d/beopity-cat.blend",
+      "bytes": 2264543,
+      "sha256": "bac17702cbca30367e76d88981559a4b7075c3c1b781445bafb89dc012262d54"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/create_beopity_cat.py",
+      "repository_path": "design/branding/cat3d/create_beopity_cat.py",
+      "bytes": 30504,
+      "sha256": "f64fba7887570a48de8fc807161e35a86680294f6491932d21c3b6e05fcf7a5b"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/expression-blink.png",
+      "repository_path": "design/branding/cat3d/expression-blink.png",
+      "bytes": 515378,
+      "sha256": "3dbec65cef6b7eab261fbfaec29ac4326736f567a612d5e9166ea1f9fd98a68d"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/expression-pupil-dilate.png",
+      "repository_path": "design/branding/cat3d/expression-pupil-dilate.png",
+      "bytes": 529337,
+      "sha256": "2dbd85541b740603d2a36a4fce9941bc17946213581365d696d556b3b2e912e1"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/front-cream.png",
+      "repository_path": "design/branding/cat3d/front-cream.png",
+      "bytes": 500946,
+      "sha256": "73eb651a10083b9ce21489587010c24a889d09ed78a44cde3cfcf70bf68ef75b"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/front-meadow.png",
+      "repository_path": "design/branding/cat3d/front-meadow.png",
+      "bytes": 544995,
+      "sha256": "f2dc33087cd6fbc6db1dff28f1c4f657874a4a032e5b642b164c1180375ade2c"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/fur_basecolor.png",
+      "repository_path": "design/branding/cat3d/fur_basecolor.png",
+      "bytes": 77876,
+      "sha256": "da2ab5f8b5314a0d0baf06ccba5d331cf3a67491a7f937655a020a8052099f94"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/fur_normal.png",
+      "repository_path": "design/branding/cat3d/fur_normal.png",
+      "bytes": 137821,
+      "sha256": "390f44bd16edc703904d23d1dafe824dc17a04e28cd5bc987e7938104117225e"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/fur_roughness.png",
+      "repository_path": "design/branding/cat3d/fur_roughness.png",
+      "bytes": 81180,
+      "sha256": "b99c14d278a0b7ca3764197afb5b76e72ff3c52bcf21a2ec07ed12e376c2a9a6"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/independent-validation.json",
+      "repository_path": "design/branding/cat3d/independent-validation.json",
+      "bytes": 2301,
+      "sha256": "87a1f4261d0daa1270ef497e3e75731355f12e906f8122e4a375260ba05bed04"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/iris_basecolor.png",
+      "repository_path": "design/branding/cat3d/iris_basecolor.png",
+      "bytes": 261014,
+      "sha256": "e585f9cd78fd569438ec8b1a5c446c96fddc95f8dbb8bc7da81b2aa9ce1b0e9c"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/readability-contact-sheet.png",
+      "repository_path": "design/branding/cat3d/readability-contact-sheet.png",
+      "bytes": 411413,
+      "sha256": "e047e62acbaf7b0b321c8bbf653141fc47802d6627519b60a70ec541ab1b1b93"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/reimport-validation.json",
+      "repository_path": "design/branding/cat3d/reimport-validation.json",
+      "bytes": 2589,
+      "sha256": "40ede4f4eb2ee88ca8504af011ae78e44fe099dd9d2b7b24099766e397964bcd"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/reimport.log",
+      "repository_path": "design/branding/cat3d/reimport.log",
+      "bytes": 3195,
+      "sha256": "8abfdc0fdf6004c5fc973a6d8179ea4578f81fb0b01d82c3c48778e4f2828558"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/side-cream.png",
+      "repository_path": "design/branding/cat3d/side-cream.png",
+      "bytes": 514116,
+      "sha256": "30ec12bce06f1e74e80293443213644933cfb816e82a87ff8bfb23a746ac0663"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/side-meadow.png",
+      "repository_path": "design/branding/cat3d/side-meadow.png",
+      "bytes": 560396,
+      "sha256": "4bb7b85cc148a2a1a10dcc76ad133c48868a9ff73d13e7e4d54faf5bb88b8d41"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/sit-cream.png",
+      "repository_path": "design/branding/cat3d/sit-cream.png",
+      "bytes": 595356,
+      "sha256": "8e02c608e2f57fd96572a77e3911f53db74b4f2fc2c009304ba25a1a51aa60b7"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/sit-meadow.png",
+      "repository_path": "design/branding/cat3d/sit-meadow.png",
+      "bytes": 667641,
+      "sha256": "81199e8f6ebdbeed16fc596d61cba2d46fb06e7bed0ab6b41aea79e3c67b48b3"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/three-quarter-cream.png",
+      "repository_path": "design/branding/cat3d/three-quarter-cream.png",
+      "bytes": 612854,
+      "sha256": "18dc01c56aaeced95fb088e5eb7c70e0dc20e30e83095a0f0197216938eb7cd0"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/three-quarter-meadow.png",
+      "repository_path": "design/branding/cat3d/three-quarter-meadow.png",
+      "bytes": 684782,
+      "sha256": "0b6f1d94a308d5aea2a2615c99944e6c2b75335e79e19c5a27e369982a33041f"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/validate_reimport.py",
+      "repository_path": "design/branding/cat3d/validate_reimport.py",
+      "bytes": 5132,
+      "sha256": "b70fc26c9215ccd688d58a5c867ca3d03d99b4dc86f867d6f89aa8e7aa7eba12"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/walk-midstride-cream.png",
+      "repository_path": "design/branding/cat3d/walk-midstride-cream.png",
+      "bytes": 592132,
+      "sha256": "a03dc00f3e43505d6d7d0042c2cabf6e8d21f8db38de3c8979c25dbeb6f2053a"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/design/branding/cat3d/walk-midstride-meadow.png",
+      "repository_path": "design/branding/cat3d/walk-midstride-meadow.png",
+      "bytes": 665670,
+      "sha256": "194f97b39d00c453907470f4456488f47672a634cf709c699f0486cce34871e3"
+    },
+    {
+      "absolute_path": "/Users/howeth/Desktop/claudex/Websites/beopity-moving-house/public/beopity/cat3d/beopity-cat.glb",
+      "repository_path": "public/beopity/cat3d/beopity-cat.glb",
+      "bytes": 1806404,
+      "sha256": "54d3738105458229423ed0084f3823c2c0335aa6a59bccec1bdebdde4abfcf39"
+    }
+  ]
+}

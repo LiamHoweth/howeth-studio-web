@@ -1,10 +1,44 @@
-/* Fixed, click-through host for the walking cat. Only its transform changes per frame. */
+/* The cat's trail and the walking cat host (components/studio/StudioTrail.tsx,
+   components/studio/WalkingCat.tsx). The base `.trail` grid lives in
+   app/globals.css; `.trail.trail--cat` overrides it with higher specificity so
+   the cascade order between the two files does not matter.
+
+   Lane custom properties read by the driver:
+   - `--cat-size`: the cat's on-screen height (capped to fit the lane width).
+   - `--cat-anchor`: viewport fraction of the cat's centre while it walks the lane. */
+
+.trail.trail--cat { --lane: clamp(180px, 15vw, 240px); }
+.trail--cat .trail__lane { --cat-size: 188px; --cat-anchor: .62; position: relative; pointer-events: none; }
+.trail--cat .trail__path { position: absolute; top: 40px; bottom: 40px; left: 50%; width: 0; border-left: 1.5px dotted color-mix(in srgb, currentColor 24%, transparent); }
+
+/* Painted cat: shown without JavaScript and with reduced motion; hidden once the walking cat runs. */
+.trail--cat .trail__static-cat { position: sticky; top: calc(var(--cat-anchor) * 100svh - var(--cat-size) * .5); display: block; width: min(calc(100% - 8px), calc(var(--cat-size) * .827)); height: auto; margin: 120px auto 0; filter: drop-shadow(0 8px 10px #22303a33); }
+.trail--cat:has(.walking-cat:not([data-state="static"])) .trail__static-cat { visibility: hidden; }
+
+/* Fixed, click-through host. Per frame only its transform changes (and, on phones, opacity). */
 .walking-cat { position: fixed; left: 0; top: 0; z-index: 30; width: 0; height: 0; pointer-events: none; contain: layout style size; will-change: transform; }
 .walking-cat[data-state="static"] { display: none; }
+.walking-cat[data-visible="false"] { visibility: hidden; }
 .walking-cat canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .35s ease; }
 .walking-cat[data-state="live"] canvas { opacity: 1; }
-/* The painted cat stands in until the 3D cat is ready, in the same footprint. */
-.walking-cat__poster { position: absolute; left: 50%; top: 26%; width: auto; height: 41%; transform: translateX(-50%); filter: drop-shadow(0 0 22px #bfeccb38) drop-shadow(0 8px 10px #0008); transition: opacity .35s ease; }
+/* The painted cat stands in until the 3D cat is ready, in roughly the same footprint. */
+.walking-cat__poster { position: absolute; left: 50%; top: 29%; width: auto; height: 45%; transform: translateX(-50%); filter: drop-shadow(0 8px 10px #22303a40); transition: opacity .35s ease; }
 .walking-cat[data-state="live"] .walking-cat__poster { opacity: 0; }
+
+@media (max-width: 1100px) {
+  .trail--cat .trail__lane { --cat-size: 150px; }
+}
+
+/* Phones: no lane, the content takes the full width. The cat waits off-screen
+   and only walks in to cross a band; no static copy in a lane. */
+@media (max-width: 760px) {
+  .trail.trail--cat { --lane: 0px; width: min(var(--shell), 100% - 2 * var(--gutter)); margin-inline: auto; }
+  .trail--cat .trail__lane { --cat-size: 124px; --cat-anchor: .6; }
+  .trail--cat .trail__path, .trail--cat .trail__static-cat { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) { .walking-cat canvas, .walking-cat__poster { transition: none; } }
-@media print { .walking-cat { display: none; } }
+@media print {
+  .trail.trail--cat { display: block; }
+  .trail--cat .trail__lane, .walking-cat { display: none; }
+}

@@ -1,0 +1,56 @@
+/* Bramble, the wandering house. Shared animation contract for every Bramble on
+   the site (components/studio/art/Bramble.tsx):
+   - `--phase` (number, 0→1 per stride) swings the legs and bobs the body.
+     Drive it from JS (scroll companion) or add `.bramble--walking` to loop it.
+   - `data-moving="false"` on the svg or any ancestor, or `.bramble--idle`,
+     plays a gentle breathing sway instead of a stride.
+   - `data-pose="rest"` (set by the component) folds the legs away.
+   - Reduced motion: no loops; Bramble stands still with eyes open. */
+@property --phase { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --stride { syntax: "<number>"; inherits: true; initial-value: 1; }
+
+.bramble { display: block; overflow: visible; }
+.bramble :is(.bramble__leg, .bramble__shin, .bramble__body, .bramble__lid, .bramble__puff, .bramble__flag, .bramble__lantern) { transform-box: view-box; }
+
+/* Stride: thighs swing opposite each other, the trailing knee bends. `--stride`
+   (0–1) scales the motion so a companion can ease into and out of walking. */
+.bramble__leg--l { transform: rotate(calc(sin(var(--phase) * 1turn) * 24deg * var(--stride))); }
+.bramble__leg--r { transform: rotate(calc(sin(var(--phase) * 1turn) * -24deg * var(--stride))); }
+.bramble__leg--l .bramble__shin { transform: rotate(calc(max(0, cos(var(--phase) * 1turn)) * 34deg * var(--stride))); }
+.bramble__leg--r .bramble__shin { transform: rotate(calc(max(0, cos(var(--phase) * 1turn) * -1) * 34deg * var(--stride))); }
+.bramble__body {
+  transform-origin: 110px 210px;
+  transform: translateY(calc((1 - cos(var(--phase) * 2turn)) * -2.6px * var(--stride))) rotate(calc(sin(var(--phase) * 1turn) * 1.6deg * var(--stride)));
+}
+
+.bramble--walking { animation: bramble-stride 1.05s linear infinite; }
+@keyframes bramble-stride { from { --phase: 0; } to { --phase: 1; } }
+
+:where([data-moving="false"]) .bramble__body, .bramble[data-moving="false"] .bramble__body, .bramble--idle .bramble__body { animation: bramble-breathe 4.2s ease-in-out infinite; }
+@keyframes bramble-breathe { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(-.8deg); } }
+
+/* Shutters close briefly every few seconds. */
+.bramble__lid { transform: scaleY(0); animation: bramble-blink 5.8s infinite; }
+@keyframes bramble-blink { 0%, 93%, 100% { transform: scaleY(0); } 95.5% { transform: scaleY(1); } }
+
+/* Chimney smoke puffs rise, drift back and fade, staggered. */
+.bramble__puff { transform-origin: 108px 26px; opacity: 0; animation: bramble-puff 3.6s ease-out infinite; }
+.bramble__puff--2 { animation-delay: 1.2s; }
+.bramble__puff--3 { animation-delay: 2.4s; }
+@keyframes bramble-puff { 0% { opacity: 0; transform: translate(0, 18px) scale(.4); } 18% { opacity: .95; } 100% { opacity: 0; transform: translate(-16px, -26px) scale(1.35); } }
+
+.bramble__flag { transform-origin: 149px -5px; animation: bramble-flag 1.6s ease-in-out infinite; }
+@keyframes bramble-flag { 0%, 100% { transform: skewY(0) scaleX(1); } 50% { transform: skewY(-8deg) scaleX(.86); } }
+.bramble__lantern { animation: bramble-glow 2.8s ease-in-out infinite; }
+@keyframes bramble-glow { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
+
+/* Resting: legs tucked away, the undercarriage settles onto the grass. */
+.bramble[data-pose="rest"] .bramble__legs { display: none; }
+.bramble[data-pose="rest"] .bramble__body { transform: translateY(78px); animation: none; }
+.bramble[data-pose="rest"] .bramble__lantern { filter: drop-shadow(0 0 6px #ffd27a); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bramble, .bramble * { animation: none !important; }
+  .bramble__lid { transform: scaleY(0); }
+  .bramble__puff--1 { opacity: .9; transform: none; }
+}
