@@ -440,11 +440,11 @@ test('optional Media Session metadata updates and cleans up without installing i
   assert.equal(mediaSession.playbackState, 'none');
 });
 
-test('private and personal routes exclude music without excluding product pages', () => {
-  for (const route of ['/for-ameliante', '/for-ameliante/', '/for-ameliante/note/', '/elevenward/admin', '/elevenward/admin/', '/elevenward/admin/account/']) {
+test('private routes exclude music without excluding product pages', () => {
+  for (const route of ['/elevenward/admin', '/elevenward/admin/', '/elevenward/admin/account/']) {
     assert.equal(allowsAmbientMusic(route), false, route);
   }
-  for (const route of ['/', '/work/', '/noctara/', '/elevenward/', '/elevenward/privacy/es/', '/for-ameliante-extra/']) {
+  for (const route of ['/', '/work/', '/noctara/', '/elevenward/', '/elevenward/privacy/es/', '/elevenward/administer/']) {
     assert.equal(allowsAmbientMusic(route), true, route);
   }
 });

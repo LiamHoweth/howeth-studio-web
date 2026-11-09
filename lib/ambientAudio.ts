@@ -13,7 +13,7 @@ export interface AmbientSnapshot {
 }
 
 export function allowsAmbientMusic(pathname: string): boolean {
-  return !["/for-ameliante", "/elevenward/admin"].some(
+  return !["/elevenward/admin"].some(
     (route) => pathname === route || pathname.startsWith(`${route}/`),
   );
 }

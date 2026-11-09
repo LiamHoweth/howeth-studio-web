@@ -1,5 +1,13 @@
 # beopity public design
 
+> November 2026 update: the studio pages now use a painted daylight storybook
+> world (cream paper, ink, deep-sky accent, golden-hour meadows, a moonlit
+> footer) while the black cat remains the brand. The home hero is a parallax
+> landscape crossed by Bramble, an original walking house used only there.
+> Scenery lives in `components/studio/art/` and `components/studio/hero/`;
+> see AGENT_NOTES.md for the current contract. Sections below that describe the
+> charcoal/mint palette, the lantern glow and default autoplay are historical.
+
 beopity is a night studio with a black cat. The public site uses one charcoal
 canvas, warm ivory type, a mint accent and the mint paper of the approved
 artwork. Shared tokens live in `app/globals.css`; product artwork keeps each

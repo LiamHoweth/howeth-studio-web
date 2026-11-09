@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    Bramble's dusk face badge, simplified for tiny sizes (favicon, 48 px and below).
+    Same composition as bramble-mark.svg with the house enlarged to fill the disc,
+    a lighter slate roof and stone so the silhouette separates from the dusk sky,
+    heavier outlines, bigger lamp-lit eyes and the fine stonework removed.
+  -->
+  <title>Bramble, the beopity wandering house</title>
+  <defs>
+    <linearGradient id="small-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3550"/>
+      <stop offset=".55" stop-color="#7a6170"/>
+      <stop offset="1" stop-color="#d48c6c"/>
+    </linearGradient>
+    <radialGradient id="small-lamp" cx=".42" cy=".4" r=".75">
+      <stop offset="0" stop-color="#fff1c4"/>
+      <stop offset=".5" stop-color="#ffb347"/>
+      <stop offset="1" stop-color="#d9742a"/>
+    </radialGradient>
+    <clipPath id="small-clip"><circle cx="32" cy="32" r="32"/></clipPath>
+  </defs>
+  <g clip-path="url(#small-clip)">
+    <rect width="64" height="64" fill="url(#small-sky)"/>
+    <path d="M0 52 Q18 45 34 50 T64 48 V64 H0 Z" fill="#3f5a2a"/>
+    <path d="M38 17 V5 h7 v15" fill="#3d2b26" stroke="#1b1715" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M8 31 L19 14 L45 14 L56 31 Z" fill="#5a6d80" stroke="#1b1715" stroke-width="2.6" stroke-linejoin="round"/>
+    <path d="M10 30 Q16 23 24 27 L26 31 Z" fill="#6f9145"/>
+    <path d="M12 31 H52 L51 56 H13 Z" fill="#7a736a" stroke="#1b1715" stroke-width="2.6" stroke-linejoin="round"/>
+    <circle cx="23.5" cy="41" r="6.6" fill="url(#small-lamp)" stroke="#1b1715" stroke-width="2"/>
+    <circle cx="40.5" cy="41" r="6.6" fill="url(#small-lamp)" stroke="#1b1715" stroke-width="2"/>
+    <circle cx="25" cy="42.2" r="2.6" fill="#2b1a10"/>
+    <circle cx="42" cy="42.2" r="2.6" fill="#2b1a10"/>
+    <path d="M16 34 Q23.5 31 31 34.5 M33 34.5 Q40.5 31 48 34" stroke="#1b1715" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <path d="M28 56 V51 Q32 46 36 51 V56 Z" fill="#2e211a" stroke="#1b1715" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>

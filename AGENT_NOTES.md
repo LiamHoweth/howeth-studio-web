@@ -41,6 +41,27 @@ SuperLife launch scope, October 21: the owner deferred all IAP for 1.0. Its appr
 
 # Current project notes
 
+- November 9, 2026 daylight storybook redesign (branch `claude/beopity-moving-house`, not deployed):
+  studio pages moved from the charcoal night theme to a painted daylight world (tokens in
+  `app/globals.css`: paper #f6efdc, ink #22303a, accent #2c5f7c). The black cat stays the
+  brand (logo, favicon, social card, footer, About portrait). The home hero
+  (`components/studio/hero/`) is a parallax golden-hour landscape that Bramble, an original
+  walking-house mascot (`components/studio/art/Bramble.tsx`, `styles/bramble.css`), crosses;
+  Bramble appears nowhere else. Interludes/edges/ambience are original painted SVG in
+  `components/studio/art/{Scenery,Ambience,CatPortrait,FooterNight}.tsx`; these are client
+  components on purpose so Next does not duplicate their SVG in the RSC payload (home HTML
+  ≈210 KB gzip). Bands use `data-wander` + `data-wander-ground`; the 3D cat walks the lane on
+  desktop and only appears in bands on phones (no lane ≤760px). Music no longer autoplays
+  (`?music=on` opts in). `/for-ameliante/` and its assets were removed at the owner's request.
+  The walking cat is now the authored GLB `public/beopity/cat3d/beopity-cat.glb` (Codex/Astra
+  handoff in `design/branding/cat3d/CLAUDE_HANDOFF.txt`): `components/studio/cat/catScene.ts`
+  loads it lazily (after idle) with GLTFLoader, fits it from posed bounds, lights it (room
+  environment + key/rims) and blends clips via `lib/cat/clips.ts` (walk scrubbed by distance,
+  sit/stand scrubbed by the walker's sit value, idle loops at 24 fps only on screen). The
+  procedural model was removed. In the lane the cat fades out over full-bleed bands and shows on
+  their footpath (`bandCover` in `lib/cat/route.ts`). Bramble brand rasters are not
+  committed; `npm run generate:bramble` regenerates them from `design/branding/bramble/`. 
+
 - October 7, 2026: Public branding is Beopity, with AI artwork under
   `public/beopity/`. Keep product artwork, app identifiers, support inboxes,
   API/data resources, localized documents, and the private personal route intact.

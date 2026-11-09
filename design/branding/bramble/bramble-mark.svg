@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    Bramble's face badge at dusk: plain-SVG port of BrambleMark in
+    components/studio/art/Bramble.tsx. Used for icons 64 px and larger;
+    bramble-mark-small.svg is the simplified cut for 48 px and below.
+    The script swaps the clip disc for a square to make the opaque touch icon.
+  -->
+  <title>Bramble, the beopity wandering house</title>
+  <defs>
+    <linearGradient id="mark-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3550"/>
+      <stop offset="1" stop-color="#c9826a"/>
+    </linearGradient>
+    <radialGradient id="mark-lamp" cx=".42" cy=".4" r=".7">
+      <stop offset="0" stop-color="#fff1c4"/>
+      <stop offset=".5" stop-color="#ffb347"/>
+      <stop offset="1" stop-color="#c4611f"/>
+    </radialGradient>
+    <clipPath id="mark-clip"><circle cx="32" cy="32" r="32"/></clipPath>
+  </defs>
+  <g clip-path="url(#mark-clip)">
+    <rect width="64" height="64" fill="url(#mark-sky)"/>
+    <path d="M0 50 Q18 42 34 48 T64 46 V64 H0 Z" fill="#3f5a2a"/>
+    <path d="M37 18 V7 h6 v11" fill="#3d2b26" stroke="#1b1715" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M13 31 L22 18 L44 18 L52 31 Z" fill="#37444f" stroke="#1b1715" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M14 30 Q19 24 26 28 L27 31 Z" fill="#5f7d3c"/>
+    <path d="M16 31 H49 L48 52 H17 Z" fill="#5a544d" stroke="#1b1715" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M17 38 h5 M43 44 h5 M18 46 h4" stroke="#25211e" stroke-width="1"/>
+    <circle cx="26" cy="39" r="4.8" fill="url(#mark-lamp)" stroke="#1b1715" stroke-width="1.6"/>
+    <circle cx="39" cy="39" r="4.8" fill="url(#mark-lamp)" stroke="#1b1715" stroke-width="1.6"/>
+    <circle cx="27" cy="40" r="1.8" fill="#2b1a10"/>
+    <circle cx="40" cy="40" r="1.8" fill="#2b1a10"/>
+    <path d="M20.5 33.5 Q26 31.5 31 34 M34 34 Q39 31.5 44.5 33.5" stroke="#2b2019" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M29 52 V47 Q32.5 43 36 47 V52 Z" fill="#2e211a" stroke="#1b1715" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+</svg>

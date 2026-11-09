@@ -1,0 +1,140 @@
+BEOPITY CAT 3D — ASSET HANDOFF
+Created November 9, 2026 with OpenAI GPT-6 Astra and Blender 5.2.2 LTS.
+
+DELIVERABLE AND SCOPE
+Web asset: public/beopity/cat3d/beopity-cat.glb
+Editable source: design/branding/cat3d/beopity-cat.blend
+Reproducible authoring: create_beopity_cat.py
+Actual-export verification and preview rendering: validate_reimport.py
+
+This is a new, independent asset package. It has NOT been wired into the website,
+built with Next.js, committed, deployed, or tested in a browser WebGL renderer.
+Our writes were restricted to public/beopity/cat3d/ and design/branding/cat3d/.
+Existing project files and approved reference artwork were read only. Other work
+was concurrently changing repository files; those changes were preserved.
+
+MEASURED EXPORT
+GLB 2.0, 1,806,404 bytes (1.806 MB / 1.723 MiB), 23,977 triangles.
+SHA-256: 54d3738105458229423ed0084f3823c2c0335aa6a59bccec1bdebdde4abfcf39
+One skin, 30 joints; one skinned body mesh definition plus a head-bone-parented
+expression mesh. Whiskers are merged into the body skin with rigid head weights.
+Nine material primitives total (five body, four expression).
+Every material has metalness 0. Standard PBR base color, normal and roughness
+maps; optional KHR_materials_specular is the only extension. No Draco or Meshopt.
+Four embedded PNG textures, each 512 x 512: fur color, fur tangent-space normal,
+fur roughness, iris color. External PNGs are included for editing, but the GLB
+has no external texture dependency. The .blend packs all four texture images.
+
+COORDINATES AND FIT
+GLB uses meters, +Y up and +Z forward; ground origin lies between the paws.
+Nose-to-rump length is approximately 0.45 m. Standing total bounds, including
+whiskers and raised tail, are approximately X +/-0.1351 m,
+Y 0.00027..0.42076 m, Z -0.34435..0.25068 m.
+Use loaded Box3 bounds for lane fitting; do not inherit the old procedural cat's
+scale assumptions. Include whiskers, tail and turn clearance in fitting.
+
+RIG
+root -> hips -> spine_01 -> spine_02 -> spine_03 -> neck -> head
+head children: jaw, ear_L, ear_R
+Forelegs: upperarm_L -> forearm_L -> hand_L, and matching R
+Hindlegs: thigh_L -> shin_L -> foot_L, and matching R
+Tail: tail_01 through tail_08, chained from hips
+Up to four normalized skin influences per vertex. The measured maximum weight
+sum error in the GLB is 1.38e-7.
+
+ANIMATION CONTRACT
+All clips were authored/baked at 30 fps; endpoints are included. The exporter
+optimizes constant tracks to two keys, while moving tracks retain the samples.
+
+clip          seconds   authored frame range   samples   intended behavior
+walk          1.0       0..30                   31       loop, in place
+idle_stand    4.0       0..120                 121       loop
+sit_down      1.2       0..36                   37       one-shot standing to seated
+idle_sit      5.0       0..150                 151       loop, slow tail motion
+stand_up      1.2       0..36                   37       one-shot seated to standing
+look_around   4.0       0..120                 121       optional loop
+
+All four loop clips have exactly equal exported first/last sampler values.
+There is no root translation. The walk's approximate nominal forward speed is
+0.102 m/s at 1x clip speed and scale 1. Drive phase from traveled distance and
+scale to the actual scene units to minimize foot sliding. Blend into/out of
+walk instead of snapping the first walking pose to the static stance.
+
+EXPRESSIONS
+The head-parented mesh HeadExpressions has morphs blink and pupil_dilate.
+They affect the eye surfaces, pupil and catchlight geometry; they are not
+body-wide shape keys. blink=1 hides the iris/glints under a narrow dark lid seam.
+pupil_dilate=1 makes the pupil round (equal horizontal and vertical local radii).
+Both expressions are intended for values 0..1.
+The actual GLB was reimported and both expressions were rendered and inspected.
+
+In Three.js 0.186.1, material primitives split into child meshes. Body children
+are Beopity_Cat_Skin_1 through _5. Eye children are Beopity_HeadExpressions and
+Beopity_HeadExpressions_1 through _3. Do not rely on a single child name: traverse
+all meshes with morphTargetDictionary and set each matching morph influence.
+
+CLAUDE INTEGRATION NOTES
+1. Load /beopity/cat3d/beopity-cat.glb with the existing Three.js GLTFLoader;
+   no new Draco loader or asset service is required. Keep loading lazy.
+2. Reuse the existing route, walker/state, DOM measurements and lane fitting.
+   Replace the model adapter and procedural pose application with AnimationMixer
+   actions, clip transitions, distance-driven walk phase and expression morphs.
+   The old applyCatPose contract cannot be applied directly to this skeleton.
+3. The existing procedural cat uses a custom lit shader. A PBR GLB requires real
+   scene lighting/environment. Add a gentle cool key, soft fill and restrained
+   rim, then tune exposure against both cream and meadow at actual lane sizes.
+   Do not evaluate a dark PBR material in the old unlit shader-only scene.
+4. Preserve scroll-driven positioning, sleep-on-idle rendering, hidden-document
+   behavior, click-through decorative semantics, cleanup/disposal, reduced-motion
+   painted fallback, and no-WebGL/context-loss fallback. Do not redesign pages.
+5. Trigger sit_down/stand_up once with clamping, transition into the corresponding
+   idle loop, and crossfade on changes. If look_around is used, blend it deliberately;
+   it is a complete rig clip, not an additive head-only clip.
+6. Ground/contact shadows belong to the host scene. Cameras, lights, floor and
+   preview compositor are excluded from the GLB. Keep those out of the web asset.
+
+VALIDATION AND LIMITS
+- independent-validation.json records GLB structure, texture dimensions, exact
+  loop endpoints, weight sums, and Three.js GLTFLoader/AnimationMixer checks.
+- Three.js 0.186.1 decoded embedded PNGs and sampled 31 poses per clip. All sampled
+  deformed vertices were finite. This was a CPU loader/math test, not a WebGL or
+  browser performance test.
+- reimport-validation.json records an actual GLB reimport into Blender, every
+  authored frame evaluated, morph displacement, and the final GLB hash.
+- All final front/side/three-quarter/walk-midstride/sit PNGs, on both backgrounds,
+  and both expression PNGs were rendered from the actual exported GLB.
+- readability-contact-sheet.png shows standing/seated on both backgrounds at
+  approximately 90, 140 and 190 px cat height. Readability was visually checked.
+- Tiny ground overlap remains in seated/settling poses (about 2.5 mm below Y=0
+  in the independent sample). This is a stylized animation, not a collision rig.
+- Browser GPU appearance, target-device performance, scroll synchronization,
+  live lane fit and user acceptance still require integration validation.
+- Fur is lightweight opaque geometry plus painted directional color/normal/
+  roughness detail, not a strand-hair simulation. The target is a small webpage
+  character, not a photorealistic close-up groom.
+
+PROVENANCE / USAGE
+Geometry, fur/iris texture pixels, rig and animation curves were authored by
+GPT-6 Astra through the included deterministic Blender script. No third-party
+model, texture pack or downloaded 3D asset was used. The user-provided approved
+beopity artwork was visual reference and was not modified or embedded in the GLB.
+Blender was the authoring/export tool.
+
+No separate "Astra asset license" has been invented or attached. OpenAI's public
+Terms of Use discuss output ownership as between the user and OpenAI, subject to
+applicable law, and state that output may not be unique. The governing agreement
+for this user's account/plan was not inspected. Applicable OpenAI terms and any
+existing rights in the supplied reference artwork continue to apply; this note
+is provenance, not a guarantee of copyright protection or exclusive rights.
+Reference: https://openai.com/policies/terms-of-use/
+
+REPRODUCE
+From this repository layout, using the installed Blender 5.2.2 executable:
+  blender -b --factory-startup --python design/branding/cat3d/create_beopity_cat.py
+  blender -b --factory-startup --python design/branding/cat3d/validate_reimport.py
+The second command renders the actual GLB previews and emits validation JSON.
+These commands overwrite generated files in the two asset directories only.
+NumPy is supplied by Blender; no Python package installation is needed.
+
+asset-manifest.json lists every retained package file, absolute path, byte size
+and SHA-256 (excluding the manifest's own hash to avoid a self-reference).

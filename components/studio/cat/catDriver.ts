@@ -1,14 +1,20 @@
-import { computePose } from "@/lib/cat/gait";
-import { routeAt, type RouteLayout } from "@/lib/cat/route";
-import { CAMERA_ELEVATION, CAT_SCREEN_UNITS, VIEW_UNITS, fitCatToLane } from "@/lib/cat/view";
+import { DEFAULT_GROUND, DEFAULT_TARGET, parseFraction, routeAt, type RouteLayout, type RoutePoint } from "@/lib/cat/route";
+import { CAMERA_ELEVATION, CAT_SCREEN_UNITS, FEET_BELOW_CENTRE_UNITS, VIEW_UNITS, fitCatToLane } from "@/lib/cat/view";
 import { CatWalker } from "@/lib/cat/walker";
 import type { CatRenderer } from "./catScene";
 
 /**
  * DOM side of the walking cat: measures the page route, follows scrolling and
  * drives the walker. It positions the host with a compositor-only transform and
- * renders only while something is moving, so a still page costs nothing.
- * It works before Three.js arrives, moving the painted fallback along the route.
+ * renders only while something is moving; a settled cat on screen plays its
+ * idle loop at a gentle frame rate, and nothing renders off screen or while the
+ * document is hidden. It works before Three.js arrives, moving the painted
+ * fallback along the route.
+ *
+ * Open ground is any element marked `data-wander="<0–1 target x>"` with an
+ * optional `data-wander-ground="<0–1 footpath line from the top>"` (default
+ * 0.88); the older `data-cat-wander` marker is still accepted. On phones (no
+ * lane) the host is hidden except while the cat crosses such a band.
  */
 export type CatDriver = {
   attach: (renderer: CatRenderer) => void;
@@ -26,19 +32,27 @@ export function measureRoute(lane: HTMLElement): RouteLayout {
   const style = getComputedStyle(lane);
   const rect = lane.getBoundingClientRect();
   const cat = fitCatToLane(cssNumber(style, "--cat-size", 140), rect.width);
-  const bands = Array.from(document.querySelectorAll<HTMLElement>("[data-cat-wander]"), (band) => {
+  const bands = Array.from(document.querySelectorAll<HTMLElement>("[data-wander], [data-cat-wander]"), (band) => {
     const box = band.getBoundingClientRect();
-    return { left: box.left, top: box.top + scrollY, width: box.width, height: box.height, target: Number(band.dataset.catWander) || 0.4 };
+    return {
+      left: box.left, top: box.top + scrollY, width: box.width, height: box.height,
+      target: parseFraction(band.dataset.wander ?? band.dataset.catWander, DEFAULT_TARGET),
+      ground: parseFraction(band.dataset.wanderGround, DEFAULT_GROUND),
+    };
   });
   return {
     viewport: { width: document.documentElement.clientWidth, height: window.innerHeight },
     anchor: window.innerHeight * cssNumber(style, "--cat-anchor", 0.6),
     lane: { left: rect.left, top: rect.top + scrollY, width: rect.width, height: rect.height },
     bands,
-    cat,
+    cat: { width: cat.width, height: cat.height },
+    feet: cat.pxPerUnit * FEET_BELOW_CENTRE_UNITS,
     meander: 1100,
   };
 }
+
+/** Idle loops (breathing, tail sway) only need a gentle frame rate. */
+const IDLE_FRAME_MS = 1000 / 24;
 
 export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver {
   let layout = measureRoute(lane);
@@ -52,13 +66,26 @@ export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver 
   const look = { x: 0, y: 0, targetX: 0, targetY: 0 };
   let blinkStart = -1;
   let blinkTimer = 0;
+  let idleTimer = 0;
   let screen = { x: 0, y: 0 };
+  let shownOpacity = "";
+
+  // Transform every frame; visibility and opacity only when they change (phones).
+  const position = (point: RoutePoint) => {
+    screen = point;
+    host.style.transform = `translate3d(${point.x - size / 2}px, ${point.y - size / 2}px, 0)`;
+    const opacity = point.opacity >= 0.999 ? "" : point.opacity.toFixed(3);
+    if (opacity !== shownOpacity) {
+      shownOpacity = opacity;
+      host.style.opacity = opacity;
+      host.dataset.visible = String(point.visible);
+    }
+  };
 
   const place = () => {
     const point = routeAt(layout, window.scrollY);
     walker.place(point.x, point.pageY);
-    screen = point;
-    host.style.transform = `translate3d(${point.x - size / 2}px, ${point.y - size / 2}px, 0)`;
+    position(point);
   };
 
   const measure = () => {
@@ -83,8 +110,7 @@ export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver 
     last = time;
     const point = routeAt(layout, window.scrollY);
     walker.update(point.x, point.pageY, dt);
-    screen = point;
-    host.style.transform = `translate3d(${point.x - size / 2}px, ${point.y - size / 2}px, 0)`;
+    position(point);
 
     const ease = 1 - Math.exp(-6 * dt);
     const attention = 1 - walker.walk * 0.75;
@@ -95,9 +121,13 @@ export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver 
     const blink = blinkAge < 1 ? Math.sin(Math.PI * blinkAge) : 0;
     if (blinkAge >= 1) blinkStart = -1;
 
-    const onScreen = point.y > -size && point.y < layout.viewport.height + size;
-    if (renderer && onScreen) renderer.render(computePose(walker.gait(time / 1000, look, blink)), walker.yaw);
+    const onScreen = point.visible && point.y > -size && point.y < layout.viewport.height + size;
+    if (renderer && onScreen) {
+      renderer.render({ phase: walker.phase, walk: walker.walk, sit: walker.sit, yaw: walker.yaw, look, blink, time: time / 1000 });
+    }
+    window.clearTimeout(idleTimer); idleTimer = 0;
     if (walker.moving || !lookSettled || blinkStart >= 0) frame = requestAnimationFrame(tick);
+    else if (renderer?.wantsIdleFrames && onScreen) idleTimer = window.setTimeout(wake, IDLE_FRAME_MS);
     else last = 0;
   };
 
@@ -146,10 +176,12 @@ export function startCatDriver(host: HTMLElement, lane: HTMLElement): CatDriver 
     detach() {
       renderer = null;
       window.clearTimeout(blinkTimer);
+      window.clearTimeout(idleTimer);
     },
     dispose() {
       cancelAnimationFrame(frame); frame = 0;
       window.clearTimeout(blinkTimer);
+      window.clearTimeout(idleTimer);
       resize.disconnect();
       window.removeEventListener("scroll", wake);
       window.removeEventListener("resize", measure);

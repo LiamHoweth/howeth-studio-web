@@ -1,0 +1,64 @@
+/* Footer closing panorama: moonlit hills, the cat on its rock, a modest wordmark. */
+.footer-night {
+  position: relative;
+  width: 100vw;
+  margin: clamp(8px, 2vw, 24px) 0 -28px calc(50% - 50vw);
+  aspect-ratio: 1600 / 380;
+  overflow: hidden;
+  isolation: isolate;
+}
+.footer-night__scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* The cat sits on the rock at x≈1240/1600 of the scene, rim-lit by the moon. */
+.footer-night__cat {
+  position: absolute;
+  z-index: 2;
+  left: calc(77.5% - clamp(46px, 5.4vw, 86px) / 2);
+  bottom: calc(100% * (380 - 240) / 380);
+  width: clamp(46px, 5.4vw, 86px);
+  height: auto;
+  filter: brightness(.82) saturate(.9) drop-shadow(-1px -1px 0 #f3e7c866) drop-shadow(0 0 14px #c6c3e333);
+  transform-origin: 50% 100%;
+  animation: footer-cat-breathe 5s ease-in-out infinite;
+}
+@keyframes footer-cat-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.012, .992); } }
+
+.footer-night__sign {
+  position: absolute;
+  z-index: 3;
+  left: max(var(--gutter), calc((100vw - var(--shell)) / 2));
+  right: max(var(--gutter), calc((100vw - var(--shell)) / 2));
+  bottom: 22px;
+  display: grid;
+  gap: 14px;
+}
+.footer-night__wordmark { display: block; width: clamp(150px, 18vw, 280px); aspect-ratio: 818 / 272; color: #f6efdc; transition: color .25s; }
+.footer-night__wordmark:hover { color: #f1b84b; }
+.footer-night__wordmark span { display: block; width: 100%; height: 100%; background: currentColor; -webkit-mask: url("/beopity/wordmark.png") center / contain no-repeat; mask: url("/beopity/wordmark.png") center / contain no-repeat; }
+.footer-night__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 24px; color: #c3c8dc; font-size: .62rem; }
+
+.footer-night__twinkle { animation: footer-twinkle 3.6s ease-in-out infinite; }
+@keyframes footer-twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+.footer-night__meteor { opacity: 0; stroke-dasharray: 94; stroke-dashoffset: 94; animation: footer-meteor 9s ease-in 3s infinite; }
+@keyframes footer-meteor { 0%, 88% { opacity: 0; stroke-dashoffset: 94; } 90% { opacity: 1; } 96% { opacity: .9; stroke-dashoffset: 0; } 100% { opacity: 0; stroke-dashoffset: -94; } }
+.footer-night__window { animation: footer-window 6s ease-in-out infinite; }
+@keyframes footer-window { 0%, 100% { opacity: 1; } 45% { opacity: .75; } 55% { opacity: 1; } }
+.footer-night__flies circle { transform-box: fill-box; transform-origin: center; animation-name: footer-fly; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+@keyframes footer-fly { 0%, 100% { opacity: .15; transform: translate(0, 0) scale(.7); } 40% { opacity: 1; transform: translate(10px, -8px) scale(1); } 70% { opacity: .6; transform: translate(-6px, -14px) scale(.85); } }
+
+/* Below ~1263px the panorama would be shorter than 300px: keep a fixed-size
+   scene and slide it so the moon and the cat's rock sit at 70% of the width. */
+@media (max-width: 1262px) {
+  .footer-night { aspect-ratio: auto; height: 300px; }
+  .footer-night__scene { left: calc(70vw - 978px); width: 1263px; height: 300px; inset-inline-end: auto; }
+  .footer-night__cat { left: calc(70vw - 31px); bottom: calc(300px * 140 / 380); width: 62px; }
+}
+@media (max-width: 760px) {
+  .footer-night__cat { left: calc(70vw - 26px); width: 52px; }
+  .footer-night__bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-night *, .footer-night__cat { animation: none !important; }
+  .footer-night__meteor { display: none; }
+}
+@media print { .footer-night__scene, .footer-night__cat { display: none; } .footer-night { aspect-ratio: auto; min-height: 0; } .footer-night__sign { position: static; } }

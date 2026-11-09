@@ -1,4 +1,4 @@
-import { clamp, strideFor, type GaitInput } from "./gait";
+import { clamp, strideFor } from "./gait";
 
 /**
  * Turns successive route points into gait state. Distance travelled across the
@@ -95,9 +95,5 @@ export class CatWalker {
   get moving() {
     const turning = Math.abs(wrap((this.sit > 0.5 ? 0 : this.heading) - this.yaw)) > 1e-3;
     return this.walk > 0 || this.sit < 1 || this.speed > 0 || turning;
-  }
-
-  gait(time: number, look: { x: number; y: number }, blink: number): GaitInput {
-    return { phase: this.phase, walk: this.walk, speed: this.speed, sit: this.sit, time, look, blink };
   }
 }

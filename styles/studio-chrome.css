@@ -1,13 +1,16 @@
-/* The studio navigation stays consistent inside every product colorway. */
+/* The studio navigation stays consistent inside every product colorway:
+   a cream, translucent paper band over the daylight world. */
 .studio-header[data-studio-chrome].studio-header {
   position: sticky;
   top: 0;
   z-index: 50;
+  color-scheme: light;
   color: var(--studio-ink);
-  background: color-mix(in srgb, var(--studio-paper) 86%, transparent);
+  background: color-mix(in srgb, var(--studio-paper) 82%, transparent);
   border-bottom: 1px solid var(--studio-line);
-  backdrop-filter: blur(18px) saturate(1.2);
-  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow: 0 10px 30px -26px color-mix(in srgb, var(--studio-shadow, #5a4424) 80%, transparent);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
   font-family: var(--font-manrope), system-ui, sans-serif;
 }
 
@@ -39,8 +42,8 @@
   height: 44px;
   overflow: hidden;
   border-radius: 50%;
-  background: var(--mint-paper, #d2edcb);
-  box-shadow: 0 0 0 1px #ffffff1f;
+  background: #d2edcb;
+  box-shadow: 0 0 0 2px var(--studio-paper), 0 0 0 3px var(--studio-line-strong), 0 6px 14px -6px color-mix(in srgb, var(--studio-shadow, #5a4424) 70%, transparent);
   transition: transform .5s cubic-bezier(.2, .75, .2, 1);
 }
 
@@ -95,12 +98,12 @@
 
 .studio-header[data-studio-chrome] .studio-nav a:last-child {
   margin-left: 8px;
-  color: var(--studio-paper);
+  color: var(--studio-on-accent, #f6efdc);
   background: var(--studio-accent);
 }
 
 .studio-header[data-studio-chrome] .studio-nav a:last-child:hover,
-.studio-header[data-studio-chrome] .studio-nav a:last-child[aria-current="page"] { background: var(--studio-accent-hover); color: var(--studio-paper); }
+.studio-header[data-studio-chrome] .studio-nav a:last-child[aria-current="page"] { background: var(--studio-accent-hover); color: var(--studio-on-accent, #f6efdc); }
 
 .studio-header[data-studio-chrome] .studio-menu-toggle {
   display: none;
@@ -111,7 +114,7 @@
   padding: 10px 16px;
   border: 1px solid var(--studio-line-strong);
   border-radius: 999px;
-  background: transparent;
+  background: color-mix(in srgb, var(--studio-panel) 70%, transparent);
   color: var(--studio-ink);
   font: 700 0.82rem var(--font-manrope), system-ui, sans-serif;
   cursor: pointer;

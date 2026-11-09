@@ -48,6 +48,12 @@ export const elevenwardConfig = {
     "https://apps.apple.com/us/app/elevenward/id6809308325",
 };
 
+export const noctaraConfig = {
+  appStoreUrl:
+    cleanUrl(process.env.NEXT_PUBLIC_NOCTARA_APP_STORE_URL) ||
+    "https://apps.apple.com/us/app/noctara-sleep-recovery/id6813928927",
+};
+
 export const mathWarsConfig = {
   siteName: "Math Wars",
   supportEmail: beopityConfig.contactEmail,
