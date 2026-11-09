@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import type { CatPose } from "@/lib/cat/gait";
-import { CAMERA_ELEVATION, VIEW_UNITS } from "@/lib/cat/view";
+import { CAMERA_ELEVATION, CAT_GLOW, CAT_SHADOW, VIEW_UNITS } from "@/lib/cat/view";
 import { applyCatPose, createCatModel } from "./catModel";
 
 export type CatRenderer = {
@@ -58,9 +58,10 @@ export function createCatRenderer(host: HTMLElement, onUnavailable: () => void):
 
   const model = createCatModel();
   // A soft lantern glow keeps the black cat legible on charcoal; the contact
-  // shadow grounds it on the mint paper sections.
-  const glow = groundDisc("#bbefcb", 0.2, [1, 1], 1, 2.6);
-  const shadow = groundDisc("#050403", 0.5, [1.9, 1], 0.62, 1.4);
+  // shadow grounds it on the mint paper sections. Both stay inside the cat's
+  // measured envelope so the route's clearance covers them.
+  const glow = groundDisc("#bbefcb", CAT_GLOW.opacity, [1, 1], 1, CAT_GLOW.radius * 2);
+  const shadow = groundDisc("#050403", CAT_SHADOW.opacity, CAT_SHADOW.stretch, CAT_SHADOW.falloff, CAT_SHADOW.size);
   glow.position.y = 0.001; shadow.position.y = 0.002;
   scene.add(glow);
   model.root.add(shadow);

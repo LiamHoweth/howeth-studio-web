@@ -59,11 +59,14 @@ img { max-width: 100%; }
 .studio-section-label { display: flex; align-items: center; gap: 12px; margin: 0 0 22px; color: var(--studio-muted); }
 .studio-section-label::before { content: ""; width: 22px; height: 1px; background: currentColor; }
 
-/* The cat's trail: content column plus a reserved lane on the right. */
-.trail { --lane: clamp(180px, 15vw, 240px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--lane); width: min(var(--shell), 100% - 2 * var(--gutter)); margin-inline: auto; }
+/* The cat's trail: content column plus a reserved lane on the right. The cat
+   may also use the empty page margin beyond the lane, up to --cat-edge from the
+   viewport edge. --cat-size is the cat's desired height; the lane decides
+   whether it can turn standing or sits to turn round. */
+.trail { --lane: clamp(190px, 17vw, 260px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--lane); width: min(var(--shell), 100% - 2 * var(--gutter)); margin-inline: auto; }
 .trail__content { grid-column: 1; grid-row: 1; min-width: 0; }
-.trail__lane { --cat-size: 188px; --cat-anchor: .62; grid-column: 2; grid-row: 1; position: relative; pointer-events: none; }
-.trail__path { position: absolute; top: 40px; bottom: 40px; left: 50%; width: 0; border-left: 1px dashed #f3efe41f; }
+.trail__lane { --cat-size: 196px; --cat-anchor: .62; --cat-edge: 8px; grid-column: 2; grid-row: 1; position: relative; pointer-events: none; }
+.trail__path { position: absolute; top: 40px; bottom: 40px; left: calc(50% + (var(--edge) - var(--cat-edge)) / 2 + 12px); width: 0; border-left: 1px dashed #f3efe41f; }
 .trail__static-cat { position: sticky; top: calc(var(--cat-anchor) * 100svh - var(--cat-size) * .5); display: block; width: min(calc(100% - 8px), calc(var(--cat-size) * .827)); height: auto; margin: 120px auto 0; filter: drop-shadow(0 0 22px #bfeccb38) drop-shadow(0 8px 10px #0008); }
 .trail:has(.walking-cat:not([data-state="static"])) .trail__static-cat { visibility: hidden; }
 
@@ -222,7 +225,7 @@ img { max-width: 100%; }
   .collection-grid > li:last-child:nth-child(odd) .collection-product__description { display: block; max-width: 42ch; color: var(--studio-muted); font-size: .96rem; line-height: 1.8; margin: 24px 0 32px; }
 }
 @media (max-width: 1100px) {
-  .trail__lane { --cat-size: 140px; }
+  .trail__lane { --cat-size: 170px; }
   .studio-about__grid { grid-template-columns: 1fr; }
   .studio-portrait { justify-self: start; max-width: 340px; }
   .studio-principles { grid-template-columns: 1fr; gap: 20px; }
@@ -239,9 +242,9 @@ img { max-width: 100%; }
   .studio-footer__about { grid-column: 1 / -1; }
 }
 @media (max-width: 760px) {
-  .trail { --lane: 84px; width: calc(100% - var(--gutter)); margin-inline: var(--gutter) 0; }
-  .trail__lane { --cat-size: 78px; --cat-anchor: .58; }
-  .trail__path { top: 24px; }
+  .trail { --lane: 88px; width: calc(100% - var(--gutter)); margin-inline: var(--gutter) 0; }
+  .trail__lane { --cat-size: 100px; --cat-anchor: .58; --cat-edge: 2px; }
+  .trail__path { top: 24px; left: calc(50% + 8px); }
   .trail__static-cat { margin-top: 64px; }
   .interlude::before { inset: 0 calc(-1 * var(--lane)) 0 calc(-1 * var(--gutter)); }
   .studio-hero { padding-block: 28px 56px; gap: 40px; }
