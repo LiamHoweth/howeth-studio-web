@@ -22,7 +22,7 @@ export default function FootballEraPrivacyPage() {
             <span className="eyebrow">Privacy Policy</span>
             <h1>Football Era Privacy Policy</h1>
             <p className="hero-copy">
-              Effective date: September 21, 2026. This policy explains how Football Era
+              Effective date: November 9, 2026. This policy explains how Football Era
               (“the app”), published by Beopity, handles information when you
               play as a guest or choose to create an account.
             </p>
@@ -185,6 +185,38 @@ export default function FootballEraPrivacyPage() {
           </section>
 
           <section className="section two-column">
+            <article className="section-card">
+              <h2>Optional rewarded advertising</h2>
+              <p>
+                In versions that offer ad rewards, offers are off until you enable
+                them in Settings. You can choose an ad after a game or after claiming
+                the free daily reward. Normal rewards and offline play remain
+                available without watching ads. Google AdMob serves these ads and
+                may process IP address, device and app identifiers, advertising
+                interactions, diagnostics, and approximate location derived from IP
+                address for delivery, measurement, security, and fraud prevention.
+                Football Era does not send career names, email addresses, or career
+                saves to AdMob. Non-personalized ads can still require device storage
+                and processing; available consent and privacy choices are presented
+                before ad requests. You can revisit ad privacy choices in Settings.
+              </p>
+              <p>
+                A separate, optional Ad revenue analytics setting allows ad
+                impressions, clicks, placement, and impression-level revenue to be
+                sent to RevenueCat under its existing customer identifier, alongside
+                purchases. This setting is off by default and is separate from
+                gameplay analytics, purchase analytics, and permission to track
+                across other companies’ apps and websites. Disabling it stops new
+                reporting; it does not delete prior provider records. For provider
+                data access or deletion, contact us using the support details below.
+              </p>
+              <p>
+                See <a href="https://policies.google.com/privacy">Google’s privacy policy</a> and{" "}
+                <a href="https://www.revenuecat.com/privacy/">RevenueCat’s privacy policy</a>.
+                The current ad integration is being tested; production ad serving
+                requires a separately validated app update.
+              </p>
+            </article>
             <article className="section-card">
               <h2>Children and families</h2>
               <p>

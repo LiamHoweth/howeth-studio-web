@@ -61,7 +61,7 @@ export default function FootballEraPage() {
         ],
       }}
       links={links}
-      note="No ads, subscriptions, or consumable currency."
+      note="No forced ads, no subscriptions, and no consumable currency. Optional ad rewards start off."
     />
   );
 }

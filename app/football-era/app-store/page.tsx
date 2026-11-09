@@ -98,7 +98,7 @@ WRITE A COMPLETE CAREER STORY
 Seasons, contracts, trades, awards, purchases, milestones, and records become part of your saved career history. When you choose to retire, review the trophy case, greatest moments, legacy score, and Hall of Fame result.
 
 PREMIUM BY DESIGN
-Football Era has no ads, no subscriptions, and no consumable currency. Optional VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses are permanent App Store purchases and can be restored.
+Football Era has no forced ads, no subscriptions, and no consumable currency. Optional ad rewards start off and can be enabled in supported versions. Optional VIP, 2x XP, 2x Money, and Extra Career Slots gamepasses are permanent App Store purchases and can be restored.
 
 Football Era is local-first and remains fully playable without an account or network connection. Optional Apple or Google sign-in adds cloud career saves and validated online leaderboards. Claim one moderated public username for your account, or keep using a stable generated alias. Report and hide inappropriate profiles directly from the leaderboard, and share anonymous feedback from Settings or the Shop.`}
             </CopyBlock>
