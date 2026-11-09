@@ -128,6 +128,19 @@ export default function FootballEraPrivacyPage() {
                 advertising or cross-app tracking, and it is not combined with your
                 Apple or Google account identity. Football Era asks for your choice
                 before registering an analytics installation or sending an event.
+                In versions with expanded gameplay measurement, this includes
+                career-creation step confirmations, whether a career already existed
+                when measurement began, selected career gameplay modes, games started
+                and durably completed, and coarse elapsed-time categories from that
+                first consented observation to the first completed game. Diagnostic
+                categories cover loading, local saving, cloud sync and opening the
+                field. They exclude raw error messages, crash stacks, player-entered
+                names, full saves and account identifiers. Random session and action
+                references match events without publishing career identifiers.
+                Repeat sessions measure retention; the observation date is not an
+                App Store installation date. Events retain the app version/build,
+                platform, configured environment and distribution channel at occurrence,
+                allowing development and TestFlight observations to be separated.
               </p>
             </article>
             <article className="section-card">
